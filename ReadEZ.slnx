@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="ReadEZ/ReadEZ.vbproj">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="ReadEZSetup/ReadEZSetup.wixproj">
+    <Platform Solution="*|x64" Project="x64" />
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
+</Solution>

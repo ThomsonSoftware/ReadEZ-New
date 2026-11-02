@@ -1,0 +1,101 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- ===========================================================================================
+       ReadEZ 3 - VB.NET, Windows Forms, .NET 8
+       Built on the Eye Dynamix framework (themes, languages, screens, help, licence, updates,
+       backups, installer) without eye tracking. DevExpress is used only for the printed
+       reports and letters (XtraPrinting). Everything else is plain WinForms with the custom
+       controls in UI\Framework.
+       =========================================================================================== -->
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RootNamespace>ReadEZ</RootNamespace>
+    <AssemblyName>ReadEZ</AssemblyName>
+    <StartupObject>ReadEZ.AppHost</StartupObject>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <OptionStrict>On</OptionStrict>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionInfer>On</OptionInfer>
+    <OptionCompare>Binary</OptionCompare>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>x64</Platforms>
+    <!-- Restore always includes win-x64 so "dotnet publish -r win-x64" (Admin > Build a signed
+         release) works after Visual Studio has restored the project (avoids NETSDK1047). -->
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <PublishReadyToRun Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRun>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationIcon>Assets\ReadEZ.ico</ApplicationIcon>
+    <Product>ReadEZ</Product>
+    <Company>Thomson Software Solutions</Company>
+    <Copyright>© Thomson Software Solutions</Copyright>
+    <Version>3.0.0</Version>
+    <Nullable>Disable</Nullable>
+    <!-- Only used once, to read the licence saved by ReadEZ 2020 (tssRZ.dll, LicenceService.vb) -->
+    <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+    <!-- Folder containing the DevExpress 24.2 .NET assemblies -->
+    <DevExpressBin Condition="'$(DevExpressBin)' == ''">C:\Program Files\DevExpress 24.2\Components\Bin\NetCore\</DevExpressBin>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+  </ItemGroup>
+
+  <!-- DevExpress: printed reports and letters only (preview, print, PDF / Word export, e-mail) -->
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v24.2"><HintPath>$(DevExpressBin)DevExpress.Data.v24.2.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Data.Desktop.v24.2"><HintPath>$(DevExpressBin)DevExpress.Data.Desktop.v24.2.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Drawing.v24.2"><HintPath>$(DevExpressBin)DevExpress.Drawing.v24.2.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Printing.v24.2.Core"><HintPath>$(DevExpressBin)DevExpress.Printing.v24.2.Core.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Utils.v24.2"><HintPath>$(DevExpressBin)DevExpress.Utils.v24.2.dll</HintPath></Reference>
+    <Reference Include="DevExpress.XtraPrinting.v24.2"><HintPath>$(DevExpressBin)DevExpress.XtraPrinting.v24.2.dll</HintPath></Reference>
+    <Reference Include="DevExpress.XtraEditors.v24.2"><HintPath>$(DevExpressBin)DevExpress.XtraEditors.v24.2.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Office.v24.2.Core"><HintPath>$(DevExpressBin)DevExpress.Office.v24.2.Core.dll</HintPath></Reference>
+    <Reference Include="DevExpress.RichEdit.v24.2.Core"><HintPath>$(DevExpressBin)DevExpress.RichEdit.v24.2.Core.dll</HintPath></Reference>
+    <Reference Include="DevExpress.RichEdit.v24.2.Export"><HintPath>$(DevExpressBin)DevExpress.RichEdit.v24.2.Export.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Pdf.v24.2.Core"><HintPath>$(DevExpressBin)DevExpress.Pdf.v24.2.Core.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Pdf.v24.2.Drawing"><HintPath>$(DevExpressBin)DevExpress.Pdf.v24.2.Drawing.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Sparkline.v24.2.Core"><HintPath>$(DevExpressBin)DevExpress.Sparkline.v24.2.Core.dll</HintPath></Reference>
+    <Reference Include="DevExpress.DataVisualization.v24.2.Core"><HintPath>$(DevExpressBin)DevExpress.DataVisualization.v24.2.Core.dll</HintPath></Reference>
+    <Reference Include="DevExpress.Charts.v24.2.Core"><HintPath>$(DevExpressBin)DevExpress.Charts.v24.2.Core.dll</HintPath></Reference>
+  </ItemGroup>
+
+  <!-- Embedded resources -->
+  <ItemGroup>
+    <EmbeddedResource Include="Localisation\Strings.json" LogicalName="Strings.json" />
+    <EmbeddedResource Include="Assets\ReadEZ.ico" LogicalName="ReadEZ.ico" />
+    <EmbeddedResource Include="Assets\ThomsonLogo.png" LogicalName="ThomsonLogo.png" Condition="Exists('Assets\ThomsonLogo.png')" />
+    <!-- Help video links (Admin > Help videos writes this file when run from the solution) -->
+    <EmbeddedResource Include="Assets\HelpVideos.json" LogicalName="HelpVideos.json" Condition="Exists('Assets\HelpVideos.json')" />
+    <!-- Licence agreement: the installer's own file, so the program and the installer show the same text -->
+    <EmbeddedResource Include="..\ReadEZSetup\License.rtf" LogicalName="EULA.rtf" Condition="Exists('..\ReadEZSetup\License.rtf')" />
+  </ItemGroup>
+
+  <!-- Files copied next to the program, e.g. ReadEZHelp.chm (see Deploy\README.txt) -->
+  <ItemGroup>
+    <None Include="Deploy\**\*" Exclude="Deploy\README.txt;Deploy\Starter\**">
+      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+  <!-- Starter set: reading texts, letter templates, report pictures and Database\ReadEZ.db.
+       Installed in "<program>\Starter" and copied into the user's data folder only where files are
+       missing (Data\StandardFiles.vb), so updates never replace the user's texts or database. -->
+  <ItemGroup Condition="Exists('Deploy\Starter')">
+    <None Include="Deploy\Starter\**\*">
+      <Link>Starter\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How to build ReadEZHelp.chm</title>
+<style>body{font-family:'Segoe UI',Arial,sans-serif;font-size:11pt;color:#414143;line-height:1.45;max-width:900px}
+h1{font-size:20pt;color:#2969B3;margin:0 0 12px;padding-bottom:6px;border-bottom:3px solid #4F8CCB}h2{font-size:14pt;color:#1B4884;margin:18px 0 6px}
+table{border-collapse:collapse;margin:8px 0 12px}th,td{border:1px solid #C4D6EC;padding:5px 9px;text-align:left;vertical-align:top}
+th{background:#2969B3;color:#fff;font-weight:600}tr:nth-child(even) td{background:#F6F9FD}code{font-family:Consolas,monospace;font-size:10pt;background:#EBF2FA;padding:0 3px}
+a{color:#2969B3}.note{background:#EBF2FA;border-left:4px solid #4F8CCB;padding:6px 10px;margin:10px 0}</style>
+</head>
+<body>
+<h1>How to build ReadEZHelp.chm</h1>
+<p>The program opens help pages by name (the <em>Help ID</em> column of <code>Topic list.csv</code>, in lower case, plus <code>.htm</code>; see <code>Services\HelpFile.vb</code>). Both ways below keep those names.</p>
+<h2>A. HTML Help Workshop (quickest)</h2>
+<ol><li>Open <code>HTML Help project\ReadEZHelp.hhp</code> in Microsoft HTML Help Workshop and select Compile (or run <code>hhc.exe ReadEZHelp.hhp</code>).</li>
+<li>Copy <code>ReadEZHelp.chm</code> to <code>ReadEZ\Deploy</code>.</li></ol>
+<h2>B. HelpNDoc (to edit the manual and add pictures)</h2>
+<ol><li>Create a new project called <em>ReadEZ Help</em>.</li>
+<li>Import the files in <code>Topics</code> (File &gt; Import &gt; HTML files), in the order of <code>Topic list.csv</code>; set each topic's level from the <em>Level</em> column.</li>
+<li>Set each topic's <strong>Help ID</strong> to the <em>Help ID</em> column (HelpNDoc makes the same ID from the title, but check it) and its help context to the last column.</li>
+<li>Add screenshots of ReadEZ where useful.</li>
+<li>Build the CHM as <code>ReadEZHelp.chm</code> and copy it to <code>ReadEZ\Deploy</code>. HelpNDoc can also build the online (HTML) help; put its address in Settings &gt; Admin &gt; Online help.</li></ol>
+<p>If you change a Help ID, change it in <code>HelpFile.vb</code> (<code>Pages</code>) too.</p>
+</body>
+</html>

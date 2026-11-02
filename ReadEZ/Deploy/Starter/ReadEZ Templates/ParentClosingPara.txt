@@ -1,0 +1,3 @@
+﻿The results suggest that  {Firstname} may benefit from an  {Result}.
+
+If you have any questions relating to this report, please contact our Visual Stress team.

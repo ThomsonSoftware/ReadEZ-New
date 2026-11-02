@@ -1,0 +1,88 @@
+<Project Sdk="WixToolset.Sdk/5.0.2">
+
+  <!--
+    Installer for ReadEZ (WiX Toolset v5), built the same way as Eye Dynamix's.
+
+    Building this project (Release):
+      1. publishes ReadEZ (self-contained, 64-bit, so the target PC does not need the .NET
+         runtime installed) into obj\publish\Release,
+      2. signs ReadEZ.exe and ReadEZ.dll with your certificate,
+      3. packs everything in the publish folder into ReadEZ-Setup.msi, and
+      4. signs the .msi.
+
+    Normally you don't build this yourself: Admin > Publish update builds it with the signing
+    details filled in, then writes update.json and opens the folder to upload.
+
+    The installer's version is read from the published ReadEZ.dll, so it always matches
+    <Version> in ReadEZ.vbproj. Windows only upgrades an installation when the version is higher.
+
+    Signing: pass the certificate as properties, and its password in an environment variable
+    (so it never appears in a build log):
+        set READEZ_SIGN_PASSWORD=...
+        dotnet build ReadEZSetup\ReadEZSetup.wixproj -c Release -p:SignPfx="C:\path\cert.pfx" -p:SignTool="C:\...\signtool.exe"
+    Without SignPfx the installer is built unsigned (fine for testing).
+  -->
+
+  <PropertyGroup>
+    <OutputName>ReadEZ-Setup</OutputName>
+    <InstallerPlatform>x64</InstallerPlatform>
+    <Platforms>x64</Platforms>
+
+    <AppProject>$(MSBuildThisFileDirectory)..\ReadEZ\ReadEZ.vbproj</AppProject>
+    <AppPublishDir>$(MSBuildThisFileDirectory)obj\publish\$(Configuration)\</AppPublishDir>
+
+    <!-- true = include the .NET runtime (bigger .msi, nothing else to install) -->
+    <AppSelfContained>true</AppSelfContained>
+
+    <SignPfx Condition="'$(SignPfx)' == ''">$(READEZ_SIGN_PFX)</SignPfx>
+    <SignTool Condition="'$(SignTool)' == ''">signtool.exe</SignTool>
+    <SignTimestampUrl Condition="'$(SignTimestampUrl)' == ''">http://timestamp.digicert.com</SignTimestampUrl>
+
+    <PublishedExeName>ReadEZ.exe</PublishedExeName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="5.0.2" />
+  </ItemGroup>
+
+  <!-- Publish the app and sign it. Skipped when Admin > Publish update has already done this
+       itself (AppPrePublished=true). -->
+  <Target Name="PublishReadEZ" Condition="'$(AppPrePublished)' != 'true'">
+    <RemoveDir Directories="$(AppPublishDir)" />
+    <Exec Command="dotnet publish &quot;$(AppProject)&quot; -c $(Configuration) -r win-x64 --self-contained $(AppSelfContained) -p:DebugType=None -p:DebugSymbols=false -o &quot;$(AppPublishDir.TrimEnd('\'))&quot;" />
+
+    <Error Condition="!Exists('$(AppPublishDir)$(PublishedExeName)')" Text="Publishing did not produce $(PublishedExeName) in $(AppPublishDir)." />
+    <Warning Condition="!Exists('$(AppPublishDir)Starter')" Text="No starter set: put the reading texts, letter templates and starter database in ReadEZ\Deploy\Starter." />
+    <Warning Condition="!Exists('$(AppPublishDir)ReadEZHelp.chm')" Text="ReadEZHelp.chm is missing - build Help\ReadEZ Help (see How to build the help file.html) and copy it into ReadEZ\Deploy." />
+
+    <Message Importance="high" Condition="'$(SignPfx)' != ''" Text="Signing $(PublishedExeName) and ReadEZ.dll with $(SignPfx)" />
+    <Exec Condition="'$(SignPfx)' != ''" EchoOff="true"
+          Command="&quot;$(SignTool)&quot; sign /f &quot;$(SignPfx)&quot; /p &quot;%READEZ_SIGN_PASSWORD%&quot; /fd SHA256 /tr &quot;$(SignTimestampUrl)&quot; /td SHA256 /d &quot;ReadEZ&quot; &quot;$(AppPublishDir)$(PublishedExeName)&quot; &quot;$(AppPublishDir)ReadEZ.dll&quot;" />
+    <Warning Condition="'$(SignPfx)' == ''" Text="ReadEZ is NOT signed (no SignPfx)." />
+  </Target>
+
+  <!-- Pass the published folder and its version to Package.wxs -->
+  <Target Name="PrepareReadEZFiles" BeforeTargets="BeforeBuild" DependsOnTargets="PublishReadEZ">
+    <Error Condition="!Exists('$(AppPublishDir)$(PublishedExeName)')" Text="$(PublishedExeName) is missing from $(AppPublishDir)." />
+
+    <GetAssemblyIdentity AssemblyFiles="$(AppPublishDir)ReadEZ.dll">
+      <Output TaskParameter="Assemblies" ItemName="ReadEZAssembly" />
+    </GetAssemblyIdentity>
+
+    <PropertyGroup>
+      <ReadEZVersion>%(ReadEZAssembly.Version)</ReadEZVersion>
+      <DefineConstants>$(DefineConstants);AppDir=$(AppPublishDir.TrimEnd('\'));AppVersion=$(ReadEZVersion);ExeName=$(PublishedExeName);SetupDir=$(MSBuildThisFileDirectory.TrimEnd('\'));AssetsDir=$(MSBuildThisFileDirectory)..\ReadEZ\Assets</DefineConstants>
+    </PropertyGroup>
+
+    <Message Importance="high" Text="Packing ReadEZ $(ReadEZVersion) from $(AppPublishDir)" />
+  </Target>
+
+  <!-- Sign the finished .msi; Admin > Publish update checks the signature before using it -->
+  <Target Name="SignInstaller" AfterTargets="Build" Condition="'$(SignPfx)' != '' And '$(AppPrePublished)' != 'true'">
+    <Message Importance="high" Text="Signing $(TargetPath)" />
+    <Exec EchoOff="true"
+          Command="&quot;$(SignTool)&quot; sign /f &quot;$(SignPfx)&quot; /p &quot;%READEZ_SIGN_PASSWORD%&quot; /fd SHA256 /tr &quot;$(SignTimestampUrl)&quot; /td SHA256 /d &quot;ReadEZ installer&quot; &quot;$(TargetPath)&quot;" />
+  </Target>
+
+</Project>

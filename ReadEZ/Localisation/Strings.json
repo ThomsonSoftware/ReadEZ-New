@@ -1,0 +1,4376 @@
+{
+  "about.details": {
+    "en": "UDI {0}     Build {1}",
+    "es": "UDI {0}     Compilación {1}",
+    "de": "UDI {0}     Build {1}",
+    "it": "UDI {0}     Build {1}"
+  },
+  "about.title": {
+    "en": "About ReadEZ",
+    "es": "Acerca de ReadEZ",
+    "de": "Über ReadEZ",
+    "it": "Informazioni su ReadEZ"
+  },
+  "admin.help.edit": {
+    "en": "Edit help topics and videos…",
+    "es": "Editar temas de ayuda y vídeos…",
+    "de": "Hilfethemen und Videos bearbeiten…",
+    "it": "Modifica argomenti della guida e video…"
+  },
+  "admin.help.intro": {
+    "en": "The topics in the Help menu and Help screen: add, delete and reorder them, and set each topic's video link. The help buttons on each screen, test and analysis open their topic. When the program is run from the Visual Studio solution the topics are also saved in the project, so the next release includes them.",
+    "es": "Los temas del menú y la pantalla Ayuda: añádalos, elimínelos u ordénelos y asigne el enlace del vídeo de cada uno. Los botones de ayuda de cada pantalla, prueba y análisis abren su tema. Si el programa se ejecuta desde la solución de Visual Studio, los temas también se guardan en el proyecto y la próxima versión los incluye.",
+    "de": "Die Themen im Hilfe-Menü und im Hilfefenster: hinzufügen, löschen, ordnen und jedem Thema einen Videolink zuordnen. Die Hilfeschaltflächen der Fenster, Tests und Auswertungen öffnen ihr Thema. Wird das Programm aus der Visual-Studio-Projektmappe gestartet, werden die Themen auch im Projekt gespeichert, sodass die nächste Version sie enthält.",
+    "it": "Gli argomenti del menu e della schermata Guida: aggiungerli, eliminarli, riordinarli e impostare il link al video di ciascuno. I pulsanti di guida di ogni schermata, test e analisi aprono il proprio argomento. Se il programma viene eseguito dalla soluzione di Visual Studio, gli argomenti vengono salvati anche nel progetto e la prossima versione li include."
+  },
+  "admin.help.title": {
+    "en": "Help topics and videos",
+    "es": "Temas de ayuda y vídeos",
+    "de": "Hilfethemen und Videos",
+    "it": "Argomenti della guida e video"
+  },
+  "admin.import": {
+    "en": "Import ReadEZ 2020 settings…",
+    "es": "Importar la configuración de ReadEZ 2020…",
+    "de": "ReadEZ-2020-Einstellungen importieren…",
+    "it": "Importa impostazioni di ReadEZ 2020…"
+  },
+  "admin.import.done": {
+    "en": "Settings imported from ReadEZ 2020. Please check the ReadEZ colours again with Colour calibration.",
+    "es": "Configuración importada de ReadEZ 2020. Vuelva a comprobar los colores ReadEZ con la calibración de color.",
+    "de": "Einstellungen aus ReadEZ 2020 importiert. Bitte prüfen Sie die ReadEZ-Farben erneut mit der Farbkalibrierung.",
+    "it": "Impostazioni importate da ReadEZ 2020. Ricontrolla i colori ReadEZ con la calibrazione del colore."
+  },
+  "admin.import.none": {
+    "en": "That file could not be read as ReadEZ 2020 settings (RZSettings.ini).",
+    "es": "No se pudo leer ese archivo como configuración de ReadEZ 2020 (RZSettings.ini).",
+    "de": "Diese Datei konnte nicht als ReadEZ-2020-Einstellungen (RZSettings.ini) gelesen werden.",
+    "it": "Il file non può essere letto come impostazioni di ReadEZ 2020 (RZSettings.ini)."
+  },
+  "admin.import.pick": {
+    "en": "Choose ReadEZ 2020's RZSettings.ini",
+    "es": "Elija el archivo RZSettings.ini de ReadEZ 2020",
+    "de": "RZSettings.ini von ReadEZ 2020 auswählen",
+    "it": "Scegli il file RZSettings.ini di ReadEZ 2020"
+  },
+  "admin.importDb": {
+    "en": "Import a ReadEZ 2020 database…",
+    "es": "Importar una base de datos de ReadEZ 2020…",
+    "de": "ReadEZ-2020-Datenbank importieren…",
+    "it": "Importa un database di ReadEZ 2020…"
+  },
+  "admin.maintenance.title": {
+    "en": "Security and maintenance",
+    "es": "Seguridad y mantenimiento",
+    "de": "Sicherheit und Wartung",
+    "it": "Sicurezza e manutenzione"
+  },
+  "admin.modules.title": {
+    "en": "Colour tests offered",
+    "es": "Pruebas de color disponibles",
+    "de": "Angebotene Farbtests",
+    "it": "Test del colore disponibili"
+  },
+  "admin.onlineHelp.intro": {
+    "en": "The web address of the ReadEZ help made with HelpNDoc. Help > Online help opens it. (Put ReadEZHelp.chm in the program folder for Help > Help contents.)",
+    "es": "La dirección web de la ayuda de ReadEZ creada con HelpNDoc. Ayuda > Ayuda en línea la abre. (Coloque ReadEZHelp.chm en la carpeta del programa para Ayuda > Contenido de la ayuda.)",
+    "de": "Die Webadresse der mit HelpNDoc erstellten Eye-Dynamix-Hilfe. Hilfe > Online-Hilfe öffnet sie. (Legen Sie ReadEZHelp.chm in den Programmordner für Hilfe > Hilfeinhalt.)",
+    "it": "L'indirizzo web della guida di ReadEZ creata con HelpNDoc. Guida > Guida in linea la apre. (Metta ReadEZHelp.chm nella cartella del programma per Guida > Sommario della guida.)"
+  },
+  "admin.onlineHelp.open": {
+    "en": "Open",
+    "es": "Abrir",
+    "de": "Öffnen",
+    "it": "Apri"
+  },
+  "admin.onlineHelp.title": {
+    "en": "Online help",
+    "es": "Ayuda en línea",
+    "de": "Online-Hilfe",
+    "it": "Guida in linea"
+  },
+  "admin.onlineHelp.url": {
+    "en": "Address of the online help",
+    "es": "Dirección de la ayuda en línea",
+    "de": "Adresse der Online-Hilfe",
+    "it": "Indirizzo della guida in linea"
+  },
+  "admin.password.change": {
+    "en": "Change password…",
+    "es": "Cambiar contraseña…",
+    "de": "Kennwort ändern…",
+    "it": "Cambia password…"
+  },
+  "admin.password.changed": {
+    "en": "Admin password changed.",
+    "es": "Contraseña de administrador cambiada.",
+    "de": "Administratorkennwort geändert.",
+    "it": "Password di amministratore modificata."
+  },
+  "admin.password.mismatch": {
+    "en": "The two passwords are different.",
+    "es": "Las dos contraseñas no coinciden.",
+    "de": "Die beiden Kennwörter stimmen nicht überein.",
+    "it": "Le due password non coincidono."
+  },
+  "admin.password.new": {
+    "en": "New password (at least 6 characters)",
+    "es": "Nueva contraseña (al menos 6 caracteres)",
+    "de": "Neues Kennwort (mindestens 6 Zeichen)",
+    "it": "Nuova password (almeno 6 caratteri)"
+  },
+  "admin.password.prompt": {
+    "en": "Please enter the admin password",
+    "es": "Introduzca la contraseña de administrador",
+    "de": "Bitte geben Sie das Administratorkennwort ein",
+    "it": "Inserisci la password di amministratore"
+  },
+  "admin.password.repeat": {
+    "en": "Type the new password again",
+    "es": "Vuelva a escribir la nueva contraseña",
+    "de": "Neues Kennwort wiederholen",
+    "it": "Ripeti la nuova password"
+  },
+  "admin.password.title": {
+    "en": "Admin password",
+    "es": "Contraseña de administrador",
+    "de": "Administratorkennwort",
+    "it": "Password di amministratore"
+  },
+  "admin.password.tooShort": {
+    "en": "The password must be at least 6 characters long.",
+    "es": "La contraseña debe tener al menos 6 caracteres.",
+    "de": "Das Kennwort muss mindestens 6 Zeichen lang sein.",
+    "it": "La password deve contenere almeno 6 caratteri."
+  },
+  "admin.password.wrong": {
+    "en": "The password is not correct.",
+    "es": "La contraseña no es correcta.",
+    "de": "Das Kennwort ist nicht korrekt.",
+    "it": "La password non è corretta."
+  },
+  "admin.releases.intro": {
+    "en": "For the computer that builds ReadEZ releases. Builds the installer from the source code, signs ReadEZ.exe and the installer with your code-signing certificate (.pfx, chosen in the next window), and writes update.json next to it. The folder then opens: upload both files to the update folder on the web server and every installed copy will offer the update. Nothing is uploaded automatically.",
+    "es": "Para el ordenador que crea las versiones de ReadEZ. Compila el instalador a partir del código fuente, firma ReadEZ.exe y el instalador con su certificado de firma de código (.pfx, que se elige en la siguiente ventana) y crea update.json junto a él. Luego se abre la carpeta: suba ambos archivos a la carpeta de actualizaciones del servidor web y todas las copias instaladas ofrecerán la actualización. No se sube nada automáticamente.",
+    "de": "Für den Computer, auf dem ReadEZ-Versionen erstellt werden. Erstellt das Installationsprogramm aus dem Quellcode, signiert ReadEZ.exe und das Installationsprogramm mit Ihrem Codesignaturzertifikat (.pfx, Auswahl im nächsten Fenster) und schreibt update.json daneben. Danach öffnet sich der Ordner: Laden Sie beide Dateien in den Update-Ordner auf dem Webserver hoch, dann bietet jede installierte Kopie das Update an. Es wird nichts automatisch hochgeladen.",
+    "it": "Per il computer che crea le versioni di ReadEZ. Compila il programma di installazione dal codice sorgente, firma ReadEZ.exe e il programma di installazione con il certificato di firma del codice (.pfx, scelto nella finestra successiva) e scrive update.json accanto. Poi si apre la cartella: caricare entrambi i file nella cartella aggiornamenti del server web e ogni copia installata proporrà l'aggiornamento. Nulla viene caricato automaticamente."
+  },
+  "admin.releases.title": {
+    "en": "Releases and updates",
+    "es": "Versiones y actualizaciones",
+    "de": "Versionen und Updates",
+    "it": "Versioni e aggiornamenti"
+  },
+  "admin.subtitle": {
+    "en": "Settings for the administrator only",
+    "es": "Configuración solo para el administrador",
+    "de": "Einstellungen nur für den Administrator",
+    "it": "Impostazioni riservate all'amministratore"
+  },
+  "admin.title": {
+    "en": "Admin",
+    "es": "Administración",
+    "de": "Administration",
+    "it": "Amministrazione"
+  },
+  "admin.translations": {
+    "en": "Check translations",
+    "es": "Comprobar traducciones",
+    "de": "Übersetzungen prüfen",
+    "it": "Verifica traduzioni"
+  },
+  "app.emergency": {
+    "en": "Control screen moved to the main monitor (Ctrl+S). Check Settings > Screens.",
+    "es": "Pantalla de control movida al monitor principal (Ctrl+S). Revise Configuración > Pantallas.",
+    "de": "Steuerbildschirm auf den Hauptmonitor verschoben (Strg+S). Prüfen Sie Einstellungen > Bildschirme.",
+    "it": "Schermata di controllo spostata sul monitor principale (Ctrl+S). Controllare Impostazioni > Schermi."
+  },
+  "backup.backingUp": {
+    "en": "Backing up",
+    "es": "Haciendo copia de seguridad",
+    "de": "Sicherung",
+    "it": "Backup in corso"
+  },
+  "backup.closeFailed": {
+    "en": "The backup on closing could not be made in {0}:\n{1}\n\nCheck that the backup folder is available (Settings > Data).",
+    "es": "No se pudo hacer la copia al cerrar en {0}:\n{1}\n\nCompruebe que la carpeta de copias esté disponible (Configuración > Datos).",
+    "de": "Die Sicherung beim Beenden konnte nicht in {0} erstellt werden:\n{1}\n\nPrüfen Sie, ob der Sicherungsordner erreichbar ist (Einstellungen > Daten).",
+    "it": "Impossibile eseguire il backup alla chiusura in {0}:\n{1}\n\nVerificare che la cartella di backup sia disponibile (Impostazioni > Dati)."
+  },
+  "backup.col.computer": {
+    "en": "Computer",
+    "es": "Ordenador",
+    "de": "Computer",
+    "it": "Computer"
+  },
+  "backup.col.kind": {
+    "en": "Made",
+    "es": "Origen",
+    "de": "Erstellt",
+    "it": "Creato"
+  },
+  "backup.col.patients": {
+    "en": "Patients",
+    "es": "Pacientes",
+    "de": "Patienten",
+    "it": "Pazienti"
+  },
+  "backup.col.recordings": {
+    "en": "Tests",
+    "es": "Pruebas",
+    "de": "Tests",
+    "it": "Test"
+  },
+  "backup.col.size": {
+    "en": "Size",
+    "es": "Tamaño",
+    "de": "Größe",
+    "it": "Dimensione"
+  },
+  "backup.col.stimuli": {
+    "en": "Data folder",
+    "es": "Carpeta de datos",
+    "de": "Datenordner",
+    "it": "Cartella dati"
+  },
+  "backup.col.when": {
+    "en": "Date and time",
+    "es": "Fecha y hora",
+    "de": "Datum und Uhrzeit",
+    "it": "Data e ora"
+  },
+  "backup.damaged": {
+    "en": "The database in the backup is damaged ({0}).",
+    "es": "La base de datos de la copia está dañada ({0}).",
+    "de": "Die Datenbank in der Sicherung ist beschädigt ({0}).",
+    "it": "Il database nel backup è danneggiato ({0})."
+  },
+  "backup.dbMissing": {
+    "en": "The database {0} was not found.",
+    "es": "No se encontró la base de datos {0}.",
+    "de": "Die Datenbank {0} wurde nicht gefunden.",
+    "it": "Database {0} non trovato."
+  },
+  "backup.done": {
+    "en": "Backup saved: {0}",
+    "es": "Copia guardada: {0}",
+    "de": "Sicherung gespeichert: {0}",
+    "it": "Backup salvato: {0}"
+  },
+  "backup.failed": {
+    "en": "The backup could not be made: {0}",
+    "es": "No se pudo hacer la copia de seguridad: {0}",
+    "de": "Die Sicherung konnte nicht erstellt werden: {0}",
+    "it": "Impossibile eseguire il backup: {0}"
+  },
+  "backup.folder": {
+    "en": "Backup folder",
+    "es": "Carpeta de copias de seguridad",
+    "de": "Sicherungsordner",
+    "it": "Cartella di backup"
+  },
+  "backup.hint": {
+    "en": "The newest {0} backups are kept; older ones are deleted. On closing, a backup is only made if something has changed. Choose a folder on another drive, a network drive or a cloud folder so the backups survive if this computer fails.",
+    "es": "Se conservan las {0} copias más recientes; las anteriores se eliminan. Al cerrar, solo se hace una copia si algo ha cambiado. Elija una carpeta en otra unidad, en red o en la nube para que las copias sobrevivan si este ordenador falla.",
+    "de": "Die neuesten {0} Sicherungen werden behalten, ältere gelöscht. Beim Beenden wird nur gesichert, wenn sich etwas geändert hat. Wählen Sie einen Ordner auf einem anderen Laufwerk, im Netzwerk oder in der Cloud, damit die Sicherungen einen Ausfall dieses Computers überstehen.",
+    "it": "Vengono conservati i {0} backup più recenti; quelli più vecchi vengono eliminati. Alla chiusura il backup viene eseguito solo se qualcosa è cambiato. Scegliere una cartella su un altro disco, in rete o nel cloud, così i backup sopravvivono a un guasto di questo computer."
+  },
+  "backup.includeStimuli": {
+    "en": "Include the data folder (reading texts, letters, report pictures)",
+    "es": "Incluir la carpeta de datos (textos, cartas, imágenes de informes)",
+    "de": "Datenordner einschließen (Lesetexte, Briefe, Berichtsbilder)",
+    "it": "Includi la cartella dati (testi, lettere, immagini dei referti)"
+  },
+  "backup.kind.beforeRestore": {
+    "en": "Before a restore",
+    "es": "Antes de restaurar",
+    "de": "Vor einer Wiederherstellung",
+    "it": "Prima di un ripristino"
+  },
+  "backup.kind.manual": {
+    "en": "By hand",
+    "es": "Manual",
+    "de": "Manuell",
+    "it": "Manuale"
+  },
+  "backup.kind.onClose": {
+    "en": "On closing",
+    "es": "Al cerrar",
+    "de": "Beim Beenden",
+    "it": "Alla chiusura"
+  },
+  "backup.last": {
+    "en": "Last backup: {0}",
+    "es": "Última copia: {0}",
+    "de": "Letzte Sicherung: {0}",
+    "it": "Ultimo backup: {0}"
+  },
+  "backup.lastNone": {
+    "en": "No backups in this folder yet.",
+    "es": "Todavía no hay copias en esta carpeta.",
+    "de": "In diesem Ordner gibt es noch keine Sicherungen.",
+    "it": "Nessun backup in questa cartella."
+  },
+  "backup.move": {
+    "en": "Move database…",
+    "es": "Mover base de datos…",
+    "de": "Datenbank verschieben…",
+    "it": "Sposta database…"
+  },
+  "backup.move.confirm": {
+    "en": "Move the patient database\n{0}\nto\n{1}?\n\nThe database is copied and checked, then used from its new place. The old file is kept, renamed to end in \".moved\".",
+    "es": "¿Mover la base de datos de pacientes\n{0}\na\n{1}?\n\nLa base de datos se copia y se comprueba, y después se usa desde su nueva ubicación. El archivo antiguo se conserva, con «.moved» al final del nombre.",
+    "de": "Patientendatenbank\n{0}\nnach\n{1} verschieben?\n\nDie Datenbank wird kopiert, geprüft und dann am neuen Ort verwendet. Die alte Datei bleibt erhalten und erhält die Endung \".moved\".",
+    "it": "Spostare il database dei pazienti\n{0}\nin\n{1}?\n\nIl database viene copiato e verificato, quindi usato dalla nuova posizione. Il vecchio file viene conservato con «.moved» alla fine del nome."
+  },
+  "backup.move.done": {
+    "en": "The patient database is now at\n{0}",
+    "es": "La base de datos de pacientes está ahora en\n{0}",
+    "de": "Die Patientendatenbank befindet sich jetzt unter\n{0}",
+    "it": "Il database dei pazienti ora si trova in\n{0}"
+  },
+  "backup.move.exists": {
+    "en": "There is already a database at {0}. To use it, choose it in Settings > Data instead.",
+    "es": "Ya existe una base de datos en {0}. Para usarla, selecciónela en Configuración > Datos.",
+    "de": "Unter {0} gibt es bereits eine Datenbank. Um sie zu verwenden, wählen Sie sie unter Einstellungen > Daten aus.",
+    "it": "Esiste già un database in {0}. Per usarlo, selezionarlo in Impostazioni > Dati."
+  },
+  "backup.move.failed": {
+    "en": "The database could not be moved: {0}",
+    "es": "No se pudo mover la base de datos: {0}",
+    "de": "Die Datenbank konnte nicht verschoben werden: {0}",
+    "it": "Impossibile spostare il database: {0}"
+  },
+  "backup.move.hint": {
+    "en": "Moves the patient database to another folder (for example a network drive) and uses it from there.",
+    "es": "Mueve la base de datos de pacientes a otra carpeta (por ejemplo, una unidad de red) y la usa desde allí.",
+    "de": "Verschiebt die Patientendatenbank in einen anderen Ordner (z. B. ein Netzlaufwerk) und verwendet sie von dort.",
+    "it": "Sposta il database dei pazienti in un'altra cartella (ad esempio un'unità di rete) e lo usa da lì."
+  },
+  "backup.move.pick": {
+    "en": "Choose the new folder for the patient database",
+    "es": "Elija la nueva carpeta para la base de datos de pacientes",
+    "de": "Neuen Ordner für die Patientendatenbank wählen",
+    "it": "Scegliere la nuova cartella per il database dei pazienti"
+  },
+  "backup.move.same": {
+    "en": "The database is already in that folder.",
+    "es": "La base de datos ya está en esa carpeta.",
+    "de": "Die Datenbank liegt bereits in diesem Ordner.",
+    "it": "Il database è già in quella cartella."
+  },
+  "backup.move.verify": {
+    "en": "The copy doesn't match the original, so the database was not moved.",
+    "es": "La copia no coincide con el original, por lo que no se ha movido la base de datos.",
+    "de": "Die Kopie stimmt nicht mit dem Original überein, die Datenbank wurde daher nicht verschoben.",
+    "it": "La copia non corrisponde all'originale, quindi il database non è stato spostato."
+  },
+  "backup.moving": {
+    "en": "Moving the database",
+    "es": "Moviendo la base de datos",
+    "de": "Datenbank wird verschoben",
+    "it": "Spostamento del database"
+  },
+  "backup.noDatabase": {
+    "en": "This backup contains no database.",
+    "es": "Esta copia no contiene ninguna base de datos.",
+    "de": "Diese Sicherung enthält keine Datenbank.",
+    "it": "Questo backup non contiene alcun database."
+  },
+  "backup.now": {
+    "en": "Back up now",
+    "es": "Copia ahora",
+    "de": "Jetzt sichern",
+    "it": "Backup ora"
+  },
+  "backup.otherFolder": {
+    "en": "Other folder…",
+    "es": "Otra carpeta…",
+    "de": "Anderer Ordner…",
+    "it": "Altra cartella…"
+  },
+  "backup.pickFolder": {
+    "en": "Choose the folder for ReadEZ backups",
+    "es": "Elija la carpeta para las copias de seguridad de ReadEZ",
+    "de": "Ordner für die Eye-Dynamix-Sicherungen wählen",
+    "it": "Scegliere la cartella per i backup di ReadEZ"
+  },
+  "backup.pickRestoreFolder": {
+    "en": "Choose a folder containing ReadEZ backups",
+    "es": "Elija una carpeta con copias de seguridad de ReadEZ",
+    "de": "Ordner mit Eye-Dynamix-Sicherungen wählen",
+    "it": "Scegliere una cartella con backup di ReadEZ"
+  },
+  "backup.progress.checking": {
+    "en": "Checking the backup…",
+    "es": "Comprobando la copia…",
+    "de": "Sicherung wird geprüft…",
+    "it": "Verifica del backup…"
+  },
+  "backup.progress.database": {
+    "en": "Copying the databases…",
+    "es": "Copiando las bases de datos…",
+    "de": "Datenbanken werden kopiert…",
+    "it": "Copia dei database…"
+  },
+  "backup.progress.restoring": {
+    "en": "Restoring the databases…",
+    "es": "Restaurando las bases de datos…",
+    "de": "Datenbanken werden wiederhergestellt…",
+    "it": "Ripristino dei database…"
+  },
+  "backup.progress.safety": {
+    "en": "Backing up the current data first…",
+    "es": "Primero se hace copia de los datos actuales…",
+    "de": "Zuerst werden die aktuellen Daten gesichert…",
+    "it": "Prima viene eseguito il backup dei dati attuali…"
+  },
+  "backup.progress.stimuli": {
+    "en": "Copying the data folder…",
+    "es": "Copiando la carpeta de datos…",
+    "de": "Datenordner wird kopiert…",
+    "it": "Copia della cartella dati…"
+  },
+  "backup.restore": {
+    "en": "Restore…",
+    "es": "Restaurar…",
+    "de": "Wiederherstellen…",
+    "it": "Ripristina…"
+  },
+  "backup.restore.button": {
+    "en": "Restore",
+    "es": "Restaurar",
+    "de": "Wiederherstellen",
+    "it": "Ripristina"
+  },
+  "backup.restore.confirm": {
+    "en": "Replace all patients and tests with the backup of {0}?\n\nEverything added since then will no longer be shown. A backup of the current data is made first, so this can be undone.",
+    "es": "¿Sustituir todos los pacientes y pruebas por la copia de {0}?\n\nLo añadido desde entonces dejará de mostrarse. Antes se hace una copia de los datos actuales, así que se puede deshacer.",
+    "de": "Alle Patienten und Tests durch die Sicherung vom {0} ersetzen?\n\nSpäter Hinzugefügtes wird nicht mehr angezeigt. Zuvor wird eine Sicherung der aktuellen Daten erstellt, dies ist also umkehrbar.",
+    "it": "Sostituire tutti i pazienti e i test con il backup del {0}?\n\nQuanto aggiunto da allora non sarà più visibile. Prima viene fatto un backup dei dati attuali, quindi si può annullare."
+  },
+  "backup.restore.done": {
+    "en": "The backup of {0} has been restored.",
+    "es": "Se ha restaurado la copia del {0}.",
+    "de": "Die Sicherung vom {0} wurde wiederhergestellt.",
+    "it": "Il backup del {0} è stato ripristinato."
+  },
+  "backup.restore.failed": {
+    "en": "The backup could not be restored: {0}",
+    "es": "No se pudo restaurar la copia: {0}",
+    "de": "Die Sicherung konnte nicht wiederhergestellt werden: {0}",
+    "it": "Impossibile ripristinare il backup: {0}"
+  },
+  "backup.restore.none": {
+    "en": "There are no ReadEZ backups in this folder.",
+    "es": "No hay copias de seguridad de ReadEZ en esta carpeta.",
+    "de": "In diesem Ordner gibt es keine Eye-Dynamix-Sicherungen.",
+    "it": "Nessun backup di ReadEZ in questa cartella."
+  },
+  "backup.restore.stimuli": {
+    "en": "Also restore the data folder",
+    "es": "Restaurar también la carpeta de datos",
+    "de": "Auch den Datenordner wiederherstellen",
+    "it": "Ripristina anche la cartella dati"
+  },
+  "backup.restore.subtitle": {
+    "en": "Choose the backup to go back to",
+    "es": "Elija la copia a la que volver",
+    "de": "Wählen Sie die Sicherung, zu der zurückgekehrt werden soll",
+    "it": "Scegliere il backup a cui tornare"
+  },
+  "backup.restore.title": {
+    "en": "Restore from backup",
+    "es": "Restaurar desde copia de seguridad",
+    "de": "Aus Sicherung wiederherstellen",
+    "it": "Ripristina da backup"
+  },
+  "backup.restoring": {
+    "en": "Restoring a backup",
+    "es": "Restaurando una copia",
+    "de": "Sicherung wird wiederhergestellt",
+    "it": "Ripristino di un backup"
+  },
+  "backup.sameFolderWarning": {
+    "en": "This is the folder the database is in. A backup here is lost along with the database if the disk fails – another drive, a network drive or a cloud folder is safer.",
+    "es": "Es la carpeta donde está la base de datos. Una copia aquí se perdería junto con la base de datos si falla el disco: otra unidad, una unidad de red o una carpeta en la nube es más seguro.",
+    "de": "In diesem Ordner liegt die Datenbank. Eine Sicherung hier geht bei einem Festplattenausfall mit der Datenbank verloren – ein anderes Laufwerk, ein Netzlaufwerk oder ein Cloud-Ordner ist sicherer.",
+    "it": "È la cartella del database. Un backup qui andrebbe perso insieme al database in caso di guasto del disco: un altro disco, un'unità di rete o una cartella cloud è più sicura."
+  },
+  "backup.wait": {
+    "en": "Please wait…",
+    "es": "Espere, por favor…",
+    "de": "Bitte warten…",
+    "it": "Attendere…"
+  },
+  "backup.when": {
+    "en": "Back up",
+    "es": "Copia de seguridad",
+    "de": "Sichern",
+    "it": "Backup"
+  },
+  "backup.whenClose": {
+    "en": "When ReadEZ closes",
+    "es": "Al cerrar ReadEZ",
+    "de": "Beim Beenden von ReadEZ",
+    "it": "Alla chiusura di ReadEZ"
+  },
+  "backup.whenManual": {
+    "en": "Only when I choose",
+    "es": "Solo cuando yo lo elija",
+    "de": "Nur auf Wunsch",
+    "it": "Solo quando lo scelgo"
+  },
+  "colour.auto": {
+    "en": "Automatic",
+    "es": "Automática",
+    "de": "Automatisch",
+    "it": "Automatico"
+  },
+  "colour.autoDone": {
+    "en": "Colour test finished.",
+    "es": "Prueba de color terminada.",
+    "de": "Farbtest beendet.",
+    "it": "Test del colore terminato."
+  },
+  "colour.bespoke": {
+    "en": "Bespoke colour…",
+    "es": "Color a medida…",
+    "de": "Individuelle Farbe…",
+    "it": "Colore personalizzato…"
+  },
+  "colour.chosen": {
+    "en": "Preferred colour: {0}",
+    "es": "Color preferido: {0}",
+    "de": "Bevorzugte Farbe: {0}",
+    "it": "Colore preferito: {0}"
+  },
+  "colour.confirmRestart": {
+    "en": "Start the colour test again from the beginning?",
+    "es": "¿Empezar de nuevo la prueba de color?",
+    "de": "Den Farbtest von vorne beginnen?",
+    "it": "Ricominciare il test del colore dall'inizio?"
+  },
+  "colour.darkRoom": {
+    "en": "This test should be done in a darkened room. Please switch the lights off.",
+    "es": "Esta prueba debe hacerse en una sala oscura. Apague las luces.",
+    "de": "Dieser Test sollte in einem abgedunkelten Raum erfolgen. Bitte schalten Sie das Licht aus.",
+    "it": "Questo test va eseguito in una stanza oscurata. Spegni le luci."
+  },
+  "colour.first": {
+    "en": "Prefers first (←)",
+    "es": "Prefiere el primero (←)",
+    "de": "Erste bevorzugt (←)",
+    "it": "Preferisce il primo (←)"
+  },
+  "colour.greyPreferred": {
+    "en": "Grey was preferred to this colour: colour may be of little benefit.",
+    "es": "Se prefirió el gris a este color: el color puede ser de poca ayuda.",
+    "de": "Grau wurde dieser Farbe vorgezogen: Farbe hilft möglicherweise wenig.",
+    "it": "Il grigio è stato preferito a questo colore: il colore potrebbe essere poco utile."
+  },
+  "colour.introComputer": {
+    "en": "The whole screen is coloured, one colour after the other, with the room lights on. Ask whether the first or the second colour was more comfortable.",
+    "es": "Toda la pantalla se colorea, un color tras otro, con la luz de la sala encendida. Pregunte si fue más cómodo el primer o el segundo color.",
+    "de": "Der ganze Bildschirm wird nacheinander eingefärbt, bei eingeschaltetem Raumlicht. Fragen Sie, ob die erste oder zweite Farbe angenehmer war.",
+    "it": "L'intero schermo si colora, un colore dopo l'altro, con la luce della stanza accesa. Chiedi se era più comodo il primo o il secondo colore."
+  },
+  "colour.introLenses": {
+    "en": "The whole screen is coloured, one colour after the other, as through tinted lenses. Test in a darkened room. Ask whether the first or the second colour was more comfortable.",
+    "es": "Toda la pantalla se colorea, un color tras otro, como con lentes tintadas. Haga la prueba en una sala oscura. Pregunte si fue más cómodo el primer o el segundo color.",
+    "de": "Der ganze Bildschirm wird nacheinander eingefärbt, wie durch getönte Gläser. In einem abgedunkelten Raum testen. Fragen Sie, ob die erste oder zweite Farbe angenehmer war.",
+    "it": "L'intero schermo si colora, un colore dopo l'altro, come attraverso lenti colorate. Esegui il test in una stanza oscurata. Chiedi se era più comodo il primo o il secondo colore."
+  },
+  "colour.introOverlay": {
+    "en": "Two copies of the text, each on an overlay colour. Ask which side is more comfortable to look at.",
+    "es": "Dos copias del texto, cada una sobre un color de lámina. Pregunte qué lado es más cómodo de mirar.",
+    "de": "Zwei Kopien des Textes, jede auf einer Folienfarbe. Fragen Sie, welche Seite angenehmer anzusehen ist.",
+    "it": "Due copie del testo, ciascuna su un colore di lamina. Chiedi quale lato è più comodo da guardare."
+  },
+  "colour.left": {
+    "en": "Prefers left (←)",
+    "es": "Prefiere izquierda (←)",
+    "de": "Links bevorzugt (←)",
+    "it": "Preferisce sinistra (←)"
+  },
+  "colour.leftColour": {
+    "en": "Left colour",
+    "es": "Color izquierdo",
+    "de": "Linke Farbe",
+    "it": "Colore a sinistra"
+  },
+  "colour.manual": {
+    "en": "Manual",
+    "es": "Manual",
+    "de": "Manuell",
+    "it": "Manuale"
+  },
+  "colour.pressStart": {
+    "en": "Press Start test to begin the automatic colour test.",
+    "es": "Pulse Iniciar prueba para empezar la prueba automática.",
+    "de": "Klicken Sie auf Test starten, um den automatischen Farbtest zu beginnen.",
+    "it": "Premi Avvia test per iniziare il test automatico."
+  },
+  "colour.progress": {
+    "en": "Phase {0}:  presentation {1} of about {2}",
+    "es": "Fase {0}:  presentación {1} de unas {2}",
+    "de": "Phase {0}:  Darbietung {1} von etwa {2}",
+    "it": "Fase {0}:  presentazione {1} di circa {2}"
+  },
+  "colour.repeat": {
+    "en": "Repeat (R)",
+    "es": "Repetir (R)",
+    "de": "Wiederholen (R)",
+    "it": "Ripeti (R)"
+  },
+  "colour.restart": {
+    "en": "Start again",
+    "es": "Empezar de nuevo",
+    "de": "Neu beginnen",
+    "it": "Ricomincia"
+  },
+  "colour.retest": {
+    "en": "Retest",
+    "es": "Repetir prueba",
+    "de": "Erneut testen",
+    "it": "Ripeti test"
+  },
+  "colour.right": {
+    "en": "Prefers right (→)",
+    "es": "Prefiere derecha (→)",
+    "de": "Rechts bevorzugt (→)",
+    "it": "Preferisce destra (→)"
+  },
+  "colour.rightColour": {
+    "en": "Right colour",
+    "es": "Color derecho",
+    "de": "Rechte Farbe",
+    "it": "Colore a destra"
+  },
+  "colour.ringsHint": {
+    "en": "Outer ring: light lens colours · inner ring: dark lens colours",
+    "es": "Anillo exterior: colores claros · anillo interior: colores oscuros",
+    "de": "Äußerer Ring: helle Glasfarben · innerer Ring: dunkle Glasfarben",
+    "it": "Anello esterno: colori chiari · anello interno: colori scuri"
+  },
+  "colour.second": {
+    "en": "Prefers second (→)",
+    "es": "Prefiere el segundo (→)",
+    "de": "Zweite bevorzugt (→)",
+    "it": "Preferisce il secondo (→)"
+  },
+  "colour.select": {
+    "en": "Select this colour",
+    "es": "Elegir este color",
+    "de": "Diese Farbe wählen",
+    "it": "Scegli questo colore"
+  },
+  "colour.selectLeft": {
+    "en": "Select the left colour",
+    "es": "Elegir el color izquierdo",
+    "de": "Linke Farbe wählen",
+    "it": "Scegli il colore a sinistra"
+  },
+  "colour.selectRight": {
+    "en": "Select the right colour",
+    "es": "Elegir el color derecho",
+    "de": "Rechte Farbe wählen",
+    "it": "Scegli il colore a destra"
+  },
+  "colour.start": {
+    "en": "Start test",
+    "es": "Iniciar prueba",
+    "de": "Test starten",
+    "it": "Avvia test"
+  },
+  "colour.timing": {
+    "en": "Presentation time",
+    "es": "Tiempo de presentación",
+    "de": "Darbietungszeit",
+    "it": "Tempo di presentazione"
+  },
+  "colours.about": {
+    "en": "Screens show colours differently, so each ReadEZ colour must be checked on the screen the patient uses: hold the overlay (on white paper) or the lens beside the screen colour and either confirm it looks the same or find the match in a few choices. Click a colour to check it.",
+    "es": "Cada pantalla muestra los colores de forma distinta, por lo que cada color ReadEZ debe comprobarse en la pantalla del paciente: coloque la lámina (sobre papel blanco) o la lente junto al color de la pantalla y confirme que se ve igual o busque la coincidencia en pocos pasos. Haga clic en un color para comprobarlo.",
+    "de": "Bildschirme zeigen Farben unterschiedlich, daher muss jede ReadEZ-Farbe auf dem Patientenbildschirm geprüft werden: Halten Sie die Folie (auf weißem Papier) oder das Glas neben die Bildschirmfarbe und bestätigen Sie die Übereinstimmung oder finden Sie sie in wenigen Schritten. Klicken Sie auf eine Farbe, um sie zu prüfen.",
+    "it": "Gli schermi mostrano i colori in modo diverso, quindi ogni colore ReadEZ va controllato sullo schermo del paziente: tieni la lamina (su carta bianca) o la lente accanto al colore dello schermo e conferma che è uguale o trova la corrispondenza in pochi passi. Fai clic su un colore per controllarlo."
+  },
+  "colours.about.title": {
+    "en": "Colour calibration",
+    "es": "Calibración del color",
+    "de": "Farbkalibrierung",
+    "it": "Calibrazione del colore"
+  },
+  "colours.check": {
+    "en": "Check colours…",
+    "es": "Comprobar colores…",
+    "de": "Farben prüfen…",
+    "it": "Controlla colori…"
+  },
+  "colours.otherScreen": {
+    "en": "Other screen",
+    "es": "Otra pantalla",
+    "de": "Anderer Bildschirm",
+    "it": "Altro schermo"
+  },
+  "colours.subtitle": {
+    "en": "Check the screen colours against the ReadEZ overlays and lenses",
+    "es": "Compare los colores de la pantalla con las láminas y lentes ReadEZ",
+    "de": "Bildschirmfarben mit den ReadEZ-Folien und -Gläsern vergleichen",
+    "it": "Confronta i colori dello schermo con lamine e lenti ReadEZ"
+  },
+  "colours.title": {
+    "en": "ReadEZ colours",
+    "es": "Colores ReadEZ",
+    "de": "ReadEZ-Farben",
+    "it": "Colori ReadEZ"
+  },
+  "common.add": {
+    "en": "Add",
+    "es": "Añadir",
+    "de": "Hinzufügen",
+    "it": "Aggiungi"
+  },
+  "common.browse": {
+    "en": "Browse…",
+    "es": "Examinar…",
+    "de": "Durchsuchen…",
+    "it": "Sfoglia…"
+  },
+  "common.cancel": {
+    "en": "Cancel",
+    "es": "Cancelar",
+    "de": "Abbrechen",
+    "it": "Annulla"
+  },
+  "common.close": {
+    "en": "Close",
+    "es": "Cerrar",
+    "de": "Schließen",
+    "it": "Chiudi"
+  },
+  "common.comingSoon": {
+    "en": "This part of ReadEZ is being moved across from the previous version and will be available in the next update.",
+    "es": "Esta parte de ReadEZ se está trasladando desde la versión anterior y estará disponible en la próxima actualización.",
+    "de": "Dieser Teil von ReadEZ wird gerade aus der vorherigen Version übernommen und ist im nächsten Update verfügbar.",
+    "it": "Questa parte di ReadEZ è in fase di trasferimento dalla versione precedente e sarà disponibile nel prossimo aggiornamento."
+  },
+  "common.copied": {
+    "en": "Copied to the clipboard.",
+    "es": "Copiado al portapapeles.",
+    "de": "In die Zwischenablage kopiert.",
+    "it": "Copiato negli appunti."
+  },
+  "common.copyPicture": {
+    "en": "Copy picture to the clipboard",
+    "es": "Copiar imagen al portapapeles",
+    "de": "Bild in die Zwischenablage kopieren",
+    "it": "Copia immagine negli appunti"
+  },
+  "common.couldNotOpen": {
+    "en": "Could not open {0}",
+    "es": "No se pudo abrir {0}",
+    "de": "{0} konnte nicht geöffnet werden",
+    "it": "Impossibile aprire {0}"
+  },
+  "common.delete": {
+    "en": "Delete",
+    "es": "Eliminar",
+    "de": "Löschen",
+    "it": "Elimina"
+  },
+  "common.edit": {
+    "en": "Edit",
+    "es": "Editar",
+    "de": "Bearbeiten",
+    "it": "Modifica"
+  },
+  "common.errorWithDetail": {
+    "en": "Something went wrong:\n\n{0}",
+    "es": "Se ha producido un error:\n\n{0}",
+    "de": "Es ist ein Fehler aufgetreten:\n\n{0}",
+    "it": "Si è verificato un errore:\n\n{0}"
+  },
+  "common.new": {
+    "en": "New…",
+    "es": "Nuevo…",
+    "de": "Neu…",
+    "it": "Nuovo…"
+  },
+  "common.no": {
+    "en": "No",
+    "es": "No",
+    "de": "Nein",
+    "it": "No"
+  },
+  "common.ok": {
+    "en": "OK",
+    "es": "Aceptar",
+    "de": "OK",
+    "it": "OK"
+  },
+  "common.save": {
+    "en": "Save",
+    "es": "Guardar",
+    "de": "Speichern",
+    "it": "Salva"
+  },
+  "common.saveFailed": {
+    "en": "The changes could not be saved:\n\n{0}",
+    "es": "No se pudieron guardar los cambios:\n\n{0}",
+    "de": "Die Änderungen konnten nicht gespeichert werden:\n\n{0}",
+    "it": "Impossibile salvare le modifiche:\n\n{0}"
+  },
+  "common.somethingWentWrong": {
+    "en": "Something went wrong:",
+    "es": "Se ha producido un error:",
+    "de": "Es ist ein Fehler aufgetreten:",
+    "it": "Si è verificato un errore:"
+  },
+  "common.yes": {
+    "en": "Yes",
+    "es": "Sí",
+    "de": "Ja",
+    "it": "Sì"
+  },
+  "custom.fav.down": {
+    "en": "Move down",
+    "es": "Bajar",
+    "de": "Nach unten",
+    "it": "Sposta giù"
+  },
+  "custom.fav.up": {
+    "en": "Move up",
+    "es": "Subir",
+    "de": "Nach oben",
+    "it": "Sposta su"
+  },
+  "custom.ror.badName": {
+    "en": "Please enter a name that can be used as a file name.",
+    "es": "Introduzca un nombre que se pueda usar como nombre de archivo.",
+    "de": "Bitte geben Sie einen Namen ein, der als Dateiname verwendet werden kann.",
+    "it": "Inserisca un nome utilizzabile come nome di file."
+  },
+  "custom.ror.clear": {
+    "en": "Clear",
+    "es": "Borrar",
+    "de": "Leeren",
+    "it": "Cancella"
+  },
+  "custom.ror.editTitle": {
+    "en": "Edit reading text",
+    "es": "Editar texto de lectura",
+    "de": "Lesetext bearbeiten",
+    "it": "Modifica testo di lettura"
+  },
+  "custom.ror.lines": {
+    "en": "Text (one row per line)",
+    "es": "Texto (una fila por línea)",
+    "de": "Text (eine Reihe pro Zeile)",
+    "it": "Testo (una riga per linea)"
+  },
+  "custom.ror.name": {
+    "en": "Name",
+    "es": "Nombre",
+    "de": "Name",
+    "it": "Nome"
+  },
+  "custom.ror.newTitle": {
+    "en": "New reading text",
+    "es": "Nuevo texto de lectura",
+    "de": "Neuer Lesetext",
+    "it": "Nuovo testo di lettura"
+  },
+  "custom.ror.overwrite": {
+    "en": "A text called '{0}' already exists. Replace it?",
+    "es": "Ya existe un texto llamado «{0}». ¿Reemplazarlo?",
+    "de": "Ein Text namens „{0}“ existiert bereits. Ersetzen?",
+    "it": "Esiste già un testo chiamato «{0}». Sostituirlo?"
+  },
+  "custom.ror.textHint": {
+    "en": "Each line is shown as one row on the patient's screen",
+    "es": "Cada línea se muestra como una fila en la pantalla del paciente",
+    "de": "Jede Zeile wird als eine Reihe auf dem Patientenbildschirm angezeigt",
+    "it": "Ogni riga viene mostrata come una riga sullo schermo del paziente"
+  },
+  "db.legacyFile": {
+    "en": "{0} is a ReadEZ 2020 database. It is imported into the new database, not opened directly.",
+    "es": "{0} es una base de datos de ReadEZ 2020. Se importa a la nueva base de datos; no se abre directamente.",
+    "de": "{0} ist eine ReadEZ-2020-Datenbank. Sie wird in die neue Datenbank importiert, nicht direkt geöffnet.",
+    "it": "{0} è un database di ReadEZ 2020. Viene importato nel nuovo database, non aperto direttamente."
+  },
+  "db.openFailed": {
+    "en": "The database could not be opened:\n{0}\n\n{1}\n\nRetry, choose another database (Ignore) or close the program (Abort).",
+    "es": "No se pudo abrir la base de datos:\n{0}\n\n{1}\n\nReintentar, elegir otra base de datos (Omitir) o cerrar el programa (Anular).",
+    "de": "Die Datenbank konnte nicht geöffnet werden:\n{0}\n\n{1}\n\nWiederholen, eine andere Datenbank wählen (Ignorieren) oder das Programm schließen (Abbrechen).",
+    "it": "Impossibile aprire il database:\n{0}\n\n{1}\n\nRiprova, scegli un altro database (Ignora) o chiudi il programma (Interrompi)."
+  },
+  "eula.button": {
+    "en": "Licence agreement",
+    "es": "Acuerdo de licencia",
+    "de": "Lizenzvereinbarung",
+    "it": "Contratto di licenza"
+  },
+  "eula.missing": {
+    "en": "The licence agreement could not be found in this copy of the program.",
+    "es": "No se encontró el acuerdo de licencia en esta copia del programa.",
+    "de": "Die Lizenzvereinbarung wurde in dieser Programmkopie nicht gefunden.",
+    "it": "Il contratto di licenza non è presente in questa copia del programma."
+  },
+  "eula.title": {
+    "en": "End user licence agreement",
+    "es": "Acuerdo de licencia de usuario final",
+    "de": "Endbenutzer-Lizenzvereinbarung",
+    "it": "Contratto di licenza con l'utente finale"
+  },
+  "help.about": {
+    "en": "About",
+    "es": "Acerca de",
+    "de": "Über",
+    "it": "Informazioni"
+  },
+  "help.aboutText": {
+    "en": "{0} {1}\nThomson Software Solutions\nUDI {2}\nBuild {3}",
+    "es": "{0} {1}\nThomson Software Solutions\nUDI {2}\nCompilación {3}",
+    "de": "{0} {1}\nThomson Software Solutions\nUDI {2}\nBuild {3}",
+    "it": "{0} {1}\nThomson Software Solutions\nUDI {2}\nBuild {3}"
+  },
+  "help.button.tip": {
+    "en": "Help for this screen",
+    "es": "Ayuda de esta pantalla",
+    "de": "Hilfe zu diesem Fenster",
+    "it": "Guida per questa schermata"
+  },
+  "help.checkUpdates": {
+    "en": "Check for updates",
+    "es": "Buscar actualizaciones",
+    "de": "Nach Updates suchen",
+    "it": "Cerca aggiornamenti"
+  },
+  "help.comingSoon": {
+    "en": "video coming soon",
+    "es": "vídeo próximamente",
+    "de": "Video folgt",
+    "it": "video in arrivo"
+  },
+  "help.desc.screen.colours": {
+    "en": "Checking the screen colours against the real ReadEZ overlays and lenses.",
+    "es": "Comprobar los colores de la pantalla con las láminas y lentes ReadEZ reales.",
+    "de": "Bildschirmfarben mit echten ReadEZ-Folien und -Gläsern vergleichen.",
+    "it": "Confrontare i colori dello schermo con lamine e lenti ReadEZ reali."
+  },
+  "help.desc.screen.patients": {
+    "en": "Find a patient, filter by organisation, add or edit a patient and see their tests.",
+    "es": "Buscar un paciente, filtrar por organización, añadir o editar pacientes y ver sus pruebas.",
+    "de": "Patienten finden, nach Organisation filtern, Patienten anlegen oder bearbeiten und ihre Tests sehen.",
+    "it": "Trovare un paziente, filtrare per organizzazione, aggiungere o modificare pazienti e vederne i test."
+  },
+  "help.desc.screen.results": {
+    "en": "The colour chosen, the change with colour, symptoms and reading; reports and letters.",
+    "es": "El color elegido, el cambio con el color, síntomas y lectura; informes y cartas.",
+    "de": "Gewählte Farbe, Veränderung mit Farbe, Symptome und Lesen; Berichte und Briefe.",
+    "it": "Il colore scelto, la variazione con il colore, sintomi e lettura; referti e lettere."
+  },
+  "help.desc.screen.settings": {
+    "en": "Practice details, appearance, data and backups, screens and test setup.",
+    "es": "Datos de la consulta, apariencia, datos y copias, pantallas y configuración de pruebas.",
+    "de": "Praxisdaten, Darstellung, Daten und Sicherung, Bildschirme und Testeinstellungen.",
+    "it": "Dati dello studio, aspetto, dati e backup, schermi e impostazioni dei test."
+  },
+  "help.desc.screen.tests": {
+    "en": "Choose the baseline or a colour test, the method and the screener.",
+    "es": "Elegir la línea base o una prueba de color, el método y el examinador.",
+    "de": "Ausgangswert oder Farbtest, Methode und Untersucher wählen.",
+    "it": "Scegliere il valore di base o un test del colore, il metodo e l'esaminatore."
+  },
+  "help.desc.start.environment": {
+    "en": "Lighting, seating and viewing distance for reliable results.",
+    "es": "Iluminación, asiento y distancia de visión para resultados fiables.",
+    "de": "Beleuchtung, Sitzposition und Sehabstand für verlässliche Ergebnisse.",
+    "it": "Illuminazione, seduta e distanza di visione per risultati affidabili."
+  },
+  "help.desc.start.install": {
+    "en": "Installing, licensing and updating ReadEZ, and importing from ReadEZ 2020.",
+    "es": "Instalar, licenciar y actualizar ReadEZ e importar desde ReadEZ 2020.",
+    "de": "ReadEZ installieren, lizenzieren und aktualisieren sowie aus ReadEZ 2020 importieren.",
+    "it": "Installare, attivare e aggiornare ReadEZ e importare da ReadEZ 2020."
+  },
+  "help.desc.start.setup": {
+    "en": "Choosing one or two screens and checking the ReadEZ colours on the patient's screen.",
+    "es": "Elegir una o dos pantallas y comprobar los colores ReadEZ en la pantalla del paciente.",
+    "de": "Einen oder zwei Bildschirme wählen und die ReadEZ-Farben auf dem Patientenbildschirm prüfen.",
+    "it": "Scegliere uno o due schermi e controllare i colori ReadEZ sullo schermo del paziente."
+  },
+  "help.desc.start.tour": {
+    "en": "A short tour of ReadEZ: the main window, finding a patient, running the tests and seeing the results.",
+    "es": "Un breve recorrido por ReadEZ: la ventana principal, buscar un paciente, hacer las pruebas y ver los resultados.",
+    "de": "Ein kurzer Rundgang: Hauptfenster, Patienten finden, Tests durchführen und Ergebnisse ansehen.",
+    "it": "Un breve tour di ReadEZ: finestra principale, ricerca del paziente, esecuzione dei test e risultati."
+  },
+  "help.desc.test.colour": {
+    "en": "The automatic and manual colour tests for overlays, lenses and computer screens.",
+    "es": "Las pruebas de color automática y manual para láminas, lentes y pantallas.",
+    "de": "Automatischer und manueller Farbtest für Folien, Gläser und Bildschirme.",
+    "it": "I test del colore automatico e manuale per lamine, lenti e schermi."
+  },
+  "help.desc.test.reading": {
+    "en": "Timing the reading and marking errors, skipped rows and the last word.",
+    "es": "Cronometrar la lectura y marcar errores, filas saltadas y la última palabra.",
+    "de": "Lesezeit messen und Fehler, übersprungene Zeilen und letztes Wort markieren.",
+    "it": "Cronometrare la lettura e segnare errori, righe saltate e ultima parola."
+  },
+  "help.desc.test.symptoms": {
+    "en": "Asking the four symptom questions and grading the answers.",
+    "es": "Hacer las cuatro preguntas de síntomas y graduar las respuestas.",
+    "de": "Die vier Symptomfragen stellen und bewerten.",
+    "it": "Porre le quattro domande sui sintomi e valutare le risposte."
+  },
+  "help.desc.tests.guide": {
+    "en": "The order of the tests and how to interpret the results.",
+    "es": "El orden de las pruebas y cómo interpretar los resultados.",
+    "de": "Die Reihenfolge der Tests und die Auswertung der Ergebnisse.",
+    "it": "L'ordine dei test e come interpretare i risultati."
+  },
+  "help.desc.tests.run": {
+    "en": "The test screen, the patient's screen, full screen (F11) and the control strip.",
+    "es": "La pantalla de prueba, la del paciente, pantalla completa (F11) y la barra de control.",
+    "de": "Testbildschirm, Patientenbildschirm, Vollbild (F11) und Steuerleiste.",
+    "it": "La schermata del test, lo schermo del paziente, schermo intero (F11) e la barra dei comandi."
+  },
+  "help.group.screens": {
+    "en": "Screens",
+    "es": "Pantallas",
+    "de": "Bildschirme",
+    "it": "Schermate"
+  },
+  "help.group.start": {
+    "en": "Getting started",
+    "es": "Primeros pasos",
+    "de": "Erste Schritte",
+    "it": "Primi passi"
+  },
+  "help.group.tests": {
+    "en": "Tests",
+    "es": "Pruebas",
+    "de": "Tests",
+    "it": "Test"
+  },
+  "help.groupHint": {
+    "en": "Choose one of the topics below, or from the list on the left.",
+    "es": "Elija uno de los temas siguientes o de la lista de la izquierda.",
+    "de": "Wählen Sie unten oder links in der Liste ein Thema.",
+    "it": "Scegliere uno degli argomenti qui sotto o dall'elenco a sinistra."
+  },
+  "help.licence": {
+    "en": "Licence…",
+    "es": "Licencia…",
+    "de": "Lizenz…",
+    "it": "Licenza…"
+  },
+  "help.link.home": {
+    "en": "Thomson Software Solutions website",
+    "es": "Sitio web de Thomson Software Solutions",
+    "de": "Website von Thomson Software Solutions",
+    "it": "Sito web di Thomson Software Solutions"
+  },
+  "help.link.support": {
+    "en": "Support page",
+    "es": "Página de soporte",
+    "de": "Support-Seite",
+    "it": "Pagina di assistenza"
+  },
+  "help.link.teamviewer": {
+    "en": "Download TeamViewer (remote support)",
+    "es": "Descargar TeamViewer (soporte remoto)",
+    "de": "TeamViewer herunterladen (Fernwartung)",
+    "it": "Scarica TeamViewer (assistenza remota)"
+  },
+  "help.moreVideos": {
+    "en": "More videos",
+    "es": "Más vídeos",
+    "de": "Weitere Videos",
+    "it": "Altri video"
+  },
+  "help.noDescription": {
+    "en": "Watch the video for this topic.",
+    "es": "Vea el vídeo de este tema.",
+    "de": "Sehen Sie sich das Video zu diesem Thema an.",
+    "it": "Guardare il video di questo argomento."
+  },
+  "help.noVideo": {
+    "en": "There is no video for this topic yet.",
+    "es": "Todavía no hay vídeo para este tema.",
+    "de": "Zu diesem Thema gibt es noch kein Video.",
+    "it": "Non c'è ancora un video per questo argomento."
+  },
+  "help.online.notSet": {
+    "en": "The address of the online help has not been set yet. An administrator can set it in Settings > Admin > Open admin settings > Online help.",
+    "es": "Todavía no se ha indicado la dirección de la ayuda en línea. Un administrador puede indicarla en Configuración > Admin > Abrir configuración de administrador > Ayuda en línea.",
+    "de": "Die Adresse der Online-Hilfe ist noch nicht festgelegt. Ein Administrator kann sie unter Einstellungen > Admin > Admin-Einstellungen öffnen > Online-Hilfe festlegen.",
+    "it": "L'indirizzo della guida in linea non è ancora stato impostato. Un amministratore può impostarlo in Impostazioni > Admin > Apri impostazioni amministratore > Guida in linea."
+  },
+  "help.openLogs": {
+    "en": "Open log folder",
+    "es": "Abrir carpeta de registros",
+    "de": "Protokollordner öffnen",
+    "it": "Apri cartella dei log"
+  },
+  "help.readTopic": {
+    "en": "Read in the help",
+    "es": "Leer en la ayuda",
+    "de": "In der Hilfe lesen",
+    "it": "Leggi nella guida"
+  },
+  "help.selectTopic": {
+    "en": "Choose a topic on the left.",
+    "es": "Elija un tema a la izquierda.",
+    "de": "Wählen Sie links ein Thema.",
+    "it": "Scegliere un argomento a sinistra."
+  },
+  "help.subtitle": {
+    "en": "Short videos, support and information about ReadEZ",
+    "es": "Vídeos breves, soporte e información sobre ReadEZ",
+    "de": "Kurze Videos, Support und Informationen zu ReadEZ",
+    "it": "Brevi video, assistenza e informazioni su ReadEZ"
+  },
+  "help.support": {
+    "en": "Support",
+    "es": "Soporte",
+    "de": "Support",
+    "it": "Assistenza"
+  },
+  "help.title": {
+    "en": "Help",
+    "es": "Ayuda",
+    "de": "Hilfe",
+    "it": "Guida"
+  },
+  "help.topic": {
+    "en": "Topic",
+    "es": "Tema",
+    "de": "Thema",
+    "it": "Argomento"
+  },
+  "help.topic.screen.colours": {
+    "en": "Colour calibration",
+    "es": "Calibración del color",
+    "de": "Farbkalibrierung",
+    "it": "Calibrazione del colore"
+  },
+  "help.topic.screen.patients": {
+    "en": "Patients",
+    "es": "Pacientes",
+    "de": "Patienten",
+    "it": "Pazienti"
+  },
+  "help.topic.screen.results": {
+    "en": "Results",
+    "es": "Resultados",
+    "de": "Ergebnisse",
+    "it": "Risultati"
+  },
+  "help.topic.screen.settings": {
+    "en": "Settings",
+    "es": "Configuración",
+    "de": "Einstellungen",
+    "it": "Impostazioni"
+  },
+  "help.topic.screen.tests": {
+    "en": "Tests",
+    "es": "Pruebas",
+    "de": "Tests",
+    "it": "Test"
+  },
+  "help.topic.start.environment": {
+    "en": "The test room",
+    "es": "La sala de pruebas",
+    "de": "Der Testraum",
+    "it": "La stanza del test"
+  },
+  "help.topic.start.install": {
+    "en": "Installing ReadEZ",
+    "es": "Instalar ReadEZ",
+    "de": "ReadEZ installieren",
+    "it": "Installare ReadEZ"
+  },
+  "help.topic.start.setup": {
+    "en": "Setting up: screens and colours",
+    "es": "Configuración: pantallas y colores",
+    "de": "Einrichten: Bildschirme und Farben",
+    "it": "Configurazione: schermi e colori"
+  },
+  "help.topic.start.tour": {
+    "en": "Tour of ReadEZ",
+    "es": "Recorrido por ReadEZ",
+    "de": "Rundgang durch ReadEZ",
+    "it": "Tour di ReadEZ"
+  },
+  "help.topic.test.colour": {
+    "en": "Finding the preferred colour",
+    "es": "Encontrar el color preferido",
+    "de": "Die bevorzugte Farbe finden",
+    "it": "Trovare il colore preferito"
+  },
+  "help.topic.test.reading": {
+    "en": "Rate of reading",
+    "es": "Velocidad de lectura",
+    "de": "Lesegeschwindigkeit",
+    "it": "Velocità di lettura"
+  },
+  "help.topic.test.symptoms": {
+    "en": "Symptoms",
+    "es": "Síntomas",
+    "de": "Symptome",
+    "it": "Sintomi"
+  },
+  "help.topic.tests.guide": {
+    "en": "The ReadEZ procedure",
+    "es": "El procedimiento ReadEZ",
+    "de": "Der ReadEZ-Ablauf",
+    "it": "La procedura ReadEZ"
+  },
+  "help.topic.tests.run": {
+    "en": "Running a test on one or two screens",
+    "es": "Hacer una prueba con una o dos pantallas",
+    "de": "Test mit einem oder zwei Bildschirmen",
+    "it": "Eseguire un test con uno o due schermi"
+  },
+  "help.topics": {
+    "en": "Help topics",
+    "es": "Temas de ayuda",
+    "de": "Hilfethemen",
+    "it": "Argomenti della guida"
+  },
+  "help.watch": {
+    "en": "Watch video",
+    "es": "Ver vídeo",
+    "de": "Video ansehen",
+    "it": "Guarda il video"
+  },
+  "helptopics.builtInDesc": {
+    "en": "Leave empty to use the program's own description (translated):",
+    "es": "Déjela vacía para usar la descripción del programa (traducida):",
+    "de": "Leer lassen, um die programmeigene (übersetzte) Beschreibung zu verwenden:",
+    "it": "Lasciare vuoto per usare la descrizione del programma (tradotta):"
+  },
+  "helptopics.builtInTitle": {
+    "en": "Leave empty to use the program's own title in each language: \"{0}\".",
+    "es": "Déjelo vacío para usar el título del programa en cada idioma: «{0}».",
+    "de": "Leer lassen, um den programmeigenen Titel in jeder Sprache zu verwenden: „{0}“.",
+    "it": "Lasciare vuoto per usare il titolo del programma in ogni lingua: \"{0}\"."
+  },
+  "helptopics.delete": {
+    "en": "Delete",
+    "es": "Eliminar",
+    "de": "Löschen",
+    "it": "Elimina"
+  },
+  "helptopics.deleteConfirm": {
+    "en": "Delete the help topic \"{0}\"?\n\nIf a screen, test or analysis has a help button for it, that button will no longer appear.",
+    "es": "¿Eliminar el tema de ayuda «{0}»?\n\nSi una pantalla, prueba o análisis tiene un botón de ayuda para él, ese botón dejará de aparecer.",
+    "de": "Hilfethema „{0}“ löschen?\n\nHat ein Fenster, Test oder eine Auswertung eine Hilfeschaltfläche dafür, wird sie nicht mehr angezeigt.",
+    "it": "Eliminare l'argomento della guida \"{0}\"?\n\nSe una schermata, un test o un'analisi ha un pulsante di guida per esso, il pulsante non verrà più mostrato."
+  },
+  "helptopics.deleteGroupConfirm": {
+    "en": "Delete \"{0}\" and every topic in it?\n\nHelp buttons for those topics will no longer appear.",
+    "es": "¿Eliminar «{0}» y todos sus temas?\n\nLos botones de ayuda de esos temas dejarán de aparecer.",
+    "de": "„{0}“ mit allen enthaltenen Themen löschen?\n\nDie Hilfeschaltflächen dieser Themen werden nicht mehr angezeigt.",
+    "it": "Eliminare \"{0}\" e tutti i suoi argomenti?\n\nI pulsanti di guida di quegli argomenti non verranno più mostrati."
+  },
+  "helptopics.descField": {
+    "en": "Description (shown by the help buttons and on the Help screen)",
+    "es": "Descripción (la muestran los botones de ayuda y la pantalla Ayuda)",
+    "de": "Beschreibung (in den Hilfeschaltflächen und im Hilfefenster)",
+    "it": "Descrizione (mostrata dai pulsanti di guida e nella schermata Guida)"
+  },
+  "helptopics.needTitle": {
+    "en": "Every topic and group you add needs a title.",
+    "es": "Cada tema y grupo añadido necesita un título.",
+    "de": "Jedes hinzugefügte Thema und jede Gruppe braucht einen Titel.",
+    "it": "Ogni argomento e gruppo aggiunto deve avere un titolo."
+  },
+  "helptopics.newGroup": {
+    "en": "New group",
+    "es": "Nuevo grupo",
+    "de": "Neue Gruppe",
+    "it": "Nuovo gruppo"
+  },
+  "helptopics.newGroupName": {
+    "en": "New group",
+    "es": "Nuevo grupo",
+    "de": "Neue Gruppe",
+    "it": "Nuovo gruppo"
+  },
+  "helptopics.newSubTopic": {
+    "en": "Sub-topic",
+    "es": "Subtema",
+    "de": "Unterthema",
+    "it": "Sotto-argomento"
+  },
+  "helptopics.newTopic": {
+    "en": "New topic",
+    "es": "Nuevo tema",
+    "de": "Neues Thema",
+    "it": "Nuovo argomento"
+  },
+  "helptopics.newTopicName": {
+    "en": "New topic",
+    "es": "Nuevo tema",
+    "de": "Neues Thema",
+    "it": "Nuovo argomento"
+  },
+  "helptopics.noLink": {
+    "en": "no video",
+    "es": "sin vídeo",
+    "de": "kein Video",
+    "it": "nessun video"
+  },
+  "helptopics.ownTitle": {
+    "en": "A topic you add shows this title in every language.",
+    "es": "Un tema añadido muestra este título en todos los idiomas.",
+    "de": "Ein hinzugefügtes Thema zeigt diesen Titel in jeder Sprache.",
+    "it": "Un argomento aggiunto mostra questo titolo in ogni lingua."
+  },
+  "helptopics.subtitle": {
+    "en": "Add, delete and reorder the topics in the Help menu and Help screen, and set each topic's video.",
+    "es": "Añada, elimine y ordene los temas del menú y la pantalla Ayuda, y asigne el vídeo de cada tema.",
+    "de": "Themen im Hilfe-Menü und Hilfefenster hinzufügen, löschen und ordnen und jedem Thema ein Video zuordnen.",
+    "it": "Aggiungere, eliminare e riordinare gli argomenti del menu e della schermata Guida e impostare il video di ciascuno."
+  },
+  "helptopics.title": {
+    "en": "Help topics and videos",
+    "es": "Temas de ayuda y vídeos",
+    "de": "Hilfethemen und Videos",
+    "it": "Argomenti della guida e video"
+  },
+  "helptopics.titleField": {
+    "en": "Title",
+    "es": "Título",
+    "de": "Titel",
+    "it": "Titolo"
+  },
+  "helptopics.unsaved": {
+    "en": "Save the changes to the help topics?",
+    "es": "¿Guardar los cambios en los temas de ayuda?",
+    "de": "Änderungen an den Hilfethemen speichern?",
+    "it": "Salvare le modifiche agli argomenti della guida?"
+  },
+  "helpvideos.col.url": {
+    "en": "Video link (web address)",
+    "es": "Enlace del vídeo (dirección web)",
+    "de": "Videolink (Webadresse)",
+    "it": "Link del video (indirizzo web)"
+  },
+  "helpvideos.invalid": {
+    "en": "The link for \"{0}\" is not a web address. It must start with https://",
+    "es": "El enlace de \"{0}\" no es una dirección web. Debe empezar por https://",
+    "de": "Der Link für „{0}“ ist keine Webadresse. Er muss mit https:// beginnen.",
+    "it": "Il link per \"{0}\" non è un indirizzo web. Deve iniziare con https://"
+  },
+  "helpvideos.saved": {
+    "en": "Help topics saved.",
+    "es": "Temas de ayuda guardados.",
+    "de": "Hilfethemen gespeichert.",
+    "it": "Argomenti della guida salvati."
+  },
+  "helpvideos.savedProject": {
+    "en": "The help topics were also saved in the project, so the next release includes them:\n{0}",
+    "es": "Los temas de ayuda también se guardaron en el proyecto y la próxima versión los incluirá:\n{0}",
+    "de": "Die Hilfethemen wurden auch im Projekt gespeichert, die nächste Version enthält sie:\n{0}",
+    "it": "Gli argomenti della guida sono stati salvati anche nel progetto e la prossima versione li includerà:\n{0}"
+  },
+  "helpvideos.test": {
+    "en": "Open link",
+    "es": "Abrir enlace",
+    "de": "Link öffnen",
+    "it": "Apri link"
+  },
+  "import.done": {
+    "en": "Import finished.\n\nPatients added: {0}\nTests added: {1}\nAlready imported before: {2}\nSkipped (could not be read): {3}",
+    "es": "Importación terminada.\n\nPacientes añadidos: {0}\nPruebas añadidas: {1}\nYa importados antes: {2}\nOmitidos (ilegibles): {3}",
+    "de": "Import abgeschlossen.\n\nPatienten hinzugefügt: {0}\nTests hinzugefügt: {1}\nBereits früher importiert: {2}\nÜbersprungen (nicht lesbar): {3}",
+    "it": "Importazione completata.\n\nPazienti aggiunti: {0}\nTest aggiunti: {1}\nGià importati in precedenza: {2}\nSaltati (illeggibili): {3}"
+  },
+  "import.failed": {
+    "en": "{0} could not be imported. Nothing was changed.\n\n{1}",
+    "es": "No se pudo importar {0}. No se cambió nada.\n\n{1}",
+    "de": "{0} konnte nicht importiert werden. Es wurde nichts geändert.\n\n{1}",
+    "it": "Impossibile importare {0}. Non è stato modificato nulla.\n\n{1}"
+  },
+  "import.filter": {
+    "en": "ReadEZ 2020 database (*.db)|*.db|All files (*.*)|*.*",
+    "es": "Base de datos de ReadEZ 2020 (*.db)|*.db|Todos los archivos (*.*)|*.*",
+    "de": "ReadEZ-2020-Datenbank (*.db)|*.db|Alle Dateien (*.*)|*.*",
+    "it": "Database ReadEZ 2020 (*.db)|*.db|Tutti i file (*.*)|*.*"
+  },
+  "import.notOld": {
+    "en": "{0} is not a ReadEZ 2020 database.",
+    "es": "{0} no es una base de datos de ReadEZ 2020.",
+    "de": "{0} ist keine ReadEZ-2020-Datenbank.",
+    "it": "{0} non è un database di ReadEZ 2020."
+  },
+  "import.offer": {
+    "en": "A ReadEZ 2020 database was found:\n{0}\n\nImport its patients and results into ReadEZ now? (The old database is not changed.)",
+    "es": "Se encontró una base de datos de ReadEZ 2020:\n{0}\n\n¿Importar ahora sus pacientes y resultados? (La base de datos antigua no se modifica.)",
+    "de": "Eine ReadEZ-2020-Datenbank wurde gefunden:\n{0}\n\nPatienten und Ergebnisse jetzt importieren? (Die alte Datenbank bleibt unverändert.)",
+    "it": "È stato trovato un database di ReadEZ 2020:\n{0}\n\nImportare ora pazienti e risultati? (Il vecchio database non viene modificato.)"
+  },
+  "import.pick": {
+    "en": "Choose the ReadEZ 2020 database (ReadEZ2020.db)",
+    "es": "Elija la base de datos de ReadEZ 2020 (ReadEZ2020.db)",
+    "de": "ReadEZ-2020-Datenbank wählen (ReadEZ2020.db)",
+    "it": "Scegli il database di ReadEZ 2020 (ReadEZ2020.db)"
+  },
+  "import.progress.patients": {
+    "en": "Importing patients…",
+    "es": "Importando pacientes…",
+    "de": "Patienten werden importiert…",
+    "it": "Importazione pazienti…"
+  },
+  "import.progress.tests": {
+    "en": "Importing results…",
+    "es": "Importando resultados…",
+    "de": "Ergebnisse werden importiert…",
+    "it": "Importazione risultati…"
+  },
+  "letter.default.ParentClosingPara": {
+    "en": "The results suggest that {Firstname} may benefit from an {Result}.\n\nIf you have any questions relating to this report, please contact our Visual Stress team.",
+    "es": "Los resultados indican que {Firstname} podría beneficiarse de una {Result}.\n\nSi tiene alguna pregunta sobre este informe, póngase en contacto con nuestro equipo.",
+    "de": "Die Ergebnisse deuten darauf hin, dass {Firstname} von einer {Result} profitieren könnte.\n\nBei Fragen zu diesem Bericht wenden Sie sich bitte an unser Team.",
+    "it": "I risultati indicano che {Firstname} potrebbe trarre beneficio da una {Result}.\n\nPer domande su questo referto, contatta il nostro team."
+  },
+  "letter.default.ParentOpeningPara": {
+    "en": "Dear parent/carer,\n\nVisual Stress is a condition which causes movement and distortion of text when reading. This can cause discomfort and reduce reading speed. In some cases, using a coloured overlay or coloured lenses can reduce these symptoms.\n\n{Firstname} had an assessment for Visual Stress on {DateOfTest}. The results of the test are shown below.",
+    "es": "Estimados padres/tutores:\n\nEl estrés visual es una afección que provoca movimiento y distorsión del texto al leer. Puede causar molestias y reducir la velocidad de lectura. En algunos casos, una lámina o lentes de color pueden reducir estos síntomas.\n\n{Firstname} fue evaluado/a para estrés visual el {DateOfTest}. Los resultados se muestran a continuación.",
+    "de": "Liebe Eltern / Betreuer,\n\nVisueller Stress ist eine Störung, bei der sich Text beim Lesen zu bewegen oder zu verzerren scheint. Dies kann unangenehm sein und das Lesen verlangsamen. In manchen Fällen können farbige Folien oder Gläser diese Symptome lindern.\n\n{Firstname} wurde am {DateOfTest} auf visuellen Stress untersucht. Die Ergebnisse finden Sie unten.",
+    "it": "Gentili genitori/tutori,\n\nlo stress visivo è una condizione che fa sembrare il testo in movimento o distorto durante la lettura. Può causare fastidio e ridurre la velocità di lettura. In alcuni casi una lamina o lenti colorate possono ridurre questi sintomi.\n\n{Firstname} è stato/a valutato/a per lo stress visivo il {DateOfTest}. I risultati sono riportati di seguito."
+  },
+  "letter.default.TeacherClosingPara": {
+    "en": "The results suggest that {Firstname} may benefit from an {Result}.\n\nWe would be most grateful if you could encourage {Firstname} to use this aid when reading. If you have any questions relating to this report, please contact our Visual Stress team.",
+    "es": "Los resultados indican que {Firstname} podría beneficiarse de una {Result}.\n\nLe agradeceríamos que animara a {Firstname} a usar esta ayuda al leer. Si tiene alguna pregunta, póngase en contacto con nuestro equipo.",
+    "de": "Die Ergebnisse deuten darauf hin, dass {Firstname} von einer {Result} profitieren könnte.\n\nWir wären dankbar, wenn Sie {Firstname} ermutigen, diese Hilfe beim Lesen zu nutzen. Bei Fragen wenden Sie sich bitte an unser Team.",
+    "it": "I risultati indicano che {Firstname} potrebbe trarre beneficio da una {Result}.\n\nVi saremmo grati se incoraggiaste {Firstname} a usare questo ausilio durante la lettura. Per domande, contattate il nostro team."
+  },
+  "letter.default.TeacherOpeningPara": {
+    "en": "Dear teacher,\n\nVisual Stress is a condition which causes movement and distortion of text when reading. This can cause discomfort and reduce reading speed. In some cases, using a coloured overlay or coloured lenses can reduce these symptoms.\n\n{Firstname} had an assessment for Visual Stress on {DateOfTest}. The results of the test are shown below.",
+    "es": "Estimado/a profesor/a:\n\nEl estrés visual es una afección que provoca movimiento y distorsión del texto al leer. Puede causar molestias y reducir la velocidad de lectura. En algunos casos, una lámina o lentes de color pueden reducir estos síntomas.\n\n{Firstname} fue evaluado/a para estrés visual el {DateOfTest}. Los resultados se muestran a continuación.",
+    "de": "Liebe Lehrkraft,\n\nVisueller Stress ist eine Störung, bei der sich Text beim Lesen zu bewegen oder zu verzerren scheint. Dies kann unangenehm sein und das Lesen verlangsamen. In manchen Fällen können farbige Folien oder Gläser diese Symptome lindern.\n\n{Firstname} wurde am {DateOfTest} auf visuellen Stress untersucht. Die Ergebnisse finden Sie unten.",
+    "it": "Gentile insegnante,\n\nlo stress visivo è una condizione che fa sembrare il testo in movimento o distorto durante la lettura. Può causare fastidio e ridurre la velocità di lettura. In alcuni casi una lamina o lenti colorate possono ridurre questi sintomi.\n\n{Firstname} è stato/a valutato/a per lo stress visivo il {DateOfTest}. I risultati sono riportati di seguito."
+  },
+  "letter.result.baseline": {
+    "en": "further assessment",
+    "es": "una evaluación adicional",
+    "de": "einer weiteren Untersuchung",
+    "it": "un'ulteriore valutazione"
+  },
+  "letter.result.lens": {
+    "en": "tinted lens in colour {0}",
+    "es": "lente tintada de color {0}",
+    "de": "getöntes Glas in der Farbe {0}",
+    "it": "lente colorata del colore {0}"
+  },
+  "letter.result.overlay": {
+    "en": "overlay in colour {0}",
+    "es": "lámina de color {0}",
+    "de": "Folie in der Farbe {0}",
+    "it": "lamina del colore {0}"
+  },
+  "letter.titleParent": {
+    "en": "Visual stress assessment",
+    "es": "Evaluación del estrés visual",
+    "de": "Untersuchung auf visuellen Stress",
+    "it": "Valutazione dello stress visivo"
+  },
+  "letter.titleTeacher": {
+    "en": "Visual stress assessment",
+    "es": "Evaluación del estrés visual",
+    "de": "Untersuchung auf visuellen Stress",
+    "it": "Valutazione dello stress visivo"
+  },
+  "letter.which": {
+    "en": "Letter to a parent or carer?\n\nYes = parent / carer\nNo = teacher",
+    "es": "¿Carta a un padre o tutor?\n\nSí = padre / tutor\nNo = profesor",
+    "de": "Brief an Eltern / Betreuer?\n\nJa = Eltern / Betreuer\nNein = Lehrkraft",
+    "it": "Lettera a un genitore o tutore?\n\nSì = genitore / tutore\nNo = insegnante"
+  },
+  "letter.yours": {
+    "en": "Yours sincerely,",
+    "es": "Atentamente,",
+    "de": "Mit freundlichen Grüßen",
+    "it": "Cordiali saluti,"
+  },
+  "licence.activate": {
+    "en": "Activate",
+    "es": "Activar",
+    "de": "Aktivieren",
+    "it": "Attiva"
+  },
+  "licence.check": {
+    "en": "Check licence",
+    "es": "Comprobar licencia",
+    "de": "Lizenz prüfen",
+    "it": "Verifica licenza"
+  },
+  "licence.checking": {
+    "en": "Checking the licence…",
+    "es": "Comprobando la licencia…",
+    "de": "Lizenz wird geprüft…",
+    "it": "Verifica della licenza…"
+  },
+  "licence.chip.expiresIn": {
+    "en": "Licence expires in {0} days",
+    "es": "La licencia caduca en {0} días",
+    "de": "Lizenz läuft in {0} Tagen ab",
+    "it": "La licenza scade tra {0} giorni"
+  },
+  "licence.chip.expiresToday": {
+    "en": "Licence expires today",
+    "es": "La licencia caduca hoy",
+    "de": "Lizenz läuft heute ab",
+    "it": "La licenza scade oggi"
+  },
+  "licence.chip.licensed": {
+    "en": "Licensed",
+    "es": "Con licencia",
+    "de": "Lizenziert",
+    "it": "Con licenza"
+  },
+  "licence.chip.none": {
+    "en": "Not licensed",
+    "es": "Sin licencia",
+    "de": "Nicht lizenziert",
+    "it": "Senza licenza"
+  },
+  "licence.chip.tip": {
+    "en": "Click to check or change the licence",
+    "es": "Haga clic para comprobar o cambiar la licencia",
+    "de": "Klicken, um die Lizenz zu prüfen oder zu ändern",
+    "it": "Fare clic per verificare o modificare la licenza"
+  },
+  "licence.chip.trial": {
+    "en": "Trial version",
+    "es": "Versión de prueba",
+    "de": "Testversion",
+    "it": "Versione di prova"
+  },
+  "licence.chip.validUntil": {
+    "en": "Licensed until {0}",
+    "es": "Licencia hasta {0}",
+    "de": "Lizenziert bis {0}",
+    "it": "Licenza fino al {0}"
+  },
+  "licence.code": {
+    "en": "Activation code",
+    "es": "Código de activación",
+    "de": "Aktivierungscode",
+    "it": "Codice di attivazione"
+  },
+  "licence.codeOutdated": {
+    "en": "This activation code expired on {0}. Please contact Thomson Software Solutions for a new code.",
+    "es": "Este código de activación caducó el {0}. Póngase en contacto con Thomson Software Solutions para obtener uno nuevo.",
+    "de": "Dieser Aktivierungscode ist am {0} abgelaufen. Bitte fordern Sie bei Thomson Software Solutions einen neuen Code an.",
+    "it": "Questo codice di attivazione è scaduto il {0}. Contatta Thomson Software Solutions per un nuovo codice."
+  },
+  "licence.confirmDeactivateOffline": {
+    "en": "You will be given a DE-ACTIVATION code to send to Thomson Software Solutions so the licence can be moved to another computer. You will no longer be able to use the software on this computer. Continue?",
+    "es": "Recibirá un código de DESACTIVACIÓN para enviar a Thomson Software Solutions y así trasladar la licencia a otro ordenador. Ya no podrá usar el programa en este ordenador. ¿Continuar?",
+    "de": "Sie erhalten einen DEAKTIVIERUNGS-Code, den Sie an Thomson Software Solutions senden, damit die Lizenz auf einen anderen Computer übertragen werden kann. Sie können die Software auf diesem Computer dann nicht mehr verwenden. Fortfahren?",
+    "it": "Riceverai un codice di DISATTIVAZIONE da inviare a Thomson Software Solutions per trasferire la licenza su un altro computer. Non potrai più usare il programma su questo computer. Continuare?"
+  },
+  "licence.confirmDeactivateOnline": {
+    "en": "Deactivate the licence on this computer? It can then be activated on another computer. ReadEZ will not run here until it is activated again.",
+    "es": "¿Desactivar la licencia en este ordenador? Después podrá activarse en otro ordenador. ReadEZ no funcionará aquí hasta que se vuelva a activar.",
+    "de": "Lizenz auf diesem Computer deaktivieren? Sie kann dann auf einem anderen Computer aktiviert werden. ReadEZ läuft hier erst wieder, wenn es erneut aktiviert wird.",
+    "it": "Disattivare la licenza su questo computer? Potrà poi essere attivata su un altro computer. ReadEZ non funzionerà qui finché non verrà riattivato."
+  },
+  "licence.connecting": {
+    "en": "Connecting to the licence server…",
+    "es": "Conectando con el servidor de licencias…",
+    "de": "Verbindung zum Lizenzserver wird hergestellt…",
+    "it": "Connessione al server delle licenze…"
+  },
+  "licence.continue": {
+    "en": "Continue",
+    "es": "Continuar",
+    "de": "Weiter",
+    "it": "Continua"
+  },
+  "licence.copy": {
+    "en": "Copy",
+    "es": "Copiar",
+    "de": "Kopieren",
+    "it": "Copia"
+  },
+  "licence.deactivate": {
+    "en": "Deactivate…",
+    "es": "Desactivar…",
+    "de": "Deaktivieren…",
+    "it": "Disattiva…"
+  },
+  "licence.deactivateNeedsInternet": {
+    "en": "To deactivate the licence the computer must be connected to the internet. Please connect and try again.",
+    "es": "Para desactivar la licencia el ordenador debe estar conectado a internet. Conéctese e inténtelo de nuevo.",
+    "de": "Zum Deaktivieren der Lizenz muss der Computer mit dem Internet verbunden sein. Bitte verbinden Sie sich und versuchen Sie es erneut.",
+    "it": "Per disattivare la licenza il computer deve essere connesso a internet. Connettiti e riprova."
+  },
+  "licence.deactivated": {
+    "en": "Deactivation successful.",
+    "es": "Desactivación realizada.",
+    "de": "Deaktivierung erfolgreich.",
+    "it": "Disattivazione completata."
+  },
+  "licence.deactivatedNotSaved": {
+    "en": "Deactivated on the server, but the change could not be saved on this computer.",
+    "es": "Desactivada en el servidor, pero el cambio no se pudo guardar en este ordenador.",
+    "de": "Auf dem Server deaktiviert, aber die Änderung konnte auf diesem Computer nicht gespeichert werden.",
+    "it": "Disattivata sul server, ma non è stato possibile salvare la modifica su questo computer."
+  },
+  "licence.deactivationCode": {
+    "en": "Your DE-ACTIVATION code is {0}. Please send it to Thomson Software Solutions to obtain a new activation code for another computer.",
+    "es": "Su código de DESACTIVACIÓN es {0}. Envíelo a Thomson Software Solutions para obtener un nuevo código de activación para otro ordenador.",
+    "de": "Ihr DEAKTIVIERUNGS-Code lautet {0}. Bitte senden Sie ihn an Thomson Software Solutions, um einen neuen Aktivierungscode für einen anderen Computer zu erhalten.",
+    "it": "Il tuo codice di DISATTIVAZIONE è {0}. Invialo a Thomson Software Solutions per ottenere un nuovo codice di attivazione per un altro computer."
+  },
+  "licence.email": {
+    "en": "E-mail address",
+    "es": "Correo electrónico",
+    "de": "E-Mail-Adresse",
+    "it": "Indirizzo e-mail"
+  },
+  "licence.expiredOn": {
+    "en": "This licence expired on {0}.",
+    "es": "Esta licencia caducó el {0}.",
+    "de": "Diese Lizenz ist am {0} abgelaufen.",
+    "it": "Questa licenza è scaduta il {0}."
+  },
+  "licence.expiresIn": {
+    "en": "The licence will expire in {0} day(s). Please contact Thomson Software Solutions to renew it before {1}.",
+    "es": "La licencia caducará en {0} día(s). Póngase en contacto con Thomson Software Solutions para renovarla antes del {1}.",
+    "de": "Die Lizenz läuft in {0} Tag(en) ab. Bitte wenden Sie sich vor dem {1} an Thomson Software Solutions, um sie zu verlängern.",
+    "it": "La licenza scadrà tra {0} giorno/i. Contatta Thomson Software Solutions per rinnovarla prima del {1}."
+  },
+  "licence.expiresTomorrow": {
+    "en": "The licence expires tomorrow ({0}). Please contact Thomson Software Solutions to renew it.",
+    "es": "La licencia caduca mañana ({0}). Póngase en contacto con Thomson Software Solutions para renovarla.",
+    "de": "Die Lizenz läuft morgen ab ({0}). Bitte wenden Sie sich an Thomson Software Solutions, um sie zu verlängern.",
+    "it": "La licenza scade domani ({0}). Contatta Thomson Software Solutions per rinnovarla."
+  },
+  "licence.expiryDate": {
+    "en": "Licence expiry date: {0}",
+    "es": "Fecha de caducidad: {0}",
+    "de": "Ablaufdatum der Lizenz: {0}",
+    "it": "Data di scadenza della licenza: {0}"
+  },
+  "licence.graceDays": {
+    "en": "Unable to connect to the licence server. The program will run, but please connect to the internet within the next {0} days.",
+    "es": "No se puede conectar con el servidor de licencias. El programa funcionará, pero conéctese a internet en los próximos {0} días.",
+    "de": "Keine Verbindung zum Lizenzserver. Das Programm läuft, bitte verbinden Sie sich aber innerhalb der nächsten {0} Tage mit dem Internet.",
+    "it": "Impossibile connettersi al server delle licenze. Il programma funzionerà, ma connettiti a internet entro i prossimi {0} giorni."
+  },
+  "licence.graceLastDay": {
+    "en": "Unable to connect to the licence server. The program will run today but will stop tomorrow unless you connect to the internet.",
+    "es": "No se puede conectar con el servidor de licencias. El programa funcionará hoy, pero dejará de funcionar mañana si no se conecta a internet.",
+    "de": "Keine Verbindung zum Lizenzserver. Das Programm läuft heute, funktioniert aber ab morgen nicht mehr, wenn Sie sich nicht mit dem Internet verbinden.",
+    "it": "Impossibile connettersi al server delle licenze. Il programma funzionerà oggi, ma smetterà di funzionare domani se non ti connetti a internet."
+  },
+  "licence.key": {
+    "en": "Licence key",
+    "es": "Clave de licencia",
+    "de": "Lizenzschlüssel",
+    "it": "Chiave di licenza"
+  },
+  "licence.keyFormat": {
+    "en": "Invalid key. Check that the key has 32 digits and 4 hyphens (-).",
+    "es": "Clave no válida. Compruebe que la clave tiene 32 dígitos y 4 guiones (-).",
+    "de": "Ungültiger Schlüssel. Prüfen Sie, ob der Schlüssel 32 Stellen und 4 Bindestriche (-) hat.",
+    "it": "Chiave non valida. Verifica che la chiave abbia 32 cifre e 4 trattini (-)."
+  },
+  "licence.licensedTo": {
+    "en": "Licensed to: {0}",
+    "es": "Con licencia para: {0}",
+    "de": "Lizenziert für: {0}",
+    "it": "Concessa in licenza a: {0}"
+  },
+  "licence.notActivated": {
+    "en": "This computer is not activated yet. Enter your e-mail address and licence key, then select Activate.",
+    "es": "Este ordenador aún no está activado. Introduzca su correo electrónico y clave de licencia y seleccione Activar.",
+    "de": "Dieser Computer ist noch nicht aktiviert. Geben Sie Ihre E-Mail-Adresse und Ihren Lizenzschlüssel ein und wählen Sie Aktivieren.",
+    "it": "Questo computer non è ancora attivato. Inserisci l'indirizzo e-mail e la chiave di licenza, poi seleziona Attiva."
+  },
+  "licence.offline": {
+    "en": "Activation code",
+    "es": "Código de activación",
+    "de": "Aktivierungscode",
+    "it": "Codice di attivazione"
+  },
+  "licence.offlineActivated": {
+    "en": "Activation successful. The program is registered until {0}.",
+    "es": "Activación realizada. El programa está registrado hasta el {0}.",
+    "de": "Aktivierung erfolgreich. Das Programm ist bis {0} registriert.",
+    "it": "Attivazione completata. Il programma è registrato fino al {0}."
+  },
+  "licence.offlineExpired": {
+    "en": "Sorry - this licence expired on {0}. Please contact Thomson Software Solutions for a reactivation code.",
+    "es": "Lo sentimos, esta licencia caducó el {0}. Póngase en contacto con Thomson Software Solutions para obtener un código de reactivación.",
+    "de": "Diese Lizenz ist leider am {0} abgelaufen. Bitte fordern Sie bei Thomson Software Solutions einen Reaktivierungscode an.",
+    "it": "Spiacenti, questa licenza è scaduta il {0}. Contatta Thomson Software Solutions per un codice di riattivazione."
+  },
+  "licence.offlineIntro": {
+    "en": "Send the serial number below to Thomson Software Solutions. You will receive a 16-character activation code to enter here.",
+    "es": "Envíe el número de serie siguiente a Thomson Software Solutions. Recibirá un código de activación de 16 caracteres para introducir aquí.",
+    "de": "Senden Sie die folgende Seriennummer an Thomson Software Solutions. Sie erhalten einen 16-stelligen Aktivierungscode, den Sie hier eingeben.",
+    "it": "Invia il numero di serie qui sotto a Thomson Software Solutions. Riceverai un codice di attivazione di 16 caratteri da inserire qui."
+  },
+  "licence.offlineNotActivated": {
+    "en": "Not activated. Enter the activation code from Thomson Software Solutions.",
+    "es": "No activado. Introduzca el código de activación de Thomson Software Solutions.",
+    "de": "Nicht aktiviert. Geben Sie den Aktivierungscode von Thomson Software Solutions ein.",
+    "it": "Non attivato. Inserisci il codice di attivazione fornito da Thomson Software Solutions."
+  },
+  "licence.online": {
+    "en": "Online licence",
+    "es": "Licencia en línea",
+    "de": "Online-Lizenz",
+    "it": "Licenza online"
+  },
+  "licence.onlineIntro": {
+    "en": "Enter the e-mail address and the 32-digit licence key from Thomson Software Solutions. The computer must be connected to the internet.",
+    "es": "Introduzca la dirección de correo electrónico y la clave de licencia de 32 dígitos de Thomson Software Solutions. El ordenador debe estar conectado a internet.",
+    "de": "Geben Sie die E-Mail-Adresse und den 32-stelligen Lizenzschlüssel von Thomson Software Solutions ein. Der Computer muss mit dem Internet verbunden sein.",
+    "it": "Inserisci l'indirizzo e-mail e la chiave di licenza di 32 cifre fornita da Thomson Software Solutions. Il computer deve essere connesso a internet."
+  },
+  "licence.otherComputer": {
+    "en": "The licence was activated on another computer (or this computer has been renamed), so it must be activated again here. If you need help, please contact Thomson Software Solutions.",
+    "es": "La licencia se activó en otro ordenador (o se ha cambiado el nombre de este ordenador), por lo que debe activarse de nuevo aquí. Si necesita ayuda, póngase en contacto con Thomson Software Solutions.",
+    "de": "Die Lizenz wurde auf einem anderen Computer aktiviert (oder dieser Computer wurde umbenannt) und muss hier erneut aktiviert werden. Wenn Sie Hilfe benötigen, wenden Sie sich bitte an Thomson Software Solutions.",
+    "it": "La licenza è stata attivata su un altro computer (o questo computer è stato rinominato), quindi deve essere attivata di nuovo qui. Se serve aiuto, contatta Thomson Software Solutions."
+  },
+  "licence.paste": {
+    "en": "Paste",
+    "es": "Pegar",
+    "de": "Einfügen",
+    "it": "Incolla"
+  },
+  "licence.quit": {
+    "en": "Quit",
+    "es": "Salir",
+    "de": "Beenden",
+    "it": "Esci"
+  },
+  "licence.serial": {
+    "en": "Serial number",
+    "es": "Número de serie",
+    "de": "Seriennummer",
+    "it": "Numero di serie"
+  },
+  "licence.serverUnavailable": {
+    "en": "Unable to connect to the licence server. Please connect to the internet and try again. If the problem continues, contact Thomson Software Solutions.",
+    "es": "No se puede conectar con el servidor de licencias. Conéctese a internet e inténtelo de nuevo. Si el problema continúa, póngase en contacto con Thomson Software Solutions.",
+    "de": "Keine Verbindung zum Lizenzserver. Bitte verbinden Sie sich mit dem Internet und versuchen Sie es erneut. Wenn das Problem weiterhin besteht, wenden Sie sich an Thomson Software Solutions.",
+    "it": "Impossibile connettersi al server delle licenze. Connettiti a internet e riprova. Se il problema persiste, contatta Thomson Software Solutions."
+  },
+  "licence.subtitle": {
+    "en": "Activate the program online or with an activation code",
+    "es": "Active el programa en línea o con un código de activación",
+    "de": "Aktivieren Sie das Programm online oder mit einem Aktivierungscode",
+    "it": "Attiva il programma online o con un codice di attivazione"
+  },
+  "licence.title": {
+    "en": "ReadEZ licence",
+    "es": "Licencia de ReadEZ",
+    "de": "ReadEZ-Lizenz",
+    "it": "Licenza ReadEZ"
+  },
+  "licence.trial": {
+    "en": "3-day trial",
+    "es": "Prueba de 3 días",
+    "de": "3-Tage-Test",
+    "it": "Prova di 3 giorni"
+  },
+  "licence.trialDaysLeft": {
+    "en": "You are in trial mode. You have {0} day(s) left.",
+    "es": "Está en modo de prueba. Le quedan {0} día(s).",
+    "de": "Sie befinden sich im Testmodus. Es verbleiben {0} Tag(e).",
+    "it": "Sei in modalità di prova. Ti restano {0} giorno/i."
+  },
+  "licence.trialExpired": {
+    "en": "Your trial period has expired. Please contact Thomson Software Solutions to obtain a licence.",
+    "es": "Su periodo de prueba ha finalizado. Póngase en contacto con Thomson Software Solutions para obtener una licencia.",
+    "de": "Ihr Testzeitraum ist abgelaufen. Bitte wenden Sie sich an Thomson Software Solutions, um eine Lizenz zu erhalten.",
+    "it": "Il periodo di prova è terminato. Contatta Thomson Software Solutions per ottenere una licenza."
+  },
+  "licence.validUntil": {
+    "en": "The licence is valid until {0}.",
+    "es": "La licencia es válida hasta el {0}.",
+    "de": "Die Lizenz ist gültig bis {0}.",
+    "it": "La licenza è valida fino al {0}."
+  },
+  "licence.willClose": {
+    "en": "ReadEZ will close when you close this window.",
+    "es": "ReadEZ se cerrará al cerrar esta ventana.",
+    "de": "ReadEZ wird beim Schließen dieses Fensters beendet.",
+    "it": "ReadEZ si chiuderà alla chiusura di questa finestra."
+  },
+  "licence.writeFailed": {
+    "en": "The licence could not be saved. Please check that the ReadEZ folder in your AppData folder can be written to.",
+    "es": "No se pudo guardar la licencia. Compruebe que se puede escribir en la carpeta ReadEZ de AppData.",
+    "de": "Die Lizenz konnte nicht gespeichert werden. Bitte prüfen Sie, ob in den Ordner ReadEZ unter AppData geschrieben werden kann.",
+    "it": "Impossibile salvare la licenza. Verifica che la cartella ReadEZ in AppData sia scrivibile."
+  },
+  "licence.wrongCode": {
+    "en": "Incorrect activation code - please try again.",
+    "es": "Código de activación incorrecto. Inténtelo de nuevo.",
+    "de": "Falscher Aktivierungscode – bitte versuchen Sie es erneut.",
+    "it": "Codice di attivazione errato. Riprova."
+  },
+  "menu.about": {
+    "en": "About",
+    "es": "Acerca de",
+    "de": "Info",
+    "it": "Informazioni"
+  },
+  "menu.aboutProgram": {
+    "en": "About ReadEZ",
+    "es": "Acerca de ReadEZ",
+    "de": "Über ReadEZ",
+    "it": "Informazioni su ReadEZ"
+  },
+  "menu.backupNow": {
+    "en": "Back up now",
+    "es": "Hacer copia de seguridad ahora",
+    "de": "Jetzt sichern",
+    "it": "Esegui backup ora"
+  },
+  "menu.checkUpdates": {
+    "en": "Check for updates…",
+    "es": "Buscar actualizaciones…",
+    "de": "Nach Updates suchen…",
+    "it": "Verifica aggiornamenti…"
+  },
+  "menu.colourCalibration": {
+    "en": "Colour calibration…",
+    "es": "Calibración del color…",
+    "de": "Farbkalibrierung…",
+    "it": "Calibrazione del colore…"
+  },
+  "menu.deletePatient": {
+    "en": "Delete patient…",
+    "es": "Eliminar paciente…",
+    "de": "Patient löschen…",
+    "it": "Elimina paziente…"
+  },
+  "menu.deleteResult": {
+    "en": "Delete the test",
+    "es": "Eliminar la prueba",
+    "de": "Test löschen",
+    "it": "Elimina il test"
+  },
+  "menu.edit": {
+    "en": "Edit",
+    "es": "Edición",
+    "de": "Bearbeiten",
+    "it": "Modifica"
+  },
+  "menu.editPatient": {
+    "en": "Edit patient…",
+    "es": "Editar paciente…",
+    "de": "Patient bearbeiten…",
+    "it": "Modifica paziente…"
+  },
+  "menu.editResult": {
+    "en": "Edit notes of the test…",
+    "es": "Editar notas de la prueba…",
+    "de": "Notizen zum Test bearbeiten…",
+    "it": "Modifica note del test…"
+  },
+  "menu.exit": {
+    "en": "Exit",
+    "es": "Salir",
+    "de": "Beenden",
+    "it": "Esci"
+  },
+  "menu.file": {
+    "en": "File",
+    "es": "Archivo",
+    "de": "Datei",
+    "it": "File"
+  },
+  "menu.helpContents": {
+    "en": "Help contents",
+    "es": "Contenido de la ayuda",
+    "de": "Hilfeinhalt",
+    "it": "Sommario della guida"
+  },
+  "menu.helpScreen": {
+    "en": "Help and support",
+    "es": "Ayuda y soporte",
+    "de": "Hilfe und Support",
+    "it": "Guida e assistenza"
+  },
+  "menu.importOld": {
+    "en": "Import a ReadEZ 2020 database…",
+    "es": "Importar una base de datos de ReadEZ 2020…",
+    "de": "ReadEZ-2020-Datenbank importieren…",
+    "it": "Importa un database di ReadEZ 2020…"
+  },
+  "menu.moveResult": {
+    "en": "Move the test to another patient…",
+    "es": "Mover la prueba a otro paciente…",
+    "de": "Test einem anderen Patienten zuordnen…",
+    "it": "Sposta il test a un altro paziente…"
+  },
+  "menu.newPatient": {
+    "en": "New patient…",
+    "es": "Nuevo paciente…",
+    "de": "Neuer Patient…",
+    "it": "Nuovo paziente…"
+  },
+  "menu.onlineHelp": {
+    "en": "Online help",
+    "es": "Ayuda en línea",
+    "de": "Online-Hilfe",
+    "it": "Guida in linea"
+  },
+  "menu.organisations": {
+    "en": "Organisations…",
+    "es": "Organizaciones…",
+    "de": "Organisationen…",
+    "it": "Organizzazioni…"
+  },
+  "menu.programOptions": {
+    "en": "Program options",
+    "es": "Opciones del programa",
+    "de": "Programmoptionen",
+    "it": "Opzioni del programma"
+  },
+  "menu.restoreBackup": {
+    "en": "Restore from backup…",
+    "es": "Restaurar desde copia de seguridad…",
+    "de": "Aus Sicherung wiederherstellen…",
+    "it": "Ripristina da backup…"
+  },
+  "menu.screeners": {
+    "en": "Screeners…",
+    "es": "Examinadores…",
+    "de": "Untersucher…",
+    "it": "Esaminatori…"
+  },
+  "mode.baseline": {
+    "en": "Baseline (white)",
+    "es": "Línea base (blanco)",
+    "de": "Ausgangswert (weiß)",
+    "it": "Valore di base (bianco)"
+  },
+  "mode.computer": {
+    "en": "Computer screen",
+    "es": "Pantalla de ordenador",
+    "de": "Computerbildschirm",
+    "it": "Schermo del computer"
+  },
+  "mode.lenses": {
+    "en": "Lenses",
+    "es": "Lentes",
+    "de": "Gläser",
+    "it": "Lenti"
+  },
+  "mode.overlay": {
+    "en": "Overlays",
+    "es": "Láminas",
+    "de": "Folien",
+    "it": "Lamine"
+  },
+  "nav.colours": {
+    "en": "Colours",
+    "es": "Colores",
+    "de": "Farben",
+    "it": "Colori"
+  },
+  "nav.help": {
+    "en": "Help",
+    "es": "Ayuda",
+    "de": "Hilfe",
+    "it": "Guida"
+  },
+  "nav.patients": {
+    "en": "Patients",
+    "es": "Pacientes",
+    "de": "Patienten",
+    "it": "Pazienti"
+  },
+  "nav.results": {
+    "en": "Results",
+    "es": "Resultados",
+    "de": "Ergebnisse",
+    "it": "Risultati"
+  },
+  "nav.settings": {
+    "en": "Settings",
+    "es": "Configuración",
+    "de": "Einstellungen",
+    "it": "Impostazioni"
+  },
+  "nav.tests": {
+    "en": "Tests",
+    "es": "Pruebas",
+    "de": "Tests",
+    "it": "Test"
+  },
+  "orgs.add": {
+    "en": "New organisation",
+    "es": "Nueva organización",
+    "de": "Neue Organisation",
+    "it": "Nuova organizzazione"
+  },
+  "orgs.delete.confirm": {
+    "en": "Delete {0}? Its patients are kept, without an organisation.",
+    "es": "¿Eliminar {0}? Sus pacientes se conservan, sin organización.",
+    "de": "{0} löschen? Die Patienten bleiben erhalten, ohne Organisation.",
+    "it": "Eliminare {0}? I pazienti restano, senza organizzazione."
+  },
+  "orgs.edit": {
+    "en": "Edit organisation",
+    "es": "Editar organización",
+    "de": "Organisation bearbeiten",
+    "it": "Modifica organizzazione"
+  },
+  "orgs.field.address1": {
+    "en": "Address line 1",
+    "es": "Dirección 1",
+    "de": "Adresse 1",
+    "it": "Indirizzo 1"
+  },
+  "orgs.field.address2": {
+    "en": "Address line 2",
+    "es": "Dirección 2",
+    "de": "Adresse 2",
+    "it": "Indirizzo 2"
+  },
+  "orgs.field.county": {
+    "en": "County",
+    "es": "Provincia",
+    "de": "Region",
+    "it": "Provincia"
+  },
+  "orgs.field.name": {
+    "en": "Name",
+    "es": "Nombre",
+    "de": "Name",
+    "it": "Nome"
+  },
+  "orgs.field.postcode": {
+    "en": "Postcode",
+    "es": "Código postal",
+    "de": "Postleitzahl",
+    "it": "CAP"
+  },
+  "orgs.field.tel": {
+    "en": "Telephone",
+    "es": "Teléfono",
+    "de": "Telefon",
+    "it": "Telefono"
+  },
+  "orgs.field.town": {
+    "en": "Town",
+    "es": "Ciudad",
+    "de": "Ort",
+    "it": "Città"
+  },
+  "orgs.subtitle": {
+    "en": "Schools, practices and other organisations patients belong to",
+    "es": "Colegios, consultas y otras organizaciones de los pacientes",
+    "de": "Schulen, Praxen und andere Organisationen der Patienten",
+    "it": "Scuole, studi e altre organizzazioni dei pazienti"
+  },
+  "orgs.title": {
+    "en": "Organisations",
+    "es": "Organizaciones",
+    "de": "Organisationen",
+    "it": "Organizzazioni"
+  },
+  "patient.address1": {
+    "en": "Address line 1",
+    "es": "Dirección (línea 1)",
+    "de": "Adresse (Zeile 1)",
+    "it": "Indirizzo (riga 1)"
+  },
+  "patient.address2": {
+    "en": "Address line 2",
+    "es": "Dirección (línea 2)",
+    "de": "Adresse (Zeile 2)",
+    "it": "Indirizzo (riga 2)"
+  },
+  "patient.county": {
+    "en": "County",
+    "es": "Provincia",
+    "de": "Bundesland / Kreis",
+    "it": "Provincia"
+  },
+  "patient.dialog.addTitle": {
+    "en": "New patient",
+    "es": "Nuevo paciente",
+    "de": "Neuer Patient",
+    "it": "Nuovo paziente"
+  },
+  "patient.dialog.editTitle": {
+    "en": "Edit patient",
+    "es": "Editar paciente",
+    "de": "Patient bearbeiten",
+    "it": "Modifica paziente"
+  },
+  "patient.dialog.id": {
+    "en": "Patient ID {0}",
+    "es": "ID de paciente {0}",
+    "de": "Patienten-ID {0}",
+    "it": "ID paziente {0}"
+  },
+  "patient.dialog.subtitle": {
+    "en": "First name and family name are required",
+    "es": "El nombre y los apellidos son obligatorios",
+    "de": "Vorname und Nachname sind erforderlich",
+    "it": "Nome e cognome sono obbligatori"
+  },
+  "patient.dob": {
+    "en": "Date of birth",
+    "es": "Fecha de nacimiento",
+    "de": "Geburtsdatum",
+    "it": "Data di nascita"
+  },
+  "patient.email": {
+    "en": "E-mail",
+    "es": "Correo electrónico",
+    "de": "E-Mail",
+    "it": "E-mail"
+  },
+  "patient.firstname": {
+    "en": "First name",
+    "es": "Nombre",
+    "de": "Vorname",
+    "it": "Nome"
+  },
+  "patient.mobile": {
+    "en": "Mobile",
+    "es": "Móvil",
+    "de": "Mobil",
+    "it": "Cellulare"
+  },
+  "patient.noOrganisation": {
+    "en": "(none)",
+    "es": "(ninguna)",
+    "de": "(keine)",
+    "it": "(nessuna)"
+  },
+  "patient.organisation": {
+    "en": "Organisation",
+    "es": "Organización",
+    "de": "Organisation",
+    "it": "Organizzazione"
+  },
+  "patient.postcode": {
+    "en": "Postcode",
+    "es": "Código postal",
+    "de": "Postleitzahl",
+    "it": "CAP"
+  },
+  "patient.reference": {
+    "en": "Reference",
+    "es": "Referencia",
+    "de": "Referenz",
+    "it": "Riferimento"
+  },
+  "patient.surname": {
+    "en": "Family name",
+    "es": "Apellidos",
+    "de": "Nachname",
+    "it": "Cognome"
+  },
+  "patient.tel": {
+    "en": "Telephone",
+    "es": "Teléfono",
+    "de": "Telefon",
+    "it": "Telefono"
+  },
+  "patient.title": {
+    "en": "Title",
+    "es": "Tratamiento",
+    "de": "Anrede",
+    "it": "Titolo"
+  },
+  "patient.town": {
+    "en": "Town",
+    "es": "Localidad",
+    "de": "Ort",
+    "it": "Città"
+  },
+  "patient.validation.dob": {
+    "en": "The date of birth cannot be in the future.",
+    "es": "La fecha de nacimiento no puede ser posterior a hoy.",
+    "de": "Das Geburtsdatum darf nicht in der Zukunft liegen.",
+    "it": "La data di nascita non può essere futura."
+  },
+  "patient.validation.email": {
+    "en": "Please enter a valid e-mail address.",
+    "es": "Introduzca una dirección de correo válida.",
+    "de": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "it": "Inserisci un indirizzo e-mail valido."
+  },
+  "patient.validation.names": {
+    "en": "Please enter a first name and a family name.",
+    "es": "Introduzca el nombre y los apellidos.",
+    "de": "Bitte geben Sie Vor- und Nachnamen ein.",
+    "it": "Inserisci nome e cognome."
+  },
+  "patients.add": {
+    "en": "New patient",
+    "es": "Nuevo paciente",
+    "de": "Neuer Patient",
+    "it": "Nuovo paziente"
+  },
+  "patients.allOrganisations": {
+    "en": "All organisations",
+    "es": "Todas las organizaciones",
+    "de": "Alle Organisationen",
+    "it": "Tutte le organizzazioni"
+  },
+  "patients.bornAge": {
+    "en": "Born {0} (age {1})",
+    "es": "Nacido el {0} ({1} años)",
+    "de": "Geboren {0} ({1} Jahre)",
+    "it": "Nato il {0} ({1} anni)"
+  },
+  "patients.col.dob": {
+    "en": "Date of birth",
+    "es": "Fecha de nacimiento",
+    "de": "Geburtsdatum",
+    "it": "Data di nascita"
+  },
+  "patients.col.lastTest": {
+    "en": "Last test",
+    "es": "Última prueba",
+    "de": "Letzter Test",
+    "it": "Ultimo test"
+  },
+  "patients.col.name": {
+    "en": "Name",
+    "es": "Nombre",
+    "de": "Name",
+    "it": "Nome"
+  },
+  "patients.col.organisation": {
+    "en": "Organisation",
+    "es": "Organización",
+    "de": "Organisation",
+    "it": "Organizzazione"
+  },
+  "patients.col.tests": {
+    "en": "Tests",
+    "es": "Pruebas",
+    "de": "Tests",
+    "it": "Test"
+  },
+  "patients.count": {
+    "en": "{0} patients",
+    "es": "{0} pacientes",
+    "de": "{0} Patienten",
+    "it": "{0} pazienti"
+  },
+  "patients.delete.confirm1": {
+    "en": "You are about to delete the patient {0}.\n\nThis also deletes all of their tests. Do you want to continue?",
+    "es": "Va a eliminar al paciente {0}.\n\nTambién se eliminarán todas sus pruebas. ¿Desea continuar?",
+    "de": "Sie löschen den Patienten {0}.\n\nDabei werden auch alle Tests gelöscht. Möchten Sie fortfahren?",
+    "it": "Stai per eliminare il paziente {0}.\n\nVerranno eliminati anche tutti i suoi test. Continuare?"
+  },
+  "patients.delete.confirm2": {
+    "en": "Are you absolutely sure you want to delete {0}?",
+    "es": "¿Está totalmente seguro de que desea eliminar a {0}?",
+    "de": "Sind Sie ganz sicher, dass Sie {0} löschen möchten?",
+    "it": "Sei assolutamente sicuro di voler eliminare {0}?"
+  },
+  "patients.delete.done": {
+    "en": "{0} has been deleted. The patient had no tests.",
+    "es": "{0} ha sido eliminado. El paciente no tenía pruebas.",
+    "de": "{0} wurde gelöscht. Der Patient hatte keine Tests.",
+    "it": "{0} è stato eliminato. Il paziente non aveva test."
+  },
+  "patients.delete.doneWithTests": {
+    "en": "{0} and {1} tests deleted",
+    "es": "{0} y {1} pruebas eliminados",
+    "de": "{0} und {1} Tests gelöscht",
+    "it": "{0} e {1} test eliminati"
+  },
+  "patients.edit": {
+    "en": "Edit",
+    "es": "Editar",
+    "de": "Bearbeiten",
+    "it": "Modifica"
+  },
+  "patients.pick.none": {
+    "en": "Please select a patient.",
+    "es": "Seleccione un paciente.",
+    "de": "Bitte wählen Sie einen Patienten aus.",
+    "it": "Seleziona un paziente."
+  },
+  "patients.refShort": {
+    "en": "Ref. {0}",
+    "es": "Ref. {0}",
+    "de": "Ref. {0}",
+    "it": "Rif. {0}"
+  },
+  "patients.search": {
+    "en": "Search by name, reference or postcode",
+    "es": "Buscar por nombre, referencia o código postal",
+    "de": "Nach Name, Referenz oder Postleitzahl suchen",
+    "it": "Cerca per nome, riferimento o CAP"
+  },
+  "patients.selectHint": {
+    "en": "Select a patient from the list, or add a new one.",
+    "es": "Seleccione un paciente de la lista o añada uno nuevo.",
+    "de": "Wählen Sie einen Patienten aus der Liste oder legen Sie einen neuen an.",
+    "it": "Seleziona un paziente dall'elenco o aggiungine uno nuovo."
+  },
+  "patients.startTest": {
+    "en": "Start a test",
+    "es": "Iniciar una prueba",
+    "de": "Test beginnen",
+    "it": "Inizia un test"
+  },
+  "patients.subtitle": {
+    "en": "Choose a patient to see their tests, or add a new one",
+    "es": "Elija un paciente para ver sus pruebas o añada uno nuevo",
+    "de": "Wählen Sie einen Patienten, um seine Tests zu sehen, oder legen Sie einen neuen an",
+    "it": "Scegli un paziente per vedere i suoi test o aggiungine uno nuovo"
+  },
+  "patients.title": {
+    "en": "Patients",
+    "es": "Pacientes",
+    "de": "Patienten",
+    "it": "Pazienti"
+  },
+  "publish.badVersion": {
+    "en": "Enter the new version as numbers, for example 3.0.1.",
+    "es": "Introduzca la nueva versión en números, por ejemplo 3.0.1.",
+    "de": "Geben Sie die neue Version als Zahlen ein, z. B. 3.0.1.",
+    "it": "Inserire la nuova versione in numeri, ad esempio 3.0.1."
+  },
+  "publish.build": {
+    "en": "Build and publish",
+    "es": "Compilar y publicar",
+    "de": "Erstellen und veröffentlichen",
+    "it": "Compila e pubblica"
+  },
+  "publish.buildFailed": {
+    "en": "The build failed. See the build output for the reason.",
+    "es": "La compilación ha fallado. Consulte el resultado de la compilación.",
+    "de": "Der Build ist fehlgeschlagen. Den Grund finden Sie in der Build-Ausgabe.",
+    "it": "Compilazione non riuscita. Vedere l'output della compilazione."
+  },
+  "publish.done": {
+    "en": "ReadEZ {0} is ready. Upload the .msi and update.json from {1} to the update folder on the server (replace the old update.json).",
+    "es": "ReadEZ {0} está listo. Suba el .msi y update.json de {1} a la carpeta de actualizaciones del servidor (sustituya el update.json anterior).",
+    "de": "ReadEZ {0} ist fertig. Laden Sie die .msi und update.json aus {1} in den Update-Ordner auf dem Server hoch (alte update.json ersetzen).",
+    "it": "ReadEZ {0} è pronto. Caricare il .msi e update.json da {1} nella cartella aggiornamenti sul server (sostituire il vecchio update.json)."
+  },
+  "publish.existing": {
+    "en": "Use an existing installer…",
+    "es": "Usar un instalador existente…",
+    "de": "Vorhandenes Installationsprogramm verwenden…",
+    "it": "Usa un programma di installazione esistente…"
+  },
+  "publish.failed": {
+    "en": "Publishing failed: {0}",
+    "es": "La publicación ha fallado: {0}",
+    "de": "Veröffentlichen fehlgeschlagen: {0}",
+    "it": "Pubblicazione non riuscita: {0}"
+  },
+  "publish.increase": {
+    "en": "Increase",
+    "es": "Aumentar",
+    "de": "Erhöhen",
+    "it": "Aumenta"
+  },
+  "publish.log": {
+    "en": "Build output",
+    "es": "Resultado de la compilación",
+    "de": "Build-Ausgabe",
+    "it": "Output della compilazione"
+  },
+  "publish.noMsi": {
+    "en": "The build finished but no new .msi was found in ReadEZSetup\\bin.",
+    "es": "La compilación terminó pero no se encontró ningún .msi nuevo en ReadEZSetup\\bin.",
+    "de": "Der Build ist fertig, aber in ReadEZSetup\\bin wurde keine neue .msi gefunden.",
+    "it": "Compilazione terminata ma nessun nuovo .msi trovato in ReadEZSetup\\bin."
+  },
+  "publish.noOutput": {
+    "en": "Choose the output folder.",
+    "es": "Elija la carpeta de salida.",
+    "de": "Wählen Sie den Ausgabeordner.",
+    "it": "Scegliere la cartella di output."
+  },
+  "publish.noPfx": {
+    "en": "The certificate file was not found: {0}",
+    "es": "No se encontró el archivo del certificado: {0}",
+    "de": "Die Zertifikatdatei wurde nicht gefunden: {0}",
+    "it": "File del certificato non trovato: {0}"
+  },
+  "publish.noSetupProject": {
+    "en": "The installer project was not found: {0}",
+    "es": "No se encontró el proyecto del instalador: {0}",
+    "de": "Das Installationsprojekt wurde nicht gefunden: {0}",
+    "it": "Progetto di installazione non trovato: {0}"
+  },
+  "publish.noSignTool": {
+    "en": "signtool.exe was not found. Install the Windows SDK (Signing Tools) or select signtool.exe.",
+    "es": "No se encontró signtool.exe. Instale el Windows SDK (Signing Tools) o seleccione signtool.exe.",
+    "de": "signtool.exe wurde nicht gefunden. Installieren Sie das Windows SDK (Signing Tools) oder wählen Sie signtool.exe aus.",
+    "it": "signtool.exe non trovato. Installare il Windows SDK (Signing Tools) o selezionare signtool.exe."
+  },
+  "publish.noStarter": {
+    "en": "The starter database can't be found:\n{0}",
+    "es": "No se encuentra la base de datos inicial:\n{0}",
+    "de": "Die Startdatenbank wurde nicht gefunden:\n{0}",
+    "it": "Impossibile trovare il database iniziale:\n{0}"
+  },
+  "publish.notNewer": {
+    "en": "Version {0} is not higher than the version on the server ({1}), so installed copies will not update to it. Publish anyway?",
+    "es": "La versión {0} no es mayor que la del servidor ({1}), así que las copias instaladas no se actualizarán. ¿Publicar de todos modos?",
+    "de": "Version {0} ist nicht höher als die Version auf dem Server ({1}); installierte Kopien werden nicht aktualisiert. Trotzdem veröffentlichen?",
+    "it": "La versione {0} non è superiore a quella sul server ({1}), quindi le copie installate non si aggiorneranno. Pubblicare comunque?"
+  },
+  "publish.notSigned": {
+    "en": "ReadEZ.exe was not signed. See the build output (certificate password, signtool or timestamp server).",
+    "es": "ReadEZ.exe no se firmó. Consulte el resultado de la compilación (contraseña, signtool o servidor de sellado).",
+    "de": "ReadEZ.exe wurde nicht signiert. Siehe Build-Ausgabe (Kennwort, signtool oder Zeitstempelserver).",
+    "it": "ReadEZ.exe non è stato firmato. Vedere l'output (password, signtool o server di marca temporale)."
+  },
+  "publish.notes": {
+    "en": "What has changed (shown to users before they update)",
+    "es": "Novedades (se muestran a los usuarios antes de actualizar)",
+    "de": "Was ist neu (wird Benutzern vor dem Update angezeigt)",
+    "it": "Novità (mostrate agli utenti prima dell'aggiornamento)"
+  },
+  "publish.open": {
+    "en": "Build a signed release…",
+    "es": "Crear una versión firmada…",
+    "de": "Signierte Version erstellen…",
+    "it": "Crea una versione firmata…"
+  },
+  "publish.output": {
+    "en": "Output folder (files to upload)",
+    "es": "Carpeta de salida (archivos para subir)",
+    "de": "Ausgabeordner (Dateien zum Hochladen)",
+    "it": "Cartella di output (file da caricare)"
+  },
+  "publish.password": {
+    "en": "Certificate password",
+    "es": "Contraseña del certificado",
+    "de": "Zertifikatkennwort",
+    "it": "Password del certificato"
+  },
+  "publish.pfx": {
+    "en": "Code-signing certificate (.pfx)",
+    "es": "Certificado de firma de código (.pfx)",
+    "de": "Codesignaturzertifikat (.pfx)",
+    "it": "Certificato di firma del codice (.pfx)"
+  },
+  "publish.readServer": {
+    "en": "Read server",
+    "es": "Leer servidor",
+    "de": "Server lesen",
+    "it": "Leggi server"
+  },
+  "publish.section.release": {
+    "en": "Release",
+    "es": "Versión",
+    "de": "Version",
+    "it": "Versione"
+  },
+  "publish.section.signing": {
+    "en": "Signing and output",
+    "es": "Firma y salida",
+    "de": "Signieren und Ausgabe",
+    "it": "Firma e output"
+  },
+  "publish.serverHas": {
+    "en": "The server has version {0} (released {1}).",
+    "es": "El servidor tiene la versión {0} (publicada el {1}).",
+    "de": "Auf dem Server ist Version {0} (veröffentlicht am {1}).",
+    "it": "Sul server c'è la versione {0} (pubblicata il {1})."
+  },
+  "publish.serverUnread": {
+    "en": "No update.json could be read from the server ({0}). That is expected before the first upload.",
+    "es": "No se pudo leer update.json del servidor ({0}). Es normal antes de la primera subida.",
+    "de": "Vom Server konnte keine update.json gelesen werden ({0}). Vor dem ersten Hochladen ist das normal.",
+    "it": "Impossibile leggere update.json dal server ({0}). È normale prima del primo caricamento."
+  },
+  "publish.signatureInvalid": {
+    "en": "The installer's signature is damaged (error {0}): the file was changed after it was signed. Installed, signed copies will refuse it. Publish anyway?",
+    "es": "La firma del instalador está dañada (error {0}): el archivo se modificó después de firmarlo. Las copias instaladas y firmadas lo rechazarán. ¿Publicar de todos modos?",
+    "de": "Die Signatur des Installationsprogramms ist beschädigt (Fehler {0}): Die Datei wurde nach dem Signieren geändert. Installierte, signierte Kopien lehnen es ab. Trotzdem veröffentlichen?",
+    "it": "La firma del programma di installazione è danneggiata (errore {0}): il file è stato modificato dopo la firma. Le copie installate e firmate lo rifiuteranno. Pubblicare comunque?"
+  },
+  "publish.signtool": {
+    "en": "signtool.exe (Windows SDK)",
+    "es": "signtool.exe (Windows SDK)",
+    "de": "signtool.exe (Windows SDK)",
+    "it": "signtool.exe (Windows SDK)"
+  },
+  "publish.solution": {
+    "en": "Solution folder (contains ReadEZ.sln)",
+    "es": "Carpeta de la solución (contiene ReadEZ.sln)",
+    "de": "Projektmappenordner (enthält ReadEZ.sln)",
+    "it": "Cartella della soluzione (contiene ReadEZ.sln)"
+  },
+  "publish.starterBad": {
+    "en": "{0} can't be used as the starter database - it isn't an ReadEZ patient database:\n{1}",
+    "es": "{0} no se puede usar como base de datos inicial: no es una base de datos de pacientes de ReadEZ:\n{1}",
+    "de": "{0} kann nicht als Startdatenbank verwendet werden - es ist keine ReadEZ-Patientendatenbank:\n{1}",
+    "it": "{0} non può essere usato come database iniziale: non è un database pazienti di ReadEZ:\n{1}"
+  },
+  "publish.starterConfirm": {
+    "en": "The starter database has {0} patients and {1} tests.\n\nIt will be installed on every new installation. Make sure it holds only example data and no real patients.\n\nContinue?",
+    "es": "La base de datos inicial tiene {0} pacientes y {1} pruebas.\n\nSe instalará en cada instalación nueva. Asegúrese de que solo contiene datos de ejemplo y ningún paciente real.\n\n¿Continuar?",
+    "de": "Die Startdatenbank enthält {0} Patienten und {1} Tests.\n\nSie wird bei jeder Neuinstallation installiert. Stellen Sie sicher, dass sie nur Beispieldaten und keine echten Patienten enthält.\n\nFortfahren?",
+    "it": "Il database iniziale contiene {0} pazienti e {1} test.\n\nVerrà installato in ogni nuova installazione. Assicurati che contenga solo dati di esempio e nessun paziente reale.\n\nContinuare?"
+  },
+  "publish.starterDb": {
+    "en": "Starter patient database (new installations only)",
+    "es": "Base de datos de pacientes inicial (solo instalaciones nuevas)",
+    "de": "Start-Patientendatenbank (nur Neuinstallationen)",
+    "it": "Database pazienti iniziale (solo nuove installazioni)"
+  },
+  "publish.starterDbNote": {
+    "en": "Example patients and results installed the first time ReadEZ runs on a computer. An existing database is never replaced, so updates are safe. Leave blank for an empty database.",
+    "es": "Pacientes y resultados de ejemplo que se instalan la primera vez que ReadEZ se ejecuta en un ordenador. Nunca se sustituye una base de datos existente, así que las actualizaciones son seguras. Déjelo en blanco para una base de datos vacía.",
+    "de": "Beispielpatienten und -ergebnisse, die beim ersten Start von ReadEZ auf einem Computer installiert werden. Eine vorhandene Datenbank wird nie ersetzt, Updates sind also sicher. Leer lassen für eine leere Datenbank.",
+    "it": "Pazienti e risultati di esempio installati la prima volta che ReadEZ viene avviato su un computer. Un database esistente non viene mai sostituito, quindi gli aggiornamenti sono sicuri. Lasciare vuoto per un database vuoto."
+  },
+  "publish.subtitle": {
+    "en": "Build and sign the installer, then write update.json ready to upload",
+    "es": "Compilar y firmar el instalador y crear update.json para subirlo",
+    "de": "Installationsprogramm erstellen und signieren, dann update.json zum Hochladen schreiben",
+    "it": "Creare e firmare il programma di installazione, poi scrivere update.json da caricare"
+  },
+  "publish.timestamp": {
+    "en": "Timestamp server",
+    "es": "Servidor de sellado de tiempo",
+    "de": "Zeitstempelserver",
+    "it": "Server di marca temporale"
+  },
+  "publish.title": {
+    "en": "Publish an update",
+    "es": "Publicar una actualización",
+    "de": "Ein Update veröffentlichen",
+    "it": "Pubblicare un aggiornamento"
+  },
+  "publish.unsignedConfirm": {
+    "en": "No certificate is selected, so the program and installer will not be signed, and signed copies will refuse this update. Build unsigned (for testing)?",
+    "es": "No hay ningún certificado seleccionado, así que el programa y el instalador no se firmarán y las copias firmadas rechazarán esta actualización. ¿Compilar sin firmar (para pruebas)?",
+    "de": "Kein Zertifikat gewählt: Programm und Installer werden nicht signiert, und signierte Installationen lehnen dieses Update ab. Unsigniert erstellen (zum Testen)?",
+    "it": "Nessun certificato selezionato: programma e installer non saranno firmati e le copie firmate rifiuteranno questo aggiornamento. Compilare senza firma (per test)?"
+  },
+  "publish.url": {
+    "en": "Update address (update.json on the web server)",
+    "es": "Dirección de actualización (update.json en el servidor web)",
+    "de": "Update-Adresse (update.json auf dem Webserver)",
+    "it": "Indirizzo aggiornamenti (update.json sul server web)"
+  },
+  "publish.urlNote": {
+    "en": "Installed copies use the address built into the program (UpdateService.DefaultUpdateUrl). Changing it here only affects this computer, for example to test a new folder.",
+    "es": "Las copias instaladas usan la dirección incluida en el programa (UpdateService.DefaultUpdateUrl). Cambiarla aquí solo afecta a este ordenador, por ejemplo para probar una carpeta nueva.",
+    "de": "Installierte Kopien verwenden die im Programm hinterlegte Adresse (UpdateService.DefaultUpdateUrl). Eine Änderung hier gilt nur für diesen Computer, z. B. zum Testen eines neuen Ordners.",
+    "it": "Le copie installate usano l'indirizzo incluso nel programma (UpdateService.DefaultUpdateUrl). Modificarlo qui vale solo per questo computer, ad esempio per provare una nuova cartella."
+  },
+  "publish.version": {
+    "en": "New version",
+    "es": "Nueva versión",
+    "de": "Neue Version",
+    "it": "Nuova versione"
+  },
+  "publish.versionMismatch": {
+    "en": "The program was built as version {0}, not {1}. Is ReadEZ.vbproj open with unsaved changes in Visual Studio?",
+    "es": "El programa se compiló como versión {0}, no {1}. ¿Está ReadEZ.vbproj abierto con cambios sin guardar en Visual Studio?",
+    "de": "Das Programm wurde als Version {0} statt {1} erstellt. Ist ReadEZ.vbproj in Visual Studio mit ungespeicherten Änderungen geöffnet?",
+    "it": "Il programma è stato compilato come versione {0}, non {1}. ReadEZ.vbproj è aperto con modifiche non salvate in Visual Studio?"
+  },
+  "publish.versionNote": {
+    "en": "Written into ReadEZ.vbproj when you build. It must be higher than the version on the server, or installed copies won't update.",
+    "es": "Se escribe en ReadEZ.vbproj al compilar. Debe ser mayor que la del servidor o las copias instaladas no se actualizarán.",
+    "de": "Wird beim Erstellen in ReadEZ.vbproj geschrieben. Sie muss höher als die Version auf dem Server sein, sonst werden installierte Kopien nicht aktualisiert.",
+    "it": "Viene scritta in ReadEZ.vbproj durante la compilazione. Deve essere superiore a quella sul server, altrimenti le copie installate non si aggiornano."
+  },
+  "readez.allChecked": {
+    "en": "All colours have been checked on this screen.",
+    "es": "Todos los colores se han comprobado en esta pantalla.",
+    "de": "Alle Farben wurden auf diesem Bildschirm geprüft.",
+    "it": "Tutti i colori sono stati verificati su questo schermo."
+  },
+  "readez.check.adjust": {
+    "en": "Adjust by hand",
+    "es": "Ajuste manual",
+    "de": "Von Hand anpassen",
+    "it": "Regola a mano"
+  },
+  "readez.check.darker": {
+    "en": "Darker",
+    "es": "Más oscuro",
+    "de": "Dunkler",
+    "it": "Più scuro"
+  },
+  "readez.check.default": {
+    "en": "ReadEZ default",
+    "es": "Valor de ReadEZ",
+    "de": "ReadEZ-Standard",
+    "it": "Predefinito ReadEZ"
+  },
+  "readez.check.discard": {
+    "en": "Discard the changes to the colours?",
+    "es": "¿Descartar los cambios en los colores?",
+    "de": "Änderungen an den Farben verwerfen?",
+    "it": "Annullare le modifiche ai colori?"
+  },
+  "readez.check.farFromDefault": {
+    "en": "⚠ Very different from the ReadEZ colour: check that this is the right filter, and that night light and colour filters are off.",
+    "es": "⚠ Muy distinto del color ReadEZ: compruebe que es el filtro correcto y que la luz nocturna y los filtros de color están desactivados.",
+    "de": "⚠ Stark abweichend von der ReadEZ-Farbe: Prüfen Sie, ob es der richtige Filter ist und ob Nachtmodus und Farbfilter aus sind.",
+    "it": "⚠ Molto diverso dal colore ReadEZ: verificare che sia il filtro giusto e che luce notturna e filtri colore siano disattivati."
+  },
+  "readez.check.find": {
+    "en": "Find the closest match",
+    "es": "Buscar el más parecido",
+    "de": "Beste Übereinstimmung finden",
+    "it": "Trova il più simile"
+  },
+  "readez.check.helpAllDone": {
+    "en": "All colours have been checked on this screen. Click Save colours.",
+    "es": "Todos los colores se han comprobado en esta pantalla. Pulse Guardar colores.",
+    "de": "Alle Farben wurden auf diesem Bildschirm geprüft. Klicken Sie auf Farben speichern.",
+    "it": "Tutti i colori sono stati verificati su questo schermo. Fare clic su Salva colori."
+  },
+  "readez.check.helpCompare": {
+    "en": "If the screen colour matches the overlay or lens, click Looks the same (Enter). If not, click Find the closest match.",
+    "es": "Si el color de la pantalla coincide con el filtro o la lente, pulse Se ve igual (Intro). Si no, pulse Buscar el más parecido.",
+    "de": "Wenn die Bildschirmfarbe dem Overlay oder Glas entspricht, klicken Sie auf Sieht gleich aus (Eingabe). Wenn nicht, auf Beste Übereinstimmung finden.",
+    "it": "Se il colore dello schermo corrisponde all'overlay o alla lente, fare clic su Sembra uguale (Invio). Altrimenti, su Trova il più simile."
+  },
+  "readez.check.helpFind": {
+    "en": "Round {0}: click the one that matches the overlay or lens best (or press 1 – 8). If several look equally close, pick any of them.",
+    "es": "Ronda {0}: haga clic en el que más se parezca al filtro o a la lente (o pulse 1 – 8). Si varios se ven igual de parecidos, elija cualquiera.",
+    "de": "Runde {0}: Klicken Sie auf das Feld, das dem Overlay oder Glas am besten entspricht (oder drücken Sie 1 – 8). Wenn mehrere gleich ähnlich sind, wählen Sie eines davon.",
+    "it": "Turno {0}: fare clic su quello più simile all'overlay o alla lente (o premere 1 – 8). Se più elementi sembrano ugualmente simili, sceglierne uno qualsiasi."
+  },
+  "readez.check.helpFound": {
+    "en": "Best match found. Compare it once more with the overlay or lens: if it looks the same, click Looks the same.",
+    "es": "Encontrado el más parecido. Compárelo una vez más con el filtro o la lente: si se ve igual, pulse Se ve igual.",
+    "de": "Beste Übereinstimmung gefunden. Vergleichen Sie noch einmal mit dem Overlay oder Glas: Wenn es gleich aussieht, klicken Sie auf Sieht gleich aus.",
+    "it": "Trovato il più simile. Confrontarlo ancora una volta con l'overlay o la lente: se sembra uguale, fare clic su Sembra uguale."
+  },
+  "readez.check.hueLeft": {
+    "en": "Hue ◀",
+    "es": "Tono ◀",
+    "de": "Farbton ◀",
+    "it": "Tinta ◀"
+  },
+  "readez.check.hueRight": {
+    "en": "Hue ▶",
+    "es": "Tono ▶",
+    "de": "Farbton ▶",
+    "it": "Tinta ▶"
+  },
+  "readez.check.introLens": {
+    "en": "Hold the lens over the white window (50 mm) and compare what you see through it with the screen's lens colour beside it.",
+    "es": "Sostenga la lente sobre la ventana blanca (50 mm) y compare lo que ve a través de ella con el color de lente de la pantalla que hay al lado.",
+    "de": "Halten Sie das Glas über das weiße Fenster (50 mm) und vergleichen Sie, was Sie durch das Glas sehen, mit der Glasfarbe des Bildschirms daneben.",
+    "it": "Tenere la lente sopra la finestra bianca (50 mm) e confrontare ciò che si vede attraverso la lente con il colore della lente sullo schermo accanto."
+  },
+  "readez.check.introOverlay": {
+    "en": "Lay the overlay on white paper and hold it, in the room's normal lighting, flat against the right-hand edge of this screen beside the coloured patch. The screen colour should look the same as the overlay.",
+    "es": "Coloque el filtro sobre papel blanco y sosténgalo, con la luz normal de la sala, contra el borde derecho de esta pantalla junto al recuadro de color. El color de la pantalla debe verse igual que el filtro.",
+    "de": "Legen Sie das Overlay auf weißes Papier und halten Sie es bei der üblichen Raumbeleuchtung an den rechten Rand dieses Bildschirms neben das Farbfeld. Die Bildschirmfarbe sollte wie das Overlay aussehen.",
+    "it": "Appoggiare l'overlay su carta bianca e tenerlo, con la normale illuminazione della stanza, contro il bordo destro di questo schermo accanto al riquadro colorato. Il colore dello schermo deve apparire uguale all'overlay."
+  },
+  "readez.check.lensPick": {
+    "en": "Hold the lens over the white window, then click the circle that matches the colour through the lens best",
+    "es": "Sostenga la lente sobre la ventana blanca y haga clic en el círculo más parecido al color que ve a través de la lente",
+    "de": "Halten Sie das Glas über das weiße Fenster und klicken Sie auf den Kreis, der der Farbe durch das Glas am besten entspricht",
+    "it": "Tenere la lente sopra la finestra bianca e fare clic sul cerchio più simile al colore visto attraverso la lente"
+  },
+  "readez.check.lensWindow": {
+    "en": "Hold the lens over this white window",
+    "es": "Sostenga la lente sobre esta ventana blanca",
+    "de": "Glas über dieses weiße Fenster halten",
+    "it": "Tenere la lente sopra questa finestra bianca"
+  },
+  "readez.check.lessColour": {
+    "en": "Less colour",
+    "es": "Menos color",
+    "de": "Weniger Farbe",
+    "it": "Meno colore"
+  },
+  "readez.check.lightTip": {
+    "en": "Match overlays under the lighting used for testing, with the screen at its testing brightness and night light, blue-light and colour filters turned off.",
+    "es": "Compare los filtros con la iluminación de las pruebas, con la pantalla al brillo de las pruebas y la luz nocturna y los filtros de luz azul y de color desactivados.",
+    "de": "Overlays bei der Beleuchtung der Tests abgleichen, mit der Helligkeit der Tests; Nachtmodus, Blaulicht- und Farbfilter ausschalten.",
+    "it": "Confrontare gli overlay con l'illuminazione dei test, con lo schermo alla luminosità dei test e luce notturna e filtri luce blu e colore disattivati."
+  },
+  "readez.check.lighter": {
+    "en": "Lighter",
+    "es": "Más claro",
+    "de": "Heller",
+    "it": "Più chiaro"
+  },
+  "readez.check.moreColour": {
+    "en": "More colour",
+    "es": "Más color",
+    "de": "Mehr Farbe",
+    "it": "Più colore"
+  },
+  "readez.check.oneScreen": {
+    "en": "Only one screen is connected, so the check will fill this screen. The colours should be checked on the screen the patient looks at. Continue?",
+    "es": "Solo hay una pantalla conectada, así que la comprobación ocupará esta pantalla. Los colores deben comprobarse en la pantalla que mira el paciente. ¿Continuar?",
+    "de": "Es ist nur ein Bildschirm angeschlossen, daher füllt die Prüfung diesen Bildschirm. Die Farben sollten auf dem Bildschirm des Patienten geprüft werden. Fortfahren?",
+    "it": "È collegato un solo schermo, quindi la verifica occuperà questo schermo. I colori vanno verificati sullo schermo che guarda il paziente. Continuare?"
+  },
+  "readez.check.paperHere": {
+    "en": "Hold the overlay, on white paper, against the screen edge here  →",
+    "es": "Sostenga el filtro, sobre papel blanco, contra el borde de la pantalla aquí  →",
+    "de": "Overlay auf weißem Papier hier an den Bildschirmrand halten  →",
+    "it": "Tenere l'overlay, su carta bianca, contro il bordo dello schermo qui  →"
+  },
+  "readez.check.paperPick": {
+    "en": "Click the strip that matches the overlay best  →",
+    "es": "Haga clic en la franja más parecida al filtro  →",
+    "de": "Klicken Sie auf den Streifen, der dem Overlay am besten entspricht  →",
+    "it": "Fare clic sulla striscia più simile all'overlay  →"
+  },
+  "readez.check.progress": {
+    "en": "The differences get smaller with each choice",
+    "es": "Las diferencias se reducen con cada elección",
+    "de": "Die Unterschiede werden mit jeder Wahl kleiner",
+    "it": "Le differenze diminuiscono a ogni scelta"
+  },
+  "readez.check.same": {
+    "en": "Looks the same",
+    "es": "Se ve igual",
+    "de": "Sieht gleich aus",
+    "it": "Sembra uguale"
+  },
+  "readez.check.save": {
+    "en": "Save colours",
+    "es": "Guardar colores",
+    "de": "Farben speichern",
+    "it": "Salva colori"
+  },
+  "readez.check.screen": {
+    "en": "Patient's screen: {0}",
+    "es": "Pantalla del paciente: {0}",
+    "de": "Patientenbildschirm: {0}",
+    "it": "Schermo del paziente: {0}"
+  },
+  "readez.check.screenTip": {
+    "en": "Use the screen at the brightness used for testing, with night light, blue-light and colour filters turned off.",
+    "es": "Use la pantalla con el brillo de las pruebas y con la luz nocturna y los filtros de luz azul y de color desactivados.",
+    "de": "Bildschirm mit der Helligkeit der Tests verwenden; Nachtmodus, Blaulicht- und Farbfilter ausschalten.",
+    "it": "Usare lo schermo con la luminosità dei test, con luce notturna e filtri luce blu e colore disattivati."
+  },
+  "readez.check.stateMatched": {
+    "en": "Matched – saved as checked on this screen when you click Save colours",
+    "es": "Coincide – se guardará como comprobado al pulsar Guardar colores",
+    "de": "Übereinstimmung – wird beim Speichern als geprüft gespeichert",
+    "it": "Corrisponde – sarà salvato come verificato con Salva colori"
+  },
+  "readez.check.stateOtherScreen": {
+    "en": "Checked on a different screen – check it on this one",
+    "es": "Comprobado en otra pantalla – compruébelo en esta",
+    "de": "Auf einem anderen Bildschirm geprüft – bitte auf diesem prüfen",
+    "it": "Verificato su un altro schermo – verificarlo su questo"
+  },
+  "readez.check.stop": {
+    "en": "Stop",
+    "es": "Detener",
+    "de": "Abbrechen",
+    "it": "Interrompi"
+  },
+  "readez.check.title": {
+    "en": "Check ReadEZ colours",
+    "es": "Comprobar colores ReadEZ",
+    "de": "ReadEZ-Farben prüfen",
+    "it": "Verifica colori ReadEZ"
+  },
+  "readez.check.undo": {
+    "en": "Undo",
+    "es": "Deshacer",
+    "de": "Rückgängig",
+    "it": "Annulla"
+  },
+  "readez.checkedOn": {
+    "en": "Checked on this screen {0}",
+    "es": "Comprobado en esta pantalla el {0}",
+    "de": "Auf diesem Bildschirm geprüft am {0}",
+    "it": "Verificato su questo schermo il {0}"
+  },
+  "readez.darkTint": {
+    "en": "Dark tint",
+    "es": "Tinte oscuro",
+    "de": "Dunkle Tönung",
+    "it": "Tinta scura"
+  },
+  "readez.grey": {
+    "en": "Grey",
+    "es": "Gris",
+    "de": "Grau",
+    "it": "Grigio"
+  },
+  "readez.lensName": {
+    "en": "Light tint {0}",
+    "es": "Tinte claro {0}",
+    "de": "Leichte Tönung {0}",
+    "it": "Tinta chiara {0}"
+  },
+  "readez.lightTint": {
+    "en": "Light tint",
+    "es": "Tinte claro",
+    "de": "Leichte Tönung",
+    "it": "Tinta chiara"
+  },
+  "readez.notChecked": {
+    "en": "Not checked on this screen",
+    "es": "Sin comprobar en esta pantalla",
+    "de": "Auf diesem Bildschirm nicht geprüft",
+    "it": "Non verificato su questo schermo"
+  },
+  "readez.overlayName": {
+    "en": "Overlay {0}",
+    "es": "Filtro {0}",
+    "de": "Overlay {0}",
+    "it": "Overlay {0}"
+  },
+  "readez.overlays": {
+    "en": "Overlays",
+    "es": "Filtros superpuestos",
+    "de": "Overlays",
+    "it": "Overlay"
+  },
+  "readez.someChecked": {
+    "en": "{0} of {1} colours checked on this screen (dotted circles: not checked yet).",
+    "es": "{0} de {1} colores comprobados en esta pantalla (círculos punteados: sin comprobar).",
+    "de": "{0} von {1} Farben auf diesem Bildschirm geprüft (gepunktete Kreise: noch nicht geprüft).",
+    "it": "{0} di {1} colori verificati su questo schermo (cerchi tratteggiati: non ancora verificati)."
+  },
+  "readez.strongName": {
+    "en": "Dark tint {0}",
+    "es": "Tinte oscuro {0}",
+    "de": "Dunkle Tönung {0}",
+    "it": "Tinta scura {0}"
+  },
+  "reading.clearMarks": {
+    "en": "Clear marks",
+    "es": "Borrar marcas",
+    "de": "Markierungen löschen",
+    "it": "Cancella segni"
+  },
+  "reading.errors": {
+    "en": "Errors",
+    "es": "Errores",
+    "de": "Fehler",
+    "it": "Errori"
+  },
+  "reading.intro": {
+    "en": "The patient reads the words aloud as quickly and accurately as they can. Start the clock as they begin (Space); it stops by itself after the reading time.",
+    "es": "El paciente lee las palabras en voz alta lo más rápido y exacto posible. Inicie el reloj cuando empiece (Espacio); se detiene solo al acabar el tiempo de lectura.",
+    "de": "Der Patient liest die Wörter so schnell und genau wie möglich laut vor. Starten Sie die Uhr zu Beginn (Leertaste); sie hält nach der Lesezeit selbst an.",
+    "it": "Il paziente legge le parole ad alta voce il più velocemente e accuratamente possibile. Avvia il cronometro all'inizio (Spazio); si ferma da solo alla fine del tempo di lettura."
+  },
+  "reading.marking": {
+    "en": "On the text: click a misread word · Shift+click a skipped row · right-click the last word read",
+    "es": "En el texto: clic en una palabra mal leída · Mayús+clic en una fila saltada · clic derecho en la última palabra leída",
+    "de": "Im Text: Klick auf ein falsch gelesenes Wort · Umschalt+Klick auf eine übersprungene Zeile · Rechtsklick auf das zuletzt gelesene Wort",
+    "it": "Sul testo: clic su una parola letta male · Maiusc+clic su una riga saltata · clic destro sull'ultima parola letta"
+  },
+  "reading.seconds": {
+    "en": "Reading time (s)",
+    "es": "Tiempo de lectura (s)",
+    "de": "Lesezeit (s)",
+    "it": "Tempo di lettura (s)"
+  },
+  "reading.skipped": {
+    "en": "Rows skipped",
+    "es": "Filas saltadas",
+    "de": "Übersprungene Zeilen",
+    "it": "Righe saltate"
+  },
+  "reading.start": {
+    "en": "Start clock",
+    "es": "Iniciar reloj",
+    "de": "Uhr starten",
+    "it": "Avvia cronometro"
+  },
+  "reading.stop": {
+    "en": "Stop clock",
+    "es": "Parar reloj",
+    "de": "Uhr anhalten",
+    "it": "Ferma cronometro"
+  },
+  "reading.stopped": {
+    "en": "Clock stopped. Right-click the last word read.",
+    "es": "Reloj parado. Haga clic derecho en la última palabra leída.",
+    "de": "Uhr angehalten. Klicken Sie mit rechts auf das zuletzt gelesene Wort.",
+    "it": "Cronometro fermo. Fai clic destro sull'ultima parola letta."
+  },
+  "reading.timeUp": {
+    "en": "Time is up! Right-click the last word read.",
+    "es": "¡Se acabó el tiempo! Haga clic derecho en la última palabra leída.",
+    "de": "Die Zeit ist um! Klicken Sie mit rechts auf das zuletzt gelesene Wort.",
+    "it": "Tempo scaduto! Fai clic destro sull'ultima parola letta."
+  },
+  "reading.words": {
+    "en": "Words read",
+    "es": "Palabras leídas",
+    "de": "Gelesene Wörter",
+    "it": "Parole lette"
+  },
+  "reading.wpmUnit": {
+    "en": "words/min",
+    "es": "palabras/min",
+    "de": "Wörter/min",
+    "it": "parole/min"
+  },
+  "report.age": {
+    "en": "age {0}",
+    "es": "edad {0}",
+    "de": "Alter {0}",
+    "it": "età {0}"
+  },
+  "report.colourChosen": {
+    "en": "Colour chosen",
+    "es": "Color elegido",
+    "de": "Gewählte Farbe",
+    "it": "Colore scelto"
+  },
+  "report.date": {
+    "en": "Date",
+    "es": "Fecha",
+    "de": "Datum",
+    "it": "Data"
+  },
+  "report.dob": {
+    "en": "Date of birth",
+    "es": "Fecha de nacimiento",
+    "de": "Geburtsdatum",
+    "it": "Data di nascita"
+  },
+  "report.grade": {
+    "en": "Grade (0 - 5)",
+    "es": "Grado (0 - 5)",
+    "de": "Bewertung (0 - 5)",
+    "it": "Grado (0 - 5)"
+  },
+  "report.measure": {
+    "en": "Measure",
+    "es": "Medida",
+    "de": "Messgröße",
+    "it": "Misura"
+  },
+  "report.name": {
+    "en": "Name",
+    "es": "Nombre",
+    "de": "Name",
+    "it": "Nome"
+  },
+  "report.notes": {
+    "en": "Notes",
+    "es": "Notas",
+    "de": "Notizen",
+    "it": "Note"
+  },
+  "report.organisation": {
+    "en": "Organisation",
+    "es": "Organización",
+    "de": "Organisation",
+    "it": "Organizzazione"
+  },
+  "report.pageOf": {
+    "en": "Page {0} of {1}",
+    "es": "Página {0} de {1}",
+    "de": "Seite {0} von {1}",
+    "it": "Pagina {0} di {1}"
+  },
+  "report.patientDetails": {
+    "en": "PATIENT DETAILS",
+    "es": "DATOS DEL PACIENTE",
+    "de": "PATIENTENDATEN",
+    "it": "DATI DEL PAZIENTE"
+  },
+  "report.question": {
+    "en": "Question",
+    "es": "Pregunta",
+    "de": "Frage",
+    "it": "Domanda"
+  },
+  "report.reference": {
+    "en": "Reference",
+    "es": "Referencia",
+    "de": "Referenz",
+    "it": "Riferimento"
+  },
+  "report.screener": {
+    "en": "Screener",
+    "es": "Examinador",
+    "de": "Untersucher",
+    "it": "Esaminatore"
+  },
+  "report.test": {
+    "en": "Test",
+    "es": "Prueba",
+    "de": "Test",
+    "it": "Test"
+  },
+  "report.testInformation": {
+    "en": "TEST INFORMATION",
+    "es": "INFORMACIÓN DE LA PRUEBA",
+    "de": "TESTINFORMATIONEN",
+    "it": "INFORMAZIONI SUL TEST"
+  },
+  "report.text": {
+    "en": "Text",
+    "es": "Texto",
+    "de": "Text",
+    "it": "Testo"
+  },
+  "report.title": {
+    "en": "ReadEZ colour screening",
+    "es": "Evaluación de color ReadEZ",
+    "de": "ReadEZ-Farbscreening",
+    "it": "Screening del colore ReadEZ"
+  },
+  "report.total": {
+    "en": "Total",
+    "es": "Total",
+    "de": "Summe",
+    "it": "Totale"
+  },
+  "report.wpm": {
+    "en": "Words per minute",
+    "es": "Palabras por minuto",
+    "de": "Wörter pro Minute",
+    "it": "Parole al minuto"
+  },
+  "result.bespoke": {
+    "en": "Bespoke colour",
+    "es": "Color a medida",
+    "de": "Individuelle Farbe",
+    "it": "Colore personalizzato"
+  },
+  "result.white": {
+    "en": "White",
+    "es": "Blanco",
+    "de": "Weiß",
+    "it": "Bianco"
+  },
+  "results.baseline": {
+    "en": "Baseline",
+    "es": "Línea base",
+    "de": "Ausgangswert",
+    "it": "Valore di base"
+  },
+  "results.bespoke": {
+    "en": "Bespoke",
+    "es": "A medida",
+    "de": "Individuell",
+    "it": "Personalizzato"
+  },
+  "results.change": {
+    "en": "Change with colour",
+    "es": "Cambio con el color",
+    "de": "Veränderung mit Farbe",
+    "it": "Variazione con il colore"
+  },
+  "results.change.errors": {
+    "en": "Errors",
+    "es": "Errores",
+    "de": "Fehler",
+    "it": "Errori"
+  },
+  "results.change.fromTo": {
+    "en": "{0} → {1}",
+    "es": "{0} → {1}",
+    "de": "{0} → {1}",
+    "it": "{0} → {1}"
+  },
+  "results.change.reading": {
+    "en": "Rate of reading",
+    "es": "Velocidad de lectura",
+    "de": "Lesegeschwindigkeit",
+    "it": "Velocità di lettura"
+  },
+  "results.change.readingGood": {
+    "en": "An increase of 5 % or more suggests the colour helps",
+    "es": "Un aumento del 5 % o más indica que el color ayuda",
+    "de": "Eine Zunahme um 5 % oder mehr spricht für einen Nutzen der Farbe",
+    "it": "Un aumento del 5 % o più indica che il colore aiuta"
+  },
+  "results.change.readingSame": {
+    "en": "Little change",
+    "es": "Poco cambio",
+    "de": "Kaum Veränderung",
+    "it": "Poca variazione"
+  },
+  "results.change.readingWorse": {
+    "en": "Slower with colour",
+    "es": "Más lento con color",
+    "de": "Langsamer mit Farbe",
+    "it": "Più lento con il colore"
+  },
+  "results.change.symptoms": {
+    "en": "Symptoms (total)",
+    "es": "Síntomas (total)",
+    "de": "Symptome (gesamt)",
+    "it": "Sintomi (totale)"
+  },
+  "results.closePreview": {
+    "en": "Click or press any key to close",
+    "es": "Haga clic o pulse una tecla para cerrar",
+    "de": "Klicken oder eine Taste drücken zum Schließen",
+    "it": "Fai clic o premi un tasto per chiudere"
+  },
+  "results.colourResult": {
+    "en": "Colour chosen",
+    "es": "Color elegido",
+    "de": "Gewählte Farbe",
+    "it": "Colore scelto"
+  },
+  "results.delete.confirm": {
+    "en": "Delete this test? This cannot be undone.",
+    "es": "¿Eliminar esta prueba? No se puede deshacer.",
+    "de": "Diesen Test löschen? Dies kann nicht rückgängig gemacht werden.",
+    "it": "Eliminare questo test? Non si può annullare."
+  },
+  "results.delete.done": {
+    "en": "Test deleted",
+    "es": "Prueba eliminada",
+    "de": "Test gelöscht",
+    "it": "Test eliminato"
+  },
+  "results.imported": {
+    "en": "Imported from {0}",
+    "es": "Importado de {0}",
+    "de": "Importiert aus {0}",
+    "it": "Importato da {0}"
+  },
+  "results.legend.baseline": {
+    "en": "Baseline",
+    "es": "Línea base",
+    "de": "Ausgangswert",
+    "it": "Valore di base"
+  },
+  "results.legend.colour": {
+    "en": "With colour",
+    "es": "Con color",
+    "de": "Mit Farbe",
+    "it": "Con colore"
+  },
+  "results.letter": {
+    "en": "Letter",
+    "es": "Carta",
+    "de": "Brief",
+    "it": "Lettera"
+  },
+  "results.method": {
+    "en": "Method: {0}",
+    "es": "Método: {0}",
+    "de": "Methode: {0}",
+    "it": "Metodo: {0}"
+  },
+  "results.move.confirm": {
+    "en": "Move this test to {0}?",
+    "es": "¿Mover esta prueba a {0}?",
+    "de": "Diesen Test zu {0} verschieben?",
+    "it": "Spostare questo test a {0}?"
+  },
+  "results.move.done": {
+    "en": "Test moved to {0}",
+    "es": "Prueba movida a {0}",
+    "de": "Test zu {0} verschoben",
+    "it": "Test spostato a {0}"
+  },
+  "results.move.same": {
+    "en": "The test already belongs to that patient.",
+    "es": "La prueba ya pertenece a ese paciente.",
+    "de": "Der Test gehört bereits zu diesem Patienten.",
+    "it": "Il test appartiene già a quel paziente."
+  },
+  "results.move.title": {
+    "en": "Move the test to another patient",
+    "es": "Mover la prueba a otro paciente",
+    "de": "Test einem anderen Patienten zuordnen",
+    "it": "Sposta il test a un altro paziente"
+  },
+  "results.none": {
+    "en": "No tests for this patient yet",
+    "es": "Todavía no hay pruebas de este paciente",
+    "de": "Noch keine Tests für diesen Patienten",
+    "it": "Ancora nessun test per questo paziente"
+  },
+  "results.notDone": {
+    "en": "Not done",
+    "es": "No realizado",
+    "de": "Nicht durchgeführt",
+    "it": "Non eseguito"
+  },
+  "results.notes": {
+    "en": "Notes",
+    "es": "Notas",
+    "de": "Notizen",
+    "it": "Note"
+  },
+  "results.notes.prompt": {
+    "en": "Notes for this test",
+    "es": "Notas de esta prueba",
+    "de": "Notizen zu diesem Test",
+    "it": "Note per questo test"
+  },
+  "results.reading": {
+    "en": "Rate of reading",
+    "es": "Velocidad de lectura",
+    "de": "Lesegeschwindigkeit",
+    "it": "Velocità di lettura"
+  },
+  "results.readingDetail": {
+    "en": "{0} words in {1} s  ·  {2} errors  ·  {3} rows skipped",
+    "es": "{0} palabras en {1} s  ·  {2} errores  ·  {3} filas saltadas",
+    "de": "{0} Wörter in {1} s  ·  {2} Fehler  ·  {3} Zeilen übersprungen",
+    "it": "{0} parole in {1} s  ·  {2} errori  ·  {3} righe saltate"
+  },
+  "results.report": {
+    "en": "Report",
+    "es": "Informe",
+    "de": "Bericht",
+    "it": "Referto"
+  },
+  "results.screener": {
+    "en": "Screener: {0}",
+    "es": "Examinador: {0}",
+    "de": "Untersucher: {0}",
+    "it": "Esaminatore: {0}"
+  },
+  "results.show": {
+    "en": "Show on patient's screen",
+    "es": "Mostrar en la pantalla del paciente",
+    "de": "Auf Patientenbildschirm zeigen",
+    "it": "Mostra sullo schermo del paziente"
+  },
+  "results.shown": {
+    "en": "The text is shown in this colour on the patient's screen",
+    "es": "El texto se muestra en este color en la pantalla del paciente",
+    "de": "Der Text wird in dieser Farbe auf dem Patientenbildschirm gezeigt",
+    "it": "Il testo è mostrato in questo colore sullo schermo del paziente"
+  },
+  "results.shownOne": {
+    "en": "Showing the text in this colour (click or press a key to close)",
+    "es": "Mostrando el texto en este color (clic o tecla para cerrar)",
+    "de": "Text wird in dieser Farbe gezeigt (Klick oder Taste zum Schließen)",
+    "it": "Testo mostrato in questo colore (clic o tasto per chiudere)"
+  },
+  "results.symptoms": {
+    "en": "Symptoms",
+    "es": "Síntomas",
+    "de": "Symptome",
+    "it": "Sintomi"
+  },
+  "results.symptomsShort": {
+    "en": "symptoms {0}/20",
+    "es": "síntomas {0}/20",
+    "de": "Symptome {0}/20",
+    "it": "sintomi {0}/20"
+  },
+  "results.text": {
+    "en": "Text: {0}  ·  {1} {2} pt  ·  {3} rows",
+    "es": "Texto: {0}  ·  {1} {2} pt  ·  {3} filas",
+    "de": "Text: {0}  ·  {1} {2} pt  ·  {3} Zeilen",
+    "it": "Testo: {0}  ·  {1} {2} pt  ·  {3} righe"
+  },
+  "results.title": {
+    "en": "Results",
+    "es": "Resultados",
+    "de": "Ergebnisse",
+    "it": "Risultati"
+  },
+  "results.transcript": {
+    "en": "Transcript",
+    "es": "Transcripción",
+    "de": "Transkript",
+    "it": "Trascrizione"
+  },
+  "results.transcript.subtitle": {
+    "en": "X misread word  ·  - skipped row  ·  ] last word read",
+    "es": "X palabra mal leída  ·  - fila saltada  ·  ] última palabra leída",
+    "de": "X falsch gelesen  ·  - Zeile übersprungen  ·  ] letztes Wort",
+    "it": "X parola letta male  ·  - riga saltata  ·  ] ultima parola letta"
+  },
+  "results.view": {
+    "en": "View results",
+    "es": "Ver resultados",
+    "de": "Ergebnisse anzeigen",
+    "it": "Vedi risultati"
+  },
+  "results.wpmShort": {
+    "en": "{0} words/min",
+    "es": "{0} palabras/min",
+    "de": "{0} Wörter/min",
+    "it": "{0} parole/min"
+  },
+  "run.confirmLeave": {
+    "en": "Leave the test? It has not been saved.",
+    "es": "¿Salir de la prueba? No se ha guardado.",
+    "de": "Test verlassen? Er wurde nicht gespeichert.",
+    "it": "Uscire dal test? Non è stato salvato."
+  },
+  "run.fullScreen": {
+    "en": "Patient full screen (F11)",
+    "es": "Paciente a pantalla completa (F11)",
+    "de": "Patient im Vollbild (F11)",
+    "it": "Paziente a schermo intero (F11)"
+  },
+  "run.mode.one": {
+    "en": "One screen",
+    "es": "Una pantalla",
+    "de": "Ein Bildschirm",
+    "it": "Uno schermo"
+  },
+  "run.mode.two": {
+    "en": "Two screens",
+    "es": "Dos pantallas",
+    "de": "Zwei Bildschirme",
+    "it": "Due schermi"
+  },
+  "run.nextStep": {
+    "en": "Next step",
+    "es": "Paso siguiente",
+    "de": "Nächster Schritt",
+    "it": "Passo successivo"
+  },
+  "run.prevStep": {
+    "en": "Previous step",
+    "es": "Paso anterior",
+    "de": "Vorheriger Schritt",
+    "it": "Passo precedente"
+  },
+  "run.saveFinish": {
+    "en": "Save and finish",
+    "es": "Guardar y terminar",
+    "de": "Speichern und beenden",
+    "it": "Salva e termina"
+  },
+  "run.saved": {
+    "en": "Test saved",
+    "es": "Prueba guardada",
+    "de": "Test gespeichert",
+    "it": "Test salvato"
+  },
+  "run.showControls": {
+    "en": "Controls (Esc)",
+    "es": "Controles (Esc)",
+    "de": "Steuerung (Esc)",
+    "it": "Comandi (Esc)"
+  },
+  "run.skipStep": {
+    "en": "Skip step",
+    "es": "Omitir paso",
+    "de": "Schritt überspringen",
+    "it": "Salta passo"
+  },
+  "run.stepNotComplete": {
+    "en": "This step isn't finished. Go on anyway?",
+    "es": "Este paso no está terminado. ¿Continuar de todos modos?",
+    "de": "Dieser Schritt ist nicht abgeschlossen. Trotzdem fortfahren?",
+    "it": "Questo passo non è finito. Continuare comunque?"
+  },
+  "run.view.copy": {
+    "en": "Copy of the patient's screen",
+    "es": "Copia de la pantalla del paciente",
+    "de": "Kopie des Patientenbildschirms",
+    "it": "Copia dello schermo del paziente"
+  },
+  "run.view.patient": {
+    "en": "The patient reads from this panel (F11: full screen)",
+    "es": "El paciente lee en este panel (F11: pantalla completa)",
+    "de": "Der Patient liest in diesem Feld (F11: Vollbild)",
+    "it": "Il paziente legge da questo riquadro (F11: schermo intero)"
+  },
+  "screeners.delete.confirm": {
+    "en": "Remove {0} from the list? Results keep their name.",
+    "es": "¿Quitar a {0} de la lista? Los resultados conservan su nombre.",
+    "de": "{0} aus der Liste entfernen? Ergebnisse behalten den Namen.",
+    "it": "Rimuovere {0} dall'elenco? I risultati mantengono il nome."
+  },
+  "screeners.firstPrompt": {
+    "en": "First name",
+    "es": "Nombre",
+    "de": "Vorname",
+    "it": "Nome"
+  },
+  "screeners.pickSubtitle": {
+    "en": "Who is running the tests?",
+    "es": "¿Quién hace las pruebas?",
+    "de": "Wer führt die Tests durch?",
+    "it": "Chi esegue i test?"
+  },
+  "screeners.subtitle": {
+    "en": "The people who run the tests",
+    "es": "Las personas que hacen las pruebas",
+    "de": "Die Personen, die testen",
+    "it": "Le persone che eseguono i test"
+  },
+  "screeners.surnamePrompt": {
+    "en": "Surname",
+    "es": "Apellido",
+    "de": "Nachname",
+    "it": "Cognome"
+  },
+  "screeners.title": {
+    "en": "Screeners",
+    "es": "Examinadores",
+    "de": "Untersucher",
+    "it": "Esaminatori"
+  },
+  "screeners.titlePrompt": {
+    "en": "Title (Mr, Mrs, Dr …)",
+    "es": "Tratamiento (Sr., Sra., Dr. …)",
+    "de": "Anrede (Herr, Frau, Dr. …)",
+    "it": "Titolo (Sig., Sig.ra, Dott. …)"
+  },
+  "screeners.use": {
+    "en": "Use",
+    "es": "Usar",
+    "de": "Verwenden",
+    "it": "Usa"
+  },
+  "settings.admin.info": {
+    "en": "Administrator settings choose which colour tests are offered, release and help options, and the admin password. A password is required.",
+    "es": "La configuración de administrador elige qué pruebas de color se ofrecen, las opciones de versiones y ayuda y la contraseña. Se requiere contraseña.",
+    "de": "Die Administratoreinstellungen legen die angebotenen Farbtests, Versions- und Hilfeoptionen sowie das Passwort fest. Ein Passwort ist erforderlich.",
+    "it": "Le impostazioni di amministratore scelgono quali test del colore offrire, le opzioni di versione e guida e la password. È richiesta una password."
+  },
+  "settings.admin.open": {
+    "en": "Open admin settings…",
+    "es": "Abrir configuración de administrador…",
+    "de": "Administratoreinstellungen öffnen…",
+    "it": "Apri impostazioni di amministratore…"
+  },
+  "settings.beep": {
+    "en": "Sound when the reading time is up",
+    "es": "Sonido al acabar el tiempo de lectura",
+    "de": "Ton, wenn die Lesezeit um ist",
+    "it": "Suono alla fine del tempo di lettura"
+  },
+  "settings.controlWindow": {
+    "en": "Clinician",
+    "es": "Profesional",
+    "de": "Untersucher",
+    "it": "Clinico"
+  },
+  "settings.db.created": {
+    "en": "New database created:\n{0}",
+    "es": "Nueva base de datos creada:\n{0}",
+    "de": "Neue Datenbank angelegt:\n{0}",
+    "it": "Nuovo database creato:\n{0}"
+  },
+  "settings.db.existsUse": {
+    "en": "A file with that name already exists. Use it? (It will not be overwritten.)",
+    "es": "Ya existe un archivo con ese nombre. ¿Usarlo? (No se sobrescribirá.)",
+    "de": "Eine Datei mit diesem Namen existiert bereits. Verwenden? (Sie wird nicht überschrieben.)",
+    "it": "Esiste già un file con questo nome. Usarlo? (Non verrà sovrascritto.)"
+  },
+  "settings.db.isOld": {
+    "en": "That file is a ReadEZ 2020 database. Use \"Import a ReadEZ 2020 database\" to bring its patients and results into this database.",
+    "es": "Ese archivo es una base de datos de ReadEZ 2020. Use \"Importar una base de datos de ReadEZ 2020\" para traer sus pacientes y resultados.",
+    "de": "Diese Datei ist eine ReadEZ-2020-Datenbank. Verwenden Sie \"ReadEZ-2020-Datenbank importieren\", um Patienten und Ergebnisse zu übernehmen.",
+    "it": "Il file è un database di ReadEZ 2020. Usa \"Importa un database di ReadEZ 2020\" per portarne pazienti e risultati."
+  },
+  "settings.db.notFoundCreate": {
+    "en": "No database was found at:\n{0}\n\nCheck the path (or that the network drive is connected). Create a new, empty database there?",
+    "es": "No se encontró ninguna base de datos en:\n{0}\n\nCompruebe la ruta (o que la unidad de red esté conectada). ¿Crear allí una base de datos nueva y vacía?",
+    "de": "Unter folgendem Pfad wurde keine Datenbank gefunden:\n{0}\n\nPrüfen Sie den Pfad (oder ob das Netzlaufwerk verbunden ist). Dort eine neue, leere Datenbank anlegen?",
+    "it": "Nessun database trovato in:\n{0}\n\nControlla il percorso (o che l'unità di rete sia collegata). Creare lì un nuovo database vuoto?"
+  },
+  "settings.fullWindow": {
+    "en": "One screen: start tests with the patient's text full screen",
+    "es": "Una pantalla: iniciar las pruebas con el texto a pantalla completa",
+    "de": "Ein Bildschirm: Tests mit dem Text im Vollbild beginnen",
+    "it": "Uno schermo: avvia i test con il testo a schermo intero"
+  },
+  "settings.importOld.hint": {
+    "en": "Brings the patients, organisations, screeners and results of a ReadEZ 2020 database into the database in use. The old file is only read. Importing the same file again adds only what is new.",
+    "es": "Trae los pacientes, organizaciones, examinadores y resultados de una base de datos de ReadEZ 2020 a la base de datos en uso. El archivo antiguo solo se lee. Volver a importar el mismo archivo solo añade lo nuevo.",
+    "de": "Übernimmt Patienten, Organisationen, Untersucher und Ergebnisse einer ReadEZ-2020-Datenbank in die verwendete Datenbank. Die alte Datei wird nur gelesen. Ein erneuter Import derselben Datei fügt nur Neues hinzu.",
+    "it": "Porta pazienti, organizzazioni, esaminatori e risultati di un database ReadEZ 2020 nel database in uso. Il vecchio file viene solo letto. Reimportare lo stesso file aggiunge solo le novità."
+  },
+  "settings.importStandard": {
+    "en": "Copy reading texts and letters from another folder…",
+    "es": "Copiar textos de lectura y cartas de otra carpeta…",
+    "de": "Lesetexte und Briefe aus einem anderen Ordner kopieren…",
+    "it": "Copia testi e lettere da un'altra cartella…"
+  },
+  "settings.importStandard.done": {
+    "en": "{0} files copied into the data folder",
+    "es": "{0} archivos copiados a la carpeta de datos",
+    "de": "{0} Dateien in den Datenordner kopiert",
+    "it": "{0} file copiati nella cartella dei dati"
+  },
+  "settings.importStandard.hint": {
+    "en": "For example another computer's ReadEZ Data folder. Only missing files are copied.",
+    "es": "Por ejemplo la carpeta ReadEZ Data de otro ordenador. Solo se copian los archivos que faltan.",
+    "de": "Zum Beispiel der Ordner ReadEZ Data eines anderen Computers. Nur fehlende Dateien werden kopiert.",
+    "it": "Ad esempio la cartella ReadEZ Data di un altro computer. Vengono copiati solo i file mancanti."
+  },
+  "settings.importStandard.notData": {
+    "en": "That folder contains none of: {0}",
+    "es": "Esa carpeta no contiene ninguna de: {0}",
+    "de": "Dieser Ordner enthält keinen von: {0}",
+    "it": "Quella cartella non contiene nessuna di: {0}"
+  },
+  "settings.importStandard.pick": {
+    "en": "Choose the folder that contains Reading texts, ReadEZ Templates and Report images",
+    "es": "Elija la carpeta que contiene Reading texts, ReadEZ Templates y Report images",
+    "de": "Ordner mit Reading texts, ReadEZ Templates und Report images wählen",
+    "it": "Scegli la cartella che contiene Reading texts, ReadEZ Templates e Report images"
+  },
+  "settings.language": {
+    "en": "Language of the program",
+    "es": "Idioma del programa",
+    "de": "Programmsprache",
+    "it": "Lingua del programma"
+  },
+  "settings.languageNote": {
+    "en": "The program's menus, screens and reports change to this language straight away.",
+    "es": "Los menús, pantallas e informes del programa cambian a este idioma de inmediato.",
+    "de": "Menüs, Fenster und Berichte des Programms wechseln sofort in diese Sprache.",
+    "it": "Menu, schermate e rapporti del programma passano subito a questa lingua."
+  },
+  "settings.logoFile": {
+    "en": "Logo image",
+    "es": "Imagen del logotipo",
+    "de": "Logobild",
+    "it": "Immagine del logo"
+  },
+  "settings.logoScale": {
+    "en": "Logo scale (%)",
+    "es": "Escala del logotipo (%)",
+    "de": "Logogröße (%)",
+    "it": "Scala del logo (%)"
+  },
+  "settings.mode.one": {
+    "en": "One screen: the patient's screen is on the same monitor as the control window.",
+    "es": "Una pantalla: la pantalla del paciente está en el mismo monitor que la ventana de control.",
+    "de": "Ein Bildschirm: Der Patientenbildschirm liegt auf demselben Monitor wie das Steuerfenster.",
+    "it": "Uno schermo: lo schermo del paziente è sullo stesso monitor della finestra di controllo."
+  },
+  "settings.mode.two": {
+    "en": "Two screens: the patient's screen has a monitor of its own.",
+    "es": "Dos pantallas: la pantalla del paciente tiene su propio monitor.",
+    "de": "Zwei Bildschirme: Der Patientenbildschirm hat einen eigenen Monitor.",
+    "it": "Due schermi: lo schermo del paziente ha un monitor proprio."
+  },
+  "settings.patientWindow": {
+    "en": "Patient",
+    "es": "Paciente",
+    "de": "Patient",
+    "it": "Paziente"
+  },
+  "settings.practiceName": {
+    "en": "Practice name (report header)",
+    "es": "Nombre del centro (encabezado del informe)",
+    "de": "Name der Praxis (Berichtskopf)",
+    "it": "Nome dello studio (intestazione referto)"
+  },
+  "settings.readTime": {
+    "en": "Rate of reading time (s)",
+    "es": "Tiempo de lectura (s)",
+    "de": "Lesezeit (s)",
+    "it": "Tempo di lettura (s)"
+  },
+  "settings.readez.about": {
+    "en": "The screen colours must match the ReadEZ overlays and lenses on the screen the patient uses. Check them there before testing (also on the Colours page).",
+    "es": "Los colores de la pantalla deben coincidir con las láminas y lentes ReadEZ en la pantalla del paciente. Compruébelos allí antes de las pruebas (también en la página Colores).",
+    "de": "Die Bildschirmfarben müssen auf dem Patientenbildschirm zu den ReadEZ-Folien und -Gläsern passen. Prüfen Sie sie dort vor dem Testen (auch auf der Seite Farben).",
+    "it": "I colori dello schermo devono corrispondere a lamine e lenti ReadEZ sullo schermo del paziente. Controllali lì prima dei test (anche nella pagina Colori)."
+  },
+  "settings.readez.check": {
+    "en": "Check ReadEZ colours…",
+    "es": "Comprobar colores ReadEZ…",
+    "de": "ReadEZ-Farben prüfen…",
+    "it": "Verifica colori ReadEZ…"
+  },
+  "settings.rect.height": {
+    "en": "Height",
+    "es": "Alto",
+    "de": "Höhe",
+    "it": "Altezza"
+  },
+  "settings.rect.left": {
+    "en": "Left",
+    "es": "Izquierda",
+    "de": "Links",
+    "it": "Sinistra"
+  },
+  "settings.rect.top": {
+    "en": "Top",
+    "es": "Arriba",
+    "de": "Oben",
+    "it": "Alto"
+  },
+  "settings.rect.useScreen": {
+    "en": "Screen {0}",
+    "es": "Pantalla {0}",
+    "de": "Bildschirm {0}",
+    "it": "Schermo {0}"
+  },
+  "settings.rect.width": {
+    "en": "Width",
+    "es": "Ancho",
+    "de": "Breite",
+    "it": "Larghezza"
+  },
+  "settings.restartForScaling": {
+    "en": "The control screen uses different display scaling. Restart ReadEZ to resize the interface for it.",
+    "es": "La pantalla de control usa otra escala de visualización. Reinicie ReadEZ para ajustar la interfaz.",
+    "de": "Der Steuerbildschirm verwendet eine andere Anzeigeskalierung. Starten Sie ReadEZ neu, um die Oberfläche anzupassen.",
+    "it": "Lo schermo di controllo usa un ridimensionamento diverso. Riavvii ReadEZ per adattare l'interfaccia."
+  },
+  "settings.revert": {
+    "en": "Undo changes",
+    "es": "Deshacer cambios",
+    "de": "Änderungen verwerfen",
+    "it": "Annulla modifiche"
+  },
+  "settings.saved": {
+    "en": "Settings saved.",
+    "es": "Configuración guardada.",
+    "de": "Einstellungen gespeichert.",
+    "it": "Impostazioni salvate."
+  },
+  "settings.screenHeightMm": {
+    "en": "Height (mm)",
+    "es": "Alto (mm)",
+    "de": "Höhe (mm)",
+    "it": "Altezza (mm)"
+  },
+  "settings.screenN": {
+    "en": "Screen {0}",
+    "es": "Pantalla {0}",
+    "de": "Bildschirm {0}",
+    "it": "Schermo {0}"
+  },
+  "settings.screenSize.hint": {
+    "en": "The width and height of the patient's screen's picture in millimetres. Used to show the colour checks at their real size.",
+    "es": "Ancho y alto de la imagen de la pantalla del paciente en milímetros. Se usa para mostrar las comprobaciones de color a tamaño real.",
+    "de": "Breite und Höhe des Bildes des Patientenbildschirms in Millimetern. Damit werden die Farbprüfungen in echter Größe gezeigt.",
+    "it": "Larghezza e altezza dell'immagine dello schermo del paziente in millimetri. Serve a mostrare i controlli del colore a grandezza reale."
+  },
+  "settings.screenWidthMm": {
+    "en": "Width (mm)",
+    "es": "Ancho (mm)",
+    "de": "Breite (mm)",
+    "it": "Larghezza (mm)"
+  },
+  "settings.screens.hint": {
+    "en": "One screen: the control window and the patient's screen on the same monitor - the test screen then shows the patient's text itself (and F11 shows it full screen). Two screens: the patient's screen on its own monitor, with an exact copy on the test screen.",
+    "es": "Una pantalla: la ventana de control y la pantalla del paciente en el mismo monitor; la pantalla de prueba muestra el texto del paciente (F11 a pantalla completa). Dos pantallas: la del paciente en su propio monitor, con una copia exacta en la pantalla de prueba.",
+    "de": "Ein Bildschirm: Steuerfenster und Patientenbildschirm auf demselben Monitor – der Testbildschirm zeigt dann den Text selbst (F11: Vollbild). Zwei Bildschirme: der Patientenbildschirm auf eigenem Monitor, mit einer genauen Kopie im Testbildschirm.",
+    "it": "Uno schermo: finestra di controllo e schermo del paziente sullo stesso monitor – la schermata del test mostra il testo (F11: schermo intero). Due schermi: lo schermo del paziente su un monitor a parte, con una copia esatta nella schermata del test."
+  },
+  "settings.section.admin": {
+    "en": "Administrator",
+    "es": "Administrador",
+    "de": "Administrator",
+    "it": "Amministratore"
+  },
+  "settings.section.appearance": {
+    "en": "Appearance",
+    "es": "Apariencia",
+    "de": "Darstellung",
+    "it": "Aspetto"
+  },
+  "settings.section.backup": {
+    "en": "Backup",
+    "es": "Copia de seguridad",
+    "de": "Sicherung",
+    "it": "Backup"
+  },
+  "settings.section.controlScreen": {
+    "en": "Clinician window",
+    "es": "Ventana del profesional",
+    "de": "Fenster für den Untersucher",
+    "it": "Finestra del clinico"
+  },
+  "settings.section.dataFolder": {
+    "en": "Data folder (reading texts, letters, report pictures)",
+    "es": "Carpeta de datos (textos, cartas, imágenes de informes)",
+    "de": "Datenordner (Lesetexte, Briefe, Berichtsbilder)",
+    "it": "Cartella dati (testi, lettere, immagini dei referti)"
+  },
+  "settings.section.importOld": {
+    "en": "ReadEZ 2020",
+    "es": "ReadEZ 2020",
+    "de": "ReadEZ 2020",
+    "it": "ReadEZ 2020"
+  },
+  "settings.section.language": {
+    "en": "Language",
+    "es": "Idioma",
+    "de": "Sprache",
+    "it": "Lingua"
+  },
+  "settings.section.mainDb": {
+    "en": "ReadEZ database",
+    "es": "Base de datos de ReadEZ",
+    "de": "ReadEZ-Datenbank",
+    "it": "Database di ReadEZ"
+  },
+  "settings.section.patientScreen": {
+    "en": "Patient window",
+    "es": "Ventana del paciente",
+    "de": "Patientenfenster",
+    "it": "Finestra del paziente"
+  },
+  "settings.section.readez": {
+    "en": "ReadEZ colours",
+    "es": "Colores ReadEZ",
+    "de": "ReadEZ-Farben",
+    "it": "Colori ReadEZ"
+  },
+  "settings.section.readingTexts": {
+    "en": "Reading texts",
+    "es": "Textos de lectura",
+    "de": "Lesetexte",
+    "it": "Testi di lettura"
+  },
+  "settings.section.report": {
+    "en": "Reports",
+    "es": "Informes",
+    "de": "Berichte",
+    "it": "Referti"
+  },
+  "settings.section.screens": {
+    "en": "Screen arrangement",
+    "es": "Disposición de pantallas",
+    "de": "Bildschirmanordnung",
+    "it": "Disposizione degli schermi"
+  },
+  "settings.section.stimulusScreen": {
+    "en": "Size of the patient's screen",
+    "es": "Tamaño de la pantalla del paciente",
+    "de": "Größe des Patientenbildschirms",
+    "it": "Dimensioni dello schermo del paziente"
+  },
+  "settings.section.timings": {
+    "en": "Timings",
+    "es": "Tiempos",
+    "de": "Zeiten",
+    "it": "Tempi"
+  },
+  "settings.showLogo": {
+    "en": "Show logo on reports",
+    "es": "Mostrar logotipo en los informes",
+    "de": "Logo auf Berichten anzeigen",
+    "it": "Mostra il logo nei referti"
+  },
+  "settings.subtitle": {
+    "en": "Changes take effect when you press Save",
+    "es": "Los cambios se aplican al pulsar Guardar",
+    "de": "Änderungen werden mit Speichern übernommen",
+    "it": "Le modifiche hanno effetto premendo Salva"
+  },
+  "settings.tab.admin": {
+    "en": "Admin",
+    "es": "Administración",
+    "de": "Administration",
+    "it": "Amministrazione"
+  },
+  "settings.tab.appearance": {
+    "en": "Appearance and language",
+    "es": "Apariencia e idioma",
+    "de": "Darstellung und Sprache",
+    "it": "Aspetto e lingua"
+  },
+  "settings.tab.data": {
+    "en": "Data",
+    "es": "Datos",
+    "de": "Daten",
+    "it": "Dati"
+  },
+  "settings.tab.general": {
+    "en": "General",
+    "es": "General",
+    "de": "Allgemein",
+    "it": "Generale"
+  },
+  "settings.tab.screens": {
+    "en": "Screens",
+    "es": "Pantallas",
+    "de": "Bildschirme",
+    "it": "Schermi"
+  },
+  "settings.tab.testSetup": {
+    "en": "Test setup",
+    "es": "Configuración de pruebas",
+    "de": "Testeinstellungen",
+    "it": "Impostazioni test"
+  },
+  "settings.texts.builtIn": {
+    "en": "This text comes with ReadEZ and can't be changed. Make a new text instead.",
+    "es": "Este texto viene con ReadEZ y no se puede cambiar. Cree un texto nuevo.",
+    "de": "Dieser Text gehört zu ReadEZ und kann nicht geändert werden. Legen Sie einen neuen Text an.",
+    "it": "Questo testo è fornito con ReadEZ e non si può modificare. Crea un nuovo testo."
+  },
+  "settings.texts.confirmDelete": {
+    "en": "Delete {0}?",
+    "es": "¿Eliminar {0}?",
+    "de": "{0} löschen?",
+    "it": "Eliminare {0}?"
+  },
+  "settings.texts.delete": {
+    "en": "Delete",
+    "es": "Eliminar",
+    "de": "Löschen",
+    "it": "Elimina"
+  },
+  "settings.texts.edit": {
+    "en": "Edit…",
+    "es": "Editar…",
+    "de": "Bearbeiten…",
+    "it": "Modifica…"
+  },
+  "settings.texts.intro": {
+    "en": "The texts that come with ReadEZ are listed first and can't be changed. Your own texts (one row per line) are kept in the data folder's Reading texts folder.",
+    "es": "Los textos incluidos con ReadEZ aparecen primero y no se pueden cambiar. Sus propios textos (una fila por línea) se guardan en la carpeta Reading texts de la carpeta de datos.",
+    "de": "Die mit ReadEZ gelieferten Texte stehen zuerst und können nicht geändert werden. Eigene Texte (eine Zeile pro Zeile) liegen im Ordner Reading texts des Datenordners.",
+    "it": "I testi forniti con ReadEZ sono elencati per primi e non si possono modificare. I tuoi testi (una riga per riga) sono nella cartella Reading texts della cartella dati."
+  },
+  "settings.texts.new": {
+    "en": "New text…",
+    "es": "Texto nuevo…",
+    "de": "Neuer Text…",
+    "it": "Nuovo testo…"
+  },
+  "settings.texts.reading": {
+    "en": "Texts",
+    "es": "Textos",
+    "de": "Texte",
+    "it": "Testi"
+  },
+  "settings.theme": {
+    "en": "Colour theme",
+    "es": "Tema de color",
+    "de": "Farbschema",
+    "it": "Tema colori"
+  },
+  "settings.timing": {
+    "en": "Colour presentation (s)",
+    "es": "Presentación de color (s)",
+    "de": "Farbdarbietung (s)",
+    "it": "Presentazione del colore (s)"
+  },
+  "settings.title": {
+    "en": "Settings",
+    "es": "Configuración",
+    "de": "Einstellungen",
+    "it": "Impostazioni"
+  },
+  "step.colourAuto": {
+    "en": "Colour test (automatic)",
+    "es": "Prueba de color (automática)",
+    "de": "Farbtest (automatisch)",
+    "it": "Test del colore (automatico)"
+  },
+  "step.colourManual": {
+    "en": "Colour test (manual)",
+    "es": "Prueba de color (manual)",
+    "de": "Farbtest (manuell)",
+    "it": "Test del colore (manuale)"
+  },
+  "step.reading": {
+    "en": "Rate of reading",
+    "es": "Velocidad de lectura",
+    "de": "Lesegeschwindigkeit",
+    "it": "Velocità di lettura"
+  },
+  "step.readingColour": {
+    "en": "Rate of reading with colour",
+    "es": "Velocidad de lectura con color",
+    "de": "Lesegeschwindigkeit mit Farbe",
+    "it": "Velocità di lettura con colore"
+  },
+  "step.symptoms": {
+    "en": "Symptoms",
+    "es": "Síntomas",
+    "de": "Symptome",
+    "it": "Sintomi"
+  },
+  "step.symptomsColour": {
+    "en": "Symptoms with colour",
+    "es": "Síntomas con color",
+    "de": "Symptome mit Farbe",
+    "it": "Sintomi con colore"
+  },
+  "stimulus.title": {
+    "en": "Patient's screen",
+    "es": "Pantalla del paciente",
+    "de": "Patientenbildschirm",
+    "it": "Schermo del paziente"
+  },
+  "symptoms.intro": {
+    "en": "Let the patient look at the text for long enough for any symptoms to develop, then ask each question and grade the answer from 0 (none) to 5 (severe). Keys 0 - 5 grade the highlighted question.",
+    "es": "Deje que el paciente mire el texto el tiempo suficiente para que aparezcan los síntomas; después haga cada pregunta y gradúe de 0 (ninguno) a 5 (grave). Las teclas 0 - 5 gradúan la pregunta resaltada.",
+    "de": "Lassen Sie den Patienten lange genug auf den Text sehen, bis Symptome auftreten können; stellen Sie dann jede Frage und bewerten Sie von 0 (keine) bis 5 (stark). Tasten 0 - 5 bewerten die markierte Frage.",
+    "it": "Lascia che il paziente guardi il testo abbastanza a lungo perché compaiano i sintomi, poi fai ogni domanda e valuta da 0 (nessuno) a 5 (grave). I tasti 0 - 5 valutano la domanda evidenziata."
+  },
+  "symptoms.other": {
+    "en": "Other symptoms:",
+    "es": "Otros síntomas:",
+    "de": "Weitere Symptome:",
+    "it": "Altri sintomi:"
+  },
+  "symptoms.q1": {
+    "en": "Do the words appear to move, wobble or flicker?",
+    "es": "¿Parece que las palabras se mueven, tiemblan o parpadean?",
+    "de": "Scheinen sich die Wörter zu bewegen, zu wackeln oder zu flimmern?",
+    "it": "Le parole sembrano muoversi, tremolare o sfarfallare?"
+  },
+  "symptoms.q2": {
+    "en": "Do the words look too close together?",
+    "es": "¿Parecen las palabras demasiado juntas?",
+    "de": "Wirken die Wörter zu dicht beieinander?",
+    "it": "Le parole sembrano troppo vicine tra loro?"
+  },
+  "symptoms.q3": {
+    "en": "Does the page look too bright or dazzling?",
+    "es": "¿Parece la página demasiado brillante o deslumbrante?",
+    "de": "Wirkt die Seite zu hell oder blendend?",
+    "it": "La pagina sembra troppo luminosa o abbagliante?"
+  },
+  "symptoms.q4": {
+    "en": "Does it hurt your eyes to look at the page?",
+    "es": "¿Le duelen los ojos al mirar la página?",
+    "de": "Tun Ihnen die Augen weh, wenn Sie auf die Seite sehen?",
+    "it": "Ti fanno male gli occhi guardando la pagina?"
+  },
+  "symptoms.scale": {
+    "en": "0 = none   ·   5 = severe",
+    "es": "0 = ninguno   ·   5 = grave",
+    "de": "0 = keine   ·   5 = stark",
+    "it": "0 = nessuno   ·   5 = grave"
+  },
+  "symptoms.short1": {
+    "en": "Words move, wobble or flicker",
+    "es": "Las palabras se mueven o parpadean",
+    "de": "Wörter bewegen sich / flimmern",
+    "it": "Le parole si muovono o sfarfallano"
+  },
+  "symptoms.short2": {
+    "en": "Words too close together",
+    "es": "Palabras demasiado juntas",
+    "de": "Wörter zu dicht",
+    "it": "Parole troppo vicine"
+  },
+  "symptoms.short3": {
+    "en": "Page too bright or dazzling",
+    "es": "Página demasiado brillante",
+    "de": "Seite zu hell / blendend",
+    "it": "Pagina troppo luminosa"
+  },
+  "symptoms.short4": {
+    "en": "Eyes hurt",
+    "es": "Duelen los ojos",
+    "de": "Augen schmerzen",
+    "it": "Dolore agli occhi"
+  },
+  "test.reading": {
+    "en": "Reading",
+    "es": "Lectura",
+    "de": "Lesen",
+    "it": "Lettura"
+  },
+  "tests.back": {
+    "en": "All tests",
+    "es": "Todas las pruebas",
+    "de": "Alle Tests",
+    "it": "Tutti i test"
+  },
+  "tests.banner.colours": {
+    "en": "{0}  ·  Only {1} of {2} ReadEZ colours have been checked on the patient's screen - click to check them",
+    "es": "{0}  ·  Solo se han comprobado {1} de {2} colores ReadEZ en la pantalla del paciente; haga clic para comprobarlos",
+    "de": "{0}  ·  Nur {1} von {2} ReadEZ-Farben wurden auf dem Patientenbildschirm geprüft – klicken zum Prüfen",
+    "it": "{0}  ·  Solo {1} di {2} colori ReadEZ sono stati controllati sullo schermo del paziente – clic per controllarli"
+  },
+  "tests.banner.noPatient": {
+    "en": "Select a patient before running a test.",
+    "es": "Seleccione un paciente antes de realizar una prueba.",
+    "de": "Wählen Sie vor einem Test einen Patienten aus.",
+    "it": "Seleziona un paziente prima di eseguire un test."
+  },
+  "tests.banner.ready": {
+    "en": "{0}  ·  Ready  ·  {1}",
+    "es": "{0}  ·  Listo  ·  {1}",
+    "de": "{0}  ·  Bereit  ·  {1}",
+    "it": "{0}  ·  Pronto  ·  {1}"
+  },
+  "tests.changeScreener": {
+    "en": "Change",
+    "es": "Cambiar",
+    "de": "Ändern",
+    "it": "Cambia"
+  },
+  "tests.continue": {
+    "en": "Then rate of reading and symptoms with the colour",
+    "es": "Después velocidad de lectura y síntomas con el color",
+    "de": "Danach Lesegeschwindigkeit und Symptome mit der Farbe",
+    "it": "Poi velocità di lettura e sintomi con il colore"
+  },
+  "tests.desc.baseline": {
+    "en": "Symptoms and rate of reading on a white background",
+    "es": "Síntomas y velocidad de lectura sobre fondo blanco",
+    "de": "Symptome und Lesegeschwindigkeit auf weißem Hintergrund",
+    "it": "Sintomi e velocità di lettura su sfondo bianco"
+  },
+  "tests.desc.computer": {
+    "en": "The colour for a computer screen: whole screen coloured, room lit",
+    "es": "El color para una pantalla de ordenador: pantalla entera coloreada, sala iluminada",
+    "de": "Die Farbe für einen Computerbildschirm: ganzer Bildschirm farbig, Raum beleuchtet",
+    "it": "Il colore per uno schermo di computer: schermo intero colorato, stanza illuminata"
+  },
+  "tests.desc.lenses": {
+    "en": "The colour for tinted lenses: whole screen coloured, darkened room",
+    "es": "El color para lentes tintadas: pantalla entera coloreada, sala oscura",
+    "de": "Die Farbe für getönte Gläser: ganzer Bildschirm farbig, abgedunkelter Raum",
+    "it": "Il colore per lenti colorate: schermo intero colorato, stanza oscurata"
+  },
+  "tests.desc.overlay": {
+    "en": "The colour for an overlay or reading guide: coloured panels round the text",
+    "es": "El color para una lámina o guía de lectura: paneles de color alrededor del texto",
+    "de": "Die Farbe für eine Folie oder Lesehilfe: farbige Flächen um den Text",
+    "it": "Il colore per una lamina o guida di lettura: riquadri colorati intorno al testo"
+  },
+  "tests.list.none": {
+    "en": "No tests yet",
+    "es": "Todavía no hay pruebas",
+    "de": "Noch keine Tests",
+    "it": "Nessun test"
+  },
+  "tests.list.title": {
+    "en": "Tests",
+    "es": "Pruebas",
+    "de": "Tests",
+    "it": "Test"
+  },
+  "tests.method": {
+    "en": "Colour test",
+    "es": "Prueba de color",
+    "de": "Farbtest",
+    "it": "Test del colore"
+  },
+  "tests.needPatient": {
+    "en": "Please choose a patient first.",
+    "es": "Elija primero un paciente.",
+    "de": "Bitte wählen Sie zuerst einen Patienten.",
+    "it": "Scegli prima un paziente."
+  },
+  "tests.noScreener": {
+    "en": "No screener chosen",
+    "es": "Ningún examinador elegido",
+    "de": "Kein Untersucher gewählt",
+    "it": "Nessun esaminatore scelto"
+  },
+  "tests.options": {
+    "en": "Test options",
+    "es": "Opciones de la prueba",
+    "de": "Testoptionen",
+    "it": "Opzioni del test"
+  },
+  "tests.screener": {
+    "en": "Screener: {0}",
+    "es": "Examinador: {0}",
+    "de": "Untersucher: {0}",
+    "it": "Esaminatore: {0}"
+  },
+  "tests.subtitle": {
+    "en": "Baseline, then the colour test for overlays, lenses or a computer screen",
+    "es": "Línea base y después la prueba de color para láminas, lentes o pantalla",
+    "de": "Ausgangswert, dann der Farbtest für Folien, Gläser oder Bildschirm",
+    "it": "Valore di base, poi il test del colore per lamine, lenti o schermo"
+  },
+  "tests.title": {
+    "en": "Tests",
+    "es": "Pruebas",
+    "de": "Tests",
+    "it": "Test"
+  },
+  "text.font": {
+    "en": "Font",
+    "es": "Fuente",
+    "de": "Schrift",
+    "it": "Carattere"
+  },
+  "text.mixed": {
+    "en": "Rows in a mixed order",
+    "es": "Filas en orden mezclado",
+    "de": "Zeilen in gemischter Reihenfolge",
+    "it": "Righe in ordine misto"
+  },
+  "text.options": {
+    "en": "Text",
+    "es": "Texto",
+    "de": "Text",
+    "it": "Testo"
+  },
+  "text.overlaySize": {
+    "en": "Overlay size",
+    "es": "Tamaño de la lámina",
+    "de": "Foliengröße",
+    "it": "Dimensione della lamina"
+  },
+  "text.rows": {
+    "en": "Rows",
+    "es": "Filas",
+    "de": "Zeilen",
+    "it": "Righe"
+  },
+  "text.size": {
+    "en": "Size",
+    "es": "Tamaño",
+    "de": "Größe",
+    "it": "Dimensione"
+  },
+  "text.spacing": {
+    "en": "Line spacing",
+    "es": "Interlineado",
+    "de": "Zeilenabstand",
+    "it": "Interlinea"
+  },
+  "text.text": {
+    "en": "Text",
+    "es": "Texto",
+    "de": "Text",
+    "it": "Testo"
+  },
+  "theme.blue": {
+    "en": "Blue",
+    "es": "Azul",
+    "de": "Blau",
+    "it": "Blu"
+  },
+  "theme.dark": {
+    "en": "Dark",
+    "es": "Oscuro",
+    "de": "Dunkel",
+    "it": "Scuro"
+  },
+  "theme.light": {
+    "en": "Light",
+    "es": "Claro",
+    "de": "Hell",
+    "it": "Chiaro"
+  },
+  "top.choosePatient": {
+    "en": "Choose a patient to begin",
+    "es": "Elija un paciente para empezar",
+    "de": "Wählen Sie einen Patienten, um zu beginnen",
+    "it": "Scegli un paziente per iniziare"
+  },
+  "top.colours.checked": {
+    "en": "Colours checked",
+    "es": "Colores comprobados",
+    "de": "Farben geprüft",
+    "it": "Colori controllati"
+  },
+  "top.colours.some": {
+    "en": "Colours {0}/{1} checked",
+    "es": "Colores {0}/{1} comprobados",
+    "de": "Farben {0}/{1} geprüft",
+    "it": "Colori {0}/{1} controllati"
+  },
+  "top.colours.tip": {
+    "en": "ReadEZ colours checked on the patient's screen (click for Colours)",
+    "es": "Colores ReadEZ comprobados en la pantalla del paciente (clic para Colores)",
+    "de": "Auf dem Patientenbildschirm geprüfte ReadEZ-Farben (Klick: Farben)",
+    "it": "Colori ReadEZ controllati sullo schermo del paziente (clic: Colori)"
+  },
+  "top.noPatient": {
+    "en": "No patient selected",
+    "es": "Ningún paciente seleccionado",
+    "de": "Kein Patient ausgewählt",
+    "it": "Nessun paziente selezionato"
+  },
+  "top.noScreener": {
+    "en": "No screener",
+    "es": "Sin examinador",
+    "de": "Kein Untersucher",
+    "it": "Nessun esaminatore"
+  },
+  "top.screener.tip": {
+    "en": "The person running the tests (click to change)",
+    "es": "La persona que hace las pruebas (clic para cambiar)",
+    "de": "Die Person, die testet (zum Ändern klicken)",
+    "it": "Chi esegue i test (clic per cambiare)"
+  },
+  "top.screens.one": {
+    "en": "One screen",
+    "es": "Una pantalla",
+    "de": "Ein Bildschirm",
+    "it": "Uno schermo"
+  },
+  "top.screens.tip": {
+    "en": "Where the patient's screen is (click for Settings > Screens)",
+    "es": "Dónde está la pantalla del paciente (clic para Configuración > Pantallas)",
+    "de": "Wo der Patientenbildschirm ist (Klick: Einstellungen > Bildschirme)",
+    "it": "Dove si trova lo schermo del paziente (clic: Impostazioni > Schermi)"
+  },
+  "top.screens.two": {
+    "en": "Two screens",
+    "es": "Dos pantallas",
+    "de": "Zwei Bildschirme",
+    "it": "Due schermi"
+  },
+  "top.theme": {
+    "en": "Colour theme",
+    "es": "Tema de color",
+    "de": "Farbschema",
+    "it": "Tema colori"
+  },
+  "update.available": {
+    "en": "ReadEZ {0} is available (you have {1}).",
+    "es": "ReadEZ {0} está disponible (tiene la {1}).",
+    "de": "ReadEZ {0} ist verfügbar (installiert ist {1}).",
+    "it": "È disponibile ReadEZ {0} (installata: {1})."
+  },
+  "update.badHash": {
+    "en": "the downloaded file is not the published installer (checksum differs)",
+    "es": "el archivo descargado no es el instalador publicado (la suma de comprobación no coincide)",
+    "de": "die heruntergeladene Datei ist nicht das veröffentlichte Installationsprogramm (Prüfsumme weicht ab)",
+    "it": "il file scaricato non è il programma di installazione pubblicato (checksum diverso)"
+  },
+  "update.badSignature": {
+    "en": "the installer is not signed with the Thomson Software Solutions certificate",
+    "es": "el instalador no está firmado con el certificado de Thomson Software Solutions",
+    "de": "das Installationsprogramm ist nicht mit dem Zertifikat von Thomson Software Solutions signiert",
+    "it": "il programma di installazione non è firmato con il certificato di Thomson Software Solutions"
+  },
+  "update.badSize": {
+    "en": "the downloaded file is {0} bytes instead of {1}",
+    "es": "el archivo descargado tiene {0} bytes en lugar de {1}",
+    "de": "die heruntergeladene Datei hat {0} statt {1} Bytes",
+    "it": "il file scaricato è di {0} byte invece di {1}"
+  },
+  "update.cancelled": {
+    "en": "Download cancelled.",
+    "es": "Descarga cancelada.",
+    "de": "Download abgebrochen.",
+    "it": "Download annullato."
+  },
+  "update.checkAtStart": {
+    "en": "Check for updates when ReadEZ starts",
+    "es": "Buscar actualizaciones al iniciar ReadEZ",
+    "de": "Beim Start von ReadEZ nach Updates suchen",
+    "it": "Cercare aggiornamenti all'avvio di ReadEZ"
+  },
+  "update.checkFailed": {
+    "en": "Could not look for updates: {0}. Please check the internet connection and try again.",
+    "es": "No se pudieron buscar actualizaciones: {0}. Compruebe la conexión a internet e inténtelo de nuevo.",
+    "de": "Updates konnten nicht gesucht werden: {0}. Bitte prüfen Sie die Internetverbindung und versuchen Sie es erneut.",
+    "it": "Impossibile cercare aggiornamenti: {0}. Controllare la connessione a internet e riprovare."
+  },
+  "update.checking": {
+    "en": "Looking for updates…",
+    "es": "Buscando actualizaciones…",
+    "de": "Suche nach Updates…",
+    "it": "Ricerca aggiornamenti…"
+  },
+  "update.downloading": {
+    "en": "Downloading ReadEZ {0}…",
+    "es": "Descargando ReadEZ {0}…",
+    "de": "ReadEZ {0} wird heruntergeladen…",
+    "it": "Download di ReadEZ {0}…"
+  },
+  "update.downloadingPercent": {
+    "en": "Downloading ReadEZ {0}… {1} %",
+    "es": "Descargando ReadEZ {0}… {1} %",
+    "de": "ReadEZ {0} wird heruntergeladen… {1} %",
+    "it": "Download di ReadEZ {0}… {1} %"
+  },
+  "update.failed": {
+    "en": "The update could not be downloaded: {0}",
+    "es": "No se pudo descargar la actualización: {0}",
+    "de": "Das Update konnte nicht heruntergeladen werden: {0}",
+    "it": "Impossibile scaricare l'aggiornamento: {0}"
+  },
+  "update.install": {
+    "en": "Install update",
+    "es": "Instalar actualización",
+    "de": "Update installieren",
+    "it": "Installa aggiornamento"
+  },
+  "update.keeps": {
+    "en": "Your settings, licence, patients, tests and reading texts are kept. ReadEZ will close while the update is installed and then start again.",
+    "es": "Se conservan su configuración, licencia, pacientes, pruebas y textos. ReadEZ se cerrará mientras se instala la actualización y luego se iniciará de nuevo.",
+    "de": "Einstellungen, Lizenz, Patienten, Tests und Lesetexte bleiben erhalten. ReadEZ wird während der Installation geschlossen und danach neu gestartet.",
+    "it": "Impostazioni, licenza, pazienti, test e testi vengono mantenuti. ReadEZ si chiuderà durante l'installazione e poi si riavvierà."
+  },
+  "update.later": {
+    "en": "Later",
+    "es": "Más tarde",
+    "de": "Später",
+    "it": "Più tardi"
+  },
+  "update.notInstalled": {
+    "en": "The update was downloaded but not installed.",
+    "es": "La actualización se descargó pero no se instaló.",
+    "de": "Das Update wurde heruntergeladen, aber nicht installiert.",
+    "it": "L'aggiornamento è stato scaricato ma non installato."
+  },
+  "update.notes": {
+    "en": "What has changed",
+    "es": "Novedades",
+    "de": "Was ist neu",
+    "it": "Novità"
+  },
+  "update.readyToInstall": {
+    "en": "ReadEZ {0} has been downloaded and checked. Close ReadEZ and install it now? Windows will ask for permission to make changes.",
+    "es": "ReadEZ {0} se ha descargado y comprobado. ¿Cerrar ReadEZ e instalarla ahora? Windows pedirá permiso para realizar cambios.",
+    "de": "ReadEZ {0} wurde heruntergeladen und geprüft. ReadEZ jetzt schließen und installieren? Windows fragt nach der Berechtigung für Änderungen.",
+    "it": "ReadEZ {0} è stato scaricato e verificato. Chiudere ReadEZ e installarlo ora? Windows chiederà l'autorizzazione per apportare modifiche."
+  },
+  "update.released": {
+    "en": "Released {0}",
+    "es": "Publicada el {0}",
+    "de": "Veröffentlicht am {0}",
+    "it": "Pubblicata il {0}"
+  },
+  "update.skip": {
+    "en": "Skip this version",
+    "es": "Omitir esta versión",
+    "de": "Diese Version überspringen",
+    "it": "Salta questa versione"
+  },
+  "update.subtitle": {
+    "en": "Install the newest version of the program",
+    "es": "Instale la versión más reciente del programa",
+    "de": "Die neueste Version des Programms installieren",
+    "it": "Installare la versione più recente del programma"
+  },
+  "update.thisVersion": {
+    "en": "This is ReadEZ {0}.",
+    "es": "Esta es la versión {0} de ReadEZ.",
+    "de": "Dies ist ReadEZ {0}.",
+    "it": "Questa è la versione {0} di ReadEZ."
+  },
+  "update.title": {
+    "en": "ReadEZ update",
+    "es": "Actualización de ReadEZ",
+    "de": "ReadEZ-Update",
+    "it": "Aggiornamento di ReadEZ"
+  },
+  "update.upToDate": {
+    "en": "ReadEZ {0} is the newest version.",
+    "es": "ReadEZ {0} es la versión más reciente.",
+    "de": "ReadEZ {0} ist die neueste Version.",
+    "it": "ReadEZ {0} è la versione più recente."
+  }
+}

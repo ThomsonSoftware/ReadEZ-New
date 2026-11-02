@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ReadEZ installer (WiX Toolset v5).
+
+  Things you are most likely to change are marked "ADJUST".
+
+  Values passed in from ReadEZSetup.wixproj:
+    $(var.AppDir)      the published (and signed) program folder - all of it is installed
+    $(var.AppVersion)  version of ReadEZ.dll, e.g. 3.0.0.0
+    $(var.ExeName)     ReadEZ.exe
+    $(var.SetupDir)    this folder (licence text)
+    $(var.AssetsDir)   ReadEZ\Assets (icon)
+
+  What goes where:
+    Program Files\Thomson Software Solutions\ReadEZ   the program, ReadEZHelp.chm and Starter\
+                                                     (reading texts, letters, starter database)
+    %AppData%\ReadEZ                                 settings, admin settings, licence, logs
+    Documents\ReadEZ Data                            Database\ReadEZ.db, reading texts, letters
+  The installer only ever writes the program folder. ReadEZ copies the starter set into the data
+  folder itself, only where files are missing, so upgrading never replaces settings, the licence,
+  patient data or texts the user has changed.
+
+  ReadEZ 2020 installs elsewhere under its own UpgradeCode, so both can be installed side by side;
+  ReadEZ offers to import the old database the first time it starts.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <!-- Keep the UpgradeCode the same for every release, or upgrades won't replace the old version. -->
+  <Package Name="ReadEZ"
+           Manufacturer="Thomson Software Solutions"
+           Version="$(var.AppVersion)"
+           UpgradeCode="DD16383E-EEE8-42CA-8758-F88DF5523E0A"
+           Scope="perMachine"
+           Compressed="yes">
+
+    <SummaryInformation Description="ReadEZ installer" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="ReadEZIcon" SourceFile="$(var.AssetsDir)\ReadEZ.ico" />
+    <Property Id="ARPPRODUCTICON" Value="ReadEZIcon" />
+    <Property Id="ARPHELPLINK" Value="https://thomson-software-solutions.com/support/" />
+    <Property Id="ARPURLINFOABOUT" Value="https://thomson-software-solutions.com/" />
+    <Property Id="ARPCONTACT" Value="Thomson Software Solutions" />
+
+    <!-- An upgrade installs into the folder chosen the first time -->
+    <Property Id="INSTALLFOLDER">
+      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Thomson Software Solutions\ReadEZ"
+                      Name="InstallFolder" Type="raw" />
+    </Property>
+
+    <!-- ADJUST: default install folder, C:\Program Files\Thomson Software Solutions\ReadEZ -->
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="CompanyFolder" Name="Thomson Software Solutions">
+        <Directory Id="INSTALLFOLDER" Name="ReadEZ" />
+      </Directory>
+    </StandardDirectory>
+
+    <ComponentGroup Id="AppFiles" Directory="INSTALLFOLDER">
+      <Files Include="$(var.AppDir)\**" />
+      <Component Id="InstallFolderRegistry" Guid="95C37DEA-090A-47F0-897F-A0A26B18076D">
+        <RegistryValue Root="HKLM" Key="Software\Thomson Software Solutions\ReadEZ"
+                       Name="InstallFolder" Type="string" Value="[INSTALLFOLDER]" KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+    <!-- Shortcuts: key paths are HKCU registry values (ICE38/43/57) -->
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Component Id="StartMenuShortcut" Guid="66BBEC9F-27D7-49A4-A06C-1AE8BB49B25A">
+        <Shortcut Id="StartMenuShortcut" Name="ReadEZ" Description="Visual stress screening and colour assessment"
+                  Target="[INSTALLFOLDER]$(var.ExeName)" WorkingDirectory="INSTALLFOLDER" Icon="ReadEZIcon" />
+        <RegistryValue Root="HKCU" Key="Software\Thomson Software Solutions\ReadEZ"
+                       Name="StartMenuShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder">
+      <Component Id="DesktopShortcut" Guid="D8FD178E-0D72-4C38-9243-F20B2CA44DA7">
+        <Shortcut Id="DesktopShortcut" Name="ReadEZ" Description="Visual stress screening and colour assessment"
+                  Target="[INSTALLFOLDER]$(var.ExeName)" WorkingDirectory="INSTALLFOLDER" Icon="ReadEZIcon" />
+        <RegistryValue Root="HKCU" Key="Software\Thomson Software Solutions\ReadEZ"
+                       Name="DesktopShortcut" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+
+    <Feature Id="Main" Title="ReadEZ" Description="The program, the help file, the starter reading texts and letters, and a Start menu shortcut."
+             Level="1" ConfigurableDirectory="INSTALLFOLDER" AllowAbsent="no" Display="expand">
+      <ComponentGroupRef Id="AppFiles" />
+      <ComponentRef Id="StartMenuShortcut" />
+      <Feature Id="Desktop" Title="Desktop shortcut" Description="A shortcut on the desktop." Level="1">
+        <ComponentRef Id="DesktopShortcut" />
+      </Feature>
+    </Feature>
+
+    <!-- Wizard: Welcome, Licence, Custom setup, Ready, Progress, Finish.
+         Updates from inside ReadEZ run with a progress bar only (msiexec /passive). -->
+    <ui:WixUI Id="WixUI_FeatureTree" />
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.SetupDir)\License.rtf" />
+
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch ReadEZ" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <CustomAction Id="LaunchApplication" BinaryRef="Wix4UtilCA_X64" DllEntry="WixShellExec" Impersonate="yes" />
+    <UI>
+      <Publish Dialog="ExitDialog" Control="Finish" Property="WixShellExecTarget" Value="[INSTALLFOLDER]$(var.ExeName)"
+               Order="1" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed" />
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication"
+               Order="2" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed" />
+    </UI>
+
+  </Package>
+</Wix>

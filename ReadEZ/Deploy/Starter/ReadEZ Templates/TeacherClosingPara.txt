@@ -1,0 +1,5 @@
+﻿The results suggest that  {Firstname} may benefit from an  {Result}.
+
+We would be most grateful if you could facilitate and encourage {Firstname} to use this aid when reading.  If you have any questions relating to this report, please contact our Visual Stress team.
+
+

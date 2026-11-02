@@ -1,0 +1,52 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=ReadEZHelp.chm
+Contents file=ReadEZHelp.hhc
+Index file=ReadEZHelp.hhk
+Default topic=welcometoreadez.htm
+Default Window=main
+Display compile progress=No
+Full-text search=Yes
+Language=0x809 English (United Kingdom)
+Title=ReadEZ Help
+
+[WINDOWS]
+main="ReadEZ Help","ReadEZHelp.hhc","ReadEZHelp.hhk","welcometoreadez.htm","welcometoreadez.htm",,,,,0x63520,,0x380e,,,,,,,,0
+
+[FILES]
+welcometoreadez.htm
+gettingstarted.htm
+installingandactivating.htm
+settingupthescreens.htm
+tourofthemainwindow.htm
+thetestenvironment.htm
+importingfromreadez2020.htm
+patients.htm
+colourcalibration.htm
+runningatest.htm
+astepbystepguide.htm
+oneortwoscreens.htm
+symptoms.htm
+rateofreading.htm
+determinationofthepreferredcolou.htm
+results.htm
+reportsandletters.htm
+settings.htm
+general.htm
+appearanceandlanguage.htm
+dataandbackup.htm
+screens.htm
+testsetup.htm
+licenceandupdates.htm
+helpandsupport.htm
+administratortools.htm
+reference.htm
+keyboardshortcuts.htm
+troubleshooting.htm
+wherereadezkeepsitsfiles.htm
+
+[ALIAS]
+#include alias.h
+
+[MAP]
+#include map.h

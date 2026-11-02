@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "topics": [
+    {
+      "id": "start",
+      "children": [
+        {
+          "id": "start.tour",
+          "url": ""
+        },
+        {
+          "id": "start.install",
+          "url": ""
+        },
+        {
+          "id": "start.setup",
+          "url": ""
+        },
+        {
+          "id": "start.environment",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "screens",
+      "children": [
+        {
+          "id": "screen.patients",
+          "url": ""
+        },
+        {
+          "id": "screen.tests",
+          "url": ""
+        },
+        {
+          "id": "screen.results",
+          "url": ""
+        },
+        {
+          "id": "screen.colours",
+          "url": ""
+        },
+        {
+          "id": "screen.settings",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": "tests",
+      "children": [
+        {
+          "id": "tests.guide",
+          "url": ""
+        },
+        {
+          "id": "test.symptoms",
+          "url": ""
+        },
+        {
+          "id": "test.reading",
+          "url": ""
+        },
+        {
+          "id": "test.colour",
+          "url": ""
+        },
+        {
+          "id": "tests.run",
+          "url": ""
+        }
+      ]
+    }
+  ]
+}

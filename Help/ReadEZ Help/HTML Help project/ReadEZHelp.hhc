@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML><HEAD></HEAD><BODY>
+<OBJECT type="text/site properties"><param name="Window Styles" value="0x800025"></OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Welcome to ReadEZ">
+<param name="Local" value="welcometoreadez.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Getting started">
+<param name="Local" value="gettingstarted.htm">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Installing and activating">
+<param name="Local" value="installingandactivating.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Setting up the screens">
+<param name="Local" value="settingupthescreens.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Tour of the main window">
+<param name="Local" value="tourofthemainwindow.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="The test environment">
+<param name="Local" value="thetestenvironment.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Importing from ReadEZ 2020">
+<param name="Local" value="importingfromreadez2020.htm">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Patients">
+<param name="Local" value="patients.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Colour calibration">
+<param name="Local" value="colourcalibration.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Running a test">
+<param name="Local" value="runningatest.htm">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="A step-by-step guide">
+<param name="Local" value="astepbystepguide.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="One or two screens">
+<param name="Local" value="oneortwoscreens.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Symptoms">
+<param name="Local" value="symptoms.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Rate of reading">
+<param name="Local" value="rateofreading.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Determination of the preferred colour">
+<param name="Local" value="determinationofthepreferredcolou.htm">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Results">
+<param name="Local" value="results.htm">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Reports and letters">
+<param name="Local" value="reportsandletters.htm">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Settings">
+<param name="Local" value="settings.htm">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="General">
+<param name="Local" value="general.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Appearance and language">
+<param name="Local" value="appearanceandlanguage.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Data and backup">
+<param name="Local" value="dataandbackup.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Screens">
+<param name="Local" value="screens.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Test setup">
+<param name="Local" value="testsetup.htm">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Licence and updates">
+<param name="Local" value="licenceandupdates.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Help and support">
+<param name="Local" value="helpandsupport.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Administrator tools">
+<param name="Local" value="administratortools.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Reference">
+<param name="Local" value="reference.htm">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Keyboard shortcuts">
+<param name="Local" value="keyboardshortcuts.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Troubleshooting">
+<param name="Local" value="troubleshooting.htm">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Where ReadEZ keeps its files">
+<param name="Local" value="wherereadezkeepsitsfiles.htm">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

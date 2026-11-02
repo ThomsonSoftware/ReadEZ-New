@@ -1,0 +1,31 @@
+﻿Order,Level,Title,File (Topics folder),File (HTML Help project),Help ID,Program topic id,Help context number
+01,1,Welcome to ReadEZ,01 Welcome to ReadEZ.html,welcometoreadez.htm,WelcometoReadEZ,welcome,10
+02,1,Getting started,02 Getting started.html,gettingstarted.htm,Gettingstarted,start,20
+02.01,2,Installing and activating,02.01 Installing and activating.html,installingandactivating.htm,Installingandactivating,start.install,30
+02.02,2,Setting up the screens,02.02 Setting up the screens.html,settingupthescreens.htm,Settingupthescreens,start.setup,40
+02.03,2,Tour of the main window,02.03 Tour of the main window.html,tourofthemainwindow.htm,Tourofthemainwindow,start.tour,50
+02.04,2,The test environment,02.04 The test environment.html,thetestenvironment.htm,Thetestenvironment,start.environment,60
+02.05,2,Importing from ReadEZ 2020,02.05 Importing from ReadEZ 2020.html,importingfromreadez2020.htm,ImportingfromReadEZ2020,import,70
+03,1,Patients,03 Patients.html,patients.htm,Patients,screen.patients,80
+04,1,Colour calibration,04 Colour calibration.html,colourcalibration.htm,Colourcalibration,screen.colours,90
+05,1,Running a test,05 Running a test.html,runningatest.htm,Runningatest,screen.tests,100
+05.01,2,A step-by-step guide,05.01 A step-by-step guide.html,astepbystepguide.htm,Astepbystepguide,tests.guide,110
+05.02,2,One or two screens,05.02 One or two screens.html,oneortwoscreens.htm,Oneortwoscreens,tests.run,120
+05.03,2,Symptoms,05.03 Symptoms.html,symptoms.htm,Symptoms,test.symptoms,130
+05.04,2,Rate of reading,05.04 Rate of reading.html,rateofreading.htm,Rateofreading,test.reading,140
+05.05,2,Determination of the preferred colour,05.05 Determination of the preferred colour.html,determinationofthepreferredcolou.htm,Determinationofthepreferredcolou,test.colour,150
+06,1,Results,06 Results.html,results.htm,Results,screen.results,160
+06.01,2,Reports and letters,06.01 Reports and letters.html,reportsandletters.htm,Reportsandletters,results.report,170
+07,1,Settings,07 Settings.html,settings.htm,Settings,screen.settings,180
+07.01,2,General,07.01 General.html,general.htm,General,settings.general,190
+07.02,2,Appearance and language,07.02 Appearance and language.html,appearanceandlanguage.htm,Appearanceandlanguage,settings.appearance,200
+07.03,2,Data and backup,07.03 Data and backup.html,dataandbackup.htm,Dataandbackup,settings.data,210
+07.04,2,Screens,07.04 Screens.html,screens.htm,Screens,settings.screens,220
+07.05,2,Test setup,07.05 Test setup.html,testsetup.htm,Testsetup,settings.testsetup,230
+08,1,Licence and updates,08 Licence and updates.html,licenceandupdates.htm,Licenceandupdates,licence,240
+09,1,Help and support,09 Help and support.html,helpandsupport.htm,Helpandsupport,help,250
+10,1,Administrator tools,10 Administrator tools.html,administratortools.htm,Administratortools,admin,260
+11,1,Reference,11 Reference.html,reference.htm,Reference,reference,270
+11.01,2,Keyboard shortcuts,11.01 Keyboard shortcuts.html,keyboardshortcuts.htm,Keyboardshortcuts,ref.keys,280
+11.02,2,Troubleshooting,11.02 Troubleshooting.html,troubleshooting.htm,Troubleshooting,ref.trouble,290
+11.03,2,Where ReadEZ keeps its files,11.03 Where ReadEZ keeps its files.html,wherereadezkeepsitsfiles.htm,WhereReadEZkeepsitsfiles,ref.files,300
