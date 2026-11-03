@@ -63,6 +63,7 @@ Public NotInheritable Class ScreenLayout
     Public Shared Function IsTwoScreenMode() As Boolean
         Dim s = AppHost.Settings
         If s Is Nothing Then Return False
+        If TabletScreen.IsActive Then Return True     ' a tablet is the patient's screen
         Dim stim = s.StimulusBounds
         If Not IsOnScreen(stim) Then stim = PrimaryLeadingScreens().Last().Bounds
         Dim ctl = s.ControlBounds

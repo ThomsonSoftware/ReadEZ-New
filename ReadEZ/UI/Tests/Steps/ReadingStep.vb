@@ -42,12 +42,16 @@ Public NotInheritable Class ReadingStep
     Private ReadOnly lblClock As New Label With {.AutoSize = True, .Font = Fonts.Display}
     Private ReadOnly lblWpm As New Label With {.AutoSize = True, .Font = Fonts.Title}
     Private ReadOnly btnClock As ModernButton = ModernButton.Create("reading.start", ButtonKind.Primary, Glyphs.Play)
-    Private ReadOnly nudTime As NumericUpDown = Ui.NumberBox(0, 600, 0)
-    Private ReadOnly nudWords As NumericUpDown = Ui.NumberBox(0, 2000, 0)
-    Private ReadOnly nudErrors As NumericUpDown = Ui.NumberBox(0, 500, 0)
-    Private ReadOnly nudSkipped As NumericUpDown = Ui.NumberBox(0, 20, 0)
-    Private ReadOnly lblHelp As New Label With {.AutoSize = True, .Font = Fonts.Small, .MaximumSize = New Size(310, 0)}
+    Private ReadOnly nudTime As NumericUpDown = Ui.NumberBox(0, 600, 0, width:=110)
+    Private ReadOnly nudWords As NumericUpDown = Ui.NumberBox(0, 2000, 0, width:=110)
+    Private ReadOnly nudErrors As NumericUpDown = Ui.NumberBox(0, 500, 0, width:=110)
+    Private ReadOnly nudSkipped As NumericUpDown = Ui.NumberBox(0, 20, 0, width:=110)
+    Private ReadOnly btnReset As ModernButton = ModernButton.Create("reading.reset", ButtonKind.Ghost, Glyphs.Refresh)
+    Private ReadOnly btn60 As ModernButton = ModernButton.Create("reading.sixty", ButtonKind.Secondary)
+    Private ReadOnly segView As New SegmentedControl
     Private _syncing As Boolean
+    ''' <summary>Two screens: show the enlarged scoring copy (remembered while the program runs).</summary>
+    Private Shared _scoringView As Boolean = True
 
     Public Overrides ReadOnly Property TitleKey As String
         Get
@@ -63,13 +67,36 @@ Public NotInheritable Class ReadingStep
 
     Public Overrides Function CreatePanel() As Control
         Dim col = Ui.Column()
+        Ui.FillWidth(col)                                 ' labels wrap at, and cards stretch to, the panel's width
         Dim intro = Ui.Label("reading.intro", muted:=True)
-        intro.MaximumSize = New Size(310, 0)
+        intro.Font = Fonts.Body
         intro.Margin = New Padding(0, 0, 0, 10)
         col.Controls.Add(intro)
 
-        lblClock.Margin = New Padding(0, 0, 0, 4)
-        col.Controls.Add(lblClock)
+        ' Two screens: the centre can show the text enlarged for scoring, or an exact copy of the patient's screen
+        If ScreenLayout.IsTwoScreenMode() Then
+            segView.SetOptions("reading.view.scoring", "reading.view.patient")
+            segView.SelectedIndex = If(_scoringView, 0, 1)
+            segView.Margin = New Padding(0, 0, 0, 10)
+            AddHandler segView.SelectedIndexChanged, Sub()
+                                                         _scoringView = segView.SelectedIndex = 0
+                                                         If Host IsNot Nothing Then Host.ScoringView = _scoringView
+                                                     End Sub
+            col.Controls.Add(segView)
+        End If
+
+        ' Clock, with Reset (back to 0:00) and 60 s (sets the reading time to a full minute)
+        Dim clockRow = Ui.Row()
+        clockRow.Margin = New Padding(0, 0, 0, 4)
+        lblClock.Margin = New Padding(0, 0, 12, 0)
+        clockRow.Controls.Add(lblClock)
+        btnReset.Margin = New Padding(0, 10, 6, 0)
+        btn60.Margin = New Padding(0, 10, 0, 0)
+        AddHandler btnReset.Click, Sub() ResetClock()
+        AddHandler btn60.Click, Sub() SetFullMinute()
+        clockRow.Controls.Add(btnReset)
+        clockRow.Controls.Add(btn60)
+        col.Controls.Add(clockRow)
         btnClock.Margin = New Padding(0, 0, 0, 12)
         AddHandler btnClock.Click, Sub() ToggleClock()
         col.Controls.Add(btnClock)
@@ -87,10 +114,14 @@ Public NotInheritable Class ReadingStep
         wpmRow.Controls.Add(unit)
         col.Controls.Add(wpmRow)
 
-        LabelStyle.SetMuted(lblHelp)
-        Loc.Bind(lblHelp, "reading.marking")
-        lblHelp.Margin = New Padding(0, 8, 0, 4)
-        col.Controls.Add(lblHelp)
+        ' How to score: in a window, so the panel stays short
+        Dim actions = Ui.Row(wrap:=True)
+        actions.Margin = New Padding(0, 8, 0, 0)
+        Dim how = HelpButton("reading.how.button", "reading.how.title",
+                             "reading.how.1", "reading.how.2", "reading.how.3", "reading.how.4", "reading.how.5", "reading.how.6")
+        how.Margin = New Padding(0, 0, 8, 0)
+        actions.Controls.Add(how)
+        col.Controls.Add(actions)
         Dim clearMarks = ModernButton.Create("reading.clearMarks", ButtonKind.Ghost, Glyphs.Delete)
         AddHandler clearMarks.Click, Sub()
                                          Scene.Errors.Clear() : Scene.SkippedRows.Clear() : Scene.LastWord = Nothing
@@ -99,14 +130,10 @@ Public NotInheritable Class ReadingStep
                                          _syncing = False
                                          ValuesChanged()
                                      End Sub
-        col.Controls.Add(clearMarks)
+        actions.Controls.Add(clearMarks)
 
         col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay,
                                             enabledWhen:=Function() Not _running AndAlso Scene.Errors.Count = 0 AndAlso Not Scene.LastWord.HasValue))
-        Dim nextBtn = ModernButton.Create(If(IsLastStep(), "run.saveFinish", "run.nextStep"), ButtonKind.Primary, If(IsLastStep(), Glyphs.Save, Glyphs.Forward))
-        nextBtn.Margin = New Padding(0, 14, 0, 0)
-        AddHandler nextBtn.Click, Sub() Finish()
-        col.Controls.Add(nextBtn)
 
         Dim r = Run.Result
         _syncing = True
@@ -118,10 +145,34 @@ Public NotInheritable Class ReadingStep
         For Each n In {nudTime, nudWords, nudErrors, nudSkipped}
             AddHandler n.ValueChanged, Sub() If Not _syncing Then ValuesChanged()
         Next
+        AddHandler nudTime.ValueChanged, Sub() If Not _syncing AndAlso Not _running Then UpdateClock(CInt(nudTime.Value))
         AddHandler _clock.Tick, Sub() ClockTick()
         UpdateClock(r.ROR_RecordTime)
         ValuesChanged()
         Return col
+    End Function
+
+    Public Overrides Function InstructionKeys() As String()
+        Return {"instr.reading.title", "instr.reading.1", "instr.reading.2", "instr.reading.3"}
+    End Function
+
+    ''' <summary>The text as it will be shown: start at the first word, read along each line.</summary>
+    Public Overrides Function InstructionScreen() As InstructionScene
+        Dim sample = SampleText()
+        Dim r = Run.Result
+        If Not r.IsBaseline AndAlso Run.HasColour Then
+            sample.Colour1 = r.ScreenColour
+            sample.Presentation = If(r.Mode = ReadEZTestMode.Overlay, ReadingPresentation.Overlay, ReadingPresentation.FullScreen)
+        End If
+        Dim sc As New InstructionScene(InstructionKeys()) With {.Sample = sample}
+        sc.Add("instr.reading.callout1", sample.WordBounds(0, 0), InstructionScene.Side.Left)
+        sc.Add("instr.reading.callout2", sample.RowBounds(1), InstructionScene.Side.Right)
+        sc.Add("instr.reading.callout3", RectangleF.Empty, InstructionScene.Side.BottomCentre)
+        Return sc
+    End Function
+
+    Public Overrides Function CreateFooter() As Control
+        Return FooterRow(NextButton())
     End Function
 
     Private Function IsLastStep() As Boolean
@@ -132,12 +183,14 @@ Public NotInheritable Class ReadingStep
         ApplyTextSettings()
         ApplyTestColour()
         Scene.ShowMarks = True
+        If Host IsNot Nothing Then Host.ScoringView = _scoringView
         MyBase.Begin()
     End Sub
 
     Public Overrides Sub [End]()
         _clock.Stop()
         _running = False
+        If Host IsNot Nothing Then Host.ScoringView = False
     End Sub
 
     Public Overrides Function IsComplete() As Boolean
@@ -174,13 +227,42 @@ Public NotInheritable Class ReadingStep
         nudTime.Value = Math.Min(nudTime.Maximum, secs)
         _syncing = False
         UpdateClock(secs)
-        btnClock.Text = Loc.T("reading.start")
-        btnClock.IconGlyph = Glyphs.Play
-        btnClock.Kind = ButtonKind.Primary
+        ShowClockStopped()
         ValuesChanged()
         ActionsChanged()
         If timeUp AndAlso AppHost.Settings.RoR_Beep Then NativeSound.Beep()
         Toast.Show(AppHost.MainWindow, Loc.T(If(timeUp, "reading.timeUp", "reading.stopped")), ToastKind.Info, 6000)
+    End Sub
+
+    Private Sub ShowClockStopped()
+        btnClock.Text = Loc.T("reading.start")
+        btnClock.IconGlyph = Glyphs.Play
+        btnClock.Kind = ButtonKind.Primary
+    End Sub
+
+    ''' <summary>Sets the time to the value given (stopping the clock quietly if it is running).</summary>
+    Private Sub SetTime(seconds As Integer)
+        If _running Then
+            _clock.Stop()
+            _running = False
+            ShowClockStopped()
+        End If
+        _syncing = True
+        nudTime.Value = Math.Max(nudTime.Minimum, Math.Min(nudTime.Maximum, seconds))
+        _syncing = False
+        UpdateClock(CInt(nudTime.Value))
+        ValuesChanged()
+        ActionsChanged()
+    End Sub
+
+    ''' <summary>Reset: the clock back to 0:00 (the marks stay; Clear marks removes them).</summary>
+    Private Sub ResetClock()
+        SetTime(0)
+    End Sub
+
+    ''' <summary>60 s: the reading time set to a full minute (e.g. the patient read for the whole minute).</summary>
+    Private Sub SetFullMinute()
+        SetTime(60)
     End Sub
 
     Private Sub UpdateClock(seconds As Integer)

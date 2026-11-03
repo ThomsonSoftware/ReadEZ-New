@@ -122,6 +122,35 @@ Public Class ScreenBase
         _help.Visible = HelpCatalog.Find(CurrentHelpTopic()) IsNot Nothing
     End Sub
 
+    Private _prominent As Boolean
+    Private _divider As Panel
+
+    ''' <summary>
+    ''' Shows the subtitle (the patient's name) as large as the title, on the same line to the right
+    ''' of it after a thin divider, instead of in small text underneath.
+    ''' </summary>
+    Protected Sub UseProminentSubtitle()
+        If _prominent Then Return
+        _prominent = True
+        _subtitle.Font = Fonts.Title
+        _subtitle.ForeColor = If(_branded, Color.White, ThemeManager.Current.Ink)
+        LabelStyle.SetCustom(_subtitle)
+        _divider = New Panel With {.Width = 2, .BackColor = If(_branded, Color.FromArgb(120, 150, 195), ThemeManager.Current.Border)}
+        HeaderBar.Controls.Add(_divider)
+        AddHandler _title.SizeChanged, Sub() PlaceSubtitle()
+        AddHandler _title.LocationChanged, Sub() PlaceSubtitle()
+        AddHandler _subtitle.VisibleChanged, Sub() PlaceSubtitle()
+        PlaceSubtitle()
+    End Sub
+
+    Private Sub PlaceSubtitle()
+        If Not _prominent Then Return
+        Dim gap = Dpi.Px(Me, 18)
+        _divider.Bounds = New Rectangle(_title.Right + gap, _title.Top + Dpi.Px(Me, 6), _divider.Width, Math.Max(4, _title.Height - Dpi.Px(Me, 10)))
+        _divider.Visible = _subtitle.Visible
+        _subtitle.Location = New Point(_divider.Right + gap, _title.Top)
+    End Sub
+
     ''' <summary>Replaces the subtitle with untranslated text (e.g. a patient name).</summary>
     Protected Sub SetSubtitleText(text As String)
         _subtitle.Text = text

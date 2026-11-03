@@ -20,7 +20,7 @@ Public NotInheritable Class SymptomsStep
 
     Public Const Questions As Integer = 4
     Private ReadOnly _scales As New List(Of GradeScale)
-    Private ReadOnly txtNotes As New TextField(multiline:=True) With {.Width = 310, .Height = 80}
+    Private ReadOnly txtNotes As New TextField(multiline:=True) With {.Height = 80}
     Private _current As Integer
 
     Public Overrides ReadOnly Property TitleKey As String
@@ -37,8 +37,9 @@ Public NotInheritable Class SymptomsStep
 
     Public Overrides Function CreatePanel() As Control
         Dim col = Ui.Column()
+        Ui.FillWidth(col)                                 ' everything below stretches to the panel's width
         Dim intro = Ui.Label("symptoms.intro", muted:=True)
-        intro.MaximumSize = New Size(310, 0)
+        intro.Font = Fonts.Body
         intro.Margin = New Padding(0, 0, 0, 10)
         col.Controls.Add(intro)
         Dim legend = Ui.Label("symptoms.scale", muted:=True)
@@ -49,10 +50,9 @@ Public NotInheritable Class SymptomsStep
             Dim index = q
             Dim l = Ui.Label("symptoms.q" & (q + 1))
             l.Font = Fonts.Strong
-            l.MaximumSize = New Size(310, 0)
             l.Margin = New Padding(0, 8, 0, 4)
             col.Controls.Add(l)
-            Dim s As New GradeScale With {.Size = New Size(310, 40), .Grade = Run.Result.Symptoms(q)}
+            Dim s As New GradeScale With {.Height = 40, .Grade = Run.Result.Symptoms(q)}
             AddHandler s.GradeChanged, Sub()
                                            Run.Result.Symptoms(index) = s.Grade
                                            Run.Result.SymptomsDone = True
@@ -73,12 +73,30 @@ Public NotInheritable Class SymptomsStep
                                                  If txtNotes.Text <> "" Then Run.Result.SymptomsDone = True
                                              End Sub
         col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay))
-        Dim nextBtn = ModernButton.Create(If(IsLastStep(), "run.saveFinish", "run.nextStep"), ButtonKind.Primary, If(IsLastStep(), Glyphs.Save, Glyphs.Forward))
-        nextBtn.Margin = New Padding(0, 14, 0, 0)
-        AddHandler nextBtn.Click, Sub() Finish()
-        col.Controls.Add(nextBtn)
         HighlightCurrent()
         Return col
+    End Function
+
+    Public Overrides Function InstructionKeys() As String()
+        Return {"instr.symptoms.title", "instr.symptoms.1", "instr.symptoms.2", "instr.symptoms.3"}
+    End Function
+
+    ''' <summary>The text as it will be shown (white, or with the colour), the patient told to look at it.</summary>
+    Public Overrides Function InstructionScreen() As InstructionScene
+        Dim sample = SampleText()
+        Dim r = Run.Result
+        If Not r.IsBaseline AndAlso Run.HasColour Then
+            sample.Colour1 = r.ScreenColour
+            sample.Presentation = If(r.Mode = ReadEZTestMode.Overlay, ReadingPresentation.Overlay, ReadingPresentation.FullScreen)
+        End If
+        Dim sc As New InstructionScene(InstructionKeys()) With {.Sample = sample}
+        sc.Add("instr.symptoms.callout1", sample.CopyBounds(0), InstructionScene.Side.Left)
+        sc.Add("instr.symptoms.callout2", RectangleF.Empty, InstructionScene.Side.BottomCentre)
+        Return sc
+    End Function
+
+    Public Overrides Function CreateFooter() As Control
+        Return FooterRow(NextButton())
     End Function
 
     Private Function IsLastStep() As Boolean
@@ -126,16 +144,20 @@ End Class
 ''' <summary>A 0 (none) to 5 (severe) scale: six boxes, green to red.</summary>
 Public NotInheritable Class GradeScale
     Inherits Control
-    Implements IThemed
+    Implements IThemed, IFillWidth
 
     Private _grade As Integer
     Private _hover As Integer = -1
     Private _highlighted As Boolean
     Public Event GradeChanged As EventHandler
 
+    ''' <summary>ReadEZ 2020's grade colours: 0 white (none) through pale yellow to orange (5, severe).</summary>
     Private Shared ReadOnly Colours As Color() = {
-        Color.FromArgb(46, 160, 67), Color.FromArgb(125, 180, 60), Color.FromArgb(200, 190, 40),
-        Color.FromArgb(235, 150, 40), Color.FromArgb(225, 95, 45), Color.FromArgb(200, 40, 40)}
+        Color.FromArgb(255, 255, 255), Color.FromArgb(253, 227, 167), Color.FromArgb(251, 201, 122),
+        Color.FromArgb(249, 174, 88), Color.FromArgb(246, 142, 61), Color.FromArgb(242, 107, 33)}
+
+    ''' <summary>Text on the grade boxes (dark: every grade colour is light enough).</summary>
+    Public Shared ReadOnly BoxInk As Color = Color.FromArgb(40, 40, 40)
 
     Public Sub New()
         SetStyle(ControlStyles.UserPaint Or ControlStyles.AllPaintingInWmPaint Or ControlStyles.OptimizedDoubleBuffer Or ControlStyles.ResizeRedraw, True)
@@ -202,12 +224,19 @@ Public NotInheritable Class GradeScale
         For i = 0 To 5
             Dim r As New RectangleF(1 + i * w + 2, 2, w - 4, Height - 4)
             Dim isOn = i = _grade
-            Using path = Draw.RoundedRect(r, 6), b As New SolidBrush(If(isOn, Colours(i), If(i = _hover, Draw.Mix(p.Surface, Colours(i), 0.25), p.SurfaceAlt))),
-                  pen As New Pen(If(isOn, Colours(i), If(_highlighted, p.Primary, p.Border)), If(_highlighted AndAlso Not isOn, 1.5F, 1.0F))
+            ' As ReadEZ 2020: every box in its grade colour, the chosen grade ringed in black.
+            ' Hover = a thin blue outline only, so it can't be mistaken for an answer.
+            Dim isHover = i = _hover AndAlso Not isOn
+            ' The chosen grade: full colour, thick black frame, bold number; the others paler
+            Dim penColour = If(isOn, Color.Black, If(isHover OrElse _highlighted, p.Primary, Draw.Mix(Colours(i), Color.Black, 0.15)))
+            Dim penWidth = If(isOn, 3.0F, If(isHover, 2.0F, If(_highlighted, 1.5F, 1.0F)))
+            Dim fill = If(isOn, Colours(i), Draw.Mix(Colours(i), p.Surface, 0.45))
+            Using path = Draw.RoundedRect(If(isOn, RectangleF.Inflate(r, -1, -1), r), 6), b As New SolidBrush(fill),
+                  pen As New Pen(penColour, penWidth)
                 g.FillPath(b, path)
                 g.DrawPath(pen, path)
             End Using
-            TextRenderer.DrawText(g, i.ToString(), Fonts.Strong, Rectangle.Round(r), If(isOn, Color.White, p.Ink),
+            TextRenderer.DrawText(g, i.ToString(), If(isOn, Fonts.Section, Fonts.Body), Rectangle.Round(r), If(isOn, Color.Black, Color.FromArgb(110, 110, 110)),
                                   TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
         Next
     End Sub
@@ -230,23 +259,27 @@ Public NotInheritable Class TextOptions
 
     Public Shared Function Create(owner As TestStep, changed As Action, showOverlaySize As Boolean, Optional enabledWhen As Func(Of Boolean) = Nothing) As Control
         Dim s = AppHost.Settings
-        Dim card As New CollapsibleCard With {.Width = 320, .AutoSize = True, .AutoSizeMode = AutoSizeMode.GrowAndShrink, .Margin = New Padding(0, 14, 0, 0)}
+        Dim run = owner.Run
+        Dim res = run.Result
+        Dim baseline = run.TextBaseline                 ' colour test: the baseline's settings are used
+        Dim card As New CollapsibleCard With {.Width = 320, .FitHeight = True, .Margin = New Padding(0, 14, 0, 0)}
         card.SetTitle("text.options")
-        card.Expanded = False
+        If baseline IsNot Nothing Then card.TitleSuffix = "  ·  " & Loc.F("text.asBaseline", baseline.Test_Date.ToString("d", Loc.Culture))
         Dim col = Ui.Column()
         col.Dock = DockStyle.Top
+        Ui.FillWidth(col)
         Dim cboText As New ThemedComboBox With {.Width = 280, .DropDownStyle = ComboBoxStyle.DropDownList}
         For Each t In ReadingTexts.All()
             cboText.Items.Add(t.Name)
         Next
-        cboText.SelectedIndex = Math.Max(0, Math.Min(cboText.Items.Count - 1, s.RoR_TextOptions))
-        Dim fnt As New FontButton With {.Width = 280, .SelectedFontName = s.RoR_FontName}
-        Dim size As New Slider With {.Minimum = 0, .Maximum = 30, .Width = 280, .Height = 30, .ShowValue = True, .Value = s.RoR_FontSize}
+        cboText.SelectedIndex = Math.Max(0, Math.Min(cboText.Items.Count - 1, res.RoR_TextOptions))
+        Dim fnt As New FontButton With {.Width = 280, .SelectedFontName = res.RoR_FontName}
+        Dim size As New Slider With {.Minimum = 0, .Maximum = 30, .Height = 30, .ShowValue = True, .Value = res.RoR_FontSize}
         size.ValueFormat = Function(v) (v + 8).ToString() & " pt"
-        Dim spacing As New Slider With {.Minimum = 0, .Maximum = 20, .Width = 280, .Height = 30, .ShowValue = True, .Value = s.RoR_LineSpacing}
+        Dim spacing As New Slider With {.Minimum = 0, .Maximum = 20, .Height = 30, .ShowValue = True, .Value = res.RoR_LineSpacing}
         spacing.ValueFormat = Function(v) (0.8 + v / 10.0).ToString("0.0")
-        Dim rows As New Slider With {.Minimum = 1, .Maximum = 20, .Width = 280, .Height = 30, .ShowValue = True, .Value = s.RoR_NoRows}
-        Dim overlay As New Slider With {.Minimum = 0, .Maximum = 10, .Width = 280, .Height = 30, .ShowValue = True, .Value = s.Overlay_Size}
+        Dim rows As New Slider With {.Minimum = 1, .Maximum = 20, .Height = 30, .ShowValue = True, .Value = Math.Max(1, Math.Min(20, res.RoR_NoRows))}
+        Dim overlay As New Slider With {.Minimum = 0, .Maximum = 10, .Height = 30, .ShowValue = True, .Value = If(res.RoR_OverlaySize > 0, res.RoR_OverlaySize, s.Overlay_Size)}
         Dim mixed = ThemedCheckBox.Create("text.mixed")
         mixed.Checked = s.RoR_Random = 1
         col.Controls.Add(Ui.Stack("text.text", cboText))
@@ -257,28 +290,51 @@ Public NotInheritable Class TextOptions
         col.Controls.Add(mixed)
         If showOverlaySize Then col.Controls.Add(Ui.Stack("text.overlaySize", overlay))
         card.Controls.Add(col)
+        card.Expanded = False                             ' collapsed at first (after the body is added, so it is hidden)
+
+        ' Colour test: opening the settings warns first - they match the baseline so the two compare
+        Dim asking = False
+        AddHandler card.ExpandedChanged, Sub()
+                                             If Not card.Expanded OrElse baseline Is Nothing OrElse run.TextUnlocked OrElse asking Then Return
+                                             asking = True
+                                             Try
+                                                 If Ask.YesNoWarning(card.FindForm(), "text.changeWarning", baseline.Test_Date.ToString("d", Loc.Culture)) Then
+                                                     run.TextUnlocked = True
+                                                 Else
+                                                     card.Expanded = False
+                                                 End If
+                                             Finally
+                                                 asking = False
+                                             End Try
+                                         End Sub
 
         Dim apply = Sub()
                         If enabledWhen IsNot Nothing AndAlso Not enabledWhen() Then Return
-                        s.RoR_TextOptions = Math.Max(0, cboText.SelectedIndex)
-                        s.RoR_FontName = fnt.SelectedFontName
-                        s.RoR_FontSize = size.Value
-                        s.RoR_LineSpacing = spacing.Value
-                        s.RoR_NoRows = rows.Value
+                        ' This test
+                        res.RoR_TextOptions = Math.Max(0, cboText.SelectedIndex)
+                        res.ROR_Text = ReadingTexts.ByIndex(res.RoR_TextOptions).Name
+                        res.RoR_FontName = fnt.SelectedFontName
+                        res.RoR_FontSize = size.Value
+                        res.RoR_LineSpacing = spacing.Value
+                        res.RoR_NoRows = rows.Value
+                        res.RoR_OverlaySize = overlay.Value
                         s.RoR_Random = If(mixed.Checked, 1, 0)
+                        ' The settings for the next tests too - except in a colour test, which keeps to its baseline's
+                        If baseline Is Nothing Then
+                            s.RoR_TextOptions = res.RoR_TextOptions
+                            s.RoR_FontName = res.RoR_FontName
+                            s.RoR_FontSize = res.RoR_FontSize
+                            s.RoR_LineSpacing = res.RoR_LineSpacing
+                            s.RoR_NoRows = res.RoR_NoRows
+                        End If
                         s.Overlay_Size = overlay.Value
                         AppHost.SaveSettings()
-                        Dim r = owner.Run.Result
-                        r.RoR_TextOptions = s.RoR_TextOptions
-                        r.ROR_Text = ReadingTexts.ByIndex(s.RoR_TextOptions).Name
-                        r.RoR_FontName = s.RoR_FontName : r.RoR_FontSize = s.RoR_FontSize : r.RoR_LineSpacing = s.RoR_LineSpacing
-                        r.RoR_NoRows = s.RoR_NoRows : r.RoR_OverlaySize = s.Overlay_Size
-                        Dim text = ReadingTexts.ByIndex(s.RoR_TextOptions)
-                        owner.Scene.Rows = ReadingTexts.RowsFor(text, s.RoR_NoRows, s.RoR_Random = 1)
-                        owner.Scene.FontName = s.RoR_FontName
-                        owner.Scene.FontSize = s.RoR_FontSize
-                        owner.Scene.LineSpacing = s.RoR_LineSpacing
-                        owner.Scene.OverlaySize = s.Overlay_Size
+                        Dim text = ReadingTexts.ByIndex(res.RoR_TextOptions)
+                        owner.Scene.Rows = ReadingTexts.RowsFor(text, res.RoR_NoRows, s.RoR_Random = 1)
+                        owner.Scene.FontName = res.RoR_FontName
+                        owner.Scene.FontSize = res.RoR_FontSize
+                        owner.Scene.LineSpacing = res.RoR_LineSpacing
+                        owner.Scene.OverlaySize = res.RoR_OverlaySize
                         changed()
                     End Sub
         AddHandler cboText.SelectedIndexChanged, Sub() apply()

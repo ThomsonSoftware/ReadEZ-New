@@ -81,6 +81,68 @@ Public NotInheritable Class Ui
             .BackColor = Color.Transparent}
     End Function
 
+    ''' <summary>
+    ''' Makes a column (docked, so its width is set by its parent) fit its contents to that width, and
+    ''' re-fit whenever it is resized: labels wrap at the width, fields under a label (Ui.Stack), sliders,
+    ''' text boxes, combo boxes, cards and IFillWidth controls stretch to it. Buttons, rows and
+    ''' fixed-size pictures keep their own size. Nested top-down columns are fitted too.
+    ''' </summary>
+    Public Shared Sub FillWidth(col As FlowLayoutPanel)
+        Dim lastWidth = -1
+        Dim busy = False
+        Dim fit = Sub()
+                      If busy Then Return
+                      Dim avail = col.ClientSize.Width - col.Padding.Horizontal
+                      If avail <= 0 OrElse avail = lastWidth Then Return
+                      busy = True
+                      Try
+                          lastWidth = avail
+                          col.SuspendLayout()
+                          For Each c As Control In col.Controls
+                              FitChild(c, avail, False)
+                          Next
+                          col.ResumeLayout(True)
+                      Finally
+                          busy = False
+                      End Try
+                  End Sub
+        AddHandler col.SizeChanged, Sub() fit()
+        AddHandler col.ControlAdded, Sub()
+                                         lastWidth = -1
+                                         fit()
+                                     End Sub
+    End Sub
+
+    Private Shared Sub FitChild(c As Control, avail As Integer, stretchAll As Boolean)
+        Dim w = Math.Max(40, avail - c.Margin.Horizontal)
+        If TypeOf c Is Label Then
+            If c.AutoSize Then c.MaximumSize = New Size(w, 0)
+        ElseIf TypeOf c Is FlowLayoutPanel Then
+            Dim f = DirectCast(c, FlowLayoutPanel)
+            If f.FlowDirection = FlowDirection.TopDown AndAlso f.Dock = DockStyle.None Then
+                For Each k As Control In f.Controls
+                    FitChild(k, w - f.Padding.Horizontal, False)
+                Next
+            End If
+        ElseIf TypeOf c Is TableLayoutPanel Then
+            Dim t = DirectCast(c, TableLayoutPanel)
+            If t.ColumnCount = 1 Then                     ' Ui.Stack: label above a field (full width in a column)
+                If t.Margin.Right <> 0 Then
+                    t.Margin = New Padding(t.Margin.Left, t.Margin.Top, 0, t.Margin.Bottom)
+                    w = Math.Max(40, avail - t.Margin.Horizontal)
+                End If
+                For Each k As Control In t.Controls
+                    FitChild(k, w - t.Padding.Horizontal, True)
+                Next
+            End If
+        ElseIf TypeOf c Is IFillWidth OrElse TypeOf c Is TextField OrElse TypeOf c Is Slider OrElse
+               TypeOf c Is ComboBox OrElse TypeOf c Is Card Then
+            c.Width = w
+        ElseIf stretchAll AndAlso Not c.AutoSize Then
+            c.Width = w                                   ' e.g. a FontButton under its label
+        End If
+    End Sub
+
     Public Shared Function Separator() As Control
         Dim s As New Panel With {.Width = 1, .Height = 28, .Margin = New Padding(6, 4, 14, 0)}
         AddHandler s.Paint, Sub(o, e) e.Graphics.Clear(ThemeManager.Current.Border)
@@ -98,6 +160,10 @@ Public NotInheritable Class Ui
 End Class
 
 #End Region
+
+''' <summary>Marks a control that Ui.FillWidth stretches to the width of its column.</summary>
+Public Interface IFillWidth
+End Interface
 
 #Region "Panels"
 
@@ -299,6 +365,18 @@ Public Class Card
         End Get
     End Property
 
+    ''' <summary>Text added after the translated title (e.g. ":  02/11/2026 18:05").</summary>
+    Public Property TitleSuffix As String
+        Get
+            Return _titleSuffix
+        End Get
+        Set(value As String)
+            _titleSuffix = If(value, "")
+            Invalidate()
+        End Set
+    End Property
+    Private _titleSuffix As String = ""
+
 #Region "Header icons (Zoom, Copy)"
 
     Private ReadOnly _headerIcons As New List(Of ModernButton)
@@ -394,6 +472,7 @@ Public Class Card
     Protected Overrides Sub OnPaint(e As PaintEventArgs)
         MyBase.OnPaint(e)
         If _title = "" Then Return
+        Dim title = _title & _titleSuffix
         Dim p = ThemeManager.Current
         Dim head = LogicalToDeviceUnits(HeaderHeight)
         If TitleBanner Then
@@ -405,7 +484,7 @@ Public Class Card
                 e.Graphics.FillPath(b, path)
             End Using
             Dim textR = Rectangle.Inflate(band, -LogicalToDeviceUnits(10), 0)
-            TextRenderer.DrawText(e.Graphics, _title, TitleFont, textR, p.OnPrimary,
+            TextRenderer.DrawText(e.Graphics, title, TitleFont, textR, p.OnPrimary,
                                   TextFormatFlags.VerticalCenter Or TextFormatFlags.Left Or TextFormatFlags.EndEllipsis)
         ElseIf Accent OrElse InBrandedHost() Then
             Dim acc = Brand.Accent()
@@ -416,10 +495,10 @@ Public Class Card
                 e.Graphics.FillPath(b, path)
             End Using
             Dim tx = bx + barW + LogicalToDeviceUnits(8)
-            TextRenderer.DrawText(e.Graphics, _title, TitleFont, New Rectangle(tx, 0, Math.Max(1, Width - tx - Padding.Right), head),
+            TextRenderer.DrawText(e.Graphics, title, TitleFont, New Rectangle(tx, 0, Math.Max(1, Width - tx - Padding.Right), head),
                                   acc, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left Or TextFormatFlags.EndEllipsis)
         Else
-            TextRenderer.DrawText(e.Graphics, _title, TitleFont, New Rectangle(Padding.Left, 0, Width - Padding.Horizontal, head),
+            TextRenderer.DrawText(e.Graphics, title, TitleFont, New Rectangle(Padding.Left, 0, Width - Padding.Horizontal, head),
                                   p.Ink, TextFormatFlags.VerticalCenter Or TextFormatFlags.Left Or TextFormatFlags.EndEllipsis)
         End If
     End Sub
@@ -436,8 +515,38 @@ Public Class CollapsibleCard
     Private _expandedHeight As Integer
     Public Event ExpandedChanged As EventHandler
 
+    ''' <summary>
+    ''' True: the height follows the contents (just the header when collapsed, header + contents when
+    ''' expanded). The width is left to the parent (e.g. Ui.FillWidth), so the card never shrinks sideways.
+    ''' </summary>
+    Public Property FitHeight As Boolean
+
     Public Sub New()
         Cursor = Cursors.Default
+    End Sub
+
+    Protected Overrides Sub OnControlAdded(e As ControlEventArgs)
+        MyBase.OnControlAdded(e)
+        e.Control.Visible = _expanded                     ' a body added to a collapsed card stays hidden
+        FitToContent()
+    End Sub
+
+    Protected Overrides Sub OnLayout(e As LayoutEventArgs)
+        MyBase.OnLayout(e)
+        FitToContent()
+    End Sub
+
+    Private Sub FitToContent()
+        If Not FitHeight OrElse Dock = DockStyle.Fill OrElse Dock = DockStyle.Left OrElse Dock = DockStyle.Right Then Return
+        Dim h = Padding.Top                               ' the header (SetTitle sets Padding.Top to its height)
+        If _expanded Then
+            Dim bottom = Padding.Top
+            For Each c As Control In Controls
+                bottom = Math.Max(bottom, c.Bottom + c.Margin.Bottom)
+            Next
+            h = bottom + Padding.Bottom
+        End If
+        If h <> Height Then Height = h
     End Sub
 
     Public Property Expanded As Boolean
@@ -451,7 +560,10 @@ Public Class CollapsibleCard
             For Each c As Control In Controls
                 c.Visible = value
             Next
-            If Dock <> DockStyle.Fill Then
+            If FitHeight Then
+                PerformLayout()
+                FitToContent()
+            ElseIf Dock <> DockStyle.Fill Then
                 Height = If(value, Math.Max(_expandedHeight, LogicalToDeviceUnits(HeaderHeight) + 20), LogicalToDeviceUnits(HeaderHeight))
             End If
             Invalidate()

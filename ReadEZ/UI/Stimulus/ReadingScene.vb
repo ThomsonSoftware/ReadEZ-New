@@ -65,6 +65,17 @@ Public NotInheritable Class ReadingScene
     ''' <summary>The word under the mouse in the clinician's copy.</summary>
     Public Property HoverWord As WordRef? = Nothing
 
+    ' ---- The patient's own answers (colour tests, "patient chooses") ----
+    ''' <summary>Buttons on the patient's screen (e.g. "The first", "The second", "Show again"); Nothing = none.</summary>
+    Public Property ChoiceButtons As String() = Nothing
+    ''' <summary>A question or hint on the patient's screen ("" = none).</summary>
+    Public Property ChoicePrompt As String = ""
+    ''' <summary>
+    ''' Feedback for the patient's answer, shown for a moment: 0 / 1 = the left / right copy (or the
+    ''' first / second button), 2 = the third button; -1 = none.
+    ''' </summary>
+    Public Property Highlight As Integer = -1
+
     Private Shared ReadOnly Measure As Graphics = Graphics.FromImage(New Bitmap(1, 1))
     Private Shared ReadOnly Typo As StringFormat = MakeFormat()
 
@@ -170,6 +181,39 @@ Public NotInheritable Class ReadingScene
         Return New RectangleF(lay.Lefts(n) - overlap / 2, lay.Top - overlap / 2, lay.TextWidth + overlap, lay.TextHeight + overlap)
     End Function
 
+    ''' <summary>
+    ''' The text block of the (first) copy in the patient's screen pixels, with a margin of one line
+    ''' round it. Empty if there is no text. Used to draw an enlarged copy for scoring.
+    ''' </summary>
+    Public Function TextBounds() As RectangleF
+        If Rows.Count = 0 Then Return RectangleF.Empty
+        Dim lay = GetLayout()
+        If lay.TextWidth <= 0 OrElse lay.TextHeight <= 0 Then Return RectangleF.Empty
+        Dim m = lay.LineHeight
+        Return New RectangleF(lay.Lefts(0) - m, lay.Top - m, lay.TextWidth + 2 * m, lay.TextHeight + 2 * m)
+    End Function
+
+    ''' <summary>A row of the (first) copy, in the patient's screen pixels.</summary>
+    Public Function RowBounds(row As Integer) As RectangleF
+        Dim lay = GetLayout()
+        If row < 0 OrElse row >= lay.WordRects.Count OrElse lay.WordRects(row).Count = 0 Then Return RectangleF.Empty
+        Return New RectangleF(lay.Lefts(0), lay.Top + row * lay.Pitch, lay.WordRects(row).Last().Right, lay.LineHeight)
+    End Function
+
+    ''' <summary>A word of the (first) copy, in the patient's screen pixels.</summary>
+    Public Function WordBounds(row As Integer, word As Integer) As RectangleF
+        Return RectOf(GetLayout(), New WordRef(row, word))
+    End Function
+
+    ''' <summary>Copy n (0 or 1): its coloured overlay, or the text block itself on white / full screen.</summary>
+    Public Function CopyBounds(n As Integer) As RectangleF
+        If Rows.Count = 0 Then Return RectangleF.Empty
+        Dim lay = GetLayout()
+        If n < 0 OrElse n >= lay.Lefts.Length Then Return RectangleF.Empty
+        If Presentation = ReadingPresentation.Overlay OrElse Presentation = ReadingPresentation.TwoOverlays Then Return OverlayRect(lay, n)
+        Return New RectangleF(lay.Lefts(n), lay.Top, lay.TextWidth, lay.TextHeight)
+    End Function
+
     ''' <summary>Number of words in each row.</summary>
     Public Function WordCounts() As List(Of Integer)
         Return GetLayout().WordRects.Select(Function(r) r.Count).ToList()
@@ -198,6 +242,7 @@ Public NotInheritable Class ReadingScene
                     g.DrawString(Caption, f, cb, 40, 30)
                 End Using
             End If
+            DrawChoices(g)
         Finally
             g.Restore(state)
         End Try
@@ -260,6 +305,83 @@ Public NotInheritable Class ReadingScene
         Dim r = row(w.Word)
         Return New RectangleF(lay.Lefts(0) + r.X, lay.Top + r.Y, r.Width, r.Height)
     End Function
+
+#Region "The patient's answers"
+
+    ''' <summary>Where the patient's buttons are (patient's screen pixels): a row across the middle.</summary>
+    Private Function ChoiceRects() As List(Of RectangleF)
+        Dim list As New List(Of RectangleF)
+        If ChoiceButtons Is Nothing OrElse ChoiceButtons.Length = 0 Then Return list
+        Dim sz = StimulusArt.ScreenSize
+        Dim w = sz.Width * 0.22F, h = sz.Height * 0.12F, gap = sz.Width * 0.03F
+        Dim total = ChoiceButtons.Length * w + (ChoiceButtons.Length - 1) * gap
+        Dim x = (sz.Width - total) / 2, y = sz.Height * 0.5F
+        For i = 0 To ChoiceButtons.Length - 1
+            list.Add(New RectangleF(x + i * (w + gap), y, w, h))
+        Next
+        Return list
+    End Function
+
+    ''' <summary>The patient's button under a point of the screen drawn into bounds (-1 = none).</summary>
+    Public Function ChoiceAt(bounds As Rectangle, p As Point) As Integer
+        Dim k = bounds.Width / CSng(StimulusArt.ScreenSize.Width)
+        If k <= 0 Then Return -1
+        Dim x = (p.X - bounds.X) / k, y = (p.Y - bounds.Y) / k
+        Dim rs = ChoiceRects()
+        For i = 0 To rs.Count - 1
+            If rs(i).Contains(x, y) Then Return i
+        Next
+        Return -1
+    End Function
+
+    ''' <summary>The question and the buttons, large, for the patient to click (in screen pixels; Paint scales them).</summary>
+    Private Sub DrawChoices(g As Graphics)
+        Dim sz = StimulusArt.ScreenSize
+        g.TextRenderingHint = TextRenderingHint.AntiAliasGridFit
+        Using fmt As New StringFormat With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center}
+            If ChoicePrompt <> "" Then
+                Dim hasButtons = ChoiceButtons IsNot Nothing AndAlso ChoiceButtons.Length > 0
+                Dim py = If(hasButtons, sz.Height * 0.36F, sz.Height * 0.92F)
+                Using f As New Font("Segoe UI Semibold", sz.Height * 0.045F, GraphicsUnit.Pixel), b As New SolidBrush(Color.FromArgb(40, 45, 55))
+                    g.DrawString(ChoicePrompt, f, b, New RectangleF(0, py - sz.Height * 0.06F, sz.Width, sz.Height * 0.12F), fmt)
+                End Using
+            End If
+            Dim rs = ChoiceRects()
+            For i = 0 To rs.Count - 1
+                Dim r = rs(i)
+                Dim chosen = i = Highlight
+                ' The button tapped turns green with a tick, a little larger
+                Dim br = If(chosen, RectangleF.Inflate(r, r.Height * 0.06F, r.Height * 0.06F), r)
+                Using path = Draw.RoundedRect(br, br.Height * 0.2F), b As New SolidBrush(If(chosen, TapGreen, Brand.Navy)),
+                      f As New Font("Segoe UI Semibold", r.Height * 0.32F, GraphicsUnit.Pixel)
+                    g.FillPath(b, path)
+                    g.DrawString(If(chosen, ChrW(&H2713) & "  ", "") & ChoiceButtons(i), f, Brushes.White, br, fmt)
+                End Using
+            Next
+        End Using
+        ' Overlays: the copy chosen gets a green frame and a tick
+        If Highlight >= 0 AndAlso Highlight <= 1 AndAlso (ChoiceButtons Is Nothing OrElse ChoiceButtons.Length = 0) AndAlso
+           Presentation = ReadingPresentation.TwoOverlays AndAlso Rows.Count > 0 Then
+            Dim lay = GetLayout()
+            If Highlight < lay.Lefts.Length Then
+                Dim r = OverlayRect(lay, Highlight)
+                Dim w = Math.Max(4.0F, sz.Height * 0.012F)
+                Using pen As New Pen(TapGreen, w), b As New SolidBrush(TapGreen),
+                      f As New Font("Segoe UI Semibold", sz.Height * 0.05F, GraphicsUnit.Pixel),
+                      fmt As New StringFormat With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center}
+                    g.DrawRectangle(pen, r.X - w, r.Y - w, r.Width + 2 * w, r.Height + 2 * w)
+                    Dim d = sz.Height * 0.09F
+                    Dim badge As New RectangleF(r.Right - d * 0.6F, r.Y - d * 0.4F, d, d)
+                    g.FillEllipse(b, badge)
+                    g.DrawString(ChrW(&H2713).ToString(), f, Brushes.White, badge, fmt)
+                End Using
+            End If
+        End If
+    End Sub
+
+    Private Shared ReadOnly TapGreen As Color = Color.FromArgb(46, 140, 60)
+
+#End Region
 
     ''' <summary>The word under a point of a copy drawn into bounds (Nothing if none).</summary>
     Public Function WordAt(bounds As Rectangle, p As Point) As WordRef?

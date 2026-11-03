@@ -46,6 +46,8 @@
 
   <ItemGroup>
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+    <!-- QR codes for linking a tablet (Devices screen), as Thomson Near Chart -->
+    <PackageReference Include="QRCoder" Version="1.6.0" />
   </ItemGroup>
 
   <!-- DevExpress: printed reports and letters only (preview, print, PDF / Word export, e-mail) -->

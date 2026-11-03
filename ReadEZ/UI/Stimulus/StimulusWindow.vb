@@ -202,6 +202,27 @@ Public NotInheritable Class StimulusWindow
         DrawLayers(e.Graphics, ClientRectangle, preview:=False)
     End Sub
 
+    ''' <summary>The patient clicked their screen (e.g. on the colour they prefer). Bounds = the whole screen.</summary>
+    Public Event ClickedOnScreen(bounds As Rectangle, e As MouseEventArgs)
+
+    Protected Overrides Sub OnMouseClick(e As MouseEventArgs)
+        MyBase.OnMouseClick(e)
+        RaiseEvent ClickedOnScreen(ClientRectangle, e)
+    End Sub
+
+    ''' <summary>A tap on the tablet (TabletScreen): handled as a click on the patient's screen.</summary>
+    Public Sub SimulateClick(bounds As Rectangle, e As MouseEventArgs)
+        RaiseEvent ClickedOnScreen(bounds, e)
+    End Sub
+
+    ''' <summary>Draws exactly what the patient sees (no examiner's marks) - for the tablet.</summary>
+    Public Sub RenderPatient(g As Graphics, bounds As Rectangle)
+        Using b As New SolidBrush(BackColor)
+            g.FillRectangle(b, bounds)
+        End Using
+        DrawLayers(g, bounds, preview:=False)
+    End Sub
+
     ''' <summary>Draws the patient's view into another surface (the clinician's preview).</summary>
     Public Sub RenderPreview(g As Graphics, bounds As Rectangle)
         Using b As New SolidBrush(BackColor)

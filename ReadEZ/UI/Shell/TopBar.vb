@@ -242,6 +242,12 @@ Public Class TopBar
         Dim two = ScreenLayout.IsTwoScreenMode()
         _screens.State = If(two, ChipState.Good, ChipState.Neutral)
         _screens.Text = Loc.T(If(two, "top.screens.two", "top.screens.one"))
+        If TabletScreen.IsActive Then
+            _screens.Text = Loc.F("top.screens.tablet", TabletScreen.DeviceName)
+        ElseIf AppHost.Settings.UseTablet Then
+            _screens.State = ChipState.Warning
+            _screens.Text = Loc.T("top.screens.tabletOff")
+        End If
         _tip.SetToolTip(_screens, Loc.T("top.screens.tip"))
     End Sub
 

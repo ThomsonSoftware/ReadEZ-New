@@ -99,10 +99,37 @@ Public NotInheritable Class AppSettings
 #Region "Tests"
     ''' <summary>The colour test used last: 0 automatic, 1 manual.</summary>
     Public ColourTestMethod As Integer = 0
+    ''' <summary>Automatic colour test: True the quick test (about 12 pairs), False the classic ReadEZ 2020 staircases (about 35).</summary>
+    Public ColourAutoQuick As Boolean = True
+    ''' <summary>Show the patient's instructions on their screen before each part of a test.</summary>
+    Public ShowPatientInstructions As Boolean = True
+    ''' <summary>Colour tests: the patient answers on their own screen (clicks the side, or First / Second / Show again).</summary>
+    Public PatientChooses As Boolean = False
     ''' <summary>After choosing a colour, go straight on to rate of reading and symptoms with it.</summary>
     Public ContinueAfterColour As Boolean = True
     ''' <summary>One screen: show the patient's text in the whole window (F11) while testing.</summary>
     Public SingleScreenFullWindow As Boolean = False
+#End Region
+
+#Region "Tablet (Remote Test server, as Thomson Near Chart)"
+    ''' <summary>The practice's serial number on the Remote Test server (the same as Near Chart's).</summary>
+    Public CompanyID As String = ""
+    Public SelectedDevice As Integer = 0
+    Public SelectedDeviceId As String = ""
+    ''' <summary>Use the selected tablet as the patient's screen.</summary>
+    Public UseTablet As Boolean = False
+    Public ServerUrl As String = DefaultServerUrl
+    Public ConnectUrl As String = DefaultConnectUrl
+
+    Public Const DefaultServerUrl As String = "https://pro.remotetest.co.uk/v/1/ImageSync.svc"
+    Public Const DefaultConnectUrl As String = "https://pro.remotetest.co.uk/connect/?did="
+
+    Public ReadOnly Property CompanyGuid As Guid
+        Get
+            Dim g As Guid
+            Return If(Guid.TryParse(If(CompanyID, "").Trim(), g), g, Guid.Empty)
+        End Get
+    End Property
 #End Region
 
 #Region "Derived values"

@@ -98,6 +98,7 @@ Public NotInheritable Class ColourWheel
         Dim g = e.Graphics
         g.Clear(Draw.ParentBack(Me))
         g.SmoothingMode = SmoothingMode.AntiAlias
+        g.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAliasGridFit   ' smooth letters
         Dim geo = Geometry()
         ' Spokes first, under the swatches
         If Spokes IsNot Nothing AndAlso Spokes.Length >= 13 Then

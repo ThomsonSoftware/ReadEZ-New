@@ -17,6 +17,7 @@ Public NotInheritable Class StimulusArt
     ''' <summary>Size of the patient's screen in pixels, from Settings > Screens.</summary>
     Public Shared ReadOnly Property ScreenSize As Size
         Get
+            If TabletScreen.IsActive Then Return TabletScreen.ScreenSize     ' drawn at the tablet's size
             Dim s = AppHost.Settings
             Return New Size(Math.Max(1, s.Stimulus_Width), Math.Max(1, s.Stimulus_Height))
         End Get

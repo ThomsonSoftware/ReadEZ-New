@@ -13,6 +13,10 @@ Option Strict On
 '     Lenses     the whole screen coloured, in a darkened room (the whole visual field coloured)
 '     Computer   the whole screen coloured with the room lights on
 '   All steps fill in one ReadEZResult, saved when the last step is finished.
+'
+'   A colour test uses the text settings of the patient's latest baseline (text, font, size, line
+'   spacing, rows), so the reading speeds and symptoms can be compared; changing them during the
+'   test asks first (TextOptions).
 ' ====================================================================================================
 
 Public NotInheritable Class TestRun
@@ -26,6 +30,12 @@ Public NotInheritable Class TestRun
 
     ''' <summary>The colour test's method: automatic (0) or manual (1).</summary>
     Public Property Method As Integer
+
+    ''' <summary>Colour tests: the baseline whose text settings this test uses (Nothing = none, or a baseline test).</summary>
+    Public Property TextBaseline As ReadEZResult
+
+    ''' <summary>The operator agreed to change the text settings from the baseline's for this test.</summary>
+    Public Property TextUnlocked As Boolean
 
     Private Sub New(r As ReadEZResult)
         Result = r
@@ -62,6 +72,7 @@ Public NotInheritable Class TestRun
     ''' <summary>A colour test: the colour, then (optionally) rate of reading and symptoms with it.</summary>
     Public Shared Function Colour(mode As ReadEZTestMode, method As Integer, continueAfter As Boolean) As TestRun
         Dim t As New TestRun(NewResult(mode)) With {.Method = method}
+        UseBaselineText(t)
         t.Add(If(method = 0, "step.colourAuto", "step.colourManual"), Function() New ColourStep())
         If continueAfter Then
             t.Add("step.readingColour", Function() New ReadingStep())
@@ -69,6 +80,27 @@ Public NotInheritable Class TestRun
         End If
         Return t
     End Function
+
+    ''' <summary>Copies the text settings of the patient's latest baseline into a colour test.</summary>
+    Private Shared Sub UseBaselineText(t As TestRun)
+        If Not AppHost.Session.HasPatient Then Return
+        Dim b As ReadEZResult = Nothing
+        Try
+            b = AppHost.Db.GetResults(AppHost.Session.PatientId).Where(Function(x) x.IsBaseline).
+                OrderByDescending(Function(x) x.Test_Date).ThenByDescending(Function(x) x.ID).FirstOrDefault()
+        Catch ex As Exception
+            Log.Error("Baseline text settings", ex)
+        End Try
+        If b Is Nothing Then Return
+        t.TextBaseline = b
+        Dim r = t.Result
+        r.RoR_TextOptions = b.RoR_TextOptions
+        r.ROR_Text = ReadingTexts.ByIndex(b.RoR_TextOptions).Name
+        If Not String.IsNullOrWhiteSpace(b.RoR_FontName) Then r.RoR_FontName = b.RoR_FontName
+        r.RoR_FontSize = b.RoR_FontSize
+        r.RoR_LineSpacing = b.RoR_LineSpacing
+        If b.RoR_NoRows > 0 Then r.RoR_NoRows = b.RoR_NoRows
+    End Sub
 
     ''' <summary>Translation key of a test mode's name.</summary>
     Public Shared Function ModeKey(mode As ReadEZTestMode) As String

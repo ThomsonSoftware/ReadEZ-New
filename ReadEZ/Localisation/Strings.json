@@ -521,6 +521,42 @@
     "de": "Nur auf Wunsch",
     "it": "Solo quando lo scelgo"
   },
+  "colour.algo.classic": {
+    "en": "Classic (ReadEZ 2020)",
+    "es": "Clásica (ReadEZ 2020)",
+    "de": "Klassisch (ReadEZ 2020)",
+    "it": "Classico (ReadEZ 2020)"
+  },
+  "colour.algo.quick": {
+    "en": "Quick",
+    "es": "Rápida",
+    "de": "Schnell",
+    "it": "Rapido"
+  },
+  "colour.ask.overlay": {
+    "en": "Ask: which side is more comfortable? ← left · → right (or click that side)",
+    "es": "Pregunte: ¿qué lado es más cómodo? ← izquierda · → derecha (o haga clic en ese lado)",
+    "de": "Fragen: Welche Seite ist angenehmer? ← links · → rechts (oder auf die Seite klicken)",
+    "it": "Chiedi: quale lato è più comodo? ← sinistra · → destra (o fai clic su quel lato)"
+  },
+  "colour.ask.showing1": {
+    "en": "Showing the first colour…",
+    "es": "Mostrando el primer color…",
+    "de": "Erste Farbe wird gezeigt…",
+    "it": "Primo colore…"
+  },
+  "colour.ask.showing2": {
+    "en": "Showing the second colour…",
+    "es": "Mostrando el segundo color…",
+    "de": "Zweite Farbe wird gezeigt…",
+    "it": "Secondo colore…"
+  },
+  "colour.ask.successive": {
+    "en": "Ask: which was more comfortable? ← first · → second (R: show them again)",
+    "es": "Pregunte: ¿cuál fue más cómodo? ← primero · → segundo (R: verlos otra vez)",
+    "de": "Fragen: Welche war angenehmer? ← erste · → zweite (R: noch einmal zeigen)",
+    "it": "Chiedi: quale era più comodo? ← primo · → secondo (R: mostra di nuovo)"
+  },
   "colour.auto": {
     "en": "Automatic",
     "es": "Automática",
@@ -533,17 +569,47 @@
     "de": "Farbtest beendet.",
     "it": "Test del colore terminato."
   },
+  "colour.autoQuick": {
+    "en": "Automatic (quick)",
+    "es": "Automática (rápida)",
+    "de": "Automatisch (schnell)",
+    "it": "Automatico (rapido)"
+  },
   "colour.bespoke": {
     "en": "Bespoke colour…",
     "es": "Color a medida…",
     "de": "Individuelle Farbe…",
     "it": "Colore personalizzato…"
   },
+  "colour.chooseLeft": {
+    "en": "Left preferred",
+    "es": "Prefiere la izquierda",
+    "de": "Links bevorzugt",
+    "it": "Preferisce sinistra"
+  },
+  "colour.chooseRight": {
+    "en": "Right preferred",
+    "es": "Prefiere la derecha",
+    "de": "Rechts bevorzugt",
+    "it": "Preferisce destra"
+  },
   "colour.chosen": {
     "en": "Preferred colour: {0}",
     "es": "Color preferido: {0}",
     "de": "Bevorzugte Farbe: {0}",
     "it": "Colore preferito: {0}"
+  },
+  "colour.clickHintOverlay": {
+    "en": "Or click the preferred side of the text (on either screen).",
+    "es": "O haga clic en el lado preferido del texto (en cualquier pantalla).",
+    "de": "Oder klicken Sie auf die bevorzugte Seite des Textes (auf einem der Bildschirme).",
+    "it": "Oppure fai clic sul lato preferito del testo (su uno dei due schermi)."
+  },
+  "colour.clickHintSuccessive": {
+    "en": "Or click the screen while the preferred colour is showing.",
+    "es": "O haga clic en la pantalla mientras se muestra el color preferido.",
+    "de": "Oder klicken Sie auf den Bildschirm, während die bevorzugte Farbe angezeigt wird.",
+    "it": "Oppure fai clic sullo schermo mentre è mostrato il colore preferito."
   },
   "colour.confirmRestart": {
     "en": "Start the colour test again from the beginning?",
@@ -557,6 +623,12 @@
     "de": "Dieser Test sollte in einem abgedunkelten Raum erfolgen. Bitte schalten Sie das Licht aus.",
     "it": "Questo test va eseguito in una stanza oscurata. Spegni le luci."
   },
+  "colour.darkRoomBanner": {
+    "en": "Test in a darkened room: switch the room lights off.",
+    "es": "Haga la prueba en una sala oscura: apague las luces.",
+    "de": "Test in einem abgedunkelten Raum: Licht ausschalten.",
+    "it": "Esegui il test in una stanza buia: spegni le luci."
+  },
   "colour.first": {
     "en": "Prefers first (←)",
     "es": "Prefiere el primero (←)",
@@ -568,6 +640,18 @@
     "es": "Se prefirió el gris a este color: el color puede ser de poca ayuda.",
     "de": "Grau wurde dieser Farbe vorgezogen: Farbe hilft möglicherweise wenig.",
     "it": "Il grigio è stato preferito a questo colore: il colore potrebbe essere poco utile."
+  },
+  "colour.help.button": {
+    "en": "How to use",
+    "es": "Cómo usar",
+    "de": "Bedienung",
+    "it": "Come si usa"
+  },
+  "colour.help.title": {
+    "en": "The colour test",
+    "es": "La prueba de color",
+    "de": "Der Farbtest",
+    "it": "Il test del colore"
   },
   "colour.introComputer": {
     "en": "The whole screen is coloured, one colour after the other, with the room lights on. Ask whether the first or the second colour was more comfortable.",
@@ -604,6 +688,72 @@
     "es": "Manual",
     "de": "Manuell",
     "it": "Manuale"
+  },
+  "colour.manualHint": {
+    "en": "Click a colour for the side chosen above (right-click: right side). Solid ring = left, dashed ring = right.",
+    "es": "Haga clic en un color para el lado elegido arriba (clic derecho: lado derecho). Anillo continuo = izquierda, discontinuo = derecha.",
+    "de": "Klicken Sie eine Farbe für die oben gewählte Seite an (Rechtsklick: rechte Seite). Durchgezogener Ring = links, gestrichelter Ring = rechts.",
+    "it": "Fai clic su un colore per il lato scelto sopra (clic destro: lato destro). Anello pieno = sinistra, tratteggiato = destra."
+  },
+  "colour.patient.again": {
+    "en": "Show again",
+    "es": "Ver otra vez",
+    "de": "Noch einmal",
+    "it": "Mostra di nuovo"
+  },
+  "colour.patient.chose": {
+    "en": "Patient chose: {0}",
+    "es": "El paciente eligió: {0}",
+    "de": "Patient wählte: {0}",
+    "it": "Il paziente ha scelto: {0}"
+  },
+  "colour.patient.clickSide": {
+    "en": "Click the side you prefer",
+    "es": "Haga clic en el lado que prefiera",
+    "de": "Klicken Sie auf die Seite, die Sie bevorzugen",
+    "it": "Fai clic sul lato che preferisci"
+  },
+  "colour.patient.first": {
+    "en": "The first",
+    "es": "El primero",
+    "de": "Die erste",
+    "it": "Il primo"
+  },
+  "colour.patient.left": {
+    "en": "left",
+    "es": "izquierda",
+    "de": "links",
+    "it": "sinistra"
+  },
+  "colour.patient.right": {
+    "en": "right",
+    "es": "derecha",
+    "de": "rechts",
+    "it": "destra"
+  },
+  "colour.patient.second": {
+    "en": "The second",
+    "es": "El segundo",
+    "de": "Die zweite",
+    "it": "Il secondo"
+  },
+  "colour.patient.which": {
+    "en": "Which colour was more comfortable?",
+    "es": "¿Qué color fue más cómodo?",
+    "de": "Welche Farbe war angenehmer?",
+    "it": "Quale colore era più comodo?"
+  },
+  "colour.patientChooses": {
+    "en": "Patient chooses on their screen",
+    "es": "El paciente elige en su pantalla",
+    "de": "Patient wählt am eigenen Bildschirm",
+    "it": "Il paziente sceglie sul suo schermo"
+  },
+  "colour.pointHint": {
+    "en": "If the patient points at a colour, click it on the wheel: the test then checks it against its neighbours and grey.",
+    "es": "Si el paciente señala un color, haga clic en él en la rueda: la prueba lo compara con sus vecinos y con el gris.",
+    "de": "Zeigt der Patient auf eine Farbe, klicken Sie sie im Farbkreis an: der Test vergleicht sie dann mit ihren Nachbarn und mit Grau.",
+    "it": "Se il paziente indica un colore, fai clic sulla ruota: il test lo confronta con i vicini e con il grigio."
   },
   "colour.pressStart": {
     "en": "Press Start test to begin the automatic colour test.",
@@ -652,6 +802,12 @@
     "es": "Anillo exterior: colores claros · anillo interior: colores oscuros",
     "de": "Äußerer Ring: helle Glasfarben · innerer Ring: dunkle Glasfarben",
     "it": "Anello esterno: colori chiari · anello interno: colori scuri"
+  },
+  "colour.saveOnly": {
+    "en": "Save colour only",
+    "es": "Guardar solo el color",
+    "de": "Nur Farbe speichern",
+    "it": "Salva solo il colore"
   },
   "colour.second": {
     "en": "Prefers second (→)",
@@ -904,6 +1060,282 @@
     "es": "No se pudo abrir la base de datos:\n{0}\n\n{1}\n\nReintentar, elegir otra base de datos (Omitir) o cerrar el programa (Anular).",
     "de": "Die Datenbank konnte nicht geöffnet werden:\n{0}\n\n{1}\n\nWiederholen, eine andere Datenbank wählen (Ignorieren) oder das Programm schließen (Abbrechen).",
     "it": "Impossibile aprire il database:\n{0}\n\n{1}\n\nRiprova, scegli un altro database (Ignora) o chiudi il programma (Interrompi)."
+  },
+  "dev.add": {
+    "en": "Add",
+    "es": "Añadir",
+    "de": "Hinzufügen",
+    "it": "Aggiungi"
+  },
+  "dev.addPrompt": {
+    "en": "Name for the new device",
+    "es": "Nombre del nuevo dispositivo",
+    "de": "Name des neuen Geräts",
+    "it": "Nome del nuovo dispositivo"
+  },
+  "dev.addTitle": {
+    "en": "Add device",
+    "es": "Añadir dispositivo",
+    "de": "Gerät hinzufügen",
+    "it": "Aggiungi dispositivo"
+  },
+  "dev.check": {
+    "en": "Check connection",
+    "es": "Comprobar conexión",
+    "de": "Verbindung prüfen",
+    "it": "Verifica connessione"
+  },
+  "dev.confirmDelete": {
+    "en": "Delete {0} and all its settings?",
+    "es": "¿Eliminar {0} y todos sus ajustes?",
+    "de": "{0} und alle zugehörigen Einstellungen löschen?",
+    "it": "Eliminare {0} e tutte le sue impostazioni?"
+  },
+  "dev.connected": {
+    "en": "Connected",
+    "es": "Conectado",
+    "de": "Verbunden",
+    "it": "Connesso"
+  },
+  "dev.connectedOnDevice": {
+    "en": "{0} is connected",
+    "es": "{0} está conectado",
+    "de": "{0} ist verbunden",
+    "it": "{0} è connesso"
+  },
+  "dev.connectedToast": {
+    "en": "Device connected.",
+    "es": "Dispositivo conectado.",
+    "de": "Gerät verbunden.",
+    "it": "Dispositivo connesso."
+  },
+  "dev.copied": {
+    "en": "The link has been copied.",
+    "es": "El enlace se ha copiado.",
+    "de": "Der Link wurde kopiert.",
+    "it": "Il link è stato copiato."
+  },
+  "dev.copy": {
+    "en": "Copy link",
+    "es": "Copiar enlace",
+    "de": "Link kopieren",
+    "it": "Copia link"
+  },
+  "dev.delete": {
+    "en": "Delete",
+    "es": "Eliminar",
+    "de": "Löschen",
+    "it": "Elimina"
+  },
+  "dev.detail": {
+    "en": "Screen {0} × {1} pixels · {2} · {3}",
+    "es": "Pantalla {0} × {1} píxeles · {2} · {3}",
+    "de": "Bildschirm {0} × {1} Pixel · {2} · {3}",
+    "it": "Schermo {0} × {1} pixel · {2} · {3}"
+  },
+  "dev.devices": {
+    "en": "Devices",
+    "es": "Dispositivos",
+    "de": "Geräte",
+    "it": "Dispositivi"
+  },
+  "dev.landscape": {
+    "en": "landscape",
+    "es": "horizontal",
+    "de": "Querformat",
+    "it": "orizzontale"
+  },
+  "dev.link": {
+    "en": "Link",
+    "es": "Enlace",
+    "de": "Link",
+    "it": "Link"
+  },
+  "dev.linkHelp": {
+    "en": "On the tablet, scan this QR code with the camera or open the link in the web browser. The tablet then shows the tests sent from this computer.",
+    "es": "En la tableta, escanee este código QR con la cámara o abra el enlace en el navegador. La tableta mostrará entonces las pruebas enviadas desde este ordenador.",
+    "de": "Scannen Sie auf dem Tablet diesen QR-Code mit der Kamera oder öffnen Sie den Link im Browser. Das Tablet zeigt dann die von diesem Computer gesendeten Tests.",
+    "it": "Sul tablet, inquadra questo codice QR con la fotocamera o apri il link nel browser. Il tablet mostrerà poi i test inviati da questo computer."
+  },
+  "dev.linkTitle": {
+    "en": "Link a phone or tablet",
+    "es": "Vincular un teléfono o tableta",
+    "de": "Telefon oder Tablet koppeln",
+    "it": "Collega un telefono o tablet"
+  },
+  "dev.list": {
+    "en": "Devices for this practice",
+    "es": "Dispositivos de esta consulta",
+    "de": "Geräte dieser Praxis",
+    "it": "Dispositivi di questo studio"
+  },
+  "dev.noDevices": {
+    "en": "No devices",
+    "es": "Sin dispositivos",
+    "de": "Keine Geräte",
+    "it": "Nessun dispositivo"
+  },
+  "dev.noDevicesHelp": {
+    "en": "Add a device, then link a phone or tablet to it.",
+    "es": "Añada un dispositivo y luego vincule un teléfono o tableta.",
+    "de": "Fügen Sie ein Gerät hinzu und koppeln Sie dann ein Telefon oder Tablet damit.",
+    "it": "Aggiungi un dispositivo, poi collegaci un telefono o tablet."
+  },
+  "dev.notConnected": {
+    "en": "Not connected yet",
+    "es": "Aún no conectado",
+    "de": "Noch nicht verbunden",
+    "it": "Non ancora connesso"
+  },
+  "dev.notConnectedHelp": {
+    "en": "Open the link on the phone or tablet, then press Check connection.",
+    "es": "Abra el enlace en el teléfono o tableta y pulse Comprobar conexión.",
+    "de": "Öffnen Sie den Link auf dem Telefon oder Tablet und klicken Sie dann auf Verbindung prüfen.",
+    "it": "Apri il link sul telefono o tablet, poi premi Verifica connessione."
+  },
+  "dev.notYetConnected": {
+    "en": "The device has not connected yet. Open its link on the phone or tablet, then check again.",
+    "es": "El dispositivo aún no se ha conectado. Abra su enlace en el teléfono o tableta y vuelva a comprobarlo.",
+    "de": "Das Gerät hat sich noch nicht verbunden. Öffnen Sie den Link auf dem Telefon oder Tablet und prüfen Sie dann erneut.",
+    "it": "Il dispositivo non si è ancora connesso. Apri il link sul telefono o tablet, poi verifica di nuovo."
+  },
+  "dev.phone": {
+    "en": "Phone",
+    "es": "Teléfono",
+    "de": "Telefon",
+    "it": "Telefono"
+  },
+  "dev.portrait": {
+    "en": "portrait",
+    "es": "vertical",
+    "de": "Hochformat",
+    "it": "verticale"
+  },
+  "dev.practiceFirst": {
+    "en": "Enter the practice ID first.",
+    "es": "Introduzca primero el ID de la consulta.",
+    "de": "Geben Sie zuerst die Praxis-ID ein.",
+    "it": "Inserisci prima l'ID dello studio."
+  },
+  "dev.practiceFormat": {
+    "en": "The serial number should look like 1234abcd-12ab-34cd-56ef-1234567890ab.",
+    "es": "El número de serie tiene el formato 1234abcd-12ab-34cd-56ef-1234567890ab.",
+    "de": "Die Seriennummer hat das Format 1234abcd-12ab-34cd-56ef-1234567890ab.",
+    "it": "Il numero di serie ha il formato 1234abcd-12ab-34cd-56ef-1234567890ab."
+  },
+  "dev.practiceFromNearChart": {
+    "en": "Use Near Chart's",
+    "es": "Usar el de Near Chart",
+    "de": "Von Near Chart übernehmen",
+    "it": "Usa quello di Near Chart"
+  },
+  "dev.practiceId": {
+    "en": "Practice ID (Remote Test server)",
+    "es": "ID de la consulta (servidor Remote Test)",
+    "de": "Praxis-ID (Remote-Test-Server)",
+    "it": "ID dello studio (server Remote Test)"
+  },
+  "dev.practiceNoNearChart": {
+    "en": "No practice ID from Thomson Near Chart was found on this computer.",
+    "es": "No se ha encontrado en este ordenador un ID de consulta de Thomson Near Chart.",
+    "de": "Auf diesem Computer wurde keine Praxis-ID von Thomson Near Chart gefunden.",
+    "it": "Su questo computer non è stato trovato un ID dello studio di Thomson Near Chart."
+  },
+  "dev.practiceNone": {
+    "en": "Enter the practice ID issued by Thomson (the same one Near Chart uses).",
+    "es": "Introduzca el ID de la consulta facilitado por Thomson (el mismo que usa Near Chart).",
+    "de": "Geben Sie die von Thomson vergebene Praxis-ID ein (dieselbe wie in Near Chart).",
+    "it": "Inserisci l'ID dello studio fornito da Thomson (lo stesso usato da Near Chart)."
+  },
+  "dev.practiceOffline": {
+    "en": "Could not connect to the Remote Test server. Please check the internet connection.",
+    "es": "No se pudo conectar con el servidor Remote Test. Compruebe la conexión a Internet.",
+    "de": "Keine Verbindung zum Remote-Test-Server. Bitte prüfen Sie die Internetverbindung.",
+    "it": "Impossibile connettersi al server Remote Test. Controlla la connessione a Internet."
+  },
+  "dev.practiceOk": {
+    "en": "Connected to the Remote Test server.",
+    "es": "Conectado al servidor Remote Test.",
+    "de": "Mit dem Remote-Test-Server verbunden.",
+    "it": "Connesso al server Remote Test."
+  },
+  "dev.practiceSave": {
+    "en": "Save",
+    "es": "Guardar",
+    "de": "Speichern",
+    "it": "Salva"
+  },
+  "dev.practiceSaved": {
+    "en": "Saved. The device list has been read for this practice.",
+    "es": "Guardado. Se ha leído la lista de dispositivos de esta consulta.",
+    "de": "Gespeichert. Die Geräteliste dieser Praxis wurde eingelesen.",
+    "it": "Salvato. L'elenco dei dispositivi di questo studio è stato letto."
+  },
+  "dev.practiceUnknown": {
+    "en": "The server did not recognise this serial number. Please check it.",
+    "es": "El servidor no ha reconocido este número de serie. Compruébelo.",
+    "de": "Der Server hat diese Seriennummer nicht erkannt. Bitte prüfen Sie sie.",
+    "it": "Il server non ha riconosciuto questo numero di serie. Controllalo."
+  },
+  "dev.refresh": {
+    "en": "Refresh",
+    "es": "Actualizar",
+    "de": "Aktualisieren",
+    "it": "Aggiorna"
+  },
+  "dev.rename": {
+    "en": "Rename",
+    "es": "Renombrar",
+    "de": "Umbenennen",
+    "it": "Rinomina"
+  },
+  "dev.renamePrompt": {
+    "en": "New name for this device",
+    "es": "Nuevo nombre para este dispositivo",
+    "de": "Neuer Name für dieses Gerät",
+    "it": "Nuovo nome per questo dispositivo"
+  },
+  "dev.renameTitle": {
+    "en": "Rename device",
+    "es": "Renombrar dispositivo",
+    "de": "Gerät umbenennen",
+    "it": "Rinomina dispositivo"
+  },
+  "dev.serverFailed": {
+    "en": "The Remote Test server reported a problem:\n{0}",
+    "es": "El servidor Remote Test ha informado de un problema:\n{0}",
+    "de": "Der Remote-Test-Server meldet ein Problem:\n{0}",
+    "it": "Il server Remote Test ha segnalato un problema:\n{0}"
+  },
+  "dev.status": {
+    "en": "Status",
+    "es": "Estado",
+    "de": "Status",
+    "it": "Stato"
+  },
+  "dev.subtitle": {
+    "en": "A tablet as the patient's screen",
+    "es": "Una tableta como pantalla del paciente",
+    "de": "Ein Tablet als Patientenbildschirm",
+    "it": "Un tablet come schermo del paziente"
+  },
+  "dev.tablet": {
+    "en": "Tablet",
+    "es": "Tableta",
+    "de": "Tablet",
+    "it": "Tablet"
+  },
+  "dev.title": {
+    "en": "Devices",
+    "es": "Dispositivos",
+    "de": "Geräte",
+    "it": "Dispositivi"
+  },
+  "dev.turnOnHint": {
+    "en": "To show the tests on it: Settings › Screens › Use a tablet as the patient's screen.",
+    "es": "Para mostrar las pruebas en ella: Ajustes › Pantallas › Usar una tableta como pantalla del paciente.",
+    "de": "Um die Tests darauf zu zeigen: Einstellungen › Bildschirme › Ein Tablet als Patientenbildschirm verwenden.",
+    "it": "Per mostrare i test: Impostazioni › Schermi › Usa un tablet come schermo del paziente."
   },
   "eula.button": {
     "en": "Licence agreement",
@@ -1432,6 +1864,204 @@
     "es": "Importando resultados…",
     "de": "Ergebnisse werden importiert…",
     "it": "Importazione risultati…"
+  },
+  "instr.always": {
+    "en": "Show the patient's instructions before each part of a test",
+    "es": "Mostrar las instrucciones al paciente antes de cada parte de la prueba",
+    "de": "Die Anleitung für den Patienten vor jedem Testteil zeigen",
+    "it": "Mostra le istruzioni al paziente prima di ogni parte del test"
+  },
+  "instr.begin": {
+    "en": "Begin",
+    "es": "Comenzar",
+    "de": "Beginnen",
+    "it": "Inizia"
+  },
+  "instr.colour.3": {
+    "en": "The colours will change many times. There are no right or wrong answers: choose what feels most comfortable.",
+    "es": "Los colores cambiarán muchas veces. No hay respuestas correctas ni incorrectas: elija lo que le resulte más cómodo.",
+    "de": "Die Farben wechseln viele Male. Es gibt keine richtigen oder falschen Antworten: wählen Sie, was sich am angenehmsten anfühlt.",
+    "it": "I colori cambieranno molte volte. Non ci sono risposte giuste o sbagliate: scegli ciò che ti sembra più comodo."
+  },
+  "instr.colour.title": {
+    "en": "Choosing a colour",
+    "es": "Elegir un color",
+    "de": "Eine Farbe wählen",
+    "it": "Scegliere un colore"
+  },
+  "instr.lenses.0": {
+    "en": "The room lights will be switched off for this test.",
+    "es": "Para esta prueba se apagarán las luces de la sala.",
+    "de": "Für diesen Test wird das Licht im Raum ausgeschaltet.",
+    "it": "Per questo test le luci della stanza verranno spente."
+  },
+  "instr.overlay.1": {
+    "en": "You will see two copies of the text side by side, each on a different colour.",
+    "es": "Verá dos copias del texto una al lado de otra, cada una sobre un color diferente.",
+    "de": "Sie sehen den Text zweimal nebeneinander, jeweils auf einer anderen Farbe.",
+    "it": "Vedrai due copie del testo una accanto all'altra, ciascuna su un colore diverso."
+  },
+  "instr.overlay.2": {
+    "en": "Look at both, then say which side is more comfortable to look at: left or right.",
+    "es": "Mire las dos y diga qué lado es más cómodo de mirar: izquierda o derecha.",
+    "de": "Schauen Sie beide an und sagen Sie, welche Seite angenehmer anzusehen ist: links oder rechts.",
+    "it": "Guardale entrambe e di' quale lato è più comodo da guardare: sinistra o destra."
+  },
+  "instr.overlay.calloutLeft": {
+    "en": "Left",
+    "es": "Izquierda",
+    "de": "Links",
+    "it": "Sinistra"
+  },
+  "instr.overlay.calloutRight": {
+    "en": "Right",
+    "es": "Derecha",
+    "de": "Rechts",
+    "it": "Destra"
+  },
+  "instr.overlay.calloutSay": {
+    "en": "Say which side is more comfortable to look at",
+    "es": "Diga qué lado es más cómodo de mirar",
+    "de": "Sagen Sie, welche Seite angenehmer anzusehen ist",
+    "it": "Di' quale lato è più comodo da guardare"
+  },
+  "instr.overlay.calloutTap": {
+    "en": "Tap the side that is more comfortable to look at",
+    "es": "Toque el lado que sea más cómodo de mirar",
+    "de": "Tippen Sie auf die Seite, die angenehmer anzusehen ist",
+    "it": "Tocca il lato più comodo da guardare"
+  },
+  "instr.panel": {
+    "en": "Say to the patient (their screen shows what the test will look like), then press Start (Space):",
+    "es": "Diga al paciente (su pantalla muestra cómo será la prueba) y pulse Iniciar (Espacio):",
+    "de": "Sagen Sie dem Patienten (sein Bildschirm zeigt, wie der Test aussehen wird) und drücken Sie dann Start (Leertaste):",
+    "it": "Di' al paziente (il suo schermo mostra come sarà il test), poi premi Avvia (Spazio):"
+  },
+  "instr.reading.1": {
+    "en": "You will see lines of short, simple words. They are in a random order, so they don't make sentences.",
+    "es": "Verá líneas de palabras cortas y sencillas. Están en orden aleatorio, así que no forman frases.",
+    "de": "Sie sehen Zeilen mit kurzen, einfachen Wörtern. Sie stehen in zufälliger Reihenfolge und ergeben keine Sätze.",
+    "it": "Vedrai righe di parole brevi e semplici, in ordine casuale, quindi non formano frasi."
+  },
+  "instr.reading.2": {
+    "en": "When you are told to start, read the words out loud, along each line, as quickly and as carefully as you can.",
+    "es": "Cuando se le indique, lea las palabras en voz alta, línea por línea, lo más rápido y con el mayor cuidado que pueda.",
+    "de": "Wenn Sie das Zeichen bekommen, lesen Sie die Wörter Zeile für Zeile so schnell und sorgfältig wie möglich laut vor.",
+    "it": "Quando ti diremo di iniziare, leggi le parole ad alta voce, riga per riga, il più velocemente e accuratamente possibile."
+  },
+  "instr.reading.3": {
+    "en": "If you make a mistake, just carry on. Keep reading until you are told to stop.",
+    "es": "Si se equivoca, siga leyendo. Continúe hasta que se le diga que pare.",
+    "de": "Wenn Sie sich verlesen, lesen Sie einfach weiter, bis Sie aufhören sollen.",
+    "it": "Se sbagli, continua pure. Leggi finché non ti diremo di fermarti."
+  },
+  "instr.reading.callout1": {
+    "en": "Start here",
+    "es": "Empiece aquí",
+    "de": "Hier beginnen",
+    "it": "Inizia qui"
+  },
+  "instr.reading.callout2": {
+    "en": "Read along each line, out loud",
+    "es": "Lea cada línea en voz alta",
+    "de": "Lesen Sie jede Zeile laut vor",
+    "it": "Leggi ogni riga ad alta voce"
+  },
+  "instr.reading.callout3": {
+    "en": "As quickly and carefully as you can, until you are told to stop",
+    "es": "Lo más rápido y con el mayor cuidado posible, hasta que se le diga que pare",
+    "de": "So schnell und sorgfältig wie möglich, bis Sie aufhören sollen",
+    "it": "Il più velocemente e accuratamente possibile, finché non ti diremo di fermarti"
+  },
+  "instr.reading.title": {
+    "en": "Reading aloud",
+    "es": "Leer en voz alta",
+    "de": "Laut vorlesen",
+    "it": "Leggere ad alta voce"
+  },
+  "instr.ready": {
+    "en": "Tell us when you are ready.",
+    "es": "Avísenos cuando esté preparado.",
+    "de": "Sagen Sie Bescheid, wenn Sie bereit sind.",
+    "it": "Dicci quando sei pronto."
+  },
+  "instr.start": {
+    "en": "Start",
+    "es": "Iniciar",
+    "de": "Start",
+    "it": "Avvia"
+  },
+  "instr.successive.1": {
+    "en": "The whole screen will turn one colour, then another, then white again.",
+    "es": "Toda la pantalla se volverá de un color, luego de otro y después blanca otra vez.",
+    "de": "Der ganze Bildschirm wird erst in einer Farbe, dann in einer anderen und dann wieder weiß.",
+    "it": "Tutto lo schermo diventerà di un colore, poi di un altro, poi di nuovo bianco."
+  },
+  "instr.successive.2": {
+    "en": "Each time, say which colour was more comfortable to look at: the first or the second.",
+    "es": "Cada vez, diga qué color fue más cómodo de mirar: el primero o el segundo.",
+    "de": "Sagen Sie jedes Mal, welche Farbe angenehmer anzusehen war: die erste oder die zweite.",
+    "it": "Ogni volta di' quale colore era più comodo da guardare: il primo o il secondo."
+  },
+  "instr.successive.callout1": {
+    "en": "First one colour…",
+    "es": "Primero un color…",
+    "de": "Zuerst eine Farbe…",
+    "it": "Prima un colore…"
+  },
+  "instr.successive.callout2": {
+    "en": "…then another",
+    "es": "…después otro",
+    "de": "…dann eine andere",
+    "it": "…poi un altro"
+  },
+  "instr.successive.calloutSay": {
+    "en": "Then say which was more comfortable: the first or the second",
+    "es": "Después diga cuál fue más cómodo: el primero o el segundo",
+    "de": "Sagen Sie dann, welche angenehmer war: die erste oder die zweite",
+    "it": "Poi di' quale era più comodo: il primo o il secondo"
+  },
+  "instr.successive.calloutTap": {
+    "en": "Then tap The first or The second",
+    "es": "Después toque El primero o El segundo",
+    "de": "Tippen Sie dann auf Die erste oder Die zweite",
+    "it": "Poi tocca Il primo o Il secondo"
+  },
+  "instr.symptoms.1": {
+    "en": "Look at the text on the screen for a little while, as if you were going to read it.",
+    "es": "Mire el texto de la pantalla durante un rato, como si fuera a leerlo.",
+    "de": "Schauen Sie sich den Text auf dem Bildschirm eine Weile an, als wollten Sie ihn lesen.",
+    "it": "Guarda il testo sullo schermo per un po', come se dovessi leggerlo."
+  },
+  "instr.symptoms.2": {
+    "en": "You will then be asked a few questions about how the text looks: for example, whether the words seem to move, or the page looks too bright.",
+    "es": "Después le haremos unas preguntas sobre cómo se ve el texto: por ejemplo, si las palabras parecen moverse o si la página parece demasiado brillante.",
+    "de": "Danach werden Ihnen einige Fragen dazu gestellt, wie der Text aussieht: zum Beispiel, ob sich die Wörter zu bewegen scheinen oder die Seite zu hell wirkt.",
+    "it": "Poi ti faremo alcune domande su come appare il testo: per esempio, se le parole sembrano muoversi o se la pagina sembra troppo luminosa."
+  },
+  "instr.symptoms.3": {
+    "en": "There are no right or wrong answers. Just say what you notice.",
+    "es": "No hay respuestas correctas ni incorrectas. Diga simplemente lo que note.",
+    "de": "Es gibt keine richtigen oder falschen Antworten. Sagen Sie einfach, was Ihnen auffällt.",
+    "it": "Non ci sono risposte giuste o sbagliate. Di' semplicemente quello che noti."
+  },
+  "instr.symptoms.callout1": {
+    "en": "Look at this text for a little while",
+    "es": "Mire este texto durante un rato",
+    "de": "Schauen Sie sich diesen Text eine Weile an",
+    "it": "Guarda questo testo per un po'"
+  },
+  "instr.symptoms.callout2": {
+    "en": "Then say how the text looks to you",
+    "es": "Después diga cómo ve el texto",
+    "de": "Sagen Sie dann, wie der Text für Sie aussieht",
+    "it": "Poi di' come ti sembra il testo"
+  },
+  "instr.symptoms.title": {
+    "en": "Looking at the text",
+    "es": "Mirar el texto",
+    "de": "Den Text ansehen",
+    "it": "Guardare il testo"
   },
   "letter.default.ParentClosingPara": {
     "en": "The results suggest that {Firstname} may benefit from an {Result}.\n\nIf you have any questions relating to this report, please contact our Visual Stress team.",
@@ -1984,6 +2614,12 @@
     "es": "Colores",
     "de": "Farben",
     "it": "Colori"
+  },
+  "nav.devices": {
+    "en": "Devices",
+    "es": "Dispositivos",
+    "de": "Geräte",
+    "it": "Dispositivi"
   },
   "nav.help": {
     "en": "Help",
@@ -2873,6 +3509,54 @@
     "de": "Fehler",
     "it": "Errori"
   },
+  "reading.how.1": {
+    "en": "1.  Press Start clock (Space) as the patient starts reading.",
+    "es": "1.  Pulse Iniciar reloj (Espacio) cuando el paciente empiece a leer.",
+    "de": "1.  Drücken Sie Uhr starten (Leertaste), sobald der Patient zu lesen beginnt.",
+    "it": "1.  Premi Avvia cronometro (Spazio) quando il paziente inizia a leggere."
+  },
+  "reading.how.2": {
+    "en": "2.  Follow the reading on the text in the centre of this window:",
+    "es": "2.  Siga la lectura en el texto del centro de esta ventana:",
+    "de": "2.  Verfolgen Sie das Lesen am Text in der Mitte dieses Fensters:",
+    "it": "2.  Segui la lettura sul testo al centro di questa finestra:"
+  },
+  "reading.how.3": {
+    "en": "      •  Click a misread word: a red cross (click again to remove it).",
+    "es": "      •  Clic en una palabra mal leída: una cruz roja (otro clic la quita).",
+    "de": "      •  Klick auf ein falsch gelesenes Wort: ein rotes Kreuz (erneuter Klick entfernt es).",
+    "it": "      •  Clic su una parola letta male: una croce rossa (un altro clic la toglie)."
+  },
+  "reading.how.4": {
+    "en": "      •  Shift + click a row the patient skips: a line through it.",
+    "es": "      •  Mayús + clic en una fila que el paciente se salta: una línea encima.",
+    "de": "      •  Umschalt + Klick auf eine übersprungene Zeile: eine Linie hindurch.",
+    "it": "      •  Maiusc + clic su una riga saltata: una linea che la attraversa."
+  },
+  "reading.how.5": {
+    "en": "      •  Right-click the last word read when time is up: the words read are counted up to it.",
+    "es": "      •  Clic derecho en la última palabra leída al acabar el tiempo: se cuentan las palabras hasta ella.",
+    "de": "      •  Rechtsklick auf das zuletzt gelesene Wort, wenn die Zeit um ist: die Wörter werden bis dorthin gezählt.",
+    "it": "      •  Clic destro sull'ultima parola letta allo scadere del tempo: le parole vengono contate fino a essa."
+  },
+  "reading.how.6": {
+    "en": "3.  The clock stops by itself after the reading time (or press Stop clock). Check the counts; they can also be typed in.",
+    "es": "3.  El reloj se detiene solo al acabar el tiempo (o pulse Parar reloj). Compruebe los recuentos; también se pueden escribir.",
+    "de": "3.  Die Uhr hält nach der Lesezeit selbst an (oder Uhr anhalten drücken). Prüfen Sie die Zahlen; sie können auch eingetippt werden.",
+    "it": "3.  Il cronometro si ferma da solo alla fine del tempo (o premi Ferma cronometro). Controlla i conteggi; si possono anche digitare."
+  },
+  "reading.how.button": {
+    "en": "How to score",
+    "es": "Cómo puntuar",
+    "de": "So wird bewertet",
+    "it": "Come assegnare il punteggio"
+  },
+  "reading.how.title": {
+    "en": "How to score",
+    "es": "Cómo puntuar",
+    "de": "So wird bewertet",
+    "it": "Come assegnare il punteggio"
+  },
   "reading.intro": {
     "en": "The patient reads the words aloud as quickly and accurately as they can. Start the clock as they begin (Space); it stops by itself after the reading time.",
     "es": "El paciente lee las palabras en voz alta lo más rápido y exacto posible. Inicie el reloj cuando empiece (Espacio); se detiene solo al acabar el tiempo de lectura.",
@@ -2885,11 +3569,23 @@
     "de": "Im Text: Klick auf ein falsch gelesenes Wort · Umschalt+Klick auf eine übersprungene Zeile · Rechtsklick auf das zuletzt gelesene Wort",
     "it": "Sul testo: clic su una parola letta male · Maiusc+clic su una riga saltata · clic destro sull'ultima parola letta"
   },
+  "reading.reset": {
+    "en": "Reset",
+    "es": "Reiniciar",
+    "de": "Zurücksetzen",
+    "it": "Azzera"
+  },
   "reading.seconds": {
     "en": "Reading time (s)",
     "es": "Tiempo de lectura (s)",
     "de": "Lesezeit (s)",
     "it": "Tempo di lettura (s)"
+  },
+  "reading.sixty": {
+    "en": "60 s",
+    "es": "60 s",
+    "de": "60 s",
+    "it": "60 s"
   },
   "reading.skipped": {
     "en": "Rows skipped",
@@ -2920,6 +3616,18 @@
     "es": "¡Se acabó el tiempo! Haga clic derecho en la última palabra leída.",
     "de": "Die Zeit ist um! Klicken Sie mit rechts auf das zuletzt gelesene Wort.",
     "it": "Tempo scaduto! Fai clic destro sull'ultima parola letta."
+  },
+  "reading.view.patient": {
+    "en": "Patient's screen",
+    "es": "Pantalla del paciente",
+    "de": "Patientenbildschirm",
+    "it": "Schermo del paziente"
+  },
+  "reading.view.scoring": {
+    "en": "Scoring copy",
+    "es": "Copia para puntuar",
+    "de": "Bewertungskopie",
+    "it": "Copia per il punteggio"
   },
   "reading.words": {
     "en": "Words read",
@@ -3071,17 +3779,53 @@
     "de": "Ausgangswert",
     "it": "Valore di base"
   },
+  "results.baselines": {
+    "en": "Baseline results",
+    "es": "Resultados de referencia",
+    "de": "Basis-Ergebnisse",
+    "it": "Risultati di base"
+  },
   "results.bespoke": {
     "en": "Bespoke",
     "es": "A medida",
     "de": "Individuell",
     "it": "Personalizzato"
   },
+  "results.cfg.font": {
+    "en": "Font: {0}, {1} pt",
+    "es": "Fuente: {0}, {1} pt",
+    "de": "Schrift: {0}, {1} pt",
+    "it": "Carattere: {0}, {1} pt"
+  },
+  "results.cfg.rows": {
+    "en": "Rows: {0}",
+    "es": "Filas: {0}",
+    "de": "Zeilen: {0}",
+    "it": "Righe: {0}"
+  },
+  "results.cfg.spacing": {
+    "en": "Row spacing: {0}",
+    "es": "Interlineado: {0}",
+    "de": "Zeilenabstand: {0}",
+    "it": "Interlinea: {0}"
+  },
+  "results.cfg.text": {
+    "en": "Text: {0}",
+    "es": "Texto: {0}",
+    "de": "Text: {0}",
+    "it": "Testo: {0}"
+  },
   "results.change": {
     "en": "Change with colour",
     "es": "Cambio con el color",
     "de": "Veränderung mit Farbe",
     "it": "Variazione con il colore"
+  },
+  "results.change.better": {
+    "en": "Better",
+    "es": "Mejor",
+    "de": "Besser",
+    "it": "Meglio"
   },
   "results.change.errors": {
     "en": "Errors",
@@ -3094,6 +3838,24 @@
     "es": "{0} → {1}",
     "de": "{0} → {1}",
     "it": "{0} → {1}"
+  },
+  "results.change.fromToHead": {
+    "en": "Baseline → colour",
+    "es": "Referencia → color",
+    "de": "Basis → Farbe",
+    "it": "Base → colore"
+  },
+  "results.change.needBoth": {
+    "en": "Choose a baseline result and a test with colour (on the left) to see the change with colour.",
+    "es": "Elija un resultado de referencia y una prueba con color (a la izquierda) para ver el cambio con color.",
+    "de": "Wählen Sie links ein Basis-Ergebnis und einen Test mit Farbe, um die Veränderung mit Farbe zu sehen.",
+    "it": "Scegli un risultato di base e un test con colore (a sinistra) per vedere il cambiamento con il colore."
+  },
+  "results.change.notBoth": {
+    "en": "Not done in both tests",
+    "es": "No se hizo en ambas pruebas",
+    "de": "Nicht in beiden Tests durchgeführt",
+    "it": "Non eseguito in entrambi i test"
   },
   "results.change.reading": {
     "en": "Rate of reading",
@@ -3113,6 +3875,12 @@
     "de": "Kaum Veränderung",
     "it": "Poca variazione"
   },
+  "results.change.readingTitle": {
+    "en": "Rate of reading: change with colour",
+    "es": "Velocidad de lectura: cambio con color",
+    "de": "Lesegeschwindigkeit: Veränderung mit Farbe",
+    "it": "Velocità di lettura: cambiamento con il colore"
+  },
   "results.change.readingWorse": {
     "en": "Slower with colour",
     "es": "Más lento con color",
@@ -3125,17 +3893,59 @@
     "de": "Symptome (gesamt)",
     "it": "Sintomi (totale)"
   },
+  "results.change.symptomsTitle": {
+    "en": "Symptoms: change with colour",
+    "es": "Síntomas: cambio con color",
+    "de": "Symptome: Veränderung mit Farbe",
+    "it": "Sintomi: cambiamento con il colore"
+  },
+  "results.change.total": {
+    "en": "Total: {0} → {1}",
+    "es": "Total: {0} → {1}",
+    "de": "Gesamt: {0} → {1}",
+    "it": "Totale: {0} → {1}"
+  },
+  "results.change.worse": {
+    "en": "Worse",
+    "es": "Peor",
+    "de": "Schlechter",
+    "it": "Peggio"
+  },
   "results.closePreview": {
     "en": "Click or press any key to close",
     "es": "Haga clic o pulse una tecla para cerrar",
     "de": "Klicken oder eine Taste drücken zum Schließen",
     "it": "Fai clic o premi un tasto per chiudere"
   },
+  "results.col.change": {
+    "en": "Change",
+    "es": "Cambio",
+    "de": "Veränderung",
+    "it": "Variazione"
+  },
+  "results.colourChanged": {
+    "en": "Colour changed after the test (was {0})",
+    "es": "Color cambiado después de la prueba (era {0})",
+    "de": "Farbe nach dem Test geändert (war {0})",
+    "it": "Colore cambiato dopo il test (era {0})"
+  },
   "results.colourResult": {
     "en": "Colour chosen",
     "es": "Color elegido",
     "de": "Gewählte Farbe",
     "it": "Colore scelto"
+  },
+  "results.colourTests": {
+    "en": "Results with colour",
+    "es": "Resultados con color",
+    "de": "Ergebnisse mit Farbe",
+    "it": "Risultati con colore"
+  },
+  "results.compare.title": {
+    "en": "Comparing",
+    "es": "Comparación",
+    "de": "Vergleich",
+    "it": "Confronto"
   },
   "results.delete.confirm": {
     "en": "Delete this test? This cannot be undone.",
@@ -3148,6 +3958,84 @@
     "es": "Prueba eliminada",
     "de": "Test gelöscht",
     "it": "Test eliminato"
+  },
+  "results.edit": {
+    "en": "Edit",
+    "es": "Editar",
+    "de": "Bearbeiten",
+    "it": "Modifica"
+  },
+  "results.edit.colour": {
+    "en": "Preferred colour",
+    "es": "Color preferido",
+    "de": "Bevorzugte Farbe",
+    "it": "Colore preferito"
+  },
+  "results.edit.colourHint": {
+    "en": "Click a colour on the wheel to change it (lenses: outer ring light, inner ring dark).",
+    "es": "Haga clic en un color de la rueda para cambiarlo (lentes: anillo exterior claro, interior oscuro).",
+    "de": "Klicken Sie auf eine Farbe im Farbkreis, um sie zu ändern (Gläser: äußerer Ring hell, innerer Ring dunkel).",
+    "it": "Fai clic su un colore della ruota per cambiarlo (lenti: anello esterno chiaro, interno scuro)."
+  },
+  "results.edit.current": {
+    "en": "Colour: {0}",
+    "es": "Color: {0}",
+    "de": "Farbe: {0}",
+    "it": "Colore: {0}"
+  },
+  "results.edit.saved": {
+    "en": "Test results saved",
+    "es": "Resultados guardados",
+    "de": "Testergebnisse gespeichert",
+    "it": "Risultati salvati"
+  },
+  "results.edit.symptomsDone": {
+    "en": "Symptoms were recorded for this test",
+    "es": "Se registraron síntomas en esta prueba",
+    "de": "Für diesen Test wurden Symptome erfasst",
+    "it": "Per questo test sono stati registrati i sintomi"
+  },
+  "results.edit.title": {
+    "en": "Edit test results",
+    "es": "Editar los resultados de la prueba",
+    "de": "Testergebnisse bearbeiten",
+    "it": "Modifica i risultati del test"
+  },
+  "results.edit.wpm": {
+    "en": "Reading speed: {0} words/min",
+    "es": "Velocidad de lectura: {0} palabras/min",
+    "de": "Lesegeschwindigkeit: {0} Wörter/min",
+    "it": "Velocità di lettura: {0} parole/min"
+  },
+  "results.head.info": {
+    "en": "Test information",
+    "es": "Información de la prueba",
+    "de": "Testinformationen",
+    "it": "Informazioni sul test"
+  },
+  "results.head.reading": {
+    "en": "Reading performance",
+    "es": "Rendimiento de lectura",
+    "de": "Leseleistung",
+    "it": "Prestazione di lettura"
+  },
+  "results.head.readingChange": {
+    "en": "Change in reading performance",
+    "es": "Cambio en el rendimiento de lectura",
+    "de": "Veränderung der Leseleistung",
+    "it": "Cambiamento della prestazione di lettura"
+  },
+  "results.head.symptoms": {
+    "en": "Symptoms score",
+    "es": "Puntuación de síntomas",
+    "de": "Symptomwerte",
+    "it": "Punteggio dei sintomi"
+  },
+  "results.head.symptomsChange": {
+    "en": "Change in symptoms",
+    "es": "Cambio en los síntomas",
+    "de": "Veränderung der Symptome",
+    "it": "Cambiamento dei sintomi"
   },
   "results.imported": {
     "en": "Imported from {0}",
@@ -3203,6 +4091,18 @@
     "de": "Test einem anderen Patienten zuordnen",
     "it": "Sposta il test a un altro paziente"
   },
+  "results.noBaseline": {
+    "en": "No baseline results for this patient yet",
+    "es": "Aún no hay resultados de referencia para este paciente",
+    "de": "Noch keine Basis-Ergebnisse für diesen Patienten",
+    "it": "Nessun risultato di base per questo paziente"
+  },
+  "results.noColourTests": {
+    "en": "No tests of this kind yet",
+    "es": "Aún no hay pruebas de este tipo",
+    "de": "Noch keine Tests dieser Art",
+    "it": "Ancora nessun test di questo tipo"
+  },
   "results.none": {
     "en": "No tests for this patient yet",
     "es": "Todavía no hay pruebas de este paciente",
@@ -3227,6 +4127,24 @@
     "de": "Notizen zu diesem Test",
     "it": "Note per questo test"
   },
+  "results.panel.baseline": {
+    "en": "Baseline results (white background)",
+    "es": "Resultados de referencia (fondo blanco)",
+    "de": "Basis-Ergebnisse (weißer Hintergrund)",
+    "it": "Risultati di base (sfondo bianco)"
+  },
+  "results.panel.change": {
+    "en": "Change in symptoms and reading performance with colour",
+    "es": "Cambio en los síntomas y la lectura con color",
+    "de": "Veränderung der Symptome und der Leseleistung mit Farbe",
+    "it": "Cambiamento dei sintomi e della lettura con il colore"
+  },
+  "results.panel.colour": {
+    "en": "Colour screening results",
+    "es": "Resultados de la prueba de color",
+    "de": "Ergebnisse der Farbtestung",
+    "it": "Risultati del test del colore"
+  },
   "results.reading": {
     "en": "Rate of reading",
     "es": "Velocidad de lectura",
@@ -3244,6 +4162,48 @@
     "es": "Informe",
     "de": "Bericht",
     "it": "Referto"
+  },
+  "results.row.errors": {
+    "en": "Number of errors",
+    "es": "Número de errores",
+    "de": "Anzahl der Fehler",
+    "it": "Numero di errori"
+  },
+  "results.row.skipped": {
+    "en": "Number of rows skipped",
+    "es": "Número de filas saltadas",
+    "de": "Anzahl übersprungener Zeilen",
+    "it": "Numero di righe saltate"
+  },
+  "results.row.wordsTime": {
+    "en": "Words read",
+    "es": "Palabras leídas",
+    "de": "Gelesene Wörter",
+    "it": "Parole lette"
+  },
+  "results.row.wordsTimeValue": {
+    "en": "{0} in {1} s",
+    "es": "{0} en {1} s",
+    "de": "{0} in {1} s",
+    "it": "{0} in {1} s"
+  },
+  "results.row.wpm": {
+    "en": "Reading speed (words/min)",
+    "es": "Velocidad de lectura (palabras/min)",
+    "de": "Lesegeschwindigkeit (Wörter/min)",
+    "it": "Velocità di lettura (parole/min)"
+  },
+  "results.scale.none": {
+    "en": "None",
+    "es": "Ninguno",
+    "de": "Keine",
+    "it": "Nessuno"
+  },
+  "results.scale.severe": {
+    "en": "Severe",
+    "es": "Grave",
+    "de": "Stark",
+    "it": "Grave"
   },
   "results.screener": {
     "en": "Screener: {0}",
@@ -3268,6 +4228,54 @@
     "es": "Mostrando el texto en este color (clic o tecla para cerrar)",
     "de": "Text wird in dieser Farbe gezeigt (Klick oder Taste zum Schließen)",
     "it": "Testo mostrato in questo colore (clic o tasto per chiudere)"
+  },
+  "results.summary.better": {
+    "en": "Better with colour",
+    "es": "Mejor con color",
+    "de": "Besser mit Farbe",
+    "it": "Meglio con il colore"
+  },
+  "results.summary.notBoth": {
+    "en": "Not recorded in both tests",
+    "es": "No registrado en ambas pruebas",
+    "de": "Nicht in beiden Tests erfasst",
+    "it": "Non registrato in entrambi i test"
+  },
+  "results.summary.reading": {
+    "en": "Reading",
+    "es": "Lectura",
+    "de": "Lesen",
+    "it": "Lettura"
+  },
+  "results.summary.readingDetail": {
+    "en": "{0} → {1} words/min ({2})",
+    "es": "{0} → {1} palabras/min ({2})",
+    "de": "{0} → {1} Wörter/min ({2})",
+    "it": "{0} → {1} parole/min ({2})"
+  },
+  "results.summary.same": {
+    "en": "No change with colour",
+    "es": "Sin cambio con color",
+    "de": "Keine Veränderung mit Farbe",
+    "it": "Nessun cambiamento con il colore"
+  },
+  "results.summary.symptoms": {
+    "en": "Symptoms",
+    "es": "Síntomas",
+    "de": "Symptome",
+    "it": "Sintomi"
+  },
+  "results.summary.symptomsDetail": {
+    "en": "Total {0} → {1}",
+    "es": "Total {0} → {1}",
+    "de": "Gesamt {0} → {1}",
+    "it": "Totale {0} → {1}"
+  },
+  "results.summary.worse": {
+    "en": "Worse with colour",
+    "es": "Peor con color",
+    "de": "Schlechter mit Farbe",
+    "it": "Peggio con il colore"
   },
   "results.symptoms": {
     "en": "Symptoms",
@@ -3394,6 +4402,12 @@
     "es": "El paciente lee en este panel (F11: pantalla completa)",
     "de": "Der Patient liest in diesem Feld (F11: Vollbild)",
     "it": "Il paziente legge da questo riquadro (F11: schermo intero)"
+  },
+  "run.view.scoring": {
+    "en": "Scoring copy: the text enlarged for marking (the patient sees it at the normal size)",
+    "es": "Copia para puntuar: el texto ampliado para marcar (el paciente lo ve a tamaño normal)",
+    "de": "Bewertungskopie: der Text vergrößert zum Markieren (der Patient sieht ihn in normaler Größe)",
+    "it": "Copia per il punteggio: il testo ingrandito per segnare (il paziente lo vede a grandezza normale)"
   },
   "screeners.delete.confirm": {
     "en": "Remove {0} from the list? Results keep their name.",
@@ -3562,6 +4576,12 @@
     "es": "Una pantalla: la pantalla del paciente está en el mismo monitor que la ventana de control.",
     "de": "Ein Bildschirm: Der Patientenbildschirm liegt auf demselben Monitor wie das Steuerfenster.",
     "it": "Uno schermo: lo schermo del paziente è sullo stesso monitor della finestra di controllo."
+  },
+  "settings.mode.tablet": {
+    "en": "Two screens: the patient's screen is the tablet.",
+    "es": "Dos pantallas: la pantalla del paciente es la tableta.",
+    "de": "Zwei Bildschirme: der Patientenbildschirm ist das Tablet.",
+    "it": "Due schermi: lo schermo del paziente è il tablet."
   },
   "settings.mode.two": {
     "en": "Two screens: the patient's screen has a monitor of its own.",
@@ -3761,6 +4781,12 @@
     "de": "Größe des Patientenbildschirms",
     "it": "Dimensioni dello schermo del paziente"
   },
+  "settings.section.tablet": {
+    "en": "Tablet as the patient's screen",
+    "es": "Tableta como pantalla del paciente",
+    "de": "Tablet als Patientenbildschirm",
+    "it": "Tablet come schermo del paziente"
+  },
   "settings.section.timings": {
     "en": "Timings",
     "es": "Tiempos",
@@ -3814,6 +4840,48 @@
     "es": "Configuración de pruebas",
     "de": "Testeinstellungen",
     "it": "Impostazioni test"
+  },
+  "settings.tablet.about": {
+    "en": "Instead of a second monitor, the patient can look at (and tap) a tablet. It is linked as in Thomson Near Chart: Devices › scan the QR code on the tablet.",
+    "es": "En lugar de un segundo monitor, el paciente puede mirar (y tocar) una tableta. Se vincula como en Thomson Near Chart: Dispositivos › escanee el código QR en la tableta.",
+    "de": "Statt eines zweiten Monitors kann der Patient auf ein Tablet schauen (und tippen). Es wird wie in Thomson Near Chart verbunden: Geräte › QR-Code auf dem Tablet scannen.",
+    "it": "Invece di un secondo monitor, il paziente può guardare (e toccare) un tablet. Si collega come in Thomson Near Chart: Dispositivi › inquadra il codice QR sul tablet."
+  },
+  "settings.tablet.active": {
+    "en": "The tests are shown on {0} ({1} × {2} pixels).",
+    "es": "Las pruebas se muestran en {0} ({1} × {2} píxeles).",
+    "de": "Die Tests werden auf {0} angezeigt ({1} × {2} Pixel).",
+    "it": "I test sono mostrati su {0} ({1} × {2} pixel)."
+  },
+  "settings.tablet.devices": {
+    "en": "Connect devices…",
+    "es": "Conectar dispositivos…",
+    "de": "Geräte verbinden…",
+    "it": "Collega dispositivi…"
+  },
+  "settings.tablet.noPractice": {
+    "en": "No practice ID yet: open Connect devices to enter it.",
+    "es": "Aún no hay ID de consulta: abra Conectar dispositivos para introducirlo.",
+    "de": "Noch keine Praxis-ID: öffnen Sie Geräte verbinden, um sie einzugeben.",
+    "it": "Nessun ID dello studio: apri Collega dispositivi per inserirlo."
+  },
+  "settings.tablet.off": {
+    "en": "Off: the patient's screen is the monitor set below.",
+    "es": "Desactivado: la pantalla del paciente es el monitor indicado abajo.",
+    "de": "Aus: der Patientenbildschirm ist der unten eingestellte Monitor.",
+    "it": "Disattivato: lo schermo del paziente è il monitor impostato sotto."
+  },
+  "settings.tablet.use": {
+    "en": "Use a tablet as the patient's screen",
+    "es": "Usar una tableta como pantalla del paciente",
+    "de": "Ein Tablet als Patientenbildschirm verwenden",
+    "it": "Usa un tablet come schermo del paziente"
+  },
+  "settings.tablet.waiting": {
+    "en": "Waiting for the tablet: open its link on the tablet (Connect devices).",
+    "es": "Esperando la tableta: abra su enlace en la tableta (Conectar dispositivos).",
+    "de": "Warten auf das Tablet: öffnen Sie seinen Link auf dem Tablet (Geräte verbinden).",
+    "it": "In attesa del tablet: apri il suo link sul tablet (Collega dispositivi)."
   },
   "settings.texts.builtIn": {
     "en": "This text comes with ReadEZ and can't be changed. Make a new text instead.",
@@ -4103,6 +5171,18 @@
     "de": "Tests",
     "it": "Test"
   },
+  "text.asBaseline": {
+    "en": "as baseline {0}",
+    "es": "como la referencia {0}",
+    "de": "wie Basis {0}",
+    "it": "come la base {0}"
+  },
+  "text.changeWarning": {
+    "en": "The text settings are the same as the baseline of {0}, so the reading speeds and symptoms can be compared with it. Change them for this test anyway?",
+    "es": "Los ajustes del texto son los mismos que en la referencia del {0}, para poder comparar la velocidad de lectura y los síntomas. ¿Cambiarlos de todos modos para esta prueba?",
+    "de": "Die Texteinstellungen entsprechen der Basis vom {0}, damit Lesegeschwindigkeit und Symptome vergleichbar sind. Trotzdem für diesen Test ändern?",
+    "it": "Le impostazioni del testo sono le stesse della base del {0}, così velocità di lettura e sintomi si possono confrontare. Cambiarle comunque per questo test?"
+  },
   "text.font": {
     "en": "Font",
     "es": "Fuente",
@@ -4216,6 +5296,18 @@
     "es": "Una pantalla",
     "de": "Ein Bildschirm",
     "it": "Uno schermo"
+  },
+  "top.screens.tablet": {
+    "en": "Tablet: {0}",
+    "es": "Tableta: {0}",
+    "de": "Tablet: {0}",
+    "it": "Tablet: {0}"
+  },
+  "top.screens.tabletOff": {
+    "en": "Tablet not connected",
+    "es": "Tableta no conectada",
+    "de": "Tablet nicht verbunden",
+    "it": "Tablet non connesso"
   },
   "top.screens.tip": {
     "en": "Where the patient's screen is (click for Settings > Screens)",

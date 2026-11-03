@@ -63,6 +63,8 @@ Public Class SettingsScreen
     Private ReadOnly ctl As New RectEditor(fullScreen:=False)
     Private ReadOnly stim As New RectEditor(fullScreen:=True)
     Private ReadOnly lblMode As New Label With {.AutoSize = True, .Font = Fonts.Strong, .MaximumSize = New Size(620, 0), .Margin = New Padding(0, 8, 0, 0)}
+    Private ReadOnly chkTablet As ThemedCheckBox = ThemedCheckBox.Create("settings.tablet.use")
+    Private ReadOnly lblTablet As New Label With {.AutoSize = True, .Font = Fonts.Body, .MaximumSize = New Size(620, 0), .Margin = New Padding(0, 6, 0, 8)}
 
     Public Sub New()
         TitleKey = "settings.title"
@@ -517,6 +519,31 @@ Public Class SettingsScreen
         col.Controls.Add(lblMode)
         arrangement.Controls.Add(col)
 
+        ' A tablet as the patient's screen (Near Chart's technology: Devices screen)
+        Dim tablet = PageCard("settings.section.tablet")
+        Dim tcol = Ui.Column()
+        tcol.Dock = DockStyle.Top
+        Dim about = Ui.Label("settings.tablet.about", muted:=True)
+        about.MaximumSize = New Size(620, 0)
+        tcol.Controls.Add(about)
+        chkTablet.Checked = AppHost.Settings.UseTablet
+        chkTablet.Margin = New Padding(0, 8, 0, 0)
+        AddHandler chkTablet.CheckedChanged, Sub()
+                                                 If chkTablet.Checked = AppHost.Settings.UseTablet Then Return
+                                                 TabletScreen.SetEnabled(chkTablet.Checked)
+                                                 ShowTablet()
+                                                 ShowMode()
+                                             End Sub
+        tcol.Controls.Add(chkTablet)
+        LabelStyle.SetMuted(lblTablet)
+        tcol.Controls.Add(lblTablet)
+        Dim devices = ModernButton.Create("settings.tablet.devices", ButtonKind.Secondary, DevicesScreen.DevicesGlyph)
+        AddHandler devices.Click, Sub() AppHost.MainWindow?.ShowScreen(MainForm.ScreenDevices)
+        tcol.Controls.Add(devices)
+        tablet.Controls.Add(tcol)
+        AddHandler TabletScreen.Changed, Sub() If Not IsDisposed Then ShowTablet()
+        ShowTablet()
+
         Dim control = PageCard("settings.section.controlScreen")
         ctl.Dock = DockStyle.Top
         AddHandler ctl.Changed, Sub()
@@ -534,8 +561,22 @@ Public Class SettingsScreen
                                  End Sub
         col2.Controls.Add(stim)
         patient.Controls.Add(col2)
-        Return Page(arrangement, control, patient)
+        Return Page(arrangement, tablet, control, patient)
     End Function
+
+    Private Sub ShowTablet()
+        Dim s = AppHost.Settings
+        If s.CompanyGuid = Guid.Empty Then
+            lblTablet.Text = Loc.T("settings.tablet.noPractice")
+        ElseIf TabletScreen.IsActive Then
+            Dim sz = TabletScreen.ScreenSize
+            lblTablet.Text = Loc.F("settings.tablet.active", TabletScreen.DeviceName, sz.Width, sz.Height)
+        ElseIf s.UseTablet Then
+            lblTablet.Text = Loc.T("settings.tablet.waiting")
+        Else
+            lblTablet.Text = Loc.T("settings.tablet.off")
+        End If
+    End Sub
 
     ''' <summary>ReadEZ colours: checked on the patient's screen (as saved: save new screen positions first).</summary>
     Private Function BuildReadEZ() As Control
@@ -559,6 +600,10 @@ Public Class SettingsScreen
     ''' <summary>One or two screens, from the rectangles being edited.</summary>
     Private Sub ShowMode()
         Dim c = ctl.Value, t = stim.Value
+        If TabletScreen.IsActive Then
+            lblMode.Text = Loc.T("settings.mode.tablet")
+            Return
+        End If
         Dim two = ScreenLayout.IsOnScreen(c) AndAlso ScreenLayout.IsOnScreen(t) AndAlso ScreenLayout.ScreenOf(c).DeviceName <> ScreenLayout.ScreenOf(t).DeviceName
         lblMode.Text = Loc.T(If(two, "settings.mode.two", "settings.mode.one"))
     End Sub

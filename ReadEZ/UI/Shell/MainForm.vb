@@ -40,6 +40,7 @@ Public Class MainForm
     Public Const ScreenSettings As String = "settings"
     Public Const ScreenHelp As String = "help"
     Public Const ScreenRun As String = "run"
+    Public Const ScreenDevices As String = "devices"
 
     Public Sub New()
         SuspendLayout()
@@ -82,6 +83,7 @@ Public Class MainForm
         _nav.AddItem(ScreenTests, "nav.tests", Glyphs.Eye)
         _nav.AddItem(ScreenResults, "nav.results", Glyphs.Chart)
         _nav.AddItem(ScreenColours, "nav.colours", Glyphs.Color)
+        _nav.AddItem(ScreenDevices, "nav.devices", DevicesScreen.DevicesGlyph)
         _nav.AddItem(ScreenSettings, "nav.settings", Glyphs.Settings, atBottom:=True)
         _nav.AddItem(ScreenHelp, "nav.help", Glyphs.Help, atBottom:=True)
         _nav.AddItem(NavOnlineHelp, "menu.onlineHelp", Glyphs.Globe, atBottom:=True)     ' opens the online help (Admin > Online help)
@@ -108,6 +110,7 @@ Public Class MainForm
         _factories(ScreenSettings) = Function() New SettingsScreen()
         _factories(ScreenHelp) = Function() New HelpScreen()
         _factories(ScreenRun) = Function() New TestRunScreen()
+        _factories(ScreenDevices) = Function() New DevicesScreen()
     End Sub
 
     Public ReadOnly Property CurrentScreenId As String
@@ -260,6 +263,8 @@ Public Class MainForm
         SplashForm.Finish(Me)                 ' stays above this window until it has shown for 2 s, then fades
         ShowScreen(ScreenPatients)
         Dim unused = Stimulus.Window          ' the patient's screen is shown from the start, as in Eye Dynamix
+        TabletScreen.Start()                  ' ... or on a tablet (Settings > Screens)
+        AddHandler TabletScreen.Changed, Sub() _top.RefreshStatus()
         Activate()
         WarmUpInBackground()
         CheckLicenceInBackground()
