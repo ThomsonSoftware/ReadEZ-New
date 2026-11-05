@@ -92,6 +92,8 @@ Public NotInheritable Class ReadEZResult
     Public Colour1 As Integer
     ''' <summary>1 overlays, 2 lenses, 3 strong (dark) lenses - as ReadEZ 2020.</summary>
     Public PaletteSet As Integer = 1
+    ''' <summary>The colour palette the test was done with: 0 ReadEZ Original, 1 ReadEZ New.</summary>
+    Public Palette As Integer
     Public Colour_R, Colour_G, Colour_B As Integer
     ''' <summary>Grey was preferred to the chosen colour (automatic test).</summary>
     Public GreyPreferred As Boolean
@@ -146,16 +148,23 @@ Public NotInheritable Class ReadEZResult
         Get
             If IsBaseline Then Return Color.White
             If Colour_R + Colour_G + Colour_B > 0 Then Return Color.FromArgb(255, Colour_R, Colour_G, Colour_B)
-            Return ReadEZColours.Colour(ColourSet, Math.Max(0, Math.Min(12, Colour1)))
+            Return ReadEZColours.Colour(Palette, ColourSet, Math.Max(0, Math.Min(12, Colour1)))
         End Get
     End Property
 
     ''' <summary>"Overlay F", "Lens C (dark)", "Bespoke colour" or "White".</summary>
     Public ReadOnly Property ColourName As String
         Get
-            If IsBaseline Then Return Loc.T("result.white")
+            If IsBaseline OrElse IsWhite Then Return Loc.T("result.white")
             If Screening_Mode = 2 Then Return Loc.T("result.bespoke")
-            Return ReadEZColours.Name(ColourSet, Math.Max(0, Math.Min(12, Colour1)))
+            Return ReadEZColours.Name(Palette, ColourSet, Math.Max(0, Math.Min(12, Colour1)))
+        End Get
+    End Property
+
+    ''' <summary>A colour test where white (no colour) was preferred (manual screening).</summary>
+    Public ReadOnly Property IsWhite As Boolean
+        Get
+            Return Not IsBaseline AndAlso Colour_R = 255 AndAlso Colour_G = 255 AndAlso Colour_B = 255
         End Get
     End Property
 

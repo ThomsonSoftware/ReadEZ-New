@@ -6,9 +6,15 @@ Imports System.Text.Json
 Imports System.Text.Json.Nodes
 
 ' ====================================================================================================
-'   ReadEZColours.vb - the ReadEZ overlay and lens colours (as in ReadEZ: Default.pal)
+'   ReadEZColours.vb - the ReadEZ overlay and lens colours
 '
-'   Three sets of 13 colours: grey (index 0) and A - L (1 - 12):
+'   Two palettes (Settings > Test setup > Colour palette):
+'     ReadEZ Original   ReadEZ's own colours (Default.pal)
+'     ReadEZ New        twelve colours equally spaced round white (D65) in CIE 1976 u'v', all at
+'                       the same luminance (Y = 0.50): the inner ring (0.0305 from white) for the
+'                       lenses and, for now, the overlays; the outer ring (0.061) for the strong
+'                       lenses. A - L run round the hue circle from 30 deg (orange) to 0 deg (rose).
+'   Each palette has three sets of 13 colours: grey (index 0) and A - L (1 - 12):
 '     Overlays                 the ReadEZ overlays
 '     Lenses                   the ReadEZ lenses (palette set 2 in ReadEZ)
 '     Lenses (strong)          the higher-saturation lenses (palette set 3 in ReadEZ)
@@ -40,6 +46,19 @@ Public NotInheritable Class ReadEZColours
 
     Private Shared ReadOnly Inv As CultureInfo = CultureInfo.InvariantCulture
 
+    ''' <summary>0 = ReadEZ Original, 1 = ReadEZ New.</summary>
+    Public Const PaletteCount As Integer = 2
+
+    ' ReadEZ New: u'v' angles 30, 60 ... 330, 0 deg; neutral grey first
+    Private Shared ReadOnly NewInner As Color() = {
+        Rgb(187, 188, 188), Rgb(219, 179, 166), Rgb(206, 185, 153), Rgb(187, 191, 149), Rgb(166, 196, 157),
+        Rgb(147, 199, 173), Rgb(137, 199, 191), Rgb(144, 196, 208), Rgb(163, 191, 219), Rgb(188, 184, 221),
+        Rgb(208, 177, 215), Rgb(221, 174, 202), Rgb(225, 175, 184)}
+    Private Shared ReadOnly NewOuter As Color() = {
+        Rgb(187, 188, 188), Rgb(244, 170, 141), Rgb(221, 182, 109), Rgb(187, 194, 100), Rgb(143, 203, 121),
+        Rgb(86, 209, 157), Rgb(1, 210, 195), Rgb(55, 205, 227), Rgb(129, 194, 248), Rgb(188, 179, 253),
+        Rgb(229, 165, 242), Rgb(251, 158, 216), Rgb(255, 161, 180)}
+
     ' ReadEZ's own palette (Palettes\Default.pal), grey first then A - L
     Private Shared ReadOnly Defaults As Color()() = {
         New Color() {Rgb(220, 220, 220), Rgb(255, 219, 122), Rgb(255, 226, 95), Rgb(239, 224, 100), Rgb(211, 222, 134),
@@ -52,13 +71,17 @@ Public NotInheritable Class ReadEZColours
                      Rgb(175, 242, 241), Rgb(158, 208, 251), Rgb(179, 203, 252), Rgb(204, 177, 254), Rgb(245, 180, 253),
                      Rgb(254, 167, 208), Rgb(230, 136, 154), Rgb(254, 170, 109)}}
 
+    ''' <summary>The palettes' own colours: palette, set (overlays, lenses, strong lenses), grey then A - L.</summary>
+    Private Shared ReadOnly Palettes As Color()()() = {Defaults, New Color()() {NewInner, NewInner, NewOuter}}
+
     Private Class Entry
         Public Colour As Color
         Public CheckedOn As Date?
         Public Screen As String = ""
     End Class
 
-    Private Shared _entries As Entry()()
+    ''' <summary>Palette, set, colour.</summary>
+    Private Shared _entries As Entry()()()
     Private Shared _screenId As String
     Private Shared _screenName As String
 
@@ -71,20 +94,50 @@ Public NotInheritable Class ReadEZColours
 
 #Region "Colours"
 
-    Public Shared Function DefaultColour(s As ReadEZSet, index As Integer) As Color
-        Return Defaults(CInt(s))(index)
+    ''' <summary>The palette in use (Settings): 0 ReadEZ Original, 1 ReadEZ New.</summary>
+    Public Shared ReadOnly Property CurrentPalette As Integer
+        Get
+            Return Math.Max(0, Math.Min(PaletteCount - 1, If(AppHost.Settings Is Nothing, 0, AppHost.Settings.ColourPalette)))
+        End Get
+    End Property
+
+    ''' <summary>"ReadEZ Original" / "ReadEZ New".</summary>
+    Public Shared Function PaletteName(palette As Integer) As String
+        Return Loc.T(If(palette = 1, "settings.palette.new", "settings.palette.original"))
     End Function
 
-    ''' <summary>The colour to show on this computer's patient screen.</summary>
+    ''' <summary>Changes the palette in use (the colours, checks and new tests follow it).</summary>
+    Public Shared Sub SetPalette(palette As Integer)
+        palette = Math.Max(0, Math.Min(PaletteCount - 1, palette))
+        If palette = CurrentPalette Then Return
+        AppHost.Settings.ColourPalette = palette
+        AppHost.SaveSettings()
+        RaiseEvent Changed(Nothing, EventArgs.Empty)
+    End Sub
+
+    Private Shared Function ClampPalette(palette As Integer) As Integer
+        Return Math.Max(0, Math.Min(PaletteCount - 1, palette))
+    End Function
+
+    Public Shared Function DefaultColour(s As ReadEZSet, index As Integer) As Color
+        Return Palettes(CurrentPalette)(CInt(s))(index)
+    End Function
+
+    ''' <summary>The colour to show on this computer's patient screen (the palette in use).</summary>
     Public Shared Function Colour(s As ReadEZSet, index As Integer) As Color
+        Return Colour(CurrentPalette, s, index)
+    End Function
+
+    ''' <summary>A colour of a given palette (e.g. the one a test was done with).</summary>
+    Public Shared Function Colour(palette As Integer, s As ReadEZSet, index As Integer) As Color
         EnsureLoaded()
-        Return _entries(CInt(s))(index).Colour
+        Return _entries(ClampPalette(palette))(CInt(s))(index).Colour
     End Function
 
     ''' <summary>When the colour was last checked on the screen now used for the patient (Nothing if not).</summary>
     Public Shared Function CheckedOn(s As ReadEZSet, index As Integer) As Date?
         EnsureLoaded()
-        Dim e = _entries(CInt(s))(index)
+        Dim e = _entries(CurrentPalette)(CInt(s))(index)
         If e.CheckedOn.HasValue AndAlso e.Screen = ScreenId Then Return e.CheckedOn
         Return Nothing
     End Function
@@ -92,7 +145,7 @@ Public NotInheritable Class ReadEZColours
     ''' <summary>Checked, but on a different screen from the one now used for the patient.</summary>
     Public Shared Function CheckedElsewhere(s As ReadEZSet, index As Integer) As Boolean
         EnsureLoaded()
-        Dim e = _entries(CInt(s))(index)
+        Dim e = _entries(CurrentPalette)(CInt(s))(index)
         Return e.CheckedOn.HasValue AndAlso e.Screen <> ScreenId
     End Function
 
@@ -112,7 +165,7 @@ Public NotInheritable Class ReadEZColours
         EnsureLoaded()
         For Each s In Sets
             For i = 0 To PerSet - 1
-                Dim e = _entries(CInt(s))(i)
+                Dim e = _entries(CurrentPalette)(CInt(s))(i)
                 e.Colour = colours(CInt(s))(i)
                 If checkedNow(CInt(s))(i) Then
                     e.CheckedOn = Date.Today
@@ -134,13 +187,20 @@ Public NotInheritable Class ReadEZColours
         Return ChrW(AscW("A"c) + index - 1)
     End Function
 
-    ''' <summary>"Overlay C", "Lens C", "Strong lens C".</summary>
+    ''' <summary>"Overlay C", "Lens C", "Strong lens C" (the palette in use).</summary>
     Public Shared Function Name(s As ReadEZSet, index As Integer) As String
+        Return Name(CurrentPalette, s, index)
+    End Function
+
+    ''' <summary>The name in a given palette: ReadEZ New's colours are marked "(ReadEZ New)".</summary>
+    Public Shared Function Name(palette As Integer, s As ReadEZSet, index As Integer) As String
+        Dim n As String
         Select Case s
-            Case ReadEZSet.Overlay : Return Loc.F("readez.overlayName", Letter(index))
-            Case ReadEZSet.Lens : Return Loc.F("readez.lensName", Letter(index))
-            Case Else : Return Loc.F("readez.strongName", Letter(index))
+            Case ReadEZSet.Overlay : n = Loc.F("readez.overlayName", Letter(index))
+            Case ReadEZSet.Lens : n = Loc.F("readez.lensName", Letter(index))
+            Case Else : n = Loc.F("readez.strongName", Letter(index))
         End Select
+        Return If(ClampPalette(palette) = 1, Loc.F("readez.newPaletteName", n), n)
     End Function
 
     Public Shared Function Code(s As ReadEZSet, index As Integer) As String
@@ -237,22 +297,30 @@ Public NotInheritable Class ReadEZColours
         End Get
     End Property
 
-    Private Shared ReadOnly SetNames As String() = {"Overlays", "Lenses", "StrongLenses"}
+    ''' <summary>The file's keys: palette, set (ReadEZ Original keeps the names it always had).</summary>
+    Private Shared ReadOnly SetNames As String()() = {
+        New String() {"Overlays", "Lenses", "StrongLenses"},
+        New String() {"NewOverlays", "NewLenses", "NewStrongLenses"}}
 
     Private Shared Sub EnsureLoaded()
         If _entries IsNot Nothing Then Return
-        Dim entries = New Entry(2)() {}
-        For s = 0 To 2
-            entries(s) = New Entry(PerSet - 1) {}
-            For i = 0 To PerSet - 1
-                entries(s)(i) = New Entry With {.Colour = Defaults(s)(i)}
+        Dim allEntries = New Entry(PaletteCount - 1)()() {}
+        For pal = 0 To PaletteCount - 1
+            allEntries(pal) = New Entry(2)() {}
+            For s = 0 To 2
+                allEntries(pal)(s) = New Entry(PerSet - 1) {}
+                For i = 0 To PerSet - 1
+                    allEntries(pal)(s)(i) = New Entry With {.Colour = Palettes(pal)(s)(i)}
+                Next
             Next
         Next
         Try
             If IO.File.Exists(FilePath) Then
                 Dim root = TryCast(JsonNode.Parse(IO.File.ReadAllText(FilePath)), JsonObject)
-                For s = 0 To 2
-                    Dim arr = TryCast(root?(SetNames(s)), JsonArray)
+                For Each key In From pal In Enumerable.Range(0, PaletteCount) From st In Enumerable.Range(0, 3) Select (pal:=pal, st:=st)
+                    Dim s = key.st
+                    Dim entries = allEntries(key.pal)
+                    Dim arr = TryCast(root?(SetNames(key.pal)(s)), JsonArray)
                     If arr Is Nothing Then Continue For
                     For i = 0 To Math.Min(PerSet, arr.Count) - 1
                         Dim o = TryCast(arr(i), JsonObject)
@@ -271,16 +339,17 @@ Public NotInheritable Class ReadEZColours
         Catch ex As Exception
             Log.Error("ReadEZ colours", ex)
         End Try
-        _entries = entries
+        _entries = allEntries
     End Sub
 
     Private Shared Sub Save()
         Try
             Dim root As New JsonObject()
-            For s = 0 To 2
+            For Each key In From pal In Enumerable.Range(0, PaletteCount) From st In Enumerable.Range(0, 3) Select (pal:=pal, st:=st)
+                Dim s = key.st
                 Dim arr As New JsonArray()
                 For i = 0 To PerSet - 1
-                    Dim e = _entries(s)(i)
+                    Dim e = _entries(key.pal)(s)(i)
                     Dim o As New JsonObject()
                     o("Name") = Code(CType(s, ReadEZSet), i)
                     o("Rgb") = $"#{e.Colour.R:X2}{e.Colour.G:X2}{e.Colour.B:X2}"
@@ -290,7 +359,7 @@ Public NotInheritable Class ReadEZColours
                     End If
                     arr.Add(o)
                 Next
-                root(SetNames(s)) = arr
+                root(SetNames(key.pal)(s)) = arr
             Next
             SettingsJson.WriteFileSafely(FilePath, root.ToJsonString(New JsonSerializerOptions With {.WriteIndented = True}))
         Catch ex As Exception
@@ -356,3 +425,77 @@ Public Structure OkLab
         Return CInt(Math.Round(Math.Max(0, Math.Min(1, c)) * 255))
     End Function
 End Structure
+
+''' <summary>
+''' A colour on three sliders in an even-looking colour space (OKLCh): hue (degrees), amount of colour
+''' (chroma) and lightness, with its RGB values. Used for a bespoke colour and for adjusting a colour
+''' in the colour check. Setting Colour moves the sliders without raising ColourChanged.
+''' </summary>
+Public NotInheritable Class OkLchSliders
+    Inherits FlowLayoutPanel
+
+    Private ReadOnly sldHue As Slider
+    Private ReadOnly sldChroma As Slider
+    Private ReadOnly sldLight As Slider
+    Private ReadOnly lblRgb As New Label With {.AutoSize = True, .Font = Fonts.Body, .Margin = New Padding(0, 0, 0, 8)}
+    Private _colour As Color = Color.White
+    Private _loading As Boolean
+
+    ''' <summary>A slider was moved (Colour is the new colour).</summary>
+    Public Event ColourChanged As EventHandler
+
+    Public Sub New(Optional sliderWidth As Integer = 400)
+        FlowDirection = FlowDirection.TopDown
+        WrapContents = False
+        AutoSize = True
+        AutoSizeMode = AutoSizeMode.GrowAndShrink
+        BackColor = Color.Transparent
+        Margin = New Padding(0)
+        ' Hue in degrees; amount of colour and lightness in thousandths (fine steps)
+        sldHue = New Slider With {.Minimum = 0, .Maximum = 359, .Height = 30, .ShowValue = True, .Width = sliderWidth}
+        sldChroma = New Slider With {.Minimum = 0, .Maximum = 300, .Height = 30, .ShowValue = True, .Width = sliderWidth, .LargeChange = 10}
+        sldLight = New Slider With {.Minimum = 300, .Maximum = 1000, .Height = 30, .ShowValue = True, .Width = sliderWidth, .LargeChange = 10}
+        sldHue.ValueFormat = Function(v) v & "°"
+        sldChroma.ValueFormat = Function(v) (v / 1000.0).ToString("0.000", Loc.Culture)
+        sldLight.ValueFormat = Function(v) (v / 10.0).ToString("0.0", Loc.Culture) & " %"
+        Controls.Add(lblRgb)
+        Controls.Add(Ui.Stack("bespoke.hue", sldHue))
+        Controls.Add(Ui.Stack("bespoke.chroma", sldChroma))
+        Controls.Add(Ui.Stack("bespoke.lightness", sldLight))
+        For Each sl In {sldHue, sldChroma, sldLight}
+            AddHandler sl.ValueChanged, Sub() SliderMoved()
+        Next
+        ShowRgb()
+    End Sub
+
+    Public Property Colour As Color
+        Get
+            Return _colour
+        End Get
+        Set(value As Color)
+            _colour = value
+            Dim lab = OkLab.FromColor(value)
+            _loading = True
+            Try
+                If lab.Chroma > 0.002 Then sldHue.Value = CInt(Math.Round((Math.Atan2(lab.B, lab.A) * 180 / Math.PI + 360) Mod 360)) Mod 360
+                sldChroma.Value = Math.Max(sldChroma.Minimum, Math.Min(sldChroma.Maximum, CInt(Math.Round(lab.Chroma * 1000))))
+                sldLight.Value = Math.Max(sldLight.Minimum, Math.Min(sldLight.Maximum, CInt(Math.Round(lab.L * 1000))))
+            Finally
+                _loading = False
+            End Try
+            ShowRgb()
+        End Set
+    End Property
+
+    Private Sub SliderMoved()
+        If _loading Then Return
+        Dim h = sldHue.Value * Math.PI / 180, ch = sldChroma.Value / 1000.0
+        _colour = New OkLab(sldLight.Value / 1000.0, ch * Math.Cos(h), ch * Math.Sin(h)).ToColor()
+        ShowRgb()
+        RaiseEvent ColourChanged(Me, EventArgs.Empty)
+    End Sub
+
+    Private Sub ShowRgb()
+        lblRgb.Text = $"RGB {_colour.R}, {_colour.G}, {_colour.B}"
+    End Sub
+End Class

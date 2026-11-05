@@ -521,6 +521,36 @@
     "de": "Nur auf Wunsch",
     "it": "Solo quando lo scelgo"
   },
+  "bespoke.chroma": {
+    "en": "Amount of colour",
+    "es": "Cantidad de color",
+    "de": "Farbstärke",
+    "it": "Quantità di colore"
+  },
+  "bespoke.hue": {
+    "en": "Hue",
+    "es": "Tono",
+    "de": "Farbton",
+    "it": "Tonalità"
+  },
+  "bespoke.lightness": {
+    "en": "Lightness",
+    "es": "Luminosidad",
+    "de": "Helligkeit",
+    "it": "Luminosità"
+  },
+  "bespoke.subtitle": {
+    "en": "The patient's screen changes as you move the sliders",
+    "es": "La pantalla del paciente cambia al mover los controles",
+    "de": "Der Bildschirm des Patienten ändert sich, während Sie die Regler bewegen",
+    "it": "Lo schermo del paziente cambia mentre muovi i cursori"
+  },
+  "bespoke.title": {
+    "en": "Bespoke colour",
+    "es": "Color a medida",
+    "de": "Eigene Farbe",
+    "it": "Colore personalizzato"
+  },
   "colour.algo.classic": {
     "en": "Classic (ReadEZ 2020)",
     "es": "Clásica (ReadEZ 2020)",
@@ -844,6 +874,12 @@
     "es": "Tiempo de presentación",
     "de": "Darbietungszeit",
     "it": "Tempo di presentazione"
+  },
+  "colour.white": {
+    "en": "White",
+    "es": "Blanco",
+    "de": "Weiß",
+    "it": "Bianco"
   },
   "colours.about": {
     "en": "Screens show colours differently, so each ReadEZ colour must be checked on the screen the patient uses: hold the overlay (on white paper) or the lens beside the screen colour and either confirm it looks the same or find the match in a few choices. Click a colour to check it.",
@@ -1366,6 +1402,36 @@
     "es": "Acuerdo de licencia de usuario final",
     "de": "Endbenutzer-Lizenzvereinbarung",
     "it": "Contratto di licenza con l'utente finale"
+  },
+  "grating.changeWarning": {
+    "en": "The grating has been set to {0} cycles/degree: the spatial frequency this patient found most uncomfortable, which is the best for testing.\r\n\r\nChange it only if there is a good reason. Change it?",
+    "es": "La rejilla está ajustada a {0} ciclos/grado: la frecuencia espacial que este paciente encontró más molesta, la mejor para la prueba.\r\n\r\nCámbiela solo si hay un buen motivo. ¿Cambiarla?",
+    "de": "Das Gitter ist auf {0} Perioden/Grad eingestellt: die Ortsfrequenz, die dieser Patient am unangenehmsten fand – die beste für den Test.\r\n\r\nÄndern Sie sie nur aus gutem Grund. Ändern?",
+    "it": "Il reticolo è impostato su {0} cicli/grado: la frequenza spaziale che questo paziente ha trovato più fastidiosa, la migliore per il test.\r\n\r\nModificala solo se c'è un buon motivo. Modificarla?"
+  },
+  "grating.options": {
+    "en": "Grating",
+    "es": "Rejilla",
+    "de": "Gitter",
+    "it": "Reticolo"
+  },
+  "grating.options.note": {
+    "en": "Set to the patient's most uncomfortable spatial frequency: the best for testing.",
+    "es": "Ajustada a la frecuencia espacial más molesta para el paciente: la mejor para la prueba.",
+    "de": "Auf die für den Patienten unangenehmste Ortsfrequenz eingestellt: die beste für den Test.",
+    "it": "Impostato sulla frequenza spaziale più fastidiosa per il paziente: la migliore per il test."
+  },
+  "grating.options.reset": {
+    "en": "Back to the one found",
+    "es": "Volver a la encontrada",
+    "de": "Zurück zur ermittelten",
+    "it": "Torna a quella trovata"
+  },
+  "grating.options.sf": {
+    "en": "Spatial frequency",
+    "es": "Frecuencia espacial",
+    "de": "Ortsfrequenz",
+    "it": "Frequenza spaziale"
   },
   "help.about": {
     "en": "About",
@@ -1914,10 +1980,10 @@
     "it": "Vedrai due copie del testo una accanto all'altra, ciascuna su un colore diverso."
   },
   "instr.overlay.1p": {
-    "en": "You will see two copies of the striped pattern side by side, each on a different colour.",
-    "es": "Verás dos copias del patrón de rayas una al lado de la otra, cada una con un color distinto.",
-    "de": "Du siehst zwei Kopien des Streifenmusters nebeneinander, jede in einer anderen Farbe.",
-    "it": "Vedrai due copie del pattern a strisce affiancate, ognuna di un colore diverso."
+    "en": "You will see two copies of the striped grating side by side, each on a different colour.",
+    "es": "Verás dos copias dla rejilla de rayas una al lado de la otra, cada una con un color distinto.",
+    "de": "Du siehst zwei Kopien des Streifengitters nebeneinander, jede in einer anderen Farbe.",
+    "it": "Vedrai due copie del reticolo a strisce affiancate, ognuna di un colore diverso."
   },
   "instr.overlay.2": {
     "en": "Look at both, then say which side is more comfortable to look at: left or right.",
@@ -1956,10 +2022,10 @@
     "it": "Di' al paziente (il suo schermo mostra come sarà il test), poi premi Avvia (Spazio):"
   },
   "instr.pg.1": {
-    "en": "You will see two striped patterns, one on each side of the screen.",
-    "es": "Verás dos patrones de rayas, uno a cada lado de la pantalla.",
-    "de": "Du siehst zwei Streifenmuster, eines auf jeder Seite des Bildschirms.",
-    "it": "Vedrai due pattern a strisce, uno per lato dello schermo."
+    "en": "You will see two striped gratings, one on each side of the screen.",
+    "es": "Verás dos rejillas de rayas, uno a cada lado de la pantalla.",
+    "de": "Du siehst zwei Streifengitter, eines auf jeder Seite des Bildschirms.",
+    "it": "Vedrai due reticoli a strisce, uno per lato dello schermo."
   },
   "instr.pg.2": {
     "en": "Look at each one in turn.",
@@ -1969,15 +2035,15 @@
   },
   "instr.pg.3": {
     "en": "Say (or tap) which one is MORE uncomfortable or unpleasant to look at. If they feel about the same, say so.",
-    "es": "Di (o toca) cuál es MÁS molesto o desagradable de mirar. Si te parecen más o menos iguales, dilo.",
+    "es": "Di (o toca) cuál es MÁS molesta o desagradable de mirar. Si te parecen más o menos iguales, dilo.",
     "de": "Sag (oder tippe an), welches UNANGENEHMER anzusehen ist. Wenn sie sich etwa gleich anfühlen, sag das.",
     "it": "Di' (o tocca) quale è PIÙ fastidioso o sgradevole da guardare. Se ti sembrano più o meno uguali, dillo."
   },
   "instr.pg.callout1": {
-    "en": "Look at this pattern",
-    "es": "Mira este patrón",
-    "de": "Schau dir dieses Muster an",
-    "it": "Guarda questo pattern"
+    "en": "Look at this grating",
+    "es": "Mira esta rejilla",
+    "de": "Schau dir dieses Gitter an",
+    "it": "Guarda questo reticolo"
   },
   "instr.pg.callout2": {
     "en": "... and this one",
@@ -1992,16 +2058,16 @@
     "it": "Quale è PIÙ fastidioso da guardare?"
   },
   "instr.pg.title": {
-    "en": "Pattern glare",
-    "es": "Deslumbramiento por patrones",
-    "de": "Musterblendung",
-    "it": "Abbagliamento da pattern"
+    "en": "Striped gratings",
+    "es": "Rejillas de rayas",
+    "de": "Streifengitter",
+    "it": "Reticoli a strisce"
   },
   "instr.psymptoms.1": {
-    "en": "Look at the striped pattern for a few seconds.",
-    "es": "Mira el patrón de rayas unos segundos.",
-    "de": "Schau dir das Streifenmuster einige Sekunden an.",
-    "it": "Guarda il pattern a strisce per qualche secondo."
+    "en": "Look at the striped grating for a few seconds.",
+    "es": "Mira la rejilla de rayas unos segundos.",
+    "de": "Schau dir das Streifengitter einige Sekunden an.",
+    "it": "Guarda il reticolo a strisce per qualche secondo."
   },
   "instr.psymptoms.2": {
     "en": "You will then be asked a few questions about how it looks and feels: for example, whether it is uncomfortable, or the lines seem to move or show colours.",
@@ -2016,10 +2082,10 @@
     "it": "Non ci sono risposte giuste o sbagliate. Di' solo quello che noti."
   },
   "instr.psymptoms.callout1": {
-    "en": "Look at this pattern for a few seconds",
-    "es": "Mira este patrón unos segundos",
-    "de": "Schau dir dieses Muster einige Sekunden an",
-    "it": "Guarda questo pattern per qualche secondo"
+    "en": "Look at this grating for a few seconds",
+    "es": "Mira esta rejilla unos segundos",
+    "de": "Schau dir dieses Gitter einige Sekunden an",
+    "it": "Guarda questo reticolo per qualche secondo"
   },
   "instr.psymptoms.callout2": {
     "en": "Then say how it looks and feels to you",
@@ -2028,10 +2094,10 @@
     "it": "Poi di' come ti appare e come ti fa sentire"
   },
   "instr.psymptoms.title": {
-    "en": "Looking at the pattern",
-    "es": "Mirar el patrón",
-    "de": "Das Muster ansehen",
-    "it": "Guardare il pattern"
+    "en": "Looking at the grating",
+    "es": "Mirar la rejilla",
+    "de": "Das Gitter ansehen",
+    "it": "Guardare il reticolo"
   },
   "instr.reading.1": {
     "en": "You will see lines of short, simple words. They are in a random order, so they don't make sentences.",
@@ -2166,34 +2232,34 @@
     "it": "Spazio"
   },
   "kind.baselinePattern": {
-    "en": "Baseline pattern",
-    "es": "Línea base patrón",
-    "de": "Basis Muster",
-    "it": "Base pattern"
+    "en": "Baseline (grating)",
+    "es": "Línea base (rejilla)",
+    "de": "Basis (Gitter)",
+    "it": "Base (reticolo)"
   },
   "kind.baselineText": {
-    "en": "Baseline text",
-    "es": "Línea base texto",
-    "de": "Basis Text",
-    "it": "Base testo"
+    "en": "Baseline (text)",
+    "es": "Línea base (texto)",
+    "de": "Basis (Text)",
+    "it": "Base (testo)"
   },
   "kind.computerPattern": {
-    "en": "Computer screen pattern test",
-    "es": "Prueba de pantalla con patrón",
-    "de": "Bildschirm-Mustertest",
-    "it": "Test schermo con pattern"
+    "en": "Computer screen (grating)",
+    "es": "Pantalla (rejilla)",
+    "de": "Bildschirm (Gitter)",
+    "it": "Schermo (reticolo)"
   },
   "kind.lensesPattern": {
-    "en": "Lens pattern test",
-    "es": "Prueba de lentes con patrón",
-    "de": "Linsen-Mustertest",
-    "it": "Test lenti con pattern"
+    "en": "Lenses (grating)",
+    "es": "Lentes (rejilla)",
+    "de": "Linsen (Gitter)",
+    "it": "Lenti (reticolo)"
   },
   "kind.overlayPattern": {
-    "en": "Overlay pattern test",
-    "es": "Prueba de superposición con patrón",
-    "de": "Folien-Mustertest",
-    "it": "Test overlay con pattern"
+    "en": "Overlays (grating)",
+    "es": "Superposiciones (rejilla)",
+    "de": "Folien (Gitter)",
+    "it": "Overlay (reticolo)"
   },
   "letter.default.ParentClosingPara": {
     "en": "The results suggest that {Firstname} may benefit from an {Result}.\n\nIf you have any questions relating to this report, please contact our Visual Stress team.",
@@ -2730,10 +2796,10 @@
     "it": "Schermo del computer"
   },
   "mode.computerPattern": {
-    "en": "Computer screen – pattern",
-    "es": "Pantalla – patrón",
-    "de": "Bildschirm – Muster",
-    "it": "Schermo – pattern"
+    "en": "Computer screen – grating",
+    "es": "Pantalla – rejilla",
+    "de": "Bildschirm – Gitter",
+    "it": "Schermo – reticolo"
   },
   "mode.lenses": {
     "en": "Lenses",
@@ -2742,10 +2808,10 @@
     "it": "Lenti"
   },
   "mode.lensesPattern": {
-    "en": "Lenses – pattern",
-    "es": "Lentes – patrón",
-    "de": "Linsen – Muster",
-    "it": "Lenti – pattern"
+    "en": "Lenses – grating",
+    "es": "Lentes – rejilla",
+    "de": "Linsen – Gitter",
+    "it": "Lenti – reticolo"
   },
   "mode.overlay": {
     "en": "Overlays",
@@ -2754,16 +2820,16 @@
     "it": "Lamine"
   },
   "mode.overlayPattern": {
-    "en": "Overlays – pattern",
-    "es": "Superposiciones – patrón",
-    "de": "Folien – Muster",
-    "it": "Overlay – pattern"
+    "en": "Overlays – grating",
+    "es": "Superposiciones – rejilla",
+    "de": "Folien – Gitter",
+    "it": "Overlay – reticolo"
   },
   "mode.patternGlare": {
-    "en": "Pattern glare (baseline pattern)",
-    "es": "Deslumbramiento por patrones (línea base)",
-    "de": "Musterblendung (Musterbasis)",
-    "it": "Abbagliamento da pattern (base)"
+    "en": "Baseline (grating)",
+    "es": "Línea base (rejilla)",
+    "de": "Basis (Gitter)",
+    "it": "Base (reticolo)"
   },
   "nav.colours": {
     "en": "Colours",
@@ -3138,10 +3204,10 @@
     "it": "Pazienti"
   },
   "pg.ask": {
-    "en": "Ask: \"Which of the two patterns is MORE uncomfortable to look at?\"",
-    "es": "Pregunte: «¿Cuál de los dos patrones es MÁS molesto de mirar?»",
-    "de": "Fragen Sie: „Welches der beiden Muster ist UNANGENEHMER anzusehen?“",
-    "it": "Chiedi: «Quale dei due pattern è PIÙ fastidioso da guardare?»"
+    "en": "Ask: \"Which of the two gratings is MORE uncomfortable to look at?\"",
+    "es": "Pregunte: «¿Cuál de las dos rejillas es MÁS molesta de mirar?»",
+    "de": "Fragen Sie: „Welches der beiden Gitter ist UNANGENEHMER anzusehen?“",
+    "it": "Chiedi: «Quale dei due reticoli è PIÙ fastidioso da guardare?»"
   },
   "pg.bar.choice": {
     "en": "Choice",
@@ -3192,16 +3258,16 @@
     "it": "Vengono mostrate due aree di strisce orizzontali bianche e nere, una per lato, con frequenze spaziali diverse (strisce per grado di angolo visivo)."
   },
   "pg.how.2": {
-    "en": "The patient says which is MORE uncomfortable to look at, or that they are about the same. Record it with the buttons or keys; the patient can also click or tap the pattern.",
-    "es": "El paciente dice cuál es MÁS molesto de mirar, o que son más o menos iguales. Regístrelo con los botones o las teclas; el paciente también puede hacer clic o tocar el patrón.",
-    "de": "Der Patient sagt, welches UNANGENEHMER anzusehen ist oder dass sie etwa gleich sind. Mit den Schaltflächen oder Tasten erfassen; der Patient kann das Muster auch anklicken oder antippen.",
-    "it": "Il paziente dice quale è PIÙ fastidioso da guardare, o che sono più o meno uguali. Registralo con i pulsanti o i tasti; il paziente può anche fare clic o toccare il pattern."
+    "en": "The patient says which is MORE uncomfortable to look at, or that they are about the same. Record it with the buttons or keys; the patient can also click or tap the grating.",
+    "es": "El paciente dice cuál es MÁS molesto de mirar, o que son más o menos iguales. Regístrelo con los botones o las teclas; el paciente también puede hacer clic o tocar la rejilla.",
+    "de": "Der Patient sagt, welches UNANGENEHMER anzusehen ist oder dass sie etwa gleich sind. Mit den Schaltflächen oder Tasten erfassen; der Patient kann das Gitter auch anklicken oder antippen.",
+    "it": "Il paziente dice quale è PIÙ fastidioso da guardare, o che sono più o meno uguali. Registralo con i pulsanti o i tasti; il paziente può anche fare clic o toccare il reticolo."
   },
   "pg.how.3": {
-    "en": "Each answer removes a third of the range of frequencies still in play (on a log scale), and two new patterns are shown. After about 7 answers the range is a third of an octave.",
-    "es": "Cada respuesta elimina un tercio del rango de frecuencias que queda (en escala logarítmica) y se muestran dos patrones nuevos. Tras unas 7 respuestas el rango es de un tercio de octava.",
-    "de": "Jede Antwort entfernt ein Drittel des verbleibenden Frequenzbereichs (logarithmisch), und zwei neue Muster werden gezeigt. Nach etwa 7 Antworten beträgt der Bereich eine Drittel-Oktave.",
-    "it": "Ogni risposta elimina un terzo dell'intervallo di frequenze rimasto (in scala logaritmica) e vengono mostrati due nuovi pattern. Dopo circa 7 risposte l'intervallo è di un terzo di ottava."
+    "en": "Each answer removes a third of the range of frequencies still in play (on a log scale), and two new gratings are shown. After about 7 answers the range is a third of an octave.",
+    "es": "Cada respuesta elimina un tercio del rango de frecuencias que queda (en escala logarítmica) y se muestran dos rejillas nuevos. Tras unas 7 respuestas el rango es de un tercio de octava.",
+    "de": "Jede Antwort entfernt ein Drittel des verbleibenden Frequenzbereichs (logarithmisch), und zwei neue Gitter werden gezeigt. Nach etwa 7 Antworten beträgt der Bereich eine Drittel-Oktave.",
+    "it": "Ogni risposta elimina un terzo dell'intervallo di frequenze rimasto (in scala logaritmica) e vengono mostrati due nuovi reticoli. Dopo circa 7 risposte l'intervallo è di un terzo di ottava."
   },
   "pg.how.4": {
     "en": "The result is the most uncomfortable spatial frequency, in cycles per degree. It depends on the viewing distance and the screen width in Settings, so measure the distance.",
@@ -3210,10 +3276,10 @@
     "it": "Il risultato è la frequenza spaziale più fastidiosa, in cicli per grado. Dipende dalla distanza di visione e dalla larghezza dello schermo nelle Impostazioni, quindi misura la distanza."
   },
   "pg.how.5": {
-    "en": "The patterns can be unpleasant. Stop if the patient becomes distressed, and take particular care with anyone who has had seizures.",
-    "es": "Los patrones pueden resultar desagradables. Pare si el paciente se angustia y tenga especial cuidado con cualquier persona que haya tenido crisis epilépticas.",
-    "de": "Die Muster können unangenehm sein. Brechen Sie ab, wenn der Patient belastet wirkt, und seien Sie besonders vorsichtig bei Personen mit Anfällen in der Vorgeschichte.",
-    "it": "I pattern possono risultare sgradevoli. Interrompi se il paziente si agita e presta particolare attenzione a chi ha avuto crisi epilettiche."
+    "en": "The gratings can be unpleasant. Stop if the patient becomes distressed, and take particular care with anyone who has had seizures.",
+    "es": "Las rejillas pueden resultar desagradables. Pare si el paciente se angustia y tenga especial cuidado con cualquier persona que haya tenido crisis epilépticas.",
+    "de": "Die Gitter können unangenehm sein. Brechen Sie ab, wenn der Patient belastet wirkt, und seien Sie besonders vorsichtig bei Personen mit Anfällen in der Vorgeschichte.",
+    "it": "I reticolo possono risultare sgradevoli. Interrompi se il paziente si agita e presta particolare attenzione a chi ha avuto crisi epilettiche."
   },
   "pg.how.button": {
     "en": "How the test works",
@@ -3222,16 +3288,16 @@
     "it": "Come funziona il test"
   },
   "pg.how.title": {
-    "en": "Pattern glare test",
-    "es": "Prueba de deslumbramiento por patrones",
-    "de": "Musterblendungstest",
-    "it": "Test di abbagliamento da pattern"
+    "en": "Grating glare test",
+    "es": "Prueba de deslumbramiento por rejillas",
+    "de": "Gitterblendungstest",
+    "it": "Test di abbagliamento da reticolo"
   },
   "pg.keys": {
-    "en": "Keys: ← left, → right, ↓ or Space about the same. The patient can also click or tap the pattern.",
-    "es": "Teclas: ← izquierda, → derecha, ↓ o Espacio más o menos igual. El paciente también puede hacer clic o tocar el patrón.",
-    "de": "Tasten: ← links, → rechts, ↓ oder Leertaste etwa gleich. Der Patient kann das Muster auch anklicken oder antippen.",
-    "it": "Tasti: ← sinistra, → destra, ↓ o Spazio più o meno uguali. Il paziente può anche fare clic o toccare il pattern."
+    "en": "Keys: ← left, → right, ↓ or Space about the same. The patient can also click or tap the grating.",
+    "es": "Teclas: ← izquierda, → derecha, ↓ o Espacio más o menos igual. El paciente también puede hacer clic o tocar la rejilla.",
+    "de": "Tasten: ← links, → rechts, ↓ oder Leertaste etwa gleich. Der Patient kann das Gitter auch anklicken oder antippen.",
+    "it": "Tasti: ← sinistra, → destra, ↓ o Spazio più o meno uguali. Il paziente può anche fare clic o toccare il reticolo."
   },
   "pg.left": {
     "en": "Left",
@@ -3270,16 +3336,16 @@
     "it": "Più fastidiosa: {0} cicli/grado"
   },
   "pg.results.button": {
-    "en": "Pattern glare",
-    "es": "Deslumbramiento por patrones",
-    "de": "Musterblendung",
-    "it": "Abbagliamento da pattern"
+    "en": "Grating glare",
+    "es": "Deslumbramiento por rejillas",
+    "de": "Gitterblendung",
+    "it": "Abbagliamento da reticolo"
   },
   "pg.results.confirmDelete": {
-    "en": "Delete this pattern glare test?",
-    "es": "¿Eliminar esta prueba de deslumbramiento por patrones?",
-    "de": "Diesen Musterblendungstest löschen?",
-    "it": "Eliminare questo test di abbagliamento da pattern?"
+    "en": "Delete this grating glare test?",
+    "es": "¿Eliminar esta prueba de deslumbramiento por rejillas?",
+    "de": "Diesen Gitterblendungstest löschen?",
+    "it": "Eliminare questo test di abbagliamento da reticolo?"
   },
   "pg.results.detail": {
     "en": "Narrowed to {0} – {1} c/deg after {2} choices, viewed at {3} cm",
@@ -3288,10 +3354,10 @@
     "it": "Ristretta a {0} – {1} c/grado dopo {2} scelte, vista a {3} cm"
   },
   "pg.results.none": {
-    "en": "No pattern glare tests yet.",
-    "es": "Aún no hay pruebas de deslumbramiento por patrones.",
-    "de": "Noch keine Musterblendungstests.",
-    "it": "Ancora nessun test di abbagliamento da pattern."
+    "en": "No grating glare tests yet.",
+    "es": "Aún no hay pruebas de deslumbramiento por rejillas.",
+    "de": "Noch keine Gitterblendungstests.",
+    "it": "Ancora nessun test di abbagliamento da reticolo."
   },
   "pg.results.note": {
     "en": "The spatial frequency (stripes per degree of visual angle) the patient found most uncomfortable in each test, newest first.",
@@ -3306,10 +3372,10 @@
     "it": "(interrotto prima – stima fino a quel punto)"
   },
   "pg.results.title": {
-    "en": "Pattern glare results",
-    "es": "Resultados de deslumbramiento por patrones",
-    "de": "Ergebnisse Musterblendung",
-    "it": "Risultati abbagliamento da pattern"
+    "en": "Grating glare results",
+    "es": "Resultados de deslumbramiento por rejillas",
+    "de": "Ergebnisse Gitterblendung",
+    "it": "Risultati abbagliamento da reticolo"
   },
   "pg.right": {
     "en": "Right",
@@ -3815,6 +3881,30 @@
     "de": "Dunkle Tönung",
     "it": "Tinta scura"
   },
+  "readez.diagram.card": {
+    "en": "Overlay on a white card",
+    "es": "Superposición sobre una tarjeta blanca",
+    "de": "Folie auf weißer Karte",
+    "it": "Overlay su un cartoncino bianco"
+  },
+  "readez.diagram.lens": {
+    "en": "Hold the lens over the white window and compare it with the colour beside it",
+    "es": "Sostenga la lente sobre la ventana blanca y compárela con el color de al lado",
+    "de": "Halten Sie die Linse über das weiße Fenster und vergleichen Sie sie mit der Farbe daneben",
+    "it": "Tieni la lente sopra la finestra bianca e confrontala con il colore accanto"
+  },
+  "readez.diagram.light": {
+    "en": "Room light",
+    "es": "Luz de la sala",
+    "de": "Raumlicht",
+    "it": "Luce della stanza"
+  },
+  "readez.diagram.screen": {
+    "en": "Screen colour at the right-hand edge",
+    "es": "Color de pantalla en el borde derecho",
+    "de": "Bildschirmfarbe am rechten Rand",
+    "it": "Colore dello schermo sul bordo destro"
+  },
   "readez.grey": {
     "en": "Grey",
     "es": "Gris",
@@ -3832,6 +3922,12 @@
     "es": "Tinte claro",
     "de": "Leichte Tönung",
     "it": "Tinta chiara"
+  },
+  "readez.newPaletteName": {
+    "en": "{0} (ReadEZ New)",
+    "es": "{0} (ReadEZ New)",
+    "de": "{0} (ReadEZ New)",
+    "it": "{0} (ReadEZ New)"
   },
   "readez.notChecked": {
     "en": "Not checked on this screen",
@@ -4212,10 +4308,10 @@
     "it": "Carattere: {0}, {1} pt"
   },
   "results.cfg.pattern": {
-    "en": "Pattern: {0} cycles/degree",
-    "es": "Patrón: {0} ciclos/grado",
-    "de": "Muster: {0} Perioden/Grad",
-    "it": "Pattern: {0} cicli/grado"
+    "en": "Grating: {0} cycles/degree",
+    "es": "Rejilla: {0} ciclos/grado",
+    "de": "Gitter: {0} Perioden/Grad",
+    "it": "Reticolo: {0} cicli/grado"
   },
   "results.cfg.rows": {
     "en": "Rows: {0}",
@@ -4266,10 +4362,10 @@
     "it": "Base → colore"
   },
   "results.change.mismatch": {
-    "en": "Choose a baseline of the same kind: a pattern test is compared with a baseline pattern, a text test with a baseline text.",
-    "es": "Elija una línea base del mismo tipo: una prueba con patrón se compara con una línea base patrón, y una de texto con una línea base texto.",
-    "de": "Wählen Sie eine Basis derselben Art: ein Mustertest wird mit einer Musterbasis verglichen, ein Texttest mit einer Textbasis.",
-    "it": "Scegli una base dello stesso tipo: un test con pattern si confronta con una base pattern, un test di testo con una base testo."
+    "en": "Choose a baseline of the same kind: a grating test is compared with a baseline grating, a text test with a baseline text.",
+    "es": "Elija una línea base del mismo tipo: una prueba con rejilla se compara con una línea base rejilla, y una de texto con una línea base texto.",
+    "de": "Wählen Sie eine Basis derselben Art: ein Gittertest wird mit einer Gitterbasis verglichen, ein Texttest mit einer Textbasis.",
+    "it": "Scegli una base dello stesso tipo: un test con reticolo si confronta con una base reticolo, un test di testo con una base testo."
   },
   "results.change.needBoth": {
     "en": "Choose a baseline result and a test with colour (on the left) to see the change with colour.",
@@ -4439,6 +4535,12 @@
     "de": "Lesegeschwindigkeit: {0} Wörter/min",
     "it": "Velocità di lettura: {0} parole/min"
   },
+  "results.gratingShort": {
+    "en": "grating",
+    "es": "rejilla",
+    "de": "Gitter",
+    "it": "reticolo"
+  },
   "results.head.info": {
     "en": "Test information",
     "es": "Información de la prueba",
@@ -4446,10 +4548,10 @@
     "it": "Informazioni sul test"
   },
   "results.head.pattern": {
-    "en": "Pattern",
-    "es": "Patrón",
-    "de": "Muster",
-    "it": "Pattern"
+    "en": "Grating",
+    "es": "Rejilla",
+    "de": "Gitter",
+    "it": "Reticolo"
   },
   "results.head.reading": {
     "en": "Reading performance",
@@ -4571,6 +4673,18 @@
     "de": "Basis-Ergebnisse (weißer Hintergrund)",
     "it": "Risultati di base (sfondo bianco)"
   },
+  "results.panel.baselineGrating": {
+    "en": "Baseline (grating)",
+    "es": "Línea base (rejilla)",
+    "de": "Basis (Gitter)",
+    "it": "Base (reticolo)"
+  },
+  "results.panel.baselineText": {
+    "en": "Baseline (text)",
+    "es": "Línea base (texto)",
+    "de": "Basis (Text)",
+    "it": "Base (testo)"
+  },
   "results.panel.change": {
     "en": "Change in symptoms and reading performance with colour",
     "es": "Cambio en los síntomas y la lectura con color",
@@ -4583,11 +4697,23 @@
     "de": "Ergebnisse der Farbtestung",
     "it": "Risultati del test del colore"
   },
+  "results.panel.colourGrating": {
+    "en": "Colour (grating)",
+    "es": "Color (rejilla)",
+    "de": "Farbe (Gitter)",
+    "it": "Colore (reticolo)"
+  },
+  "results.panel.colourText": {
+    "en": "Colour (text)",
+    "es": "Color (texto)",
+    "de": "Farbe (Text)",
+    "it": "Colore (testo)"
+  },
   "results.patternNoReport": {
-    "en": "The report and letter are not available for pattern tests yet.",
-    "es": "El informe y la carta aún no están disponibles para las pruebas con patrón.",
-    "de": "Bericht und Brief sind für Mustertests noch nicht verfügbar.",
-    "it": "Il referto e la lettera non sono ancora disponibili per i test con pattern."
+    "en": "The report and letter are not available for grating tests yet.",
+    "es": "El informe y la carta aún no están disponibles para las pruebas con rejilla.",
+    "de": "Bericht und Brief sind für Gittertests noch nicht verfügbar.",
+    "it": "Il referto e la lettera non sono ancora disponibili per i test con reticolo."
   },
   "results.reading": {
     "en": "Rate of reading",
@@ -4823,6 +4949,12 @@
     "de": "Patient im Vollbild (F11)",
     "it": "Paziente a schermo intero (F11)"
   },
+  "run.gratingSettings": {
+    "en": "Grating settings…",
+    "es": "Ajustes de la rejilla…",
+    "de": "Gittereinstellungen…",
+    "it": "Impostazioni reticolo…"
+  },
   "run.mode.one": {
     "en": "One screen",
     "es": "Una pantalla",
@@ -4913,11 +5045,41 @@
     "de": "Bewertungskopie: der Text vergrößert zum Markieren (der Patient sieht ihn in normaler Größe)",
     "it": "Copia per il punteggio: il testo ingrandito per segnare (il paziente lo vede a grandezza normale)"
   },
+  "screeners.add": {
+    "en": "Add a screener",
+    "es": "Añadir examinador",
+    "de": "Untersucher hinzufügen",
+    "it": "Aggiungi esaminatore"
+  },
   "screeners.delete.confirm": {
     "en": "Remove {0} from the list? Results keep their name.",
     "es": "¿Quitar a {0} de la lista? Los resultados conservan su nombre.",
     "de": "{0} aus der Liste entfernen? Ergebnisse behalten den Namen.",
     "it": "Rimuovere {0} dall'elenco? I risultati mantengono il nome."
+  },
+  "screeners.edit": {
+    "en": "Edit screener",
+    "es": "Editar examinador",
+    "de": "Untersucher bearbeiten",
+    "it": "Modifica esaminatore"
+  },
+  "screeners.field.first": {
+    "en": "First name",
+    "es": "Nombre",
+    "de": "Vorname",
+    "it": "Nome"
+  },
+  "screeners.field.surname": {
+    "en": "Surname",
+    "es": "Apellidos",
+    "de": "Nachname",
+    "it": "Cognome"
+  },
+  "screeners.field.title": {
+    "en": "Title",
+    "es": "Tratamiento",
+    "de": "Anrede",
+    "it": "Titolo"
   },
   "screeners.firstPrompt": {
     "en": "First name",
@@ -5128,6 +5290,30 @@
     "es": "Elija pantallas distintas para usted y para el paciente: mientras estén en la misma, las pruebas funcionan con una sola pantalla.",
     "de": "Wählen Sie verschiedene Bildschirme für Sie und den Patienten - solange beide auf demselben sind, laufen die Tests mit einem Bildschirm.",
     "it": "Scegli schermi diversi per te e per il paziente: finché sono sullo stesso schermo, i test funzionano con uno schermo solo."
+  },
+  "settings.palette": {
+    "en": "Colour palette",
+    "es": "Paleta de colores",
+    "de": "Farbpalette",
+    "it": "Tavolozza dei colori"
+  },
+  "settings.palette.hint": {
+    "en": "ReadEZ New: twelve colours equally spaced round white, all equally bright - lower saturation for overlays and lenses, higher saturation for strong lenses. New tests use the palette chosen; each test keeps the palette it was done with. Each palette's colours are checked on the screen separately.",
+    "es": "ReadEZ New: doce colores a la misma distancia alrededor del blanco, todos igual de luminosos: menor saturación para superposiciones y lentes, mayor para lentes intensas. Las pruebas nuevas usan la paleta elegida; cada prueba conserva la suya. Los colores de cada paleta se comprueban por separado en la pantalla.",
+    "de": "ReadEZ New: zwölf Farben gleichmäßig um Weiß verteilt, alle gleich hell – geringere Sättigung für Folien und Linsen, höhere für starke Linsen. Neue Tests verwenden die gewählte Palette; jeder Test behält seine. Die Farben jeder Palette werden auf dem Bildschirm getrennt geprüft.",
+    "it": "ReadEZ New: dodici colori equidistanti attorno al bianco, tutti ugualmente luminosi – saturazione più bassa per overlay e lenti, più alta per le lenti intense. I nuovi test usano la tavolozza scelta; ogni test conserva la propria. I colori di ogni tavolozza si verificano sullo schermo separatamente."
+  },
+  "settings.palette.new": {
+    "en": "ReadEZ New",
+    "es": "ReadEZ New",
+    "de": "ReadEZ New",
+    "it": "ReadEZ New"
+  },
+  "settings.palette.original": {
+    "en": "ReadEZ Original",
+    "es": "ReadEZ Original",
+    "de": "ReadEZ Original",
+    "it": "ReadEZ Original"
   },
   "settings.patientWindow": {
     "en": "Patient",
@@ -5574,10 +5760,10 @@
     "it": "Test del colore (manuale)"
   },
   "step.patternGlare": {
-    "en": "Finding the most uncomfortable pattern",
-    "es": "Encontrar el patrón más molesto",
-    "de": "Das unangenehmste Muster finden",
-    "it": "Trovare il pattern più fastidioso"
+    "en": "Finding the most uncomfortable grating",
+    "es": "Encontrar la rejilla más molesta",
+    "de": "Das unangenehmste Gitter finden",
+    "it": "Trovare il reticolo più fastidioso"
   },
   "step.reading": {
     "en": "Rate of reading",
@@ -5604,10 +5790,10 @@
     "it": "Sintomi con colore"
   },
   "step.symptomsPattern": {
-    "en": "Symptoms with the pattern",
-    "es": "Síntomas con el patrón",
-    "de": "Symptome mit dem Muster",
-    "it": "Sintomi con il pattern"
+    "en": "Symptoms with the grating",
+    "es": "Síntomas con la rejilla",
+    "de": "Symptome mit dem Gitter",
+    "it": "Sintomi con il reticolo"
   },
   "stimulus.title": {
     "en": "Patient's screen",
@@ -5628,16 +5814,16 @@
     "it": "Altri sintomi:"
   },
   "symptoms.pintro": {
-    "en": "Let the patient look at the pattern for a few seconds, then ask each question and grade the answer from 0 (none) to 5 (severe). Keys 0 - 5 grade the highlighted question.",
-    "es": "Deje que el paciente mire el patrón unos segundos; luego haga cada pregunta y puntúe la respuesta de 0 (nada) a 5 (grave). Las teclas 0 - 5 puntúan la pregunta resaltada.",
-    "de": "Lassen Sie den Patienten das Muster einige Sekunden ansehen, stellen Sie dann jede Frage und bewerten Sie die Antwort von 0 (keine) bis 5 (stark). Die Tasten 0 - 5 bewerten die markierte Frage.",
-    "it": "Lascia che il paziente guardi il pattern per qualche secondo, poi fai ogni domanda e valuta la risposta da 0 (nessuno) a 5 (grave). I tasti 0 - 5 valutano la domanda evidenziata."
+    "en": "Let the patient look at the grating for a few seconds, then ask each question and grade the answer from 0 (none) to 5 (severe). Keys 0 - 5 grade the highlighted question.",
+    "es": "Deje que el paciente mire la rejilla unos segundos; luego haga cada pregunta y puntúe la respuesta de 0 (nada) a 5 (grave). Las teclas 0 - 5 puntúan la pregunta resaltada.",
+    "de": "Lassen Sie den Patienten das Gitter einige Sekunden ansehen, stellen Sie dann jede Frage und bewerten Sie die Antwort von 0 (keine) bis 5 (stark). Die Tasten 0 - 5 bewerten die markierte Frage.",
+    "it": "Lascia che il paziente guardi il reticolo per qualche secondo, poi fai ogni domanda e valuta la risposta da 0 (nessuno) a 5 (grave). I tasti 0 - 5 valutano la domanda evidenziata."
   },
   "symptoms.pq1": {
-    "en": "Is the pattern uncomfortable or unpleasant to look at?",
-    "es": "¿Es el patrón molesto o desagradable de mirar?",
-    "de": "Ist das Muster unangenehm anzusehen?",
-    "it": "Il pattern è fastidioso o sgradevole da guardare?"
+    "en": "Is the grating uncomfortable or unpleasant to look at?",
+    "es": "¿Es la rejilla molesta o desagradable de mirar?",
+    "de": "Ist das Gitter unangenehm anzusehen?",
+    "it": "Il reticolo è fastidioso o sgradevole da guardare?"
   },
   "symptoms.pq2": {
     "en": "Do the lines seem to move, shimmer or flicker?",
@@ -5652,10 +5838,10 @@
     "it": "Le linee sembrano piegarsi, sfocarsi o sbiadire?"
   },
   "symptoms.pq4": {
-    "en": "Can you see colours or shapes in the pattern?",
-    "es": "¿Ves colores o formas en el patrón?",
-    "de": "Siehst du Farben oder Formen im Muster?",
-    "it": "Vedi colori o forme nel pattern?"
+    "en": "Can you see colours or shapes in the grating?",
+    "es": "¿Ves colores o formas en la rejilla?",
+    "de": "Siehst du Farben oder Formen im Gitter?",
+    "it": "Vedi colori o forme nel reticolo?"
   },
   "symptoms.pshort1": {
     "en": "Uncomfortable to look at",
@@ -5796,10 +5982,10 @@
     "it": "Il colore per uno schermo di computer: schermo intero colorato, stanza illuminata"
   },
   "tests.desc.computerPattern": {
-    "en": "The computer screen colour (room lit), using the most uncomfortable pattern",
-    "es": "El color de pantalla (sala iluminada), con el patrón más molesto",
-    "de": "Die Bildschirmfarbe (Raum beleuchtet), mit dem unangenehmsten Muster",
-    "it": "Il colore dello schermo (stanza illuminata), con il pattern più fastidioso"
+    "en": "The computer screen colour (room lit), using the most uncomfortable grating",
+    "es": "El color de pantalla (sala iluminada), con la rejilla más molesta",
+    "de": "Die Bildschirmfarbe (Raum beleuchtet), mit dem unangenehmsten Gitter",
+    "it": "Il colore dello schermo (stanza illuminata), con il reticolo più fastidioso"
   },
   "tests.desc.lenses": {
     "en": "The colour for tinted lenses: whole screen coloured, darkened room",
@@ -5808,10 +5994,10 @@
     "it": "Il colore per lenti colorate: schermo intero colorato, stanza oscurata"
   },
   "tests.desc.lensesPattern": {
-    "en": "The lens colour (whole screen, darkened room), using the most uncomfortable pattern",
-    "es": "El color de lente (toda la pantalla, sala oscura), con el patrón más molesto",
-    "de": "Die Linsenfarbe (ganzer Bildschirm, abgedunkelter Raum), mit dem unangenehmsten Muster",
-    "it": "Il colore delle lenti (tutto lo schermo, stanza buia), con il pattern più fastidioso"
+    "en": "The lens colour (whole screen, darkened room), using the most uncomfortable grating",
+    "es": "El color de lente (toda la pantalla, sala oscura), con la rejilla más molesta",
+    "de": "Die Linsenfarbe (ganzer Bildschirm, abgedunkelter Raum), mit dem unangenehmsten Gitter",
+    "it": "Il colore delle lenti (tutto lo schermo, stanza buia), con il reticolo più fastidioso"
   },
   "tests.desc.overlay": {
     "en": "The colour for an overlay or reading guide: coloured panels round the text",
@@ -5820,22 +6006,22 @@
     "it": "Il colore per una lamina o guida di lettura: riquadri colorati intorno al testo"
   },
   "tests.desc.overlayPattern": {
-    "en": "The overlay colour, using the patient's most uncomfortable pattern instead of text",
-    "es": "El color de superposición, con el patrón más molesto del paciente en lugar del texto",
-    "de": "Die Folienfarbe, mit dem unangenehmsten Muster des Patienten statt Text",
-    "it": "Il colore dell'overlay, con il pattern più fastidioso del paziente al posto del testo"
+    "en": "The overlay colour, using the patient's most uncomfortable grating instead of text",
+    "es": "El color de superposición, con la rejilla más molesta del paciente en lugar del texto",
+    "de": "Die Folienfarbe, mit dem unangenehmsten Gitter des Patienten statt Text",
+    "it": "Il colore dell'overlay, con il reticolo più fastidioso del paziente al posto del testo"
   },
   "tests.desc.patternGlare": {
-    "en": "Finds the most uncomfortable striped pattern, then symptoms with it on white",
-    "es": "Encuentra el patrón de rayas más molesto y luego los síntomas con él sobre blanco",
-    "de": "Ermittelt das unangenehmste Streifenmuster, dann Symptome damit auf Weiß",
-    "it": "Trova il pattern a strisce più fastidioso, poi i sintomi con esso su bianco"
+    "en": "Finds the most uncomfortable striped grating, then symptoms with it on white",
+    "es": "Encuentra la rejilla de rayas más molesta y luego los síntomas con ella sobre blanco",
+    "de": "Ermittelt das unangenehmste Streifengitter, dann Symptome damit auf Weiß",
+    "it": "Trova il reticolo a strisce più fastidioso, poi i sintomi con esso su bianco"
   },
   "tests.group.pattern": {
-    "en": "Pattern (striped grating)",
-    "es": "Patrón (rejilla de rayas)",
-    "de": "Muster (Streifengitter)",
-    "it": "Pattern (reticolo a strisce)"
+    "en": "Grating (stripes)",
+    "es": "Rejilla (rayas)",
+    "de": "Gitter (Streifen)",
+    "it": "Reticolo (strisce)"
   },
   "tests.group.text": {
     "en": "Text",
@@ -5868,10 +6054,16 @@
     "it": "Scegli prima un paziente."
   },
   "tests.needPatternBaseline": {
-    "en": "This patient has no baseline pattern yet. It finds the most uncomfortable striped pattern, which the pattern colour tests use.\r\n\r\nRun the pattern glare test (baseline pattern) now?",
-    "es": "Este paciente aún no tiene línea base de patrón. Encuentra el patrón de rayas más molesto, que usan las pruebas de color con patrón.\r\n\r\n¿Hacer ahora la prueba de deslumbramiento por patrones (línea base patrón)?",
-    "de": "Dieser Patient hat noch keine Musterbasis. Sie ermittelt das unangenehmste Streifenmuster, das die Farb-Mustertests verwenden.\r\n\r\nMusterblendungstest (Musterbasis) jetzt durchführen?",
-    "it": "Questo paziente non ha ancora una base pattern. Trova il pattern a strisce più fastidioso, usato dai test colore con pattern.\r\n\r\nEseguire ora il test di abbagliamento da pattern (base pattern)?"
+    "en": "This patient has no baseline grating yet. It finds the most uncomfortable striped grating, which the grating colour tests use.\r\n\r\nRun the grating glare test (baseline grating) now?",
+    "es": "Este paciente aún no tiene línea base de rejilla. Encuentra la rejilla de rayas más molesta, que usan las pruebas de color con rejilla.\r\n\r\n¿Hacer ahora la prueba de deslumbramiento por rejillas (línea base rejilla)?",
+    "de": "Dieser Patient hat noch keine Gitterbasis. Sie ermittelt das unangenehmste Streifengitter, das die Farb-Gittertests verwenden.\r\n\r\nGitterblendungstest (Gitterbasis) jetzt durchführen?",
+    "it": "Questo paziente non ha ancora una base reticolo. Trova il reticolo a strisce più fastidioso, usato dai test colore con reticolo.\r\n\r\nEseguire ora il test di abbagliamento da reticolo (base reticolo)?"
+  },
+  "tests.needScreener": {
+    "en": "Choose the screener running the test (or add one) before starting a test.",
+    "es": "Elija el examinador que realiza la prueba (o añada uno) antes de empezar.",
+    "de": "Wählen Sie vor dem Start den Untersucher, der den Test durchführt (oder fügen Sie einen hinzu).",
+    "it": "Scegli l'esaminatore che esegue il test (o aggiungine uno) prima di iniziare."
   },
   "tests.noScreener": {
     "en": "No screener chosen",

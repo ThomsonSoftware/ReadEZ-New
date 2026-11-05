@@ -84,7 +84,11 @@ Public NotInheritable Class SymptomsStep
                                                  Run.Result.Symptoms_Notes = txtNotes.Text
                                                  If txtNotes.Text <> "" Then Run.Result.SymptomsDone = True
                                              End Sub
-        If Not IsPattern Then col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay))
+        If IsPattern Then
+            col.Controls.Add(GratingOptions.Create(Me, Sub() Redraw()))    ' its spatial frequency (asks first)
+        Else
+            col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay))
+        End If
         HighlightCurrent()
         Return col
     End Function
@@ -174,7 +178,7 @@ Public NotInheritable Class SymptomsStep
     End Function
 
     Public Overrides Function CreateTextOptions() As Control
-        If IsPattern Then Return Nothing                  ' (the pattern has no text settings)
+        If IsPattern Then Return GratingOptions.Create(Me, Sub() Redraw())
         Return TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay)
     End Function
 

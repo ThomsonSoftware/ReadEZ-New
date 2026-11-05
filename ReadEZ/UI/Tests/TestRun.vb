@@ -37,6 +37,12 @@ Public NotInheritable Class TestRun
     ''' <summary>The operator agreed to change the text settings from the baseline's for this test.</summary>
     Public Property TextUnlocked As Boolean
 
+    ''' <summary>Grating tests: the operator agreed to change the grating's spatial frequency (Grating card).</summary>
+    Public Property GratingUnlocked As Boolean
+
+    ''' <summary>Grating tests: the frequency the test started with (the one found), for "Back to the one found".</summary>
+    Public Property GratingFound As Double
+
     Private Sub New(r As ReadEZResult)
         Result = r
     End Sub
@@ -58,7 +64,8 @@ Public NotInheritable Class TestRun
             .Screener_ID = AppHost.Session.ScreenerId, .Test_Date = Date.Now, .PaletteSet = If(mode = ReadEZTestMode.Overlay, 1, 2),
             .RoR_FontName = s.RoR_FontName, .RoR_FontSize = s.RoR_FontSize, .RoR_LineSpacing = s.RoR_LineSpacing,
             .RoR_NoRows = s.RoR_NoRows, .RoR_TextOptions = s.RoR_TextOptions, .ROR_Text = ReadingTexts.ByIndex(s.RoR_TextOptions).Name,
-            .RoR_OverlaySize = s.Overlay_Size, .RoR_PresentationTime = s.Timing, .Test_Width = sz.Width, .Test_Height = sz.Height}
+            .RoR_OverlaySize = s.Overlay_Size, .RoR_PresentationTime = s.Timing, .Test_Width = sz.Width, .Test_Height = sz.Height,
+            .Palette = ReadEZColours.CurrentPalette}
     End Function
 
     ''' <summary>Baseline: symptoms then rate of reading, on white.</summary>

@@ -1071,7 +1071,7 @@ Public Class TestRunScreen
             ' Text settings (font, size, spacing ...) first; Skip step beside Next step at the end
             Dim st = _step
             If st.CreateTextOptions() IsNot Nothing Then
-                actions.Insert(0, New QuickAction("run.textSettings", Sub() st.ShowTextOptions()) With {.GroupStart = True})
+                actions.Insert(0, New QuickAction(If(_run.Result.IsPattern, "run.gratingSettings", "run.textSettings"), Sub() st.ShowTextOptions()) With {.GroupStart = True})
             End If
             If _run IsNot Nothing AndAlso _run.Index < _run.Steps.Count - 1 Then actions.Add(New QuickAction("run.skipStep", Sub() NextStep()))
         End If

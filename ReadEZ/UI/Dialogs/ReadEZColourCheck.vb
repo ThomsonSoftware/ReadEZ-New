@@ -24,8 +24,9 @@ Imports System.Drawing.Drawing2D
 '                 match is shown for a final compare. The changes are equal steps to the eye
 '                 (OKLab), so every choice is about equally hard and no slider work is needed.
 '
-'   Lighter / darker, more / less colour and hue buttons adjust the colour directly; "ReadEZ
-'   default" goes back to ReadEZ's own colour. Nothing is stored until Save. Keys: 1 - 8 choose a
+'   Sliders for hue, amount of colour and lightness (OKLCh, as the bespoke colour) adjust the colour
+'   directly, the comparison following as they move; "ReadEZ default" goes back to the palette's
+'   own colour. Nothing is stored until Save. Keys: 1 - 8 choose a
 '   strip, Enter = looks the same, Backspace = undo, Esc = cancel.
 '   Sizes on the patient's screen are in millimetres (Settings > Screens), so the strips are the
 '   same size whatever the screen.
@@ -92,6 +93,9 @@ Public NotInheritable Class ReadEZColourCheck
     Private ReadOnly btnSave As ModernButton
     Private ReadOnly btnCancel As ModernButton
     Private ReadOnly _nudges As New List(Of ModernButton)
+    Private ReadOnly _sliders As New OkLchSliders(340)
+    Private ReadOnly _diagram As New CheckDiagram
+    Private _fromSliders As Boolean
 
     Private Shared ReadOnly Surround As Color = Color.FromArgb(38, 38, 38)
     Private Shared ReadOnly SurroundText As Color = Color.FromArgb(185, 185, 185)
@@ -131,6 +135,10 @@ Public NotInheritable Class ReadEZColourCheck
         col.Dock = DockStyle.Top                ' inside the panel's padding
         col.MaximumSize = New Size(350, 0)
         col.Controls.Add(Ui.Title("readez.check.title"))
+        ' How to hold the overlay (or lens): a small picture
+        _diagram.Size = New Size(340, 150)
+        _diagram.Margin = New Padding(0, 4, 0, 6)
+        col.Controls.Add(_diagram)
         Dim screenLbl = Ui.Label("", muted:=True)
         screenLbl.Text = Loc.F("readez.check.screen", ReadEZColours.ScreenName)
         screenLbl.MaximumSize = New Size(350, 0)
@@ -180,21 +188,9 @@ Public NotInheritable Class ReadEZColourCheck
 
         ' Direct adjustment
         col.Controls.Add(Ui.Label("readez.check.adjust", muted:=True))
-        Dim nudgeRow = Ui.Row(wrap:=True)
-        nudgeRow.MaximumSize = New Size(360, 0)
-        For Each n In {("readez.check.lighter", 0, 1), ("readez.check.darker", 0, -1),
-                       ("readez.check.moreColour", 1, 1), ("readez.check.lessColour", 1, -1),
-                       ("readez.check.hueLeft", 2, -1), ("readez.check.hueRight", 2, 1)}
-            Dim b = ModernButton.Create(n.Item1, ButtonKind.Secondary)
-            b.AutoSize = False
-            b.Size = New Size(112, 32)
-            b.Margin = New Padding(0, 0, 6, 6)
-            Dim axis = n.Item2, sign = n.Item3
-            AddHandler b.Click, Sub() Nudge(axis, sign)
-            _nudges.Add(b)
-            nudgeRow.Controls.Add(b)
-        Next
-        col.Controls.Add(nudgeRow)
+        _sliders.Margin = New Padding(0, 4, 0, 0)
+        AddHandler _sliders.ColourChanged, Sub() SlidersMoved()
+        col.Controls.Add(_sliders)
         btnDefault = ModernButton.Create("readez.check.default", ButtonKind.Ghost, Glyphs.Refresh)
         btnDefault.Margin = New Padding(0, 2, 0, 20)
         col.Controls.Add(btnDefault)
@@ -408,6 +404,20 @@ Public NotInheritable Class ReadEZColourCheck
         NewRound()
     End Sub
 
+    ''' <summary>The sliders moved: the colour follows (and, while finding, the choices are made round it).</summary>
+    Private Sub SlidersMoved()
+        _fromSliders = True
+        Try
+            SetColour(_sliders.Colour)
+        Finally
+            _fromSliders = False
+        End Try
+        If _mode = Mode.Find Then
+            _cur = OkLab.FromColor(_colours(CInt(_set))(_index))
+            NewRound()
+        End If
+    End Sub
+
     ''' <summary>Lighter / darker (axis 0), more / less colour (1), hue (2).</summary>
     Private Sub Nudge(axis As Integer, sign As Integer)
         Dim lab = OkLab.FromColor(_colours(CInt(_set))(_index))
@@ -453,6 +463,7 @@ Public NotInheritable Class ReadEZColourCheck
     Private Sub UpdateUi()
         lblName.Text = ReadEZColours.Name(_set, _index)
         Dim c = _colours(CInt(_set))(_index)
+        If Not _fromSliders AndAlso _sliders.Colour.ToArgb() <> c.ToArgb() Then _sliders.Colour = c   ' (the sliders show the colour)
         Dim def = ReadEZColours.DefaultColour(_set, _index)
         Dim diff = OkLab.Distance(OkLab.FromColor(c), OkLab.FromColor(def))
         Dim state As String
@@ -489,6 +500,9 @@ Public NotInheritable Class ReadEZColourCheck
         lblIntro.Text = Loc.T(If(_set = ReadEZSet.Overlay, "readez.check.introOverlay", "readez.check.introLens"))
         lblIntro.ForeColor = ThemeManager.Current.Ink
         lblName.ForeColor = ThemeManager.Current.Ink
+        _diagram.ForLens = _set <> ReadEZSet.Overlay
+        _diagram.Tint = c
+        _diagram.Invalidate()
 
         btnSame.Visible = _mode = Mode.Compare
         btnFind.Visible = _mode = Mode.Compare
@@ -664,4 +678,137 @@ Public NotInheritable Class ReadEZColourCheck
     End Sub
 
 #End Region
+End Class
+
+''' <summary>
+''' The colour check's little picture of how to compare: a monitor showing the screen colour at its
+''' right-hand edge, with the overlay on a white card held beside it under a lamp (room light) - or,
+''' for lenses, the lens held over the white window in the middle of the screen.
+''' Drawn in a 340 x 150 box, scaled to the control.
+''' </summary>
+Public NotInheritable Class CheckDiagram
+    Inherits Control
+    Implements IThemed
+
+    ''' <summary>The colour being checked (the screen's patch and the filter's tint).</summary>
+    Public Property Tint As Color = Color.FromArgb(255, 219, 122)
+    Public Property ForLens As Boolean
+
+    Public Sub New()
+        SetStyle(ControlStyles.UserPaint Or ControlStyles.AllPaintingInWmPaint Or ControlStyles.OptimizedDoubleBuffer Or
+                 ControlStyles.ResizeRedraw Or ControlStyles.SupportsTransparentBackColor, True)
+        BackColor = Color.Transparent
+    End Sub
+
+    Protected Overrides Sub OnPaint(e As PaintEventArgs)
+        Dim p = ThemeManager.Current
+        Dim g = e.Graphics
+        g.Clear(Draw.ParentBack(Me))
+        g.SmoothingMode = SmoothingMode.AntiAlias
+        g.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAliasGridFit
+        Dim k = Math.Min(Width / 340.0F, Height / 150.0F)
+        Dim state = g.Save()
+        g.ScaleTransform(k, k)
+        Try
+            ' The monitor: bezel, dark surround (as the check), stand
+            Dim mon As New RectangleF(10, 18, 200, 112)
+            Using bezel As New SolidBrush(Color.FromArgb(45, 48, 54)), stand As New SolidBrush(Color.FromArgb(150, 155, 162))
+                g.FillRectangle(stand, mon.X + mon.Width / 2 - 9, mon.Bottom, 18, 10)
+                Using basePath = Draw.RoundedRect(New RectangleF(mon.X + mon.Width / 2 - 34, mon.Bottom + 9, 68, 6), 3)
+                    g.FillPath(stand, basePath)
+                End Using
+                Using path = Draw.RoundedRect(mon, 6)
+                    g.FillPath(bezel, path)
+                End Using
+            End Using
+            Dim scr = RectangleF.Inflate(mon, -6, -6)
+            Using surround As New SolidBrush(Color.FromArgb(38, 38, 38))
+                g.FillRectangle(surround, scr)
+            End Using
+            Using f As New Font("Segoe UI", 9.5F, GraphicsUnit.Pixel), ink As New SolidBrush(p.Muted)
+                If ForLens Then
+                    PaintLens(g, scr, f, ink)
+                Else
+                    PaintOverlay(g, mon, scr, f, ink)
+                End If
+            End Using
+        Finally
+            g.Restore(state)
+        End Try
+    End Sub
+
+    ''' <summary>The screen colour at the right-hand edge; the overlay on a white card beside it, under a lamp.</summary>
+    Private Sub PaintOverlay(g As Graphics, mon As RectangleF, scr As RectangleF, f As Font, ink As Brush)
+        Dim patch As New RectangleF(scr.Right - 44, scr.Y + scr.Height / 2 - 30, 44, 60)
+        Using b As New SolidBrush(Tint)
+            g.FillRectangle(b, patch)
+        End Using
+        ' The white card, held against the monitor's right edge, with the overlay on it
+        Dim card As New RectangleF(mon.Right + 4, patch.Y - 8, 58, 76)
+        Using shadow As New SolidBrush(Color.FromArgb(40, 0, 0, 0))
+            g.FillRectangle(shadow, card.X + 3, card.Y + 3, card.Width, card.Height)
+        End Using
+        g.FillRectangle(Brushes.White, card)
+        Using pen As New Pen(Color.FromArgb(170, 170, 170))
+            g.DrawRectangle(pen, card.X, card.Y, card.Width, card.Height)
+        End Using
+        Dim film = RectangleF.Inflate(card, -6, -8)
+        Using b As New SolidBrush(Color.FromArgb(200, Tint)), pen As New Pen(Draw.Mix(Tint, Color.Black, 0.25), 1.2F)
+            g.FillRectangle(b, film)
+            g.DrawRectangle(pen, film.X, film.Y, film.Width, film.Height)
+        End Using
+        ' A lamp above, its light falling on the card (and the screen's edge)
+        Dim lamp As New PointF(card.X + card.Width / 2 + 34, 8)
+        Using cone As New GraphicsPath()
+            cone.AddPolygon({New PointF(lamp.X - 8, lamp.Y + 8), New PointF(lamp.X + 8, lamp.Y + 8),
+                             New PointF(card.Right + 10, card.Bottom), New PointF(card.X - 14, card.Bottom)})
+            Using light As New LinearGradientBrush(New PointF(0, lamp.Y), New PointF(0, card.Bottom),
+                                                   Color.FromArgb(150, 255, 236, 160), Color.FromArgb(20, 255, 236, 160))
+                g.FillPath(light, cone)
+            End Using
+        End Using
+        Using arm As New Pen(Color.FromArgb(110, 115, 125), 2.5F), head As New SolidBrush(Color.FromArgb(90, 95, 105)),
+              bulb As New SolidBrush(Color.FromArgb(255, 240, 170))
+            g.DrawLine(arm, lamp.X + 26, 0, lamp.X + 8, lamp.Y)
+            Using shade As New GraphicsPath()
+                shade.AddPolygon({New PointF(lamp.X - 6, lamp.Y - 4), New PointF(lamp.X + 6, lamp.Y - 4),
+                                  New PointF(lamp.X + 11, lamp.Y + 8), New PointF(lamp.X - 11, lamp.Y + 8)})
+                g.FillPath(head, shade)
+            End Using
+            g.FillEllipse(bulb, lamp.X - 5, lamp.Y + 5, 10, 6)
+        End Using
+        ' Labels
+        Dim fmt As New StringFormat With {.Alignment = StringAlignment.Center}
+        g.DrawString(Loc.T("readez.diagram.screen"), f, ink, New RectangleF(scr.X, mon.Bottom + 17, scr.Width, 14), fmt)
+        g.DrawString(Loc.T("readez.diagram.card"), f, ink, New RectangleF(card.X - 30, card.Bottom + 6, card.Width + 60, 28), fmt)
+        Dim lightFmt As New StringFormat With {.Alignment = StringAlignment.Near}
+        g.DrawString(Loc.T("readez.diagram.light"), f, ink, New PointF(lamp.X + 14, lamp.Y + 6), lightFmt)
+    End Sub
+
+    ''' <summary>Lenses: the white window in the middle of the screen, the lens colour beside it, the lens held over the window.</summary>
+    Private Sub PaintLens(g As Graphics, scr As RectangleF, f As Font, ink As Brush)
+        Dim cx = scr.X + scr.Width / 2, cy = scr.Y + scr.Height / 2
+        Dim r = 22.0F
+        g.FillEllipse(Brushes.White, cx - r, cy - r, 2 * r, 2 * r)
+        Using b As New SolidBrush(Tint)
+            g.FillEllipse(b, cx + r + 10, cy - r * 0.8F, r * 1.6F, r * 1.6F)
+        End Using
+        ' The lens, held slightly in front of the window (a tinted disc in a thin frame)
+        Using b As New SolidBrush(Color.FromArgb(170, Tint)), pen As New Pen(Color.FromArgb(70, 70, 80), 2)
+            g.FillEllipse(b, cx - r - 4, cy - r - 2, 2 * r + 8, 2 * r + 8)
+            g.DrawEllipse(pen, cx - r - 4, cy - r - 2, 2 * r + 8, 2 * r + 8)
+        End Using
+        Dim fmt As New StringFormat With {.Alignment = StringAlignment.Near}
+        g.DrawString(Loc.T("readez.diagram.lens"), f, ink, New RectangleF(scr.Right + 14, scr.Y + 10, 110, 90), fmt)
+    End Sub
+
+    Public Sub ApplyTheme(pal As Palette) Implements IThemed.ApplyTheme
+        Invalidate()
+    End Sub
+
+    Public ReadOnly Property ThemeChildren As Boolean Implements IThemed.ThemeChildren
+        Get
+            Return False
+        End Get
+    End Property
 End Class

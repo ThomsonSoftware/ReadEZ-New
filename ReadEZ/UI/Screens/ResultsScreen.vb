@@ -325,8 +325,11 @@ Public Class ResultsScreen
         viewBase.Result = _baseline
         viewColour.Result = _colour
         viewChange.SetTests(_baseline, _colour)
-        cardBase.TitleSuffix = If(_baseline Is Nothing, "", ":   " & Loc.T(TestRun.ResultKey(_baseline)) & "  ·  " & _baseline.Test_Date.ToString("g", Loc.Culture))
-        cardColour.TitleSuffix = If(_colour Is Nothing, "", ":   " & Loc.T(TestRun.ResultKey(_colour)) & "  ·  " & _colour.Test_Date.ToString("g", Loc.Culture))
+        ' Baseline (grating) / Baseline (text), Colour (grating) / Colour (text)
+        cardBase.SetTitle(If(_baseline IsNot Nothing AndAlso _baseline.IsPattern, "results.panel.baselineGrating", "results.panel.baselineText"))
+        cardColour.SetTitle(If(_colour IsNot Nothing AndAlso _colour.IsPattern, "results.panel.colourGrating", "results.panel.colourText"))
+        cardBase.TitleSuffix = If(_baseline Is Nothing, "", ":   " & _baseline.Test_Date.ToString("g", Loc.Culture))
+        cardColour.TitleSuffix = If(_colour Is Nothing, "", ":   " & Loc.T(TestRun.ModeKey(_colour.Mode)) & "  ·  " & _colour.Test_Date.ToString("g", Loc.Culture))
         cardBase.Invalidate()
         cardColour.Invalidate()
         btnEditBase.Visible = _baseline IsNot Nothing
@@ -1381,6 +1384,7 @@ Public NotInheritable Class ResultEditDialog
         If index < 1 OrElse index > 12 Then Return
         _r.Colour1 = index
         _r.PaletteSet = If(st = ReadEZSet.Overlay, 1, If(st = ReadEZSet.Lens, 2, 3))
+        _r.Palette = ReadEZColours.CurrentPalette                  ' (the wheel shows the palette in use)
         Dim c = ReadEZColours.Colour(st, index)
         _r.Colour_R = c.R : _r.Colour_G = c.G : _r.Colour_B = c.B
         If _r.Screening_Mode = 2 Then _r.Screening_Mode = 1        ' no longer a bespoke colour
@@ -1392,11 +1396,11 @@ Public NotInheritable Class ResultEditDialog
     End Sub
 
     Private Sub PickBespoke()
-        Using dlg As New ColorDialog With {.FullOpen = True, .Color = _r.ScreenColour}
+        Using dlg As New BespokeColourDialog(_r.ScreenColour, Nothing)
             If dlg.ShowDialog(Me) <> DialogResult.OK Then Return
             _r.Colour1 = 0
             _r.PaletteSet = If(_r.Mode = ReadEZTestMode.Overlay, 1, 2)
-            _r.Colour_R = dlg.Color.R : _r.Colour_G = dlg.Color.G : _r.Colour_B = dlg.Color.B
+            _r.Colour_R = dlg.Colour.R : _r.Colour_G = dlg.Colour.G : _r.Colour_B = dlg.Colour.B
             _r.Screening_Mode = 2
             _r.GreyPreferred = False
             wheel.Selected = Nothing

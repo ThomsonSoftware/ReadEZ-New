@@ -79,6 +79,7 @@ Public Class TestsScreen
         _flow.AutoScroll = True
         _flow.Padding = New Padding(16, 16, 0, 0)
         _flow.BackColor = Color.Transparent
+        AddHandler _flow.Resize, Sub() FitRows()
 
         Content.Controls.Add(_flow)
         Content.Controls.Add(New Panel With {.Dock = DockStyle.Top, .Height = 12, .BackColor = Color.Transparent})
@@ -99,22 +100,28 @@ Public Class TestsScreen
         UpdateBanner()
     End Sub
 
+    ''' <summary>The rows of tiles (one per group), kept as wide as the screen so they wrap.</summary>
+    Private ReadOnly _rows As New List(Of FlowLayoutPanel)
+
     Private Sub BuildTiles()
         _flow.SuspendLayout()
         For Each c In _flow.Controls.Cast(Of Control)().ToList()
             c.Dispose()
         Next
+        _rows.Clear()
+        ' Top to bottom: a heading, then its tiles in a row of their own (which wraps)
+        _flow.FlowDirection = FlowDirection.TopDown
+        _flow.WrapContents = False
         Dim colourModes = {ReadEZTestMode.Overlay, ReadEZTestMode.Lenses, ReadEZTestMode.Computer}.Where(Function(m) AppHost.Admin.IsTestEnabled(m)).ToList()
-        Dim lastTile As Control = Nothing
-        For Each pattern In {True, False}
-            ' A heading on its own line: Pattern / Text
-            Dim head = Ui.Section(If(pattern, "tests.group.pattern", "tests.group.text"))
-            head.Margin = New Padding(4, If(lastTile Is Nothing, 0, 14), 0, 6)
-            If lastTile IsNot Nothing Then _flow.SetFlowBreak(lastTile, True)
+        For Each grating In {True, False}
+            Dim head = Ui.Section(If(grating, "tests.group.pattern", "tests.group.text"))
+            head.Margin = New Padding(4, If(_rows.Count = 0, 0, 16), 0, 8)
             _flow.Controls.Add(head)
-            _flow.SetFlowBreak(head, True)
+            Dim row As New FlowLayoutPanel With {.AutoSize = True, .AutoSizeMode = AutoSizeMode.GrowAndShrink, .WrapContents = True,
+                                                 .FlowDirection = FlowDirection.LeftToRight, .Margin = Padding.Empty, .Padding = Padding.Empty,
+                                                 .BackColor = Color.Transparent}
             Dim tiles As New List(Of (TitleKey As String, DescKey As String, Glyph As String, Mode As ReadEZTestMode))
-            If pattern Then
+            If grating Then
                 tiles.Add(("mode.patternGlare", "tests.desc.patternGlare", PatternGlareStep.Glyph, ReadEZTestMode.Baseline))
             Else
                 tiles.Add(("mode.baseline", "tests.desc.baseline", Glyphs.Font, ReadEZTestMode.Baseline))
@@ -122,7 +129,7 @@ Public Class TestsScreen
             For Each m In colourModes
                 Dim name = If(m = ReadEZTestMode.Overlay, "overlay", If(m = ReadEZTestMode.Lenses, "lenses", "computer"))
                 Dim glyph = If(m = ReadEZTestMode.Overlay, Glyphs.Color, If(m = ReadEZTestMode.Lenses, Glyphs.Eye, Glyphs.Picture))
-                If pattern Then
+                If grating Then
                     tiles.Add(("mode." & name & "Pattern", "tests.desc." & name & "Pattern", glyph, m))
                 Else
                     tiles.Add((TestRun.ModeKey(m), "tests.desc." & name, glyph, m))
@@ -132,18 +139,28 @@ Public Class TestsScreen
                 Dim tile = TileButton.Create(t.TitleKey, t.DescKey, t.Glyph)
                 tile.Size = New Size(300, 150)
                 Dim mode = t.Mode
-                If pattern Then
+                If grating Then
                     AddHandler tile.Click, Sub() LaunchPattern(mode)
                 Else
                     AddHandler tile.Click, Sub() Launch(mode)
                 End If
-                _flow.Controls.Add(tile)
-                lastTile = tile
+                row.Controls.Add(tile)
             Next
+            _rows.Add(row)
+            _flow.Controls.Add(row)
         Next
         Dpi.ScaleNew(_flow, Me)
         ThemeManager.Apply(_flow)
+        FitRows()
         _flow.ResumeLayout(True)
+    End Sub
+
+    ''' <summary>Each row as wide as the screen (so the tiles wrap onto a second line when there is no room).</summary>
+    Private Sub FitRows()
+        Dim w = Math.Max(Dpi.Px(Me, 320), _flow.ClientSize.Width - _flow.Padding.Horizontal - Dpi.Px(Me, 8))
+        For Each row In _rows
+            row.MaximumSize = New Size(w, 0)
+        Next
     End Sub
 
     Private Function ReadyToTest() As Boolean
@@ -152,7 +169,12 @@ Public Class TestsScreen
             AppHost.MainWindow?.ShowScreen(MainForm.ScreenPatients)
             Return False
         End If
-        If AppHost.Session.ScreenerId <= 0 AndAlso AppHost.Db.GetScreeners().Count > 0 Then AppCommands.PickScreener()
+        ' Every test needs a screener: choose one (or add one) first
+        If AppHost.Session.ScreenerId <= 0 Then AppCommands.PickScreener()
+        If AppHost.Session.ScreenerId <= 0 Then
+            Ask.Info(FindForm(), "tests.needScreener")
+            Return False
+        End If
         Return True
     End Function
 
@@ -175,12 +197,7 @@ Public Class TestsScreen
     End Sub
 
     Private Sub Launch(mode As ReadEZTestMode)
-        If Not AppHost.Session.HasPatient Then
-            Ask.Info(FindForm(), "tests.needPatient")
-            AppHost.MainWindow?.ShowScreen(MainForm.ScreenPatients)
-            Return
-        End If
-        If AppHost.Session.ScreenerId <= 0 AndAlso AppHost.Db.GetScreeners().Count > 0 Then AppCommands.PickScreener()
+        If Not ReadyToTest() Then Return
         Dim run = If(mode = ReadEZTestMode.Baseline, TestRun.Baseline(),
                      TestRun.Colour(mode, AppHost.Settings.ColourTestMethod, AppHost.Settings.ContinueAfterColour))
         AppHost.MainWindow?.RunTest(run)

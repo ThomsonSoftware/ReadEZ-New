@@ -136,6 +136,8 @@ Public NotInheritable Class ReadEZDatabase
             If Not existingColumns.Contains("Stimulus") Then exec("ALTER TABLE Tests ADD COLUMN Stimulus INTEGER NOT NULL DEFAULT 0;")
             If Not existingColumns.Contains("PatternCpd") Then exec("ALTER TABLE Tests ADD COLUMN PatternCpd REAL NOT NULL DEFAULT 0;")
             If Not existingColumns.Contains("PatternDistanceCm") Then exec("ALTER TABLE Tests ADD COLUMN PatternDistanceCm INTEGER NOT NULL DEFAULT 0;")
+            ' The colour palette (0 ReadEZ Original, 1 ReadEZ New)
+            If Not existingColumns.Contains("Palette") Then exec("ALTER TABLE Tests ADD COLUMN Palette INTEGER NOT NULL DEFAULT 0;")
             exec("CREATE INDEX IF NOT EXISTS ix_patients_name ON Patients(Surname COLLATE NOCASE, Firstname COLLATE NOCASE);")
             exec("CREATE INDEX IF NOT EXISTS ix_patients_org ON Patients(OrganisationId);")
             exec("CREATE INDEX IF NOT EXISTS ix_tests_patient ON Tests(PatientId, TestDate DESC);")
@@ -418,7 +420,7 @@ Public NotInheritable Class ReadEZDatabase
         "Symptom1, Symptom2, Symptom3, Symptom4, Symptom5, Symptom6, Symptom7, Symptom8, SymptomsDone, SymptomNotes, " &
         "Wpm, ReadSeconds, WordsRead, Errors, RowsSkipped, Transcript, TextIndex, TextName, FontName, FontSize, LineSpacing, " &
         "RowCount, OverlaySize, PresentationMs, ScreenWidth, ScreenHeight, Notes, LegacySource, LegacyId, " &
-        "Stimulus, PatternCpd, PatternDistanceCm"
+        "Stimulus, PatternCpd, PatternDistanceCm, Palette"
 
     ''' <summary>Parameter list for TestColumns (same order).</summary>
     Friend Shared Function TestArgs(r As ReadEZResult, legacySource As String, legacyId As Integer) As Object()
@@ -439,7 +441,7 @@ Public NotInheritable Class ReadEZDatabase
                     "@FontSize", r.RoR_FontSize, "@LineSpacing", r.RoR_LineSpacing, "@RowCount", r.RoR_NoRows, "@OverlaySize", r.RoR_OverlaySize,
                     "@PresentationMs", r.RoR_PresentationTime, "@ScreenWidth", r.Test_Width, "@ScreenHeight", r.Test_Height,
                     "@Notes", If(r.Notes, ""), "@LegacySource", legacySource, "@LegacyId", If(legacySource Is Nothing, Nothing, CObj(legacyId))})
-        a.AddRange({"@Stimulus", If(r.IsPattern, 1, 0), "@PatternCpd", r.PatternCpd, "@PatternDistanceCm", r.PatternDistanceCm})
+        a.AddRange({"@Stimulus", If(r.IsPattern, 1, 0), "@PatternCpd", r.PatternCpd, "@PatternDistanceCm", r.PatternDistanceCm, "@Palette", r.Palette})
         Return a.ToArray()
     End Function
 
@@ -494,6 +496,7 @@ Public NotInheritable Class ReadEZDatabase
         Dim cpd = Col(row, "PatternCpd")
         r.PatternCpd = If(cpd Is Nothing OrElse cpd Is DBNull.Value, 0.0, Convert.ToDouble(cpd, Inv))
         r.PatternDistanceCm = Int(Col(row, "PatternDistanceCm"))
+        r.Palette = Int(Col(row, "Palette"))
         If r.RoR_NoRows <= 0 Then r.RoR_NoRows = 20
         Return r
     End Function

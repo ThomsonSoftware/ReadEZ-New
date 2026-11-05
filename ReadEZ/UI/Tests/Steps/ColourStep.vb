@@ -200,9 +200,16 @@ Public NotInheritable Class ColourStep
             AddHandler sel.Click, Sub() SelectColour(_manualLeft, 1)
             _manualPanel.Controls.Add(sel)
         End If
+        ' White (no colour) and any colour (the patient's screen follows the sliders)
+        Dim extra = Ui.Row(wrap:=True)
+        Dim whiteButton = ModernButton.Create("colour.white", ButtonKind.Ghost, Glyphs.Brightness)
+        whiteButton.Margin = New Padding(0, 0, 8, 4)
+        AddHandler whiteButton.Click, Sub() SelectWhite()
+        extra.Controls.Add(whiteButton)
         Dim bespoke = ModernButton.Create("colour.bespoke", ButtonKind.Ghost, Glyphs.Color)
         AddHandler bespoke.Click, Sub() PickBespoke()
-        _manualPanel.Controls.Add(bespoke)
+        extra.Controls.Add(bespoke)
+        _manualPanel.Controls.Add(extra)
         AddHandler wheelManual.ColourClicked, Sub(s, i, b)
                                                   If IsOverlay AndAlso (b = MouseButtons.Right OrElse segSide.SelectedIndex = 1) Then
                                                       _manualRight = (s, i)
@@ -228,7 +235,11 @@ Public NotInheritable Class ColourStep
 
         lblResult.Margin = New Padding(0, 10, 0, 0)
         col.Controls.Add(lblResult)
-        If Not Run.Result.IsPattern Then col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=IsOverlay, enabledWhen:=Function() _successiveStage = 0))
+        If Run.Result.IsPattern Then
+            col.Controls.Add(GratingOptions.Create(Me, Sub() Redraw(), enabledWhen:=Function() _successiveStage = 0))
+        Else
+            col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=IsOverlay, enabledWhen:=Function() _successiveStage = 0))
+        End If
         Return col
     End Function
 
@@ -439,19 +450,50 @@ Public NotInheritable Class ColourStep
         Toast.Show(AppHost.MainWindow, Loc.F("colour.chosen", r.ColourName), ToastKind.Success)
     End Sub
 
+    ''' <summary>Manual: white (no colour) as the preferred "colour", shown on the patient's screen.</summary>
+    Private Sub SelectWhite()
+        Dim r = Run.Result
+        r.Colour1 = 0
+        r.PaletteSet = If(IsOverlay, 1, 2)
+        r.Colour_R = 255 : r.Colour_G = 255 : r.Colour_B = 255
+        r.Screening_Mode = 1
+        r.GreyPreferred = False
+        r.AutoScore = ""
+        Run.HasColour = True
+        Scene.Caption = ""
+        Scene.ChoiceButtons = Nothing
+        Scene.Presentation = ReadingPresentation.White
+        Scene.Colour1 = Color.White
+        Redraw()
+        UpdatePanels()
+        Toast.Show(AppHost.MainWindow, Loc.F("colour.chosen", r.ColourName), ToastKind.Success)
+    End Sub
+
+    ''' <summary>Any colour: the patient's screen changes as the sliders move; Cancel puts back what was shown.</summary>
     Private Sub PickBespoke()
-        Using dlg As New ColorDialog With {.FullOpen = True, .Color = Scene.Colour1}
-            If dlg.ShowDialog(Ask.DialogOwner(Host?.FindForm())) <> DialogResult.OK Then Return
+        Dim wasPresentation = Scene.Presentation, wasColour = Scene.Colour1
+        Dim preview = Sub(col As Color)
+                          Scene.Caption = ""
+                          Scene.ChoiceButtons = Nothing
+                          Scene.Presentation = If(IsOverlay, ReadingPresentation.Overlay, ReadingPresentation.FullScreen)
+                          Scene.Colour1 = col
+                          Redraw()
+                      End Sub
+        Using dlg As New BespokeColourDialog(Scene.Colour1, preview)
+            If dlg.ShowDialog(Ask.DialogOwner(Host?.FindForm())) <> DialogResult.OK Then
+                Scene.Presentation = wasPresentation
+                Scene.Colour1 = wasColour
+                Redraw()
+                Return
+            End If
             Dim r = Run.Result
             r.Colour1 = 0
             r.PaletteSet = If(IsOverlay, 1, 2)
-            r.Colour_R = dlg.Color.R : r.Colour_G = dlg.Color.G : r.Colour_B = dlg.Color.B
+            r.Colour_R = dlg.Colour.R : r.Colour_G = dlg.Colour.G : r.Colour_B = dlg.Colour.B
             r.Screening_Mode = 2
             r.GreyPreferred = False
             Run.HasColour = True
-            Scene.Presentation = If(IsOverlay, ReadingPresentation.Overlay, ReadingPresentation.FullScreen)
-            Scene.Colour1 = dlg.Color
-            Redraw()
+            preview(dlg.Colour)
             UpdatePanels()
         End Using
     End Sub
@@ -667,7 +709,7 @@ Public NotInheritable Class ColourStep
     End Function
 
     Public Overrides Function CreateTextOptions() As Control
-        If Run.Result.IsPattern Then Return Nothing       ' (the pattern has no text settings)
+        If Run.Result.IsPattern Then Return GratingOptions.Create(Me, Sub() Redraw(), enabledWhen:=Function() _successiveStage = 0)
         Return TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=IsOverlay, enabledWhen:=Function() _successiveStage = 0)
     End Function
 

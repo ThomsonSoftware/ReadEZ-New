@@ -542,3 +542,129 @@ Public NotInheritable Class PatternGlareStep
 End Class
 
 #End Region
+
+#Region "Changing the grating"
+
+''' <summary>
+''' The grating tests' Grating card: its spatial frequency on a slider (0.5 - 16 cycles per degree,
+''' ten steps an octave). The frequency was found as the patient's most uncomfortable - the best for
+''' testing - so opening the card warns first (once per test). "Back to the one found" undoes it.
+''' The frequency used is the one saved with the test.
+''' </summary>
+Public NotInheritable Class GratingOptions
+    Private Sub New()
+    End Sub
+
+    Public Shared Function ToCpd(v As Integer) As Double
+        Return 0.5 * Math.Pow(2, v / 10.0)
+    End Function
+
+    Public Shared Function FromCpd(cpd As Double) As Integer
+        If cpd <= 0 Then Return 20
+        Return Math.Max(0, Math.Min(50, CInt(Math.Round(10 * Math.Log(cpd / 0.5, 2)))))
+    End Function
+
+    Public Shared Function Create(owner As TestStep, changed As Action, Optional enabledWhen As Func(Of Boolean) = Nothing) As Control
+        Dim run = owner.Run
+        Dim res = run.Result
+        Dim found = If(run.GratingFound > 0, run.GratingFound, res.PatternCpd)
+        run.GratingFound = found
+        Dim card As New CollapsibleCard With {.Width = 320, .FitHeight = True, .Margin = New Padding(0, 14, 0, 0)}
+        card.SetTitle("grating.options")
+        Dim showSuffix = Sub() card.TitleSuffix = "  ·  " & Loc.F("results.row.cpdValue", PatternGlareStep.Cpd(res.PatternCpd))
+        showSuffix()
+        Dim col = Ui.Column()
+        col.Dock = DockStyle.Top
+        Ui.FillWidth(col)
+        Dim note = Ui.Label("grating.options.note", muted:=True)
+        note.MaximumSize = New Size(290, 0)
+        note.Margin = New Padding(0, 0, 0, 8)
+        col.Controls.Add(note)
+        Dim sld As New Slider With {.Minimum = 0, .Maximum = 50, .Height = 30, .ShowValue = True, .Value = FromCpd(res.PatternCpd)}
+        sld.ValueFormat = Function(v) Loc.F("results.row.cpdValue", PatternGlareStep.Cpd(ToCpd(v)))
+        col.Controls.Add(Ui.Stack("grating.options.sf", sld))
+        Dim back = ModernButton.Create("grating.options.reset", ButtonKind.Ghost, Glyphs.Refresh)
+        col.Controls.Add(back)
+        card.Controls.Add(col)
+        card.Expanded = False
+
+        ' It was set to the best frequency for testing: say so before it can be changed
+        Dim asking = False
+        AddHandler card.ExpandedChanged, Sub()
+                                             If Not card.Expanded OrElse run.GratingUnlocked OrElse asking Then Return
+                                             asking = True
+                                             Try
+                                                 If Ask.YesNoWarning(card.FindForm(), "grating.changeWarning", PatternGlareStep.Cpd(found)) Then
+                                                     run.GratingUnlocked = True
+                                                 Else
+                                                     card.Expanded = False
+                                                 End If
+                                             Finally
+                                                 asking = False
+                                             End Try
+                                         End Sub
+        Dim settingSlider = False
+        Dim apply = Sub(cpd As Double)
+                        If enabledWhen IsNot Nothing AndAlso Not enabledWhen() Then Return
+                        res.PatternCpd = cpd
+                        owner.Scene.PatternStripe = PatternGlareStep.StripeOf(res)
+                        showSuffix()
+                        changed()
+                    End Sub
+        AddHandler sld.ValueChanged, Sub() If Not settingSlider Then apply(ToCpd(sld.Value))
+        AddHandler back.Click, Sub()
+                                   settingSlider = True
+                                   sld.Value = FromCpd(found)
+                                   settingSlider = False
+                                   apply(found)
+                               End Sub
+        Return card
+    End Function
+End Class
+
+''' <summary>
+''' A bespoke colour, chosen with three sliders in an even-looking colour space (OKLCh: hue, amount
+''' of colour, lightness). The patient's screen follows the sliders as they move (preview); Cancel
+''' puts back what was there.
+''' </summary>
+Public NotInheritable Class BespokeColourDialog
+    Inherits DialogBase
+
+    Private ReadOnly swatch As New Panel With {.Size = New Size(400, 70), .Margin = New Padding(0, 0, 0, 10)}
+    Private ReadOnly sliders As New OkLchSliders(400)
+    Private ReadOnly _preview As Action(Of Color)
+
+    ''' <summary>The colour chosen.</summary>
+    Public ReadOnly Property Colour As Color
+        Get
+            Return sliders.Colour
+        End Get
+    End Property
+
+    Public Sub New(start As Color, preview As Action(Of Color))
+        _preview = preview
+        SetTitle("bespoke.title", If(preview Is Nothing, "", "bespoke.subtitle"))
+        ClientSize = New Size(480, 470)
+        ThemeManager.SetRole(swatch, SurfaceRole.Stimulus)          ' (its colour is the colour, not the theme's)
+        swatch.BackColor = start
+        swatch.BorderStyle = BorderStyle.FixedSingle
+        sliders.Colour = start
+        Dim col = Ui.Column()
+        col.Dock = DockStyle.Fill
+        col.Controls.Add(swatch)
+        col.Controls.Add(sliders)
+        Body.Controls.Add(col)
+        AddHandler sliders.ColourChanged, Sub()
+                                              swatch.BackColor = sliders.Colour
+                                              _preview?.Invoke(sliders.Colour)      ' the patient's screen, straight away
+                                          End Sub
+        Dim ok = AddFooterButton("common.ok", ButtonKind.Primary)
+        ok.DialogResult = DialogResult.OK
+        Dim cancel = AddFooterButton("common.cancel", ButtonKind.Secondary)
+        cancel.DialogResult = DialogResult.Cancel
+        AcceptButton = ok
+        CancelButton = cancel
+    End Sub
+End Class
+
+#End Region

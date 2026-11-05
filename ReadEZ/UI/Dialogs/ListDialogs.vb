@@ -159,13 +159,11 @@ Public NotInheritable Class ScreenersDialog
 
     Protected Overrides Sub EditItem(index As Integer)
         Dim s = If(index >= 0, _items(index), New ScreenerStructure)
-        Dim t = Ask.Text(Me, "screeners.title", "screeners.titlePrompt", If(s.Title, ""))
-        If t Is Nothing Then Return
-        Dim f = Ask.Text(Me, "screeners.title", "screeners.firstPrompt", If(s.Firstname, ""))
-        If f Is Nothing Then Return
-        Dim n = Ask.Text(Me, "screeners.title", "screeners.surnamePrompt", If(s.Surname, ""))
-        If n Is Nothing Then Return
-        s.Title = t.Trim() : s.Firstname = f.Trim() : s.Surname = n.Trim()
+        ' Title, first name and surname in one window
+        Using d As New ScreenerDialog(s)
+            If d.ShowDialog(Me) <> DialogResult.OK Then Return
+            s = d.Value
+        End Using
         If s.FullName = "" Then Return
         Dim id = AppHost.Db.SaveScreener(s)
         Fill()
@@ -178,5 +176,60 @@ Public NotInheritable Class ScreenersDialog
         AppHost.Db.DeleteScreener(_items(index).ID)
         If AppHost.Session.ScreenerId = _items(index).ID Then AppHost.Session.SelectScreener(0)
         Fill()
+    End Sub
+End Class
+
+''' <summary>A screener's title, first name and surname, side by side in one window.</summary>
+Public NotInheritable Class ScreenerDialog
+    Inherits DialogBase
+
+    Private ReadOnly txtTitle As New TextField With {.Width = 90}
+    Private ReadOnly txtFirst As New TextField With {.Width = 190}
+    Private ReadOnly txtSurname As New TextField With {.Width = 220}
+
+    Public Property Value As ScreenerStructure
+
+    Public Sub New(s As ScreenerStructure)
+        SetTitle(If(s.ID > 0, "screeners.edit", "screeners.add"))
+        ClientSize = New Size(640, 250)
+        Value = s
+        txtTitle.Text = If(s.Title, "")
+        txtFirst.Text = If(s.Firstname, "")
+        txtSurname.Text = If(s.Surname, "")
+        ' Three columns of fixed widths, inside the window's margins (no scrolling)
+        Body.AutoScroll = False
+        Dim grid = NewGrid(3)
+        grid.ColumnStyles.Clear()
+        grid.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 110))
+        grid.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 210))
+        grid.ColumnStyles.Add(New ColumnStyle(SizeType.Absolute, 240))
+        grid.Padding = New Padding(0, 6, 0, 0)
+        grid.Controls.Add(Ui.Stack("screeners.field.title", txtTitle), 0, 0)
+        grid.Controls.Add(Ui.Stack("screeners.field.first", txtFirst), 1, 0)
+        grid.Controls.Add(Ui.Stack("screeners.field.surname", txtSurname), 2, 0)
+        Body.Controls.Add(grid)
+        Dim save = AddFooterButton("common.save", ButtonKind.Primary, Glyphs.Save)
+        Dim cancel = AddFooterButton("common.cancel", ButtonKind.Secondary)
+        cancel.DialogResult = DialogResult.Cancel
+        CancelButton = cancel
+        AcceptButton = save
+        AddHandler save.Click, Sub()
+                                   ' A name is needed (a first name or a surname)
+                                   If txtFirst.Text.Trim() = "" AndAlso txtSurname.Text.Trim() = "" Then
+                                       txtSurname.Invalid = True
+                                       Return
+                                   End If
+                                   Dim v = s
+                                   v.Title = txtTitle.Text.Trim()
+                                   v.Firstname = txtFirst.Text.Trim()
+                                   v.Surname = txtSurname.Text.Trim()
+                                   Value = v
+                                   DialogResult = DialogResult.OK
+                               End Sub
+    End Sub
+
+    Protected Overrides Sub OnShown(e As EventArgs)
+        MyBase.OnShown(e)
+        txtTitle.Focus()
     End Sub
 End Class

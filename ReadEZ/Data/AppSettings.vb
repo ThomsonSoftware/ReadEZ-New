@@ -107,6 +107,8 @@ Public NotInheritable Class AppSettings
     Public PatientChooses As Boolean = False
     ''' <summary>Pattern glare test: the patient's viewing distance (cm), for the cycles per degree.</summary>
     Public PatternGlareDistanceCm As Integer = 40
+    ''' <summary>The colour palette for new tests: 0 ReadEZ Original, 1 ReadEZ New.</summary>
+    Public ColourPalette As Integer = 0
     ''' <summary>After choosing a colour, go straight on to rate of reading and symptoms with it.</summary>
     Public ContinueAfterColour As Boolean = True
     ''' <summary>One screen: show the patient's text in the whole window (F11) while testing.</summary>

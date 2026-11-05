@@ -68,6 +68,7 @@ Public Class SettingsScreen
     Private Const ModeOne As Integer = 0, ModeTwo As Integer = 1, ModeTablet As Integer = 2
 
     ' ReadEZ colours
+    Private ReadOnly segPalette As New SegmentedControl
     Private ReadOnly lblReadEZ As New Label With {.AutoSize = True, .Font = Fonts.Body, .MaximumSize = New Size(560, 0), .Margin = New Padding(0, 8, 0, 6)}
 
     ' Screens
@@ -720,6 +721,13 @@ Public Class SettingsScreen
         Dim about = Ui.Label("settings.readez.about", muted:=True)
         about.MaximumSize = New Size(560, 0)
         col3.Controls.Add(about)
+        ' Colour palette: ReadEZ Original / ReadEZ New
+        segPalette.SetOptions("settings.palette.original", "settings.palette.new")
+        segPalette.Margin = New Padding(0, 10, 0, 4)
+        col3.Controls.Add(Ui.Stack("settings.palette", segPalette))
+        Dim paletteHint = Ui.Label("settings.palette.hint", muted:=True)
+        paletteHint.MaximumSize = New Size(560, 0)
+        col3.Controls.Add(paletteHint)
         col3.Controls.Add(lblReadEZ)
         Dim check = ModernButton.Create("settings.readez.check", ButtonKind.Secondary, Glyphs.Calibrate)
         AddHandler check.Click, Sub()
@@ -790,6 +798,7 @@ Public Class SettingsScreen
         nudTiming.Value = CDec(Math.Max(0.5, Math.Min(10, s.Timing / 1000.0)))
         chkBeep.Checked = s.RoR_Beep
         FillMonitors()
+        segPalette.SelectedIndex = ReadEZColours.CurrentPalette
         ShowLogoPreview()
 
         segTheme.SelectedIndex = CInt(ThemeManager.Mode)
@@ -853,6 +862,7 @@ Public Class SettingsScreen
         s.RoR_ReadingTime = CInt(nudReadTime.Value)
         s.Timing = CInt(nudTiming.Value * 1000)
         s.RoR_Beep = chkBeep.Checked
+        Dim paletteChanged = segPalette.SelectedIndex >= 0 AndAlso segPalette.SelectedIndex <> ReadEZColours.CurrentPalette
         Dim mode = segScreens.SelectedIndex
         s.ForceOneScreen = mode = ModeOne
         s.OneScreenMonitor = Math.Max(0, cboOneMonitor.SelectedIndex)
@@ -878,7 +888,11 @@ Public Class SettingsScreen
         Dim lang = CType(Math.Max(0, cmbLanguage.SelectedIndex), AppLanguage)
         s.Language = lang.ToString()
         AppHost.SaveSettings()
-        If tabletChanged Then TabletScreen.SetEnabled(useTablet)     ' the tablet becomes (or stops being) the patient's screen
+        If tabletChanged Then TabletScreen.SetEnabled(useTablet)
+        If paletteChanged Then
+            ReadEZColours.SetPalette(segPalette.SelectedIndex)
+            ShowReadEZStatus()
+        End If     ' the tablet becomes (or stops being) the patient's screen
         If Stimulus.IsOpen Then
             Stimulus.Window.PlaceOnStimulusScreen()
             Stimulus.Window.ResumeTopMost()      ' after an emergency Ctrl+S
