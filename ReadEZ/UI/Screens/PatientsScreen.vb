@@ -475,9 +475,10 @@ Public NotInheritable Class ResultsList
             g.DrawEllipse(pen, sw)
         End Using
         Dim x = sw.Right + 12
-        Dim title = Loc.T(TestRun.ModeKey(r.Mode)) & If(r.IsBaseline, "", "  ·  " & r.ColourName)
+        Dim title = Loc.T(TestRun.ResultKey(r)) & If(r.IsBaseline, "", "  ·  " & r.ColourName)
         TextRenderer.DrawText(g, title, Fonts.Strong, New Rectangle(x, e.Bounds.Y + 4, e.Bounds.Width - x - 140, 20), p.Ink, TextFormatFlags.Left Or TextFormatFlags.EndEllipsis)
         Dim parts As New List(Of String) From {r.Test_Date.ToString("g", Loc.Culture)}
+        If r.IsPattern AndAlso r.PatternCpd > 0 Then parts.Add(Loc.F("results.cpdShort", PatternGlareStep.Cpd(r.PatternCpd)))
         If r.HasReading Then parts.Add(Loc.F("results.wpmShort", r.ROR))
         If r.SymptomsDone Then parts.Add(Loc.F("results.symptomsShort", r.SymptomTotal))
         If r.ImportedFrom <> "" Then parts.Add(r.ImportedFrom)

@@ -37,6 +37,9 @@ Public Class DevicesScreen
         TitleKey = "dev.title"
         SubtitleKey = "dev.subtitle"
         HelpTopic = "screen.devices"
+        ' Part of Settings > Screens: back there
+        Dim back = AddHeaderButton("dev.back", ButtonKind.Ghost, Glyphs.Back)
+        AddHandler back.Click, Sub() AppHost.MainWindow?.OpenScreenSettings()
         Dim refresh = AddHeaderButton("dev.refresh", ButtonKind.Secondary, Glyphs.Refresh)
         AddHandler refresh.Click, Async Sub() Await RunAsync(Function() Link.RefreshDevicesAsync())
 
@@ -97,6 +100,11 @@ Public Class DevicesScreen
         row.Controls.Add(right)
 
         Content.Controls.Add(row)
+        ' What this is for, in plain words, above everything else
+        Dim banner As New Label With {.Dock = DockStyle.Top, .AutoSize = False, .Height = 58, .Font = Fonts.Strong,
+                                      .Padding = New Padding(2, 0, 0, 12), .BackColor = Color.Transparent}
+        Loc.Bind(banner, "dev.becomes")
+        Content.Controls.Add(banner)
 
         AddHandler savePractice.Click, Async Sub() Await SavePracticeAsync(txtPractice.Text)
         AddHandler fromNear.Click, Async Sub()

@@ -66,7 +66,7 @@ Public Class MainForm
 
         AddHandler _top.PatientClicked, Sub() ShowScreen(ScreenPatients)
         AddHandler _top.ColoursClicked, Sub() ShowScreen(ScreenColours)
-        AddHandler _top.ScreensClicked, Sub() ShowScreen(ScreenSettings)
+        AddHandler _top.ScreensClicked, Sub() OpenScreenSettings()
         AddHandler _top.ScreenerClicked, Sub() AppCommands.PickScreener()
         AddHandler _top.LicenceClicked, Sub() ShowLicence()
         AddHandler AppHost.Session.PatientChanged, Sub() UpdateNavAvailability()
@@ -83,7 +83,6 @@ Public Class MainForm
         _nav.AddItem(ScreenTests, "nav.tests", Glyphs.Eye)
         _nav.AddItem(ScreenResults, "nav.results", Glyphs.Chart)
         _nav.AddItem(ScreenColours, "nav.colours", Glyphs.Color)
-        _nav.AddItem(ScreenDevices, "nav.devices", DevicesScreen.DevicesGlyph)
         _nav.AddItem(ScreenSettings, "nav.settings", Glyphs.Settings, atBottom:=True)
         _nav.AddItem(ScreenHelp, "nav.help", Glyphs.Help, atBottom:=True)
         _nav.AddItem(NavOnlineHelp, "menu.onlineHelp", Glyphs.Globe, atBottom:=True)     ' opens the online help (Admin > Online help)
@@ -144,10 +143,17 @@ Public Class MainForm
         screen.Visible = True
         screen.BringToFront()
         _host.ResumeLayout(True)
-        _nav.SelectedId = If(id = ScreenRun, ScreenTests, id)    ' a running test belongs to "Run tests"
+        ' A running test belongs to "Run tests"; Tablet devices is part of Settings
+        _nav.SelectedId = If(id = ScreenRun, ScreenTests, If(id = ScreenDevices, ScreenSettings, id))
         screen.OnActivated()
         Return True
     End Function
+
+    ''' <summary>Settings, on the Screens tab.</summary>
+    Public Sub OpenScreenSettings()
+        If Not ShowScreen(ScreenSettings) Then Return
+        TryCast(_current, SettingsScreen)?.ShowScreensTab()
+    End Sub
 
     ''' <summary>Opens the test screen with a test (its steps run one after the other).</summary>
     Public Sub RunTest(t As TestRun)
@@ -225,6 +231,10 @@ Public Class MainForm
     Public Sub PlaceOnControlScreen()
         Dim s = AppHost.Settings
         Dim target = ControlTarget()
+        ' One screen chosen: the control window goes on that monitor too
+        If s.ForceOneScreen AndAlso ScreenLayout.ScreenOf(target).DeviceName <> ScreenLayout.OneScreenMonitor().DeviceName Then
+            target = ScreenLayout.OneScreenMonitor().WorkingArea
+        End If
         Dim oldDpi = DeviceDpi
         Dim wasMax = WindowState = FormWindowState.Maximized
         s.MainWindowBounds = Rectangle.Empty

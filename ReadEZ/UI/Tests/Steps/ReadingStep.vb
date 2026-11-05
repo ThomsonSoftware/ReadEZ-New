@@ -118,7 +118,7 @@ Public NotInheritable Class ReadingStep
         Dim actions = Ui.Row(wrap:=True)
         actions.Margin = New Padding(0, 8, 0, 0)
         Dim how = HelpButton("reading.how.button", "reading.how.title",
-                             "reading.how.1", "reading.how.2", "reading.how.3", "reading.how.4", "reading.how.5", "reading.how.6")
+                             "reading.how.1", "reading.how.2", "reading.how.3", "reading.how.4", "reading.how.5", "reading.how.6", "reading.how.7")
         how.Margin = New Padding(0, 0, 8, 0)
         actions.Controls.Add(how)
         col.Controls.Add(actions)
@@ -267,6 +267,7 @@ Public NotInheritable Class ReadingStep
 
     Private Sub UpdateClock(seconds As Integer)
         lblClock.Text = $"{seconds \ 60}:{seconds Mod 60:00}"
+        Host?.UpdateBarValue("time", lblClock.Text)     ' one screen: the time on the bar
     End Sub
 
 #End Region
@@ -291,6 +292,22 @@ Public NotInheritable Class ReadingStep
     End Sub
 
     Public Overrides Sub PreviewMouseClick(bounds As Rectangle, e As MouseEventArgs)
+        MarkWord(bounds, e)
+    End Sub
+
+    ''' <summary>
+    ''' One screen: the examiner can mark on the patient's screen too (same clicks as on the test
+    ''' screen; the patient doesn't see the marks - the counts show in the bar at the bottom).
+    ''' Not with a tablet or a second monitor: clicks there are the patient's.
+    ''' </summary>
+    Public Overrides Sub PatientScreenClick(bounds As Rectangle, e As MouseEventArgs)
+        If ScreenLayout.IsTwoScreenMode() Then Return
+        MarkWord(bounds, e)
+        ActionsChanged()
+    End Sub
+
+    ''' <summary>click = misread word, Shift + click = skipped row, right-click = last word read.</summary>
+    Private Sub MarkWord(bounds As Rectangle, e As MouseEventArgs)
         Dim w = Scene.WordAt(bounds, e.Location)
         If Not w.HasValue Then Return
         If e.Button = MouseButtons.Right Then
@@ -298,6 +315,9 @@ Public NotInheritable Class ReadingStep
             _syncing = True
             nudWords.Value = Math.Min(nudWords.Maximum, Scene.WordsReadTo(w.Value))
             _syncing = False
+            ' Acknowledged: a beep and a message (on the bar over the patient's view in one-screen mode)
+            System.Media.SystemSounds.Asterisk.Play()
+            Host?.ShowExaminerMessage(Loc.F("reading.lastWordMarked", CInt(nudWords.Value)))
         ElseIf (Control.ModifierKeys And Keys.Shift) = Keys.Shift Then
             If Not Scene.SkippedRows.Remove(w.Value.Row) Then Scene.SkippedRows.Add(w.Value.Row)
             _syncing = True
@@ -327,7 +347,16 @@ Public NotInheritable Class ReadingStep
     End Sub
 
     Public Overrides Function HandleKey(keyData As Keys) As Boolean
+        ' Space: starts the clock (before it has run), then records an error; S: a skipped row; C: start / stop the clock
         If keyData = Keys.Space Then
+            If Not _running AndAlso nudTime.Value = 0 Then ToggleClock() Else Bump(nudErrors, 1)
+            Return True
+        End If
+        If keyData = Keys.S Then
+            Bump(nudSkipped, 1)
+            Return True
+        End If
+        If keyData = Keys.C Then
             ToggleClock()
             Return True
         End If
@@ -338,11 +367,48 @@ Public NotInheritable Class ReadingStep
         Return False
     End Function
 
+    ''' <summary>
+    ''' One screen, patient full screen: the bar at the bottom - the clock (Start/Stop, Reset, 60 s),
+    ''' errors and skipped rows (− / +), the words read, and Next step.
+    ''' </summary>
     Public Overrides Function QuickActions() As List(Of QuickAction)
         Return New List(Of QuickAction) From {
-            New QuickAction(If(_running, "reading.stop", "reading.start"), Sub() ToggleClock(), primary:=True),
-            New QuickAction(If(IsLastStep(), "run.saveFinish", "run.nextStep"), Sub() Finish(), enabled:=Not _running)}
+            New QuickAction("", Nothing) With {.Text = Loc.T("reading.strip.time"), .Value = lblClock.Text, .Id = "time", .GroupStart = True},
+            New QuickAction("", Sub() ToggleClock(), primary:=True) With {.Text = Loc.T(If(_running, "reading.stop", "reading.start")) & "  (C)"},
+            New QuickAction("reading.reset", Sub() ResetClock()),
+            New QuickAction("reading.sixty", Sub() SetFullMinute()),
+            New QuickAction("", Nothing) With {.Text = Loc.T("reading.errors"), .Value = CInt(nudErrors.Value).ToString(), .GroupStart = True},
+            New QuickAction("", Sub() Bump(nudErrors, -1)) With {.Text = "−"},
+            New QuickAction("", Sub() Bump(nudErrors, 1)) With {.Text = "+  (" & Loc.T("key.space") & ")"},
+            New QuickAction("", Nothing) With {.Text = Loc.T("reading.skipped"), .Value = CInt(nudSkipped.Value).ToString(), .GroupStart = True},
+            New QuickAction("", Sub() Bump(nudSkipped, -1)) With {.Text = "−"},
+            New QuickAction("", Sub() Bump(nudSkipped, 1)) With {.Text = "+  (S)"},
+            New QuickAction("", Nothing) With {.Text = Loc.T("reading.strip.wordsHint"), .GroupStart = True},
+            New QuickAction("", Nothing) With {.Value = CInt(nudWords.Value).ToString(), .NumberMax = CInt(nudWords.Maximum),
+                                               .NumberChanged = Sub(n) SetWordsRead(n)},
+            New QuickAction(If(IsLastStep(), "run.saveFinish", "run.nextStep"), Sub() Finish(), enabled:=Not _running) With {.GroupStart = True}}
     End Function
+
+    Public Overrides Function CreateTextOptions() As Control
+        Return TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay,
+                                  enabledWhen:=Function() Not _running AndAlso Scene.Errors.Count = 0 AndAlso Not Scene.LastWord.HasValue)
+    End Function
+
+    ''' <summary>The bar's words read, typed or stepped with the arrows (the bar is not rebuilt, so typing carries on).</summary>
+    Private Sub SetWordsRead(n As Integer)
+        If nudWords.Value = n Then Return
+        _syncing = True
+        nudWords.Value = Math.Max(nudWords.Minimum, Math.Min(nudWords.Maximum, n))
+        _syncing = False
+        ValuesChanged()
+    End Sub
+
+    ''' <summary>The bar's − / +: one error or skipped row more or fewer.</summary>
+    Private Sub Bump(n As NumericUpDown, delta As Integer)
+        n.Value = Math.Max(n.Minimum, Math.Min(n.Maximum, n.Value + delta))
+        ValuesChanged()
+        ActionsChanged()
+    End Sub
 
     Public Overrides Sub Dispose()
         _clock.Dispose()

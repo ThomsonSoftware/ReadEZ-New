@@ -59,10 +59,18 @@ Public Class ResultsScreen
         btnReport = AddHeaderButton("results.report", ButtonKind.Primary, Glyphs.Print)
         AddHandler btnReport.Click, Sub()
                                         Dim r = ReportTarget()
+                                        If r IsNot Nothing AndAlso r.IsPattern Then
+                                            Ask.Info(FindForm(), "results.patternNoReport")
+                                            Return
+                                        End If
                                         If r IsNot Nothing Then ReadEZReport.ShowReport(FindForm(), r, BaselineFor(r))
                                     End Sub
         AddHandler btnLetter.Click, Sub()
                                         Dim r = ReportTarget()
+                                        If r IsNot Nothing AndAlso r.IsPattern Then
+                                            Ask.Info(FindForm(), "results.patternNoReport")
+                                            Return
+                                        End If
                                         If r IsNot Nothing Then ReadEZReport.ShowLetter(FindForm(), r, BaselineFor(r))
                                     End Sub
         AddHandler btnShow.Click, Sub() ShowOnPatientScreen()
@@ -151,6 +159,7 @@ Public Class ResultsScreen
                                                    If _loading Then Return
                                                    _colour = _colourList.SelectedResult
                                                    _current = _colour
+                                                   MatchBaseline()
                                                    ShowPanels()
                                                End Sub
         ' Clicking the test already selected makes it the one Notes / Delete act on
@@ -167,6 +176,7 @@ Public Class ResultsScreen
         AddHandler segMode.SelectedIndexChanged, Sub()
                                                      If _loading Then Return
                                                      FillColourList(-1)
+                                                     MatchBaseline()
                                                      _current = If(_colour, _baseline)
                                                      ShowPanels()
                                                  End Sub
@@ -246,6 +256,7 @@ Public Class ResultsScreen
             End If
             segMode.SelectedIndex = Math.Max(0, Array.IndexOf(ColourModes, mode))
             FillColourList(If(colourPick Is Nothing, -1, colourPick.ID))
+            If chosen Is Nothing OrElse Not chosen.IsBaseline Then MatchBaseline()
         Finally
             _loading = False
         End Try
@@ -271,6 +282,28 @@ Public Class ResultsScreen
         lblNoColour.Visible = list.Count = 0
     End Sub
 
+    ''' <summary>
+    ''' A colour test is compared with a baseline of the same kind (a text test with a baseline text, a
+    ''' pattern test with a baseline pattern): if the baseline selected is the other kind, the latest
+    ''' one of the right kind (before the test, else the newest) is selected instead.
+    ''' </summary>
+    Private Sub MatchBaseline()
+        If _colour Is Nothing Then Return
+        If _baseline IsNot Nothing AndAlso _baseline.IsPattern = _colour.IsPattern Then Return
+        Dim c = _colour
+        Dim kind = _baselines.Where(Function(b) b.IsPattern = c.IsPattern).ToList()
+        If kind.Count = 0 Then Return
+        Dim pick = If(kind.FirstOrDefault(Function(b) b.Test_Date <= c.Test_Date), kind(0))
+        Dim was = _loading
+        _loading = True
+        Try
+            _baseList.SetResults(_baselines, pick.ID)
+        Finally
+            _loading = was
+        End Try
+        _baseline = _baseList.SelectedResult
+    End Sub
+
     ''' <summary>The test the report, letter and "show" use: the colour test, or the baseline if there is none.</summary>
     Private Function ReportTarget() As ReadEZResult
         Return If(_colour, _baseline)
@@ -279,8 +312,9 @@ Public Class ResultsScreen
     ''' <summary>The baseline to compare a colour test with: the one selected, else the last one before it, else the newest.</summary>
     Private Function BaselineFor(r As ReadEZResult) As ReadEZResult
         If r Is Nothing OrElse r.IsBaseline Then Return Nothing
-        If _baseline IsNot Nothing Then Return _baseline
-        Return If(_baselines.Where(Function(b) b.Test_Date <= r.Test_Date).FirstOrDefault(), _baselines.FirstOrDefault())
+        If _baseline IsNot Nothing AndAlso _baseline.IsPattern = r.IsPattern Then Return _baseline
+        Dim kind = _baselines.Where(Function(b) b.IsPattern = r.IsPattern).ToList()
+        Return If(kind.Where(Function(b) b.Test_Date <= r.Test_Date).FirstOrDefault(), kind.FirstOrDefault())
     End Function
 
 #End Region
@@ -291,8 +325,8 @@ Public Class ResultsScreen
         viewBase.Result = _baseline
         viewColour.Result = _colour
         viewChange.SetTests(_baseline, _colour)
-        cardBase.TitleSuffix = If(_baseline Is Nothing, "", ":   " & _baseline.Test_Date.ToString("g", Loc.Culture))
-        cardColour.TitleSuffix = If(_colour Is Nothing, "", ":   " & Loc.T(TestRun.ModeKey(_colour.Mode)) & "  ·  " & _colour.Test_Date.ToString("g", Loc.Culture))
+        cardBase.TitleSuffix = If(_baseline Is Nothing, "", ":   " & Loc.T(TestRun.ResultKey(_baseline)) & "  ·  " & _baseline.Test_Date.ToString("g", Loc.Culture))
+        cardColour.TitleSuffix = If(_colour Is Nothing, "", ":   " & Loc.T(TestRun.ResultKey(_colour)) & "  ·  " & _colour.Test_Date.ToString("g", Loc.Culture))
         cardBase.Invalidate()
         cardColour.Invalidate()
         btnEditBase.Visible = _baseline IsNot Nothing
@@ -355,6 +389,7 @@ Public Class ResultsScreen
                                             .Colour1 = r.ScreenColour,
                                             .Presentation = If(r.IsBaseline, ReadingPresentation.White, If(r.Mode = ReadEZTestMode.Overlay, ReadingPresentation.Overlay, ReadingPresentation.FullScreen))}
         scene.Rows = ReadingTexts.RowsFor(ReadingTexts.ByIndex(r.RoR_TextOptions), r.RoR_NoRows, AppHost.Settings.RoR_Random = 1)
+        scene.PatternStripe = PatternGlareStep.StripeOf(r)           ' a pattern test: its pattern
         Stimulus.Window.BackColor = If(scene.Presentation = ReadingPresentation.FullScreen, scene.Colour1, Color.White)
         Stimulus.Window.Scene = scene
         Toast.Show(FindForm(), Loc.T(If(ScreenLayout.IsTwoScreenMode(), "results.shown", "results.shownOne")), ToastKind.Info)
@@ -699,6 +734,36 @@ Public NotInheritable Class ResultPanelView
         PaintReading(g, c.Reading, p)
     End Sub
 
+    ''' <summary>The first of the fonts that fits the text in the box (the last one if none does).</summary>
+    Friend Shared Function FitFont(g As Graphics, text As String, box As Size, ParamArray fonts As Font()) As Font
+        For Each f In fonts
+            Dim sz = TextRenderer.MeasureText(g, text, f, Size.Empty, TextFormatFlags.NoPadding)
+            If sz.Width <= box.Width AndAlso sz.Height <= box.Height Then Return f
+        Next
+        Return fonts(fonts.Length - 1)
+    End Function
+
+    ''' <summary>
+    ''' A row's label: on one line if it fits, on two if the row is tall enough, otherwise in the
+    ''' small font (cut short with "..." only as a last resort) - never clipped half-way through a line.
+    ''' </summary>
+    Friend Shared Sub DrawRowLabel(g As Graphics, text As String, r As Rectangle, colour As Color)
+        Dim one = TextRenderer.MeasureText(g, text, Fonts.Body, Size.Empty, TextFormatFlags.NoPadding)
+        Dim flags = TextFormatFlags.Left Or TextFormatFlags.VerticalCenter Or TextFormatFlags.NoPadding
+        If one.Width <= r.Width Then
+            TextRenderer.DrawText(g, text, Fonts.Body, r, colour, flags)
+        ElseIf r.Height >= one.Height * 2 + 2 Then
+            TextRenderer.DrawText(g, text, Fonts.Body, r, colour, flags Or TextFormatFlags.WordBreak)
+        Else
+            Dim small = TextRenderer.MeasureText(g, text, Fonts.Small, Size.Empty, TextFormatFlags.NoPadding)
+            If small.Width <= r.Width OrElse r.Height < small.Height * 2 + 2 Then
+                TextRenderer.DrawText(g, text, Fonts.Small, r, colour, flags Or TextFormatFlags.EndEllipsis)
+            Else
+                TextRenderer.DrawText(g, text, Fonts.Small, r, colour, flags Or TextFormatFlags.WordBreak)
+            End If
+        End If
+    End Sub
+
     ''' <summary>A small heading at the top of a column.</summary>
     Private Function Heading(g As Graphics, r As Rectangle, key As String, p As Palette) As Integer
         Dim h = D(26)
@@ -744,10 +809,15 @@ Public NotInheritable Class ResultPanelView
             Dim was = r.AutoScore.Substring(changedAt + "ChangedFrom:".Length).Split(","c)(0)
             lines.Add(Loc.F("results.colourChanged", was))
         End If
-        If r.ROR_Text <> "" Then lines.Add(Loc.F("results.cfg.text", r.ROR_Text))
-        lines.Add(Loc.F("results.cfg.font", r.RoR_FontName, r.RoR_FontSize + 8))
-        lines.Add(Loc.F("results.cfg.spacing", (0.8 + r.RoR_LineSpacing / 10.0).ToString("0.0", Loc.Culture)))
-        lines.Add(Loc.F("results.cfg.rows", r.RoR_NoRows))
+        If r.IsPattern Then
+            lines.Add(Loc.F("results.cfg.pattern", PatternGlareStep.Cpd(r.PatternCpd)))
+            If r.PatternDistanceCm > 0 Then lines.Add(Loc.F("results.cfg.distance", r.PatternDistanceCm))
+        Else
+            If r.ROR_Text <> "" Then lines.Add(Loc.F("results.cfg.text", r.ROR_Text))
+            lines.Add(Loc.F("results.cfg.font", r.RoR_FontName, r.RoR_FontSize + 8))
+            lines.Add(Loc.F("results.cfg.spacing", (0.8 + r.RoR_LineSpacing / 10.0).ToString("0.0", Loc.Culture)))
+            lines.Add(Loc.F("results.cfg.rows", r.RoR_NoRows))
+        End If
         If _screener <> "" Then lines.Add(Loc.F("results.screener", _screener))
         If r.GreyPreferred Then lines.Add(Loc.T("colour.greyPreferred"))
         If r.ImportedFrom <> "" Then lines.Add(Loc.F("results.imported", r.ImportedFrom))
@@ -790,6 +860,16 @@ Public NotInheritable Class ResultPanelView
                 g.FillRectangle(b, RectangleF.Inflate(tb, scr.Width * 0.08F, scr.Height * 0.1F))
             End Using
         End If
+        If r.IsPattern Then
+            ' The pattern: a square of black stripes (the white ones are the background or the overlay)
+            Dim side = Math.Min(tb.Width, tb.Height)
+            Dim pb As New RectangleF(tb.X + (tb.Width - side) / 2, tb.Y + (tb.Height - side) / 2, side, side)
+            Dim stripe = side / 10
+            For i = 0 To 4
+                g.FillRectangle(Brushes.Black, pb.X, pb.Y + i * 2 * stripe, pb.Width, stripe)
+            Next
+            Return
+        End If
         Using pen As New Pen(Color.FromArgb(150, 60, 60, 60), Math.Max(1.0F, scr.Height / 60.0F))
             Dim rows = 9
             For i = 0 To rows - 1
@@ -827,7 +907,7 @@ Public NotInheritable Class ResultPanelView
                               TextFormatFlags.HorizontalCenter Or TextFormatFlags.Bottom)
         For q = 0 To 3
             Dim y = rowsTop + q * rowH
-            TextRenderer.DrawText(g, Loc.T("symptoms.short" & (q + 1)), Fonts.Body, New Rectangle(col.X, CInt(y), labelW, CInt(rowH)), p.Ink,
+            TextRenderer.DrawText(g, Loc.T(If(r.IsPattern, "symptoms.pshort", "symptoms.short") & (q + 1)), Fonts.Body, New Rectangle(col.X, CInt(y), labelW, CInt(rowH)), p.Ink,
                                   TextFormatFlags.Right Or TextFormatFlags.VerticalCenter Or TextFormatFlags.WordBreak)
             Dim by = y + (rowH - box) / 2
             For i = 0 To 5
@@ -872,8 +952,12 @@ Public NotInheritable Class ResultPanelView
 
     Private Sub PaintReading(g As Graphics, col As Rectangle, p As Palette)
         Dim r = _result
-        Dim top = Heading(g, col, "results.head.reading", p)
+        Dim top = Heading(g, col, If(r.IsPattern, "results.head.pattern", "results.head.reading"), p)
         Dim bottom = If(_transcript.Visible, col.Bottom - _transcript.Height - D(8), col.Bottom)
+        If r.IsPattern Then
+            PaintRows(g, col, top, bottom, PatternRows(r), p)
+            Return
+        End If
         If Not r.HasReading Then
             TextRenderer.DrawText(g, Loc.T("results.notDone"), Fonts.Section, New Rectangle(col.X, top, col.Width, bottom - top), p.Muted,
                                   TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter)
@@ -884,22 +968,45 @@ Public NotInheritable Class ResultPanelView
             (Loc.T("results.row.errors"), r.ROR_NoErrors.ToString(), False),
             (Loc.T("results.row.skipped"), r.ROR_RowsSkipped.ToString(), False),
             (Loc.T("results.row.wordsTime"), Loc.F("results.row.wordsTimeValue", r.ROR_NoWordsRead, r.ROR_RecordTime), False)}
+        PaintRows(g, col, top, bottom, rows, p)
+    End Sub
+
+    ''' <summary>A pattern test's facts: the worst spatial frequency (and, for the baseline pattern, how it was found).</summary>
+    Private Shared Function PatternRows(r As ReadEZResult) As List(Of (Label As String, Value As String, Big As Boolean))
+        Dim rows As New List(Of (Label As String, Value As String, Big As Boolean)) From {
+            (Loc.T("results.row.worstSf"), If(r.PatternCpd > 0, Loc.F("results.row.cpdValue", PatternGlareStep.Cpd(r.PatternCpd)), "–"), True)}
+        If r.PatternDistanceCm > 0 Then rows.Add((Loc.T("results.row.distance"), Loc.F("results.row.cmValue", r.PatternDistanceCm), False))
+        Dim found = PatternGlareStep.ParseScore(r.AutoScore)
+        If found.Choices > 0 Then
+            rows.Add((Loc.T("results.row.cpdRange"), PatternGlareStep.Cpd(found.Low) & " – " & PatternGlareStep.Cpd(found.High), False))
+            rows.Add((Loc.T("results.row.choices"), found.Choices.ToString() & If(found.Completed, "", " " & Loc.T("results.row.stoppedEarly")), False))
+        End If
+        Return rows
+    End Function
+
+    ''' <summary>Rows of a label and a value in a box, filling the column.</summary>
+    Private Sub PaintRows(g As Graphics, col As Rectangle, top As Integer, bottom As Integer, rows As List(Of (Label As String, Value As String, Big As Boolean)), p As Palette)
+        If rows.Count = 0 Then Return
         Dim rowH = (bottom - top) / CSng(rows.Count)
-        Dim valW = Math.Min(D(130), col.Width \ 3)
+        ' The value boxes as wide as the widest value needs (within reason), the labels get the rest
+        Dim need = rows.Max(Function(x) TextRenderer.MeasureText(g, x.Value, Fonts.Section, Size.Empty, TextFormatFlags.NoPadding).Width) + D(18)
+        Dim valW = Math.Max(D(64), Math.Min(need, CInt(col.Width * 0.5)))
         Dim valX = col.Right - valW
         For i = 0 To rows.Count - 1
             Dim row = rows(i)
             Dim y = top + i * rowH
-            TextRenderer.DrawText(g, row.Label, Fonts.Body, New Rectangle(col.X, CInt(y), valX - col.X - D(8), CInt(rowH)), p.Ink,
-                                  TextFormatFlags.Left Or TextFormatFlags.VerticalCenter Or TextFormatFlags.WordBreak)
-            Dim bh = Math.Min(CInt(rowH) - D(4), If(row.Big, D(42), D(32)))
+            DrawRowLabel(g, row.Label, New Rectangle(col.X, CInt(y), valX - col.X - D(8), CInt(rowH)), p.Ink)
+            Dim bh = Math.Max(D(18), Math.Min(CInt(rowH) - D(3), If(row.Big, D(42), D(32))))
             Dim vb As New RectangleF(valX, y + (rowH - bh) / 2, valW, bh)
             Using path = Draw.RoundedRect(vb, D(5)), b As New SolidBrush(p.SurfaceAlt), pen As New Pen(p.Border)
                 g.FillPath(b, path)
                 g.DrawPath(pen, path)
             End Using
-            TextRenderer.DrawText(g, row.Value, If(row.Big, Fonts.Title, Fonts.Section), Rectangle.Round(vb), p.Ink,
-                                  TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter Or TextFormatFlags.EndEllipsis)
+            Dim inner As New Size(CInt(vb.Width) - D(6), CInt(vb.Height))
+            Dim f = If(row.Big, FitFont(g, row.Value, inner, Fonts.Title, Fonts.Section, Fonts.Strong, Fonts.Body),
+                                FitFont(g, row.Value, inner, Fonts.Section, Fonts.Strong, Fonts.Body, Fonts.Small))
+            TextRenderer.DrawText(g, row.Value, f, Rectangle.Round(vb), p.Ink,
+                                  TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter Or TextFormatFlags.NoPadding Or TextFormatFlags.EndEllipsis)
         Next
     End Sub
 
@@ -960,11 +1067,20 @@ Public NotInheritable Class ChangePanelView
             TextRenderer.DrawText(g, Loc.T("results.change.needBoth"), Fonts.Body, ClientRectangle, p.Muted, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter Or TextFormatFlags.WordBreak)
             Return
         End If
+        If _baseline.IsPattern <> _result.IsPattern Then
+            TextRenderer.DrawText(g, Loc.T("results.change.mismatch"), Fonts.Body, ClientRectangle, p.Muted, TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter Or TextFormatFlags.WordBreak)
+            Return
+        End If
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
         ' The summary across the top, the details underneath
         Dim summaryH = D(50)
         PaintSummary(g, New Rectangle(0, 0, Width, summaryH), p)
         Dim top = summaryH + D(12)
+        If _result.IsPattern Then
+            ' Pattern tests: symptoms with and without colour only
+            PaintSymptoms(g, New Rectangle(0, top, Width, Height - top), p)
+            Return
+        End If
         Dim gap = D(24)
         Dim sympW = CInt((Width - gap) * 0.6)
         PaintSymptoms(g, New Rectangle(0, top, sympW, Height - top), p)
@@ -1001,6 +1117,10 @@ Public NotInheritable Class ChangePanelView
         Dim sv = SymptomsVerdict()
         Dim rv = ReadingVerdict(pct)
         Dim symDetail = If(sv = Verdict.NotBoth, "", Loc.F("results.summary.symptomsDetail", _baseline.SymptomTotal, _result.SymptomTotal))
+        If _result.IsPattern Then
+            PaintVerdict(g, r, Loc.T("results.summary.symptoms"), sv, symDetail, p)    ' (no reading with the pattern)
+            Return
+        End If
         Dim readDetail = If(rv = Verdict.NotBoth, "", Loc.F("results.summary.readingDetail", _baseline.ROR, _result.ROR, If(pct >= 0, "+", "") & pct.ToString("0", Loc.Culture) & "%"))
         PaintVerdict(g, New Rectangle(r.X, r.Y, w, r.Height), Loc.T("results.summary.symptoms"), sv, symDetail, p)
         PaintVerdict(g, New Rectangle(r.X + w + gap, r.Y, r.Width - w - gap, r.Height), Loc.T("results.summary.reading"), rv, readDetail, p)
@@ -1072,7 +1192,7 @@ Public NotInheritable Class ChangePanelView
                               TextFormatFlags.Left Or TextFormatFlags.Bottom Or TextFormatFlags.EndEllipsis)
         For q = 0 To 3
             Dim y = rowsTop + q * rowH
-            TextRenderer.DrawText(g, Loc.T("symptoms.short" & (q + 1)), Fonts.Body, New Rectangle(col.X, CInt(y), labelW, CInt(rowH)), p.Ink,
+            TextRenderer.DrawText(g, Loc.T(If(c.IsPattern, "symptoms.pshort", "symptoms.short") & (q + 1)), Fonts.Body, New Rectangle(col.X, CInt(y), labelW, CInt(rowH)), p.Ink,
                                   TextFormatFlags.Right Or TextFormatFlags.VerticalCenter Or TextFormatFlags.WordBreak)
             Dim change = b.Symptoms(q) - c.Symptoms(q)
             Dim by = y + (rowH - box) / 2
@@ -1105,24 +1225,28 @@ Public NotInheritable Class ChangePanelView
             (Loc.T("results.row.skipped"), Signed(ds), $"{b.ROR_RowsSkipped} → {c.ROR_RowsSkipped}", If(ds < 0, p.Success, If(ds = 0, p.Muted, p.Danger)), False)}
         Dim noteH = 0
         Dim rowH = (col.Bottom - top - noteH) / CSng(rows.Count)
-        Dim valW = Math.Min(D(150), CInt(col.Width * 0.42))
-        Dim ftW = D(90)
+        ' The value boxes and the "from -> to" notes as wide as they need (within reason), the labels get the rest
+        Dim need = rows.Max(Function(x) TextRenderer.MeasureText(g, x.Value, Fonts.Section, Size.Empty, TextFormatFlags.NoPadding).Width) + D(18)
+        Dim valW = Math.Max(D(64), Math.Min(need, CInt(col.Width * 0.42)))
+        Dim ftW = Math.Min(CInt(col.Width * 0.25), rows.Max(Function(x) TextRenderer.MeasureText(g, x.Note, Fonts.Body).Width) + D(12))
         Dim valX = col.Right - valW - ftW
         For i = 0 To rows.Count - 1
             Dim row = rows(i)
             Dim y = top + i * rowH
-            TextRenderer.DrawText(g, row.Label, Fonts.Body, New Rectangle(col.X, CInt(y), valX - col.X - D(8), CInt(rowH)), p.Ink,
-                                  TextFormatFlags.Left Or TextFormatFlags.VerticalCenter Or TextFormatFlags.WordBreak)
-            Dim bh = Math.Min(CInt(rowH) - D(4), If(row.Big, D(42), D(32)))
+            ResultPanelView.DrawRowLabel(g, row.Label, New Rectangle(col.X, CInt(y), valX - col.X - D(8), CInt(rowH)), p.Ink)
+            Dim bh = Math.Max(D(18), Math.Min(CInt(rowH) - D(3), If(row.Big, D(42), D(32))))
             Dim vb As New RectangleF(valX, y + (rowH - bh) / 2, valW, bh)
             Using path = Draw.RoundedRect(vb, D(5)), fill As New SolidBrush(Draw.Mix(p.Surface, row.Colour, 0.12)), pen As New Pen(Draw.Mix(p.Surface, row.Colour, 0.5))
                 g.FillPath(fill, path)
                 g.DrawPath(pen, path)
             End Using
-            TextRenderer.DrawText(g, row.Value, If(row.Big, Fonts.Title, Fonts.Section), Rectangle.Round(vb), row.Colour,
-                                  TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter Or TextFormatFlags.EndEllipsis)
+            Dim inner As New Size(CInt(vb.Width) - D(6), CInt(vb.Height))
+            Dim f = If(row.Big, ResultPanelView.FitFont(g, row.Value, inner, Fonts.Title, Fonts.Section, Fonts.Strong, Fonts.Body),
+                                ResultPanelView.FitFont(g, row.Value, inner, Fonts.Section, Fonts.Strong, Fonts.Body, Fonts.Small))
+            TextRenderer.DrawText(g, row.Value, f, Rectangle.Round(vb), row.Colour,
+                                  TextFormatFlags.HorizontalCenter Or TextFormatFlags.VerticalCenter Or TextFormatFlags.NoPadding Or TextFormatFlags.EndEllipsis)
             TextRenderer.DrawText(g, row.Note, Fonts.Body, New Rectangle(CInt(vb.Right) + D(8), CInt(y), ftW - D(8), CInt(rowH)), p.Muted,
-                                  TextFormatFlags.Left Or TextFormatFlags.VerticalCenter)
+                                  TextFormatFlags.Left Or TextFormatFlags.VerticalCenter Or TextFormatFlags.EndEllipsis)
         Next
     End Sub
 
@@ -1168,7 +1292,7 @@ Public NotInheritable Class ResultEditDialog
     Public Sub New(r As ReadEZResult)
         _r = r.Clone()
         SetTitle("results.edit.title")
-        SetSubtitleText(If(r.IsBaseline, Loc.T("mode.baseline"), Loc.T(TestRun.ModeKey(r.Mode)) & "  ·  " & r.ColourName) & "  ·  " & r.Test_Date.ToString("g", Loc.Culture))
+        SetSubtitleText(Loc.T(TestRun.ResultKey(r)) & If(r.IsBaseline, "", "  ·  " & r.ColourName) & "  ·  " & r.Test_Date.ToString("g", Loc.Culture))
         ClientSize = New Size(620, 800)
 
         Dim col = Ui.Column(4)

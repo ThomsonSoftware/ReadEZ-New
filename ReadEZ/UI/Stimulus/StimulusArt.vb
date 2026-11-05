@@ -18,6 +18,7 @@ Public NotInheritable Class StimulusArt
     Public Shared ReadOnly Property ScreenSize As Size
         Get
             If TabletScreen.IsActive Then Return TabletScreen.ScreenSize     ' drawn at the tablet's size
+            If AppHost.Settings.ForceOneScreen OrElse AppHost.Settings.UseTablet Then Return ScreenLayout.PatientScreenRect().Size   ' one screen chosen: this monitor
             Dim s = AppHost.Settings
             Return New Size(Math.Max(1, s.Stimulus_Width), Math.Max(1, s.Stimulus_Height))
         End Get

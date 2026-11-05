@@ -54,6 +54,13 @@ Public NotInheritable Class ReadingScene
     Public Property Presentation As ReadingPresentation = ReadingPresentation.White
     Public Property Colour1 As Color = Color.White
     Public Property Colour2 As Color = Color.White
+    ''' <summary>
+    ''' Pattern tests: the height of a stripe (patient's screen pixels) of the horizontal black stripes
+    ''' shown instead of the text, in a square block where the text would be (0 = the text). The
+    ''' white of the stripes is the background, so an overlay or a coloured screen tints it.
+    ''' </summary>
+    Public Property PatternStripe As Integer
+
     ''' <summary>A small label in a corner of the patient's screen ("1", "2" for colours shown one after the other).</summary>
     Public Property Caption As String = ""
 
@@ -96,8 +103,11 @@ Public NotInheritable Class ReadingScene
         Public Lefts As Single()       ' left edge of each copy (1 or 2)
         Public Top As Single
         Public WordRects As New List(Of List(Of RectangleF))   ' per row: each word, relative to the copy's left
+        ''' <summary>Pattern tests: the side of the square block of stripes (0 = text).</summary>
+        Public PatternSide As Single
         Public ReadOnly Property TextHeight As Single
             Get
+                If PatternSide > 0 Then Return PatternSide
                 Return If(WordRects.Count = 0, 0, (WordRects.Count - 1) * Pitch + LineHeight)
             End Get
         End Property
@@ -108,7 +118,8 @@ Public NotInheritable Class ReadingScene
 
     Private Function Key() As String
         Dim sz = StimulusArt.ScreenSize
-        Return String.Join("|", {FontName, FontSize.ToString(), LineSpacing.ToString(), Presentation.ToString(), sz.Width.ToString(), sz.Height.ToString(), String.Join(vbLf, Rows)})
+        Return String.Join("|", {FontName, FontSize.ToString(), LineSpacing.ToString(), Presentation.ToString(), sz.Width.ToString(), sz.Height.ToString(),
+                                 OverlaySize.ToString(), PatternStripe.ToString(), String.Join(vbLf, Rows)})
     End Function
 
     Private Function GetLayout() As Layout
@@ -117,6 +128,26 @@ Public NotInheritable Class ReadingScene
         Dim sz = StimulusArt.ScreenSize
         Dim lay As New Layout
         Dim two = Presentation = ReadingPresentation.TwoOverlays
+        If PatternStripe > 0 Then
+            ' The pattern: a square block as large as fits (each in half the screen for two side by side,
+            ' with room for the overlay round it), on whole pixels so the stripes are exact
+            Dim grow = 1.0F + 0.1F + OverlaySize / 10.0F
+            Dim room = If(two, sz.Width / 2.0F, CSng(sz.Width)) * 0.92F / grow
+            Dim side = CSng(Math.Floor(Math.Min(Math.Min(sz.Height * 0.46F, room), sz.Height * 0.92F / grow)))
+            lay.PatternSide = side
+            lay.TextWidth = side
+            lay.LineHeight = Math.Max(4.0F, side / 12)
+            lay.Pitch = lay.LineHeight
+            lay.Top = CSng(Math.Floor((sz.Height - side) / 2))
+            If two Then
+                lay.Lefts = {CSng(Math.Floor((sz.Width / 2.0F - side) / 2)), CSng(Math.Floor(sz.Width / 2.0F + (sz.Width / 2.0F - side) / 2))}
+            Else
+                lay.Lefts = {CSng(Math.Floor((sz.Width - side) / 2))}
+            End If
+            _layout = lay
+            _layoutKey = k
+            Return lay
+        End If
         lay.FontPx = (FontSize + 8) * 96.0F / 72.0F
         ' Two copies side by side must each fit in half the screen (with room for the overlay)
         For attempt = 0 To 30
@@ -186,7 +217,7 @@ Public NotInheritable Class ReadingScene
     ''' round it. Empty if there is no text. Used to draw an enlarged copy for scoring.
     ''' </summary>
     Public Function TextBounds() As RectangleF
-        If Rows.Count = 0 Then Return RectangleF.Empty
+        If Rows.Count = 0 AndAlso PatternStripe <= 0 Then Return RectangleF.Empty
         Dim lay = GetLayout()
         If lay.TextWidth <= 0 OrElse lay.TextHeight <= 0 Then Return RectangleF.Empty
         Dim m = lay.LineHeight
@@ -207,7 +238,7 @@ Public NotInheritable Class ReadingScene
 
     ''' <summary>Copy n (0 or 1): its coloured overlay, or the text block itself on white / full screen.</summary>
     Public Function CopyBounds(n As Integer) As RectangleF
-        If Rows.Count = 0 Then Return RectangleF.Empty
+        If Rows.Count = 0 AndAlso PatternStripe <= 0 Then Return RectangleF.Empty
         Dim lay = GetLayout()
         If n < 0 OrElse n >= lay.Lefts.Length Then Return RectangleF.Empty
         If Presentation = ReadingPresentation.Overlay OrElse Presentation = ReadingPresentation.TwoOverlays Then Return OverlayRect(lay, n)
@@ -236,7 +267,7 @@ Public NotInheritable Class ReadingScene
         g.TranslateTransform(bounds.X, bounds.Y)
         g.ScaleTransform(k, k)
         Try
-            If Presentation <> ReadingPresentation.ColourOnly AndAlso Rows.Count > 0 Then DrawText(g, preview)
+            If Presentation <> ReadingPresentation.ColourOnly AndAlso (Rows.Count > 0 OrElse PatternStripe > 0) Then DrawText(g, preview)
             If Caption <> "" Then
                 Using f As New Font("Segoe UI Semibold", 40, GraphicsUnit.Pixel), cb As New SolidBrush(Color.FromArgb(130, 60, 60, 60))
                     g.DrawString(Caption, f, cb, 40, 30)
@@ -257,6 +288,18 @@ Public NotInheritable Class ReadingScene
                 Using b As New SolidBrush(If(n = 0, Colour1, Colour2))
                     g.FillRectangle(b, OverlayRect(lay, n))
                 End Using
+            End If
+            If PatternStripe > 0 Then
+                ' The pattern: black stripes; the white ones are the background (white, the overlay or the screen colour)
+                Dim oldSmoothing = g.SmoothingMode
+                g.SmoothingMode = SmoothingMode.None
+                Dim y = lay.Top
+                While y < lay.Top + lay.PatternSide
+                    g.FillRectangle(Brushes.Black, lay.Lefts(n), y, lay.PatternSide, Math.Min(PatternStripe, lay.Top + lay.PatternSide - y))
+                    y += 2 * PatternStripe
+                End While
+                g.SmoothingMode = oldSmoothing
+                Continue For
             End If
             Using f = MakeFont(lay.FontPx)
                 For r = 0 To Rows.Count - 1

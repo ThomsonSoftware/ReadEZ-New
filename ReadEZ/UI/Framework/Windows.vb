@@ -73,7 +73,18 @@ Public Class DialogBase
     Protected Overrides Sub OnLoad(e As EventArgs)
         Dpi.ScaleOnce(Me)
         ThemeManager.Apply(Me)
+        ' One screen with the patient's view in front: that view is top-most, so this window must be
+        ' too - otherwise it can end up hidden behind it (and, being modal, nothing else can be clicked).
+        If Stimulus.IsOpen AndAlso Stimulus.Window.Visible AndAlso Stimulus.Window.IsInFront Then TopMost = True
         MyBase.OnLoad(e)
+    End Sub
+
+    Protected Overrides Sub OnShown(e As EventArgs)
+        MyBase.OnShown(e)
+        If TopMost Then
+            BringToFront()
+            Activate()
+        End If
     End Sub
 
     ''' <summary>Sets the translated title (and optional subtitle) of the dialog.</summary>
@@ -211,6 +222,9 @@ Public NotInheritable Class Toast
 
     Public Shared Shadows Sub Show(owner As Form, message As String, Optional kind As ToastKind = ToastKind.Info, Optional durationMs As Integer = 3500)
         If owner Is Nothing OrElse owner.IsDisposed Then Return
+        ' One screen, patient's view in front: no notes over it (distraction free)
+        If Stimulus.IsOpen AndAlso Stimulus.Window.IsInFront AndAlso
+           Screen.FromControl(owner).DeviceName = Screen.FromControl(Stimulus.Window).DeviceName Then Return
         Dim t As New Toast(message, kind, durationMs)
         Dim area = Screen.FromControl(owner).WorkingArea
         Dim ownerRect = owner.RectangleToScreen(owner.ClientRectangle)
@@ -264,34 +278,44 @@ Public NotInheritable Class Ask
     Private Sub New()
     End Sub
 
+    ''' <summary>
+    ''' The window a message belongs to. One screen with the patient's view in front (it is
+    ''' top-most): the message is put on top of that view, or it would open hidden behind it.
+    ''' </summary>
+    Public Shared Function DialogOwner(owner As IWin32Window) As IWin32Window
+        If TypeOf owner Is Form AndAlso DirectCast(owner, Form).Modal Then Return owner     ' a window's own message stays on it
+        If Stimulus.IsOpen AndAlso Stimulus.Window.Visible AndAlso Stimulus.Window.IsInFront Then Return Stimulus.Window
+        Return owner
+    End Function
+
     Public Shared Function YesNo(owner As IWin32Window, messageKey As String, ParamArray args As Object()) As Boolean
-        Return MessageBox.Show(owner, Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes
+        Return MessageBox.Show(DialogOwner(owner), Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes
     End Function
 
     Public Shared Function YesNoWarning(owner As IWin32Window, messageKey As String, ParamArray args As Object()) As Boolean
-        Return MessageBox.Show(owner, Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) = DialogResult.Yes
+        Return MessageBox.Show(DialogOwner(owner), Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) = DialogResult.Yes
     End Function
 
     Public Shared Function YesNoCancel(owner As IWin32Window, messageKey As String, ParamArray args As Object()) As DialogResult
-        Return MessageBox.Show(owner, Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+        Return MessageBox.Show(DialogOwner(owner), Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
     End Function
 
     Public Shared Sub Info(owner As IWin32Window, messageKey As String, ParamArray args As Object())
-        MessageBox.Show(owner, Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
+        MessageBox.Show(DialogOwner(owner), Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Public Shared Sub Warn(owner As IWin32Window, messageKey As String, ParamArray args As Object())
-        MessageBox.Show(owner, Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        MessageBox.Show(DialogOwner(owner), Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
     Public Shared Sub [Error](owner As IWin32Window, messageKey As String, ParamArray args As Object())
-        MessageBox.Show(owner, Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
+        MessageBox.Show(DialogOwner(owner), Loc.F(messageKey, args), AppHost.ProductTitle, MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
     ''' <summary>Simple translated text prompt (replaces InputBox).</summary>
     Public Shared Function Text(owner As IWin32Window, titleKey As String, promptKey As String, Optional initial As String = "", Optional password As Boolean = False) As String
         Using f As New TextPromptDialog(titleKey, promptKey, initial, password)
-            If f.ShowDialog(owner) = DialogResult.OK Then Return f.Value
+            If f.ShowDialog(DialogOwner(owner)) = DialogResult.OK Then Return f.Value
         End Using
         Return Nothing
     End Function

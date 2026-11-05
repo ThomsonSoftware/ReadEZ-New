@@ -54,7 +54,7 @@ Public NotInheritable Class ReadEZReport
 
     Private Shared Function TestLines(r As ReadEZResult) As List(Of String)
         Dim l As New List(Of String) From {
-            Loc.T("report.test") & ": " & Loc.T(TestRun.ModeKey(r.Mode)),
+            Loc.T("report.test") & ": " & Loc.T(TestRun.ResultKey(r)),
             Loc.T("report.date") & ": " & r.Test_Date.ToString("g", Loc.Culture)}
         Dim screener = AppHost.Db.ScreenerName(r.Screener_ID)
         If screener <> "" Then l.Add(Loc.T("report.screener") & ": " & screener)

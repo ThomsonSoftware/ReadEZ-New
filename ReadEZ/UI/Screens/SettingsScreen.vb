@@ -53,7 +53,19 @@ Public Class SettingsScreen
     Private ReadOnly nudReadTime As NumericUpDown = Ui.NumberBox(10, 300, 60)
     Private ReadOnly nudTiming As NumericUpDown = Ui.NumberBox(0.5D, 10, 3, decimals:=1)
     Private ReadOnly chkBeep As ThemedCheckBox = ThemedCheckBox.Create("settings.beep")
-    Private ReadOnly chkFullWindow As ThemedCheckBox = ThemedCheckBox.Create("settings.fullWindow")
+    Private ReadOnly segScreens As New SegmentedControl
+    Private ReadOnly cboOneMonitor As New ThemedComboBox With {.Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}
+    Private _oneMonitorStack As Control
+    ' Two screens / control screen and tablet: which monitor is which
+    Private ReadOnly cboControlMon As New ThemedComboBox With {.Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}
+    Private ReadOnly cboPatientMon As New ThemedComboBox With {.Width = 300, .DropDownStyle = ComboBoxStyle.DropDownList}
+    Private _controlStack, _patientStack, _tabletPanel As Control
+    Private _controlCard, _patientCard As Card
+    Private _syncing, _loadingScreens As Boolean
+    ''' <summary>Set while Tablet devices is open from here, so the choices not yet saved are kept.</summary>
+    Private _keepEdits As Boolean
+    ' Settings > Screens > "Screens to use"
+    Private Const ModeOne As Integer = 0, ModeTwo As Integer = 1, ModeTablet As Integer = 2
 
     ' ReadEZ colours
     Private ReadOnly lblReadEZ As New Label With {.AutoSize = True, .Font = Fonts.Body, .MaximumSize = New Size(560, 0), .Margin = New Padding(0, 8, 0, 6)}
@@ -63,7 +75,6 @@ Public Class SettingsScreen
     Private ReadOnly ctl As New RectEditor(fullScreen:=False)
     Private ReadOnly stim As New RectEditor(fullScreen:=True)
     Private ReadOnly lblMode As New Label With {.AutoSize = True, .Font = Fonts.Strong, .MaximumSize = New Size(620, 0), .Margin = New Padding(0, 8, 0, 0)}
-    Private ReadOnly chkTablet As ThemedCheckBox = ThemedCheckBox.Create("settings.tablet.use")
     Private ReadOnly lblTablet As New Label With {.AutoSize = True, .Font = Fonts.Body, .MaximumSize = New Size(620, 0), .Margin = New Padding(0, 6, 0, 8)}
 
     Public Sub New()
@@ -121,7 +132,20 @@ Public Class SettingsScreen
 
     Public Overrides Sub OnActivated()
         MyBase.OnActivated()
-        LoadAll()
+        If _keepEdits Then
+            ' Back from Tablet devices: keep what was being set up here
+            _keepEdits = False
+            ShowTablet()
+            ShowMode()
+        Else
+            LoadAll()
+        End If
+    End Sub
+
+    ''' <summary>Shows the Screens tab (top bar's screens chip, Tablet devices' Back).</summary>
+    Public Sub ShowScreensTab()
+        _tabs.SelectedIndex = 3
+        ShowPage(3)
     End Sub
 
     Private Shared Function PageCard(titleKey As String) As Card
@@ -218,7 +242,6 @@ Public Class SettingsScreen
         row.Controls.Add(Ui.Stack("settings.timing", nudTiming))
         col.Controls.Add(row)
         col.Controls.Add(chkBeep)
-        col.Controls.Add(chkFullWindow)
         card.Controls.Add(col)
         Return card
     End Function
@@ -505,63 +528,174 @@ Public Class SettingsScreen
         Return row
     End Function
 
+    ''' <summary>
+    ''' Screens: one screen (which monitor), two screens (which monitor is the control screen and
+    ''' which the patient's), or the control screen and a tablet (the tablet chosen in Tablet
+    ''' devices becomes the patient's screen).
+    ''' </summary>
     Private Function BuildScreens() As Control
         Dim arrangement = PageCard("settings.section.screens")
         Dim col = Ui.Column()
         col.Dock = DockStyle.Top
+        segScreens.SetOptions("settings.screens.modeOne", "settings.screens.modeTwo", "settings.screens.modeTablet")
+        segScreens.Margin = New Padding(0, 0, 0, 10)
+        AddHandler segScreens.SelectedIndexChanged, Sub() ModeChanged()
+        col.Controls.Add(Ui.Stack("settings.screens.use", segScreens))
+
+        ' Which monitor: one screen - the monitor for everything; otherwise the control screen (and the patient's)
+        FillMonitors()
+        _oneMonitorStack = Ui.Stack("settings.screens.oneMonitor", cboOneMonitor)
+        _controlStack = Ui.Stack("settings.screens.controlMonitor", cboControlMon)
+        _patientStack = Ui.Stack("settings.screens.patientMonitor", cboPatientMon)
+        Dim pickers = Ui.Row(wrap:=True)
+        For Each st In {_oneMonitorStack, _controlStack, _patientStack}
+            st.Margin = New Padding(0, 0, 16, 6)
+            pickers.Controls.Add(st)
+        Next
+        col.Controls.Add(pickers)
+        AddHandler cboOneMonitor.SelectedIndexChanged, Sub()
+                                                           preview.Invalidate()
+                                                           ShowMode()
+                                                       End Sub
+        AddHandler cboControlMon.SelectedIndexChanged, Sub()
+                                                           If _syncing Then Return
+                                                           Dim i = cboControlMon.SelectedIndex
+                                                           If i >= 0 AndAlso MonitorIndex(ctl.Value) <> i Then ctl.Value = ScreenLayout.ScreenRect(i, False)
+                                                       End Sub
+        AddHandler cboPatientMon.SelectedIndexChanged, Sub()
+                                                           If _syncing Then Return
+                                                           Dim i = cboPatientMon.SelectedIndex
+                                                           If i >= 0 AndAlso MonitorIndex(stim.Value) <> i Then stim.Value = ScreenLayout.ScreenRect(i, True)
+                                                       End Sub
+
+        ' Control screen and tablet: what the tablet is for, its state, and the devices
+        Dim tcol = Ui.Column()
+        tcol.Margin = New Padding(0, 4, 0, 8)
+        Dim becomes = Ui.Label("settings.tablet.becomes")
+        becomes.Font = Fonts.Strong
+        becomes.MaximumSize = New Size(620, 0)
+        tcol.Controls.Add(becomes)
+        Dim about = Ui.Label("settings.tablet.about", muted:=True)
+        about.MaximumSize = New Size(620, 0)
+        about.Margin = New Padding(0, 6, 0, 0)
+        tcol.Controls.Add(about)
+        LabelStyle.SetMuted(lblTablet)
+        tcol.Controls.Add(lblTablet)
+        Dim devices = ModernButton.Create("settings.tablet.devices", ButtonKind.Primary, DevicesScreen.DevicesGlyph)
+        AddHandler devices.Click, Sub()
+                                      Dim main = AppHost.MainWindow
+                                      If main Is Nothing Then Return
+                                      _keepEdits = True
+                                      If Not main.ShowScreen(MainForm.ScreenDevices) Then _keepEdits = False
+                                  End Sub
+        tcol.Controls.Add(devices)
+        _tabletPanel = tcol
+        col.Controls.Add(tcol)
+        AddHandler TabletScreen.Changed, Sub() If Not IsDisposed Then ShowTablet()
+
         preview.Size = New Size(620, 170)
-        preview.ControlRect = Function() ctl.Value
-        preview.StimulusRect = Function() stim.Value
+        ' One screen: both windows on the monitor chosen; a tablet: no patient's window on the computer
+        preview.ControlRect = Function() If(segScreens.SelectedIndex = ModeOne, ChosenMonitor().WorkingArea, ctl.Value)
+        preview.StimulusRect = Function()
+                                   Select Case segScreens.SelectedIndex
+                                       Case ModeOne : Return ChosenMonitor().Bounds
+                                       Case ModeTablet : Return Rectangle.Empty
+                                       Case Else : Return stim.Value
+                                   End Select
+                               End Function
         col.Controls.Add(preview)
-        Dim hint = Ui.Label("settings.screens.hint", muted:=True)
-        hint.MaximumSize = New Size(620, 0)
-        col.Controls.Add(hint)
         col.Controls.Add(lblMode)
         arrangement.Controls.Add(col)
 
-        ' A tablet as the patient's screen (Near Chart's technology: Devices screen)
-        Dim tablet = PageCard("settings.section.tablet")
-        Dim tcol = Ui.Column()
-        tcol.Dock = DockStyle.Top
-        Dim about = Ui.Label("settings.tablet.about", muted:=True)
-        about.MaximumSize = New Size(620, 0)
-        tcol.Controls.Add(about)
-        chkTablet.Checked = AppHost.Settings.UseTablet
-        chkTablet.Margin = New Padding(0, 8, 0, 0)
-        AddHandler chkTablet.CheckedChanged, Sub()
-                                                 If chkTablet.Checked = AppHost.Settings.UseTablet Then Return
-                                                 TabletScreen.SetEnabled(chkTablet.Checked)
-                                                 ShowTablet()
-                                                 ShowMode()
-                                             End Sub
-        tcol.Controls.Add(chkTablet)
-        LabelStyle.SetMuted(lblTablet)
-        tcol.Controls.Add(lblTablet)
-        Dim devices = ModernButton.Create("settings.tablet.devices", ButtonKind.Secondary, DevicesScreen.DevicesGlyph)
-        AddHandler devices.Click, Sub() AppHost.MainWindow?.ShowScreen(MainForm.ScreenDevices)
-        tcol.Controls.Add(devices)
-        tablet.Controls.Add(tcol)
-        AddHandler TabletScreen.Changed, Sub() If Not IsDisposed Then ShowTablet()
-        ShowTablet()
-
-        Dim control = PageCard("settings.section.controlScreen")
+        ' Exact positions (two screens; the control screen also with a tablet)
+        _controlCard = PageCard("settings.section.controlScreen")
         ctl.Dock = DockStyle.Top
         AddHandler ctl.Changed, Sub()
+                                    SyncPickers()
                                     preview.Invalidate()
                                     ShowMode()
                                 End Sub
-        control.Controls.Add(ctl)
+        _controlCard.Controls.Add(ctl)
 
-        Dim patient = PageCard("settings.section.patientScreen")
+        _patientCard = PageCard("settings.section.patientScreen")
         Dim col2 = Ui.Column()
         col2.Dock = DockStyle.Top
         AddHandler stim.Changed, Sub()
+                                     SyncPickers()
                                      preview.Invalidate()
                                      ShowMode()
                                  End Sub
         col2.Controls.Add(stim)
-        patient.Controls.Add(col2)
-        Return Page(arrangement, tablet, control, patient)
+        _patientCard.Controls.Add(col2)
+        ModeChanged()
+        Return Page(arrangement, _controlCard, _patientCard)
+    End Function
+
+    ''' <summary>Shows what the mode chosen needs: the monitor pickers, the tablet, the position cards.</summary>
+    Private Sub ModeChanged()
+        If _patientCard Is Nothing Then Return
+        Dim m = segScreens.SelectedIndex
+        _oneMonitorStack.Visible = m = ModeOne
+        _controlStack.Visible = m <> ModeOne
+        _patientStack.Visible = m = ModeTwo
+        _tabletPanel.Visible = m = ModeTablet
+        _controlCard.Visible = m <> ModeOne
+        _patientCard.Visible = m = ModeTwo
+        ' Two screens chosen with both windows on one monitor: put the patient's on another one
+        If m = ModeTwo AndAlso Not _loadingScreens Then
+            Dim screens = ScreenLayout.PrimaryLeadingScreens()
+            Dim ci = Math.Max(0, MonitorIndex(ctl.Value))
+            If screens.Count > 1 AndAlso MonitorIndex(stim.Value) = ci Then
+                stim.Value = ScreenLayout.ScreenRect(If(ci = 0, 1, 0), True)
+            End If
+        End If
+        SyncPickers()
+        ShowTablet()
+        preview.Invalidate()
+        ShowMode()
+    End Sub
+
+    ''' <summary>The control and patient pickers follow the positions (which may also be typed in).</summary>
+    Private Sub SyncPickers()
+        _syncing = True
+        Try
+            Dim ci = MonitorIndex(ctl.Value), pi = MonitorIndex(stim.Value)
+            If ci < cboControlMon.Items.Count Then cboControlMon.SelectedIndex = ci
+            If pi < cboPatientMon.Items.Count Then cboPatientMon.SelectedIndex = pi
+        Finally
+            _syncing = False
+        End Try
+    End Sub
+
+    ''' <summary>Which monitor (0 = screen 1, as numbered in the picture) holds r; -1 if none.</summary>
+    Private Shared Function MonitorIndex(r As Rectangle) As Integer
+        If Not ScreenLayout.IsOnScreen(r) Then Return -1
+        Dim dev = ScreenLayout.ScreenOf(r).DeviceName
+        Return ScreenLayout.PrimaryLeadingScreens().FindIndex(Function(x) x.DeviceName = dev)
+    End Function
+
+    ''' <summary>"Screen 1 (1920 × 1080, main)", "Screen 2 ..." - numbered as in the picture below.</summary>
+    Private Sub FillMonitors()
+        _syncing = True
+        Try
+            Dim screens = ScreenLayout.PrimaryLeadingScreens()
+            For Each cbo In {cboOneMonitor, cboControlMon, cboPatientMon}
+                cbo.Items.Clear()
+                For i = 0 To screens.Count - 1
+                    Dim b = screens(i).Bounds
+                    cbo.Items.Add(Loc.F(If(screens(i).Primary, "settings.screens.monitorMain", "settings.screens.monitor"), i + 1, b.Width, b.Height))
+                Next
+            Next
+            cboOneMonitor.SelectedIndex = Math.Max(0, Math.Min(cboOneMonitor.Items.Count - 1, AppHost.Settings.OneScreenMonitor))
+        Finally
+            _syncing = False
+        End Try
+    End Sub
+
+    Private Function ChosenMonitor() As Screen
+        Dim screens = ScreenLayout.PrimaryLeadingScreens()
+        Dim i = cboOneMonitor.SelectedIndex
+        Return If(i >= 0 AndAlso i < screens.Count, screens(i), screens(0))
     End Function
 
     Private Sub ShowTablet()
@@ -574,7 +708,7 @@ Public Class SettingsScreen
         ElseIf s.UseTablet Then
             lblTablet.Text = Loc.T("settings.tablet.waiting")
         Else
-            lblTablet.Text = Loc.T("settings.tablet.off")
+            lblTablet.Text = Loc.T("settings.tablet.notSaved")
         End If
     End Sub
 
@@ -597,15 +731,23 @@ Public Class SettingsScreen
         Return readez
     End Function
 
-    ''' <summary>One or two screens, from the rectangles being edited.</summary>
+    ''' <summary>What the choices mean, in one line under the picture.</summary>
     Private Sub ShowMode()
-        Dim c = ctl.Value, t = stim.Value
-        If TabletScreen.IsActive Then
-            lblMode.Text = Loc.T("settings.mode.tablet")
-            Return
-        End If
-        Dim two = ScreenLayout.IsOnScreen(c) AndAlso ScreenLayout.IsOnScreen(t) AndAlso ScreenLayout.ScreenOf(c).DeviceName <> ScreenLayout.ScreenOf(t).DeviceName
-        lblMode.Text = Loc.T(If(two, "settings.mode.two", "settings.mode.one"))
+        Select Case segScreens.SelectedIndex
+            Case ModeOne
+                lblMode.Text = Loc.F("settings.mode.oneChosenOn", Math.Max(0, cboOneMonitor.SelectedIndex) + 1)
+            Case ModeTablet
+                lblMode.Text = Loc.F("settings.mode.tabletOn", Math.Max(0, MonitorIndex(ctl.Value)) + 1)
+            Case Else
+                Dim ci = MonitorIndex(ctl.Value), pi = MonitorIndex(stim.Value)
+                If Screen.AllScreens.Length < 2 Then
+                    lblMode.Text = Loc.T("settings.mode.twoOnlyOne")
+                ElseIf ci < 0 OrElse pi < 0 OrElse ci = pi Then
+                    lblMode.Text = Loc.T("settings.mode.twoSame")
+                Else
+                    lblMode.Text = Loc.F("settings.mode.twoOn", ci + 1, pi + 1)
+                End If
+        End Select
     End Sub
 
     Private Sub ShowReadEZStatus()
@@ -647,7 +789,7 @@ Public Class SettingsScreen
         nudReadTime.Value = Clamp(nudReadTime, s.RoR_ReadingTime)
         nudTiming.Value = CDec(Math.Max(0.5, Math.Min(10, s.Timing / 1000.0)))
         chkBeep.Checked = s.RoR_Beep
-        chkFullWindow.Checked = s.SingleScreenFullWindow
+        FillMonitors()
         ShowLogoPreview()
 
         segTheme.SelectedIndex = CInt(ThemeManager.Mode)
@@ -661,8 +803,10 @@ Public Class SettingsScreen
 
         ctl.Value = s.ControlBounds
         stim.Value = s.StimulusBounds
-        preview.Invalidate()
-        ShowMode()
+        _loadingScreens = True
+        segScreens.SelectedIndex = If(s.UseTablet, ModeTablet, If(s.ForceOneScreen OrElse Screen.AllScreens.Length < 2, ModeOne, ModeTwo))
+        _loadingScreens = False
+        ModeChanged()
     End Sub
 
     Private Shared Function Clamp(n As NumericUpDown, v As Integer) As Decimal
@@ -709,11 +853,20 @@ Public Class SettingsScreen
         s.RoR_ReadingTime = CInt(nudReadTime.Value)
         s.Timing = CInt(nudTiming.Value * 1000)
         s.RoR_Beep = chkBeep.Checked
-        s.SingleScreenFullWindow = chkFullWindow.Checked
+        Dim mode = segScreens.SelectedIndex
+        s.ForceOneScreen = mode = ModeOne
+        s.OneScreenMonitor = Math.Max(0, cboOneMonitor.SelectedIndex)
+        Dim useTablet = mode = ModeTablet
+        Dim tabletChanged = useTablet <> s.UseTablet
 
         s.Theme = CType(segTheme.SelectedIndex, ThemeMode)
 
         Dim c = ctl.Value
+        ' One screen: the control window goes on the monitor chosen
+        If s.ForceOneScreen AndAlso ScreenLayout.ScreenOf(c).DeviceName <> ChosenMonitor().DeviceName Then
+            c = ChosenMonitor().WorkingArea
+            ctl.Value = c
+        End If
         Dim controlMoved = c <> s.ControlBounds
         s.Control_Left = c.Left : s.Control_Top = c.Top : s.Control_Width = c.Width : s.Control_Height = c.Height
         Dim t = stim.Value
@@ -725,12 +878,14 @@ Public Class SettingsScreen
         Dim lang = CType(Math.Max(0, cmbLanguage.SelectedIndex), AppLanguage)
         s.Language = lang.ToString()
         AppHost.SaveSettings()
+        If tabletChanged Then TabletScreen.SetEnabled(useTablet)     ' the tablet becomes (or stops being) the patient's screen
         If Stimulus.IsOpen Then
             Stimulus.Window.PlaceOnStimulusScreen()
             Stimulus.Window.ResumeTopMost()      ' after an emergency Ctrl+S
         End If
         Dim main = TryCast(FindForm(), MainForm)
         If controlMoved AndAlso main IsNot Nothing Then main.PlaceOnControlScreen()
+        main?.Activate()                         ' the control window in front (the patient's view stays behind it)
         ReadEZColours.ForgetScreen()
         main?.RefreshStatus()
         ThemeManager.SetMode(s.Theme)
@@ -924,7 +1079,10 @@ Public Class ScreenArrangementPreview
                                   TextFormatFlags.HorizontalCenter Or TextFormatFlags.Bottom)
         Next
         If ControlRect IsNot Nothing Then DrawWindow(g, map(ControlRect.Invoke()), p.Primary, Loc.T("settings.controlWindow"))
-        If StimulusRect IsNot Nothing Then DrawWindow(g, map(StimulusRect.Invoke()), p.Success, Loc.T("settings.patientWindow"))
+        If StimulusRect IsNot Nothing Then
+            Dim sr = StimulusRect.Invoke()
+            If Not sr.IsEmpty Then DrawWindow(g, map(sr), p.Success, Loc.T("settings.patientWindow"))
+        End If
     End Sub
 
     Private Shared Sub DrawWindow(g As Graphics, r As RectangleF, colour As Color, caption As String)

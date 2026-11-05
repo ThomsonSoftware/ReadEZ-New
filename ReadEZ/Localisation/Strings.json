@@ -1079,6 +1079,18 @@
     "de": "Gerät hinzufügen",
     "it": "Aggiungi dispositivo"
   },
+  "dev.back": {
+    "en": "Back to Settings",
+    "es": "Volver a Ajustes",
+    "de": "Zurück zu Einstellungen",
+    "it": "Torna alle Impostazioni"
+  },
+  "dev.becomes": {
+    "en": "The device selected below becomes the patient's screen when Settings › Screens is set to \"Control screen and tablet\". The patient looks at it and taps it instead of a second monitor.",
+    "es": "El dispositivo seleccionado abajo se convierte en la pantalla del paciente cuando Ajustes › Pantallas está en \"Pantalla de control y tableta\". El paciente lo mira y lo toca en lugar de un segundo monitor.",
+    "de": "Das unten gewählte Gerät wird zum Bildschirm des Patienten, wenn Einstellungen › Bildschirme auf \"Steuerbildschirm und Tablet\" steht. Der Patient schaut darauf und tippt statt eines zweiten Monitors.",
+    "it": "Il dispositivo selezionato sotto diventa lo schermo del paziente quando Impostazioni › Schermi è su \"Schermo di controllo e tablet\". Il paziente lo guarda e lo tocca al posto di un secondo monitor."
+  },
   "dev.check": {
     "en": "Check connection",
     "es": "Comprobar conexión",
@@ -1314,10 +1326,10 @@
     "it": "Stato"
   },
   "dev.subtitle": {
-    "en": "A tablet as the patient's screen",
-    "es": "Una tableta como pantalla del paciente",
-    "de": "Ein Tablet als Patientenbildschirm",
-    "it": "Un tablet come schermo del paziente"
+    "en": "Settings › Screens: the tablet that becomes the patient's screen",
+    "es": "Ajustes › Pantallas: la tableta que será la pantalla del paciente",
+    "de": "Einstellungen › Bildschirme: das Tablet, das zum Bildschirm des Patienten wird",
+    "it": "Impostazioni › Schermi: il tablet che diventa lo schermo del paziente"
   },
   "dev.tablet": {
     "en": "Tablet",
@@ -1326,16 +1338,16 @@
     "it": "Tablet"
   },
   "dev.title": {
-    "en": "Devices",
-    "es": "Dispositivos",
-    "de": "Geräte",
-    "it": "Dispositivi"
+    "en": "Tablet devices",
+    "es": "Tabletas",
+    "de": "Tablets",
+    "it": "Tablet"
   },
   "dev.turnOnHint": {
-    "en": "To show the tests on it: Settings › Screens › Use a tablet as the patient's screen.",
-    "es": "Para mostrar las pruebas en ella: Ajustes › Pantallas › Usar una tableta como pantalla del paciente.",
-    "de": "Um die Tests darauf zu zeigen: Einstellungen › Bildschirme › Ein Tablet als Patientenbildschirm verwenden.",
-    "it": "Per mostrare i test: Impostazioni › Schermi › Usa un tablet come schermo del paziente."
+    "en": "To use it, choose \"Control screen and tablet\" in Settings › Screens and Save.",
+    "es": "Para usarla, elija \"Pantalla de control y tableta\" en Ajustes › Pantallas y guarde.",
+    "de": "Zum Verwenden \"Steuerbildschirm und Tablet\" unter Einstellungen › Bildschirme wählen und speichern.",
+    "it": "Per usarlo, scegli \"Schermo di controllo e tablet\" in Impostazioni › Schermi e salva."
   },
   "eula.button": {
     "en": "Licence agreement",
@@ -1901,6 +1913,12 @@
     "de": "Sie sehen den Text zweimal nebeneinander, jeweils auf einer anderen Farbe.",
     "it": "Vedrai due copie del testo una accanto all'altra, ciascuna su un colore diverso."
   },
+  "instr.overlay.1p": {
+    "en": "You will see two copies of the striped pattern side by side, each on a different colour.",
+    "es": "Verás dos copias del patrón de rayas una al lado de la otra, cada una con un color distinto.",
+    "de": "Du siehst zwei Kopien des Streifenmusters nebeneinander, jede in einer anderen Farbe.",
+    "it": "Vedrai due copie del pattern a strisce affiancate, ognuna di un colore diverso."
+  },
   "instr.overlay.2": {
     "en": "Look at both, then say which side is more comfortable to look at: left or right.",
     "es": "Mire las dos y diga qué lado es más cómodo de mirar: izquierda o derecha.",
@@ -1936,6 +1954,84 @@
     "es": "Diga al paciente (su pantalla muestra cómo será la prueba) y pulse Iniciar (Espacio):",
     "de": "Sagen Sie dem Patienten (sein Bildschirm zeigt, wie der Test aussehen wird) und drücken Sie dann Start (Leertaste):",
     "it": "Di' al paziente (il suo schermo mostra come sarà il test), poi premi Avvia (Spazio):"
+  },
+  "instr.pg.1": {
+    "en": "You will see two striped patterns, one on each side of the screen.",
+    "es": "Verás dos patrones de rayas, uno a cada lado de la pantalla.",
+    "de": "Du siehst zwei Streifenmuster, eines auf jeder Seite des Bildschirms.",
+    "it": "Vedrai due pattern a strisce, uno per lato dello schermo."
+  },
+  "instr.pg.2": {
+    "en": "Look at each one in turn.",
+    "es": "Mira cada uno por turno.",
+    "de": "Schau dir beide nacheinander an.",
+    "it": "Guardali uno alla volta."
+  },
+  "instr.pg.3": {
+    "en": "Say (or tap) which one is MORE uncomfortable or unpleasant to look at. If they feel about the same, say so.",
+    "es": "Di (o toca) cuál es MÁS molesto o desagradable de mirar. Si te parecen más o menos iguales, dilo.",
+    "de": "Sag (oder tippe an), welches UNANGENEHMER anzusehen ist. Wenn sie sich etwa gleich anfühlen, sag das.",
+    "it": "Di' (o tocca) quale è PIÙ fastidioso o sgradevole da guardare. Se ti sembrano più o meno uguali, dillo."
+  },
+  "instr.pg.callout1": {
+    "en": "Look at this pattern",
+    "es": "Mira este patrón",
+    "de": "Schau dir dieses Muster an",
+    "it": "Guarda questo pattern"
+  },
+  "instr.pg.callout2": {
+    "en": "... and this one",
+    "es": "... y este",
+    "de": "... und dieses",
+    "it": "... e questo"
+  },
+  "instr.pg.callout3": {
+    "en": "Which is MORE uncomfortable to look at?",
+    "es": "¿Cuál es MÁS molesto de mirar?",
+    "de": "Welches ist UNANGENEHMER anzusehen?",
+    "it": "Quale è PIÙ fastidioso da guardare?"
+  },
+  "instr.pg.title": {
+    "en": "Pattern glare",
+    "es": "Deslumbramiento por patrones",
+    "de": "Musterblendung",
+    "it": "Abbagliamento da pattern"
+  },
+  "instr.psymptoms.1": {
+    "en": "Look at the striped pattern for a few seconds.",
+    "es": "Mira el patrón de rayas unos segundos.",
+    "de": "Schau dir das Streifenmuster einige Sekunden an.",
+    "it": "Guarda il pattern a strisce per qualche secondo."
+  },
+  "instr.psymptoms.2": {
+    "en": "You will then be asked a few questions about how it looks and feels: for example, whether it is uncomfortable, or the lines seem to move or show colours.",
+    "es": "Después te haremos unas preguntas sobre cómo se ve y cómo te sientes: por ejemplo, si es molesto o si las líneas parecen moverse o tener colores.",
+    "de": "Dann wirst du ein paar Fragen dazu gefragt, wie es aussieht und sich anfühlt: zum Beispiel, ob es unangenehm ist oder ob sich die Linien bewegen oder Farben zeigen.",
+    "it": "Poi ti verranno fatte alcune domande su come appare e come ti fa sentire: per esempio se è fastidioso, o se le linee sembrano muoversi o mostrare colori."
+  },
+  "instr.psymptoms.3": {
+    "en": "There are no right or wrong answers. Just say what you notice.",
+    "es": "No hay respuestas correctas o incorrectas. Solo di lo que notes.",
+    "de": "Es gibt keine richtigen oder falschen Antworten. Sag einfach, was dir auffällt.",
+    "it": "Non ci sono risposte giuste o sbagliate. Di' solo quello che noti."
+  },
+  "instr.psymptoms.callout1": {
+    "en": "Look at this pattern for a few seconds",
+    "es": "Mira este patrón unos segundos",
+    "de": "Schau dir dieses Muster einige Sekunden an",
+    "it": "Guarda questo pattern per qualche secondo"
+  },
+  "instr.psymptoms.callout2": {
+    "en": "Then say how it looks and feels to you",
+    "es": "Luego di cómo lo ves y cómo te sientes",
+    "de": "Dann sag, wie es aussieht und sich anfühlt",
+    "it": "Poi di' come ti appare e come ti fa sentire"
+  },
+  "instr.psymptoms.title": {
+    "en": "Looking at the pattern",
+    "es": "Mirar el patrón",
+    "de": "Das Muster ansehen",
+    "it": "Guardare il pattern"
   },
   "instr.reading.1": {
     "en": "You will see lines of short, simple words. They are in a random order, so they don't make sentences.",
@@ -2062,6 +2158,42 @@
     "es": "Mirar el texto",
     "de": "Den Text ansehen",
     "it": "Guardare il testo"
+  },
+  "key.space": {
+    "en": "Space",
+    "es": "Espacio",
+    "de": "Leertaste",
+    "it": "Spazio"
+  },
+  "kind.baselinePattern": {
+    "en": "Baseline pattern",
+    "es": "Línea base patrón",
+    "de": "Basis Muster",
+    "it": "Base pattern"
+  },
+  "kind.baselineText": {
+    "en": "Baseline text",
+    "es": "Línea base texto",
+    "de": "Basis Text",
+    "it": "Base testo"
+  },
+  "kind.computerPattern": {
+    "en": "Computer screen pattern test",
+    "es": "Prueba de pantalla con patrón",
+    "de": "Bildschirm-Mustertest",
+    "it": "Test schermo con pattern"
+  },
+  "kind.lensesPattern": {
+    "en": "Lens pattern test",
+    "es": "Prueba de lentes con patrón",
+    "de": "Linsen-Mustertest",
+    "it": "Test lenti con pattern"
+  },
+  "kind.overlayPattern": {
+    "en": "Overlay pattern test",
+    "es": "Prueba de superposición con patrón",
+    "de": "Folien-Mustertest",
+    "it": "Test overlay con pattern"
   },
   "letter.default.ParentClosingPara": {
     "en": "The results suggest that {Firstname} may benefit from an {Result}.\n\nIf you have any questions relating to this report, please contact our Visual Stress team.",
@@ -2597,17 +2729,41 @@
     "de": "Computerbildschirm",
     "it": "Schermo del computer"
   },
+  "mode.computerPattern": {
+    "en": "Computer screen – pattern",
+    "es": "Pantalla – patrón",
+    "de": "Bildschirm – Muster",
+    "it": "Schermo – pattern"
+  },
   "mode.lenses": {
     "en": "Lenses",
     "es": "Lentes",
     "de": "Gläser",
     "it": "Lenti"
   },
+  "mode.lensesPattern": {
+    "en": "Lenses – pattern",
+    "es": "Lentes – patrón",
+    "de": "Linsen – Muster",
+    "it": "Lenti – pattern"
+  },
   "mode.overlay": {
     "en": "Overlays",
     "es": "Láminas",
     "de": "Folien",
     "it": "Lamine"
+  },
+  "mode.overlayPattern": {
+    "en": "Overlays – pattern",
+    "es": "Superposiciones – patrón",
+    "de": "Folien – Muster",
+    "it": "Overlay – pattern"
+  },
+  "mode.patternGlare": {
+    "en": "Pattern glare (baseline pattern)",
+    "es": "Deslumbramiento por patrones (línea base)",
+    "de": "Musterblendung (Musterbasis)",
+    "it": "Abbagliamento da pattern (base)"
   },
   "nav.colours": {
     "en": "Colours",
@@ -2980,6 +3136,216 @@
     "es": "Pacientes",
     "de": "Patienten",
     "it": "Pazienti"
+  },
+  "pg.ask": {
+    "en": "Ask: \"Which of the two patterns is MORE uncomfortable to look at?\"",
+    "es": "Pregunte: «¿Cuál de los dos patrones es MÁS molesto de mirar?»",
+    "de": "Fragen Sie: „Welches der beiden Muster ist UNANGENEHMER anzusehen?“",
+    "it": "Chiedi: «Quale dei due pattern è PIÙ fastidioso da guardare?»"
+  },
+  "pg.bar.choice": {
+    "en": "Choice",
+    "es": "Elección",
+    "de": "Wahl",
+    "it": "Scelta"
+  },
+  "pg.bar.result": {
+    "en": "Most uncomfortable",
+    "es": "Más molesta",
+    "de": "Am unangenehmsten",
+    "it": "Più fastidiosa"
+  },
+  "pg.bar.unit": {
+    "en": "cycles/degree",
+    "es": "ciclos/grado",
+    "de": "Perioden/Grad",
+    "it": "cicli/grado"
+  },
+  "pg.choice": {
+    "en": "Choice {0}",
+    "es": "Elección {0}",
+    "de": "Wahl {0}",
+    "it": "Scelta {0}"
+  },
+  "pg.distance": {
+    "en": "Viewing distance (cm)",
+    "es": "Distancia de visión (cm)",
+    "de": "Betrachtungsabstand (cm)",
+    "it": "Distanza di visione (cm)"
+  },
+  "pg.distanceHint": {
+    "en": "Used to work out the cycles per degree, with the screen width set in Settings. Set it before the first choice.",
+    "es": "Se usa para calcular los ciclos por grado, con el ancho de pantalla de Ajustes. Fíjela antes de la primera elección.",
+    "de": "Damit werden die Perioden pro Grad berechnet, zusammen mit der Bildschirmbreite aus den Einstellungen. Vor der ersten Wahl einstellen.",
+    "it": "Serve per calcolare i cicli per grado, con la larghezza dello schermo impostata nelle Impostazioni. Impostala prima della prima scelta."
+  },
+  "pg.finished": {
+    "en": "Finished",
+    "es": "Terminada",
+    "de": "Fertig",
+    "it": "Terminato"
+  },
+  "pg.how.1": {
+    "en": "Two patches of black and white horizontal stripes are shown, one on each side, with different spatial frequencies (stripes per degree of visual angle).",
+    "es": "Se muestran dos zonas de rayas horizontales blancas y negras, una a cada lado, con distintas frecuencias espaciales (rayas por grado de ángulo visual).",
+    "de": "Zwei Flächen mit schwarz-weißen waagerechten Streifen werden gezeigt, je eine pro Seite, mit unterschiedlicher Ortsfrequenz (Streifen pro Grad Sehwinkel).",
+    "it": "Vengono mostrate due aree di strisce orizzontali bianche e nere, una per lato, con frequenze spaziali diverse (strisce per grado di angolo visivo)."
+  },
+  "pg.how.2": {
+    "en": "The patient says which is MORE uncomfortable to look at, or that they are about the same. Record it with the buttons or keys; the patient can also click or tap the pattern.",
+    "es": "El paciente dice cuál es MÁS molesto de mirar, o que son más o menos iguales. Regístrelo con los botones o las teclas; el paciente también puede hacer clic o tocar el patrón.",
+    "de": "Der Patient sagt, welches UNANGENEHMER anzusehen ist oder dass sie etwa gleich sind. Mit den Schaltflächen oder Tasten erfassen; der Patient kann das Muster auch anklicken oder antippen.",
+    "it": "Il paziente dice quale è PIÙ fastidioso da guardare, o che sono più o meno uguali. Registralo con i pulsanti o i tasti; il paziente può anche fare clic o toccare il pattern."
+  },
+  "pg.how.3": {
+    "en": "Each answer removes a third of the range of frequencies still in play (on a log scale), and two new patterns are shown. After about 7 answers the range is a third of an octave.",
+    "es": "Cada respuesta elimina un tercio del rango de frecuencias que queda (en escala logarítmica) y se muestran dos patrones nuevos. Tras unas 7 respuestas el rango es de un tercio de octava.",
+    "de": "Jede Antwort entfernt ein Drittel des verbleibenden Frequenzbereichs (logarithmisch), und zwei neue Muster werden gezeigt. Nach etwa 7 Antworten beträgt der Bereich eine Drittel-Oktave.",
+    "it": "Ogni risposta elimina un terzo dell'intervallo di frequenze rimasto (in scala logaritmica) e vengono mostrati due nuovi pattern. Dopo circa 7 risposte l'intervallo è di un terzo di ottava."
+  },
+  "pg.how.4": {
+    "en": "The result is the most uncomfortable spatial frequency, in cycles per degree. It depends on the viewing distance and the screen width in Settings, so measure the distance.",
+    "es": "El resultado es la frecuencia espacial más molesta, en ciclos por grado. Depende de la distancia de visión y del ancho de pantalla de Ajustes, así que mida la distancia.",
+    "de": "Das Ergebnis ist die unangenehmste Ortsfrequenz in Perioden pro Grad. Sie hängt vom Betrachtungsabstand und der Bildschirmbreite in den Einstellungen ab; messen Sie daher den Abstand.",
+    "it": "Il risultato è la frequenza spaziale più fastidiosa, in cicli per grado. Dipende dalla distanza di visione e dalla larghezza dello schermo nelle Impostazioni, quindi misura la distanza."
+  },
+  "pg.how.5": {
+    "en": "The patterns can be unpleasant. Stop if the patient becomes distressed, and take particular care with anyone who has had seizures.",
+    "es": "Los patrones pueden resultar desagradables. Pare si el paciente se angustia y tenga especial cuidado con cualquier persona que haya tenido crisis epilépticas.",
+    "de": "Die Muster können unangenehm sein. Brechen Sie ab, wenn der Patient belastet wirkt, und seien Sie besonders vorsichtig bei Personen mit Anfällen in der Vorgeschichte.",
+    "it": "I pattern possono risultare sgradevoli. Interrompi se il paziente si agita e presta particolare attenzione a chi ha avuto crisi epilettiche."
+  },
+  "pg.how.button": {
+    "en": "How the test works",
+    "es": "Cómo funciona la prueba",
+    "de": "So funktioniert der Test",
+    "it": "Come funziona il test"
+  },
+  "pg.how.title": {
+    "en": "Pattern glare test",
+    "es": "Prueba de deslumbramiento por patrones",
+    "de": "Musterblendungstest",
+    "it": "Test di abbagliamento da pattern"
+  },
+  "pg.keys": {
+    "en": "Keys: ← left, → right, ↓ or Space about the same. The patient can also click or tap the pattern.",
+    "es": "Teclas: ← izquierda, → derecha, ↓ o Espacio más o menos igual. El paciente también puede hacer clic o tocar el patrón.",
+    "de": "Tasten: ← links, → rechts, ↓ oder Leertaste etwa gleich. Der Patient kann das Muster auch anklicken oder antippen.",
+    "it": "Tasti: ← sinistra, → destra, ↓ o Spazio più o meno uguali. Il paziente può anche fare clic o toccare il pattern."
+  },
+  "pg.left": {
+    "en": "Left",
+    "es": "Izquierda",
+    "de": "Links",
+    "it": "Sinistra"
+  },
+  "pg.patient.same": {
+    "en": "About the same",
+    "es": "Más o menos igual",
+    "de": "Etwa gleich",
+    "it": "Più o meno uguali"
+  },
+  "pg.patient.thanks": {
+    "en": "Thank you",
+    "es": "Gracias",
+    "de": "Danke",
+    "it": "Grazie"
+  },
+  "pg.range": {
+    "en": "Range now {0} – {1} cycles/degree",
+    "es": "Rango actual {0} – {1} ciclos/grado",
+    "de": "Bereich jetzt {0} – {1} Perioden/Grad",
+    "it": "Intervallo ora {0} – {1} cicli/grado"
+  },
+  "pg.restart": {
+    "en": "Start again",
+    "es": "Empezar de nuevo",
+    "de": "Neu beginnen",
+    "it": "Ricomincia"
+  },
+  "pg.result": {
+    "en": "Most uncomfortable: {0} cycles/degree",
+    "es": "Más molesta: {0} ciclos/grado",
+    "de": "Am unangenehmsten: {0} Perioden/Grad",
+    "it": "Più fastidiosa: {0} cicli/grado"
+  },
+  "pg.results.button": {
+    "en": "Pattern glare",
+    "es": "Deslumbramiento por patrones",
+    "de": "Musterblendung",
+    "it": "Abbagliamento da pattern"
+  },
+  "pg.results.confirmDelete": {
+    "en": "Delete this pattern glare test?",
+    "es": "¿Eliminar esta prueba de deslumbramiento por patrones?",
+    "de": "Diesen Musterblendungstest löschen?",
+    "it": "Eliminare questo test di abbagliamento da pattern?"
+  },
+  "pg.results.detail": {
+    "en": "Narrowed to {0} – {1} c/deg after {2} choices, viewed at {3} cm",
+    "es": "Acotada a {0} – {1} c/grado tras {2} elecciones, vista a {3} cm",
+    "de": "Eingegrenzt auf {0} – {1} P/Grad nach {2} Wahlen, Abstand {3} cm",
+    "it": "Ristretta a {0} – {1} c/grado dopo {2} scelte, vista a {3} cm"
+  },
+  "pg.results.none": {
+    "en": "No pattern glare tests yet.",
+    "es": "Aún no hay pruebas de deslumbramiento por patrones.",
+    "de": "Noch keine Musterblendungstests.",
+    "it": "Ancora nessun test di abbagliamento da pattern."
+  },
+  "pg.results.note": {
+    "en": "The spatial frequency (stripes per degree of visual angle) the patient found most uncomfortable in each test, newest first.",
+    "es": "La frecuencia espacial (rayas por grado de ángulo visual) que el paciente encontró más molesta en cada prueba, la más reciente primero.",
+    "de": "Die Ortsfrequenz (Streifen pro Grad Sehwinkel), die der Patient in jedem Test am unangenehmsten fand, neueste zuerst.",
+    "it": "La frequenza spaziale (strisce per grado di angolo visivo) che il paziente ha trovato più fastidiosa in ogni test, dal più recente."
+  },
+  "pg.results.stopped": {
+    "en": "(stopped early - estimate so far)",
+    "es": "(detenida antes de terminar: estimación hasta entonces)",
+    "de": "(vorzeitig beendet – bisherige Schätzung)",
+    "it": "(interrotto prima – stima fino a quel punto)"
+  },
+  "pg.results.title": {
+    "en": "Pattern glare results",
+    "es": "Resultados de deslumbramiento por patrones",
+    "de": "Ergebnisse Musterblendung",
+    "it": "Risultati abbagliamento da pattern"
+  },
+  "pg.right": {
+    "en": "Right",
+    "es": "Derecha",
+    "de": "Rechts",
+    "it": "Destra"
+  },
+  "pg.same": {
+    "en": "About the same",
+    "es": "Más o menos igual",
+    "de": "Etwa gleich",
+    "it": "Più o meno uguali"
+  },
+  "pg.showing": {
+    "en": "Showing: left {0}, right {1} cycles/degree",
+    "es": "Mostrando: izquierda {0}, derecha {1} ciclos/grado",
+    "de": "Gezeigt: links {0}, rechts {1} Perioden/Grad",
+    "it": "Mostrati: sinistra {0}, destra {1} cicli/grado"
+  },
+  "pg.trial": {
+    "en": "{0} vs {1}: {2}",
+    "es": "{0} vs {1}: {2}",
+    "de": "{0} vs {1}: {2}",
+    "it": "{0} vs {1}: {2}"
+  },
+  "pg.trial.chose": {
+    "en": "{0} worse",
+    "es": "{0} peor",
+    "de": "{0} schlimmer",
+    "it": "{0} peggiore"
+  },
+  "pg.trial.same": {
+    "en": "about the same",
+    "es": "más o menos igual",
+    "de": "etwa gleich",
+    "it": "più o meno uguali"
   },
   "publish.badVersion": {
     "en": "Enter the new version as numbers, for example 3.0.1.",
@@ -3545,6 +3911,12 @@
     "de": "3.  Die Uhr hält nach der Lesezeit selbst an (oder Uhr anhalten drücken). Prüfen Sie die Zahlen; sie können auch eingetippt werden.",
     "it": "3.  Il cronometro si ferma da solo alla fine del tempo (o premi Ferma cronometro). Controlla i conteggi; si possono anche digitare."
   },
+  "reading.how.7": {
+    "en": "Keys: Space starts the clock, then records an error each time it is pressed; S records a skipped row; C starts or stops the clock.",
+    "es": "Teclas: Espacio inicia el reloj y después registra un error cada vez que se pulsa; S registra una fila saltada; C inicia o detiene el reloj.",
+    "de": "Tasten: Leertaste startet die Uhr und zählt danach bei jedem Drücken einen Fehler; S zählt eine übersprungene Zeile; C startet oder stoppt die Uhr.",
+    "it": "Tasti: Spazio avvia il cronometro e poi registra un errore ogni volta che viene premuto; S registra una riga saltata; C avvia o ferma il cronometro."
+  },
   "reading.how.button": {
     "en": "How to score",
     "es": "Cómo puntuar",
@@ -3562,6 +3934,12 @@
     "es": "El paciente lee las palabras en voz alta lo más rápido y exacto posible. Inicie el reloj cuando empiece (Espacio); se detiene solo al acabar el tiempo de lectura.",
     "de": "Der Patient liest die Wörter so schnell und genau wie möglich laut vor. Starten Sie die Uhr zu Beginn (Leertaste); sie hält nach der Lesezeit selbst an.",
     "it": "Il paziente legge le parole ad alta voce il più velocemente e accuratamente possibile. Avvia il cronometro all'inizio (Spazio); si ferma da solo alla fine del tempo di lettura."
+  },
+  "reading.lastWordMarked": {
+    "en": "Last word marked: {0} words read",
+    "es": "Última palabra marcada: {0} palabras leídas",
+    "de": "Letztes Wort markiert: {0} Wörter gelesen",
+    "it": "Ultima parola segnata: {0} parole lette"
   },
   "reading.marking": {
     "en": "On the text: click a misread word · Shift+click a skipped row · right-click the last word read",
@@ -3610,6 +3988,36 @@
     "es": "Reloj parado. Haga clic derecho en la última palabra leída.",
     "de": "Uhr angehalten. Klicken Sie mit rechts auf das zuletzt gelesene Wort.",
     "it": "Cronometro fermo. Fai clic destro sull'ultima parola letta."
+  },
+  "reading.strip.errors": {
+    "en": "Errors: {0}",
+    "es": "Errores: {0}",
+    "de": "Fehler: {0}",
+    "it": "Errori: {0}"
+  },
+  "reading.strip.skipped": {
+    "en": "Rows skipped: {0}",
+    "es": "Filas saltadas: {0}",
+    "de": "Übersprungene Zeilen: {0}",
+    "it": "Righe saltate: {0}"
+  },
+  "reading.strip.time": {
+    "en": "Time",
+    "es": "Tiempo",
+    "de": "Zeit",
+    "it": "Tempo"
+  },
+  "reading.strip.words": {
+    "en": "Words read: {0}",
+    "es": "Palabras leídas: {0}",
+    "de": "Gelesene Wörter: {0}",
+    "it": "Parole lette: {0}"
+  },
+  "reading.strip.wordsHint": {
+    "en": "Words read (right-click last word)",
+    "es": "Palabras (clic derecho en la última)",
+    "de": "Wörter (Rechtsklick aufs letzte)",
+    "it": "Parole (clic destro sull'ultima)"
   },
   "reading.timeUp": {
     "en": "Time is up! Right-click the last word read.",
@@ -3791,11 +4199,23 @@
     "de": "Individuell",
     "it": "Personalizzato"
   },
+  "results.cfg.distance": {
+    "en": "Viewed at {0} cm",
+    "es": "Visto a {0} cm",
+    "de": "Abstand {0} cm",
+    "it": "Visto a {0} cm"
+  },
   "results.cfg.font": {
     "en": "Font: {0}, {1} pt",
     "es": "Fuente: {0}, {1} pt",
     "de": "Schrift: {0}, {1} pt",
     "it": "Carattere: {0}, {1} pt"
+  },
+  "results.cfg.pattern": {
+    "en": "Pattern: {0} cycles/degree",
+    "es": "Patrón: {0} ciclos/grado",
+    "de": "Muster: {0} Perioden/Grad",
+    "it": "Pattern: {0} cicli/grado"
   },
   "results.cfg.rows": {
     "en": "Rows: {0}",
@@ -3844,6 +4264,12 @@
     "es": "Referencia → color",
     "de": "Basis → Farbe",
     "it": "Base → colore"
+  },
+  "results.change.mismatch": {
+    "en": "Choose a baseline of the same kind: a pattern test is compared with a baseline pattern, a text test with a baseline text.",
+    "es": "Elija una línea base del mismo tipo: una prueba con patrón se compara con una línea base patrón, y una de texto con una línea base texto.",
+    "de": "Wählen Sie eine Basis derselben Art: ein Mustertest wird mit einer Musterbasis verglichen, ein Texttest mit einer Textbasis.",
+    "it": "Scegli una base dello stesso tipo: un test con pattern si confronta con una base pattern, un test di testo con una base testo."
   },
   "results.change.needBoth": {
     "en": "Choose a baseline result and a test with colour (on the left) to see the change with colour.",
@@ -3947,6 +4373,12 @@
     "de": "Vergleich",
     "it": "Confronto"
   },
+  "results.cpdShort": {
+    "en": "{0} c/deg",
+    "es": "{0} c/grado",
+    "de": "{0} P/Grad",
+    "it": "{0} c/grado"
+  },
   "results.delete.confirm": {
     "en": "Delete this test? This cannot be undone.",
     "es": "¿Eliminar esta prueba? No se puede deshacer.",
@@ -4012,6 +4444,12 @@
     "es": "Información de la prueba",
     "de": "Testinformationen",
     "it": "Informazioni sul test"
+  },
+  "results.head.pattern": {
+    "en": "Pattern",
+    "es": "Patrón",
+    "de": "Muster",
+    "it": "Pattern"
   },
   "results.head.reading": {
     "en": "Reading performance",
@@ -4145,6 +4583,12 @@
     "de": "Ergebnisse der Farbtestung",
     "it": "Risultati del test del colore"
   },
+  "results.patternNoReport": {
+    "en": "The report and letter are not available for pattern tests yet.",
+    "es": "El informe y la carta aún no están disponibles para las pruebas con patrón.",
+    "de": "Bericht und Brief sind für Mustertests noch nicht verfügbar.",
+    "it": "Il referto e la lettera non sono ancora disponibili per i test con pattern."
+  },
   "results.reading": {
     "en": "Rate of reading",
     "es": "Velocidad de lectura",
@@ -4163,6 +4607,36 @@
     "de": "Bericht",
     "it": "Referto"
   },
+  "results.row.choices": {
+    "en": "Choices",
+    "es": "Elecciones",
+    "de": "Wahlen",
+    "it": "Scelte"
+  },
+  "results.row.cmValue": {
+    "en": "{0} cm",
+    "es": "{0} cm",
+    "de": "{0} cm",
+    "it": "{0} cm"
+  },
+  "results.row.cpdRange": {
+    "en": "Narrowed to (c/deg)",
+    "es": "Acotada a (c/grado)",
+    "de": "Eingegrenzt auf (P/Grad)",
+    "it": "Ristretta a (c/grado)"
+  },
+  "results.row.cpdValue": {
+    "en": "{0} c/deg",
+    "es": "{0} c/grado",
+    "de": "{0} P/Grad",
+    "it": "{0} c/grado"
+  },
+  "results.row.distance": {
+    "en": "Viewing distance",
+    "es": "Distancia de visión",
+    "de": "Betrachtungsabstand",
+    "it": "Distanza di visione"
+  },
   "results.row.errors": {
     "en": "Number of errors",
     "es": "Número de errores",
@@ -4175,6 +4649,12 @@
     "de": "Anzahl übersprungener Zeilen",
     "it": "Numero di righe saltate"
   },
+  "results.row.stoppedEarly": {
+    "en": "(stopped early)",
+    "es": "(detenida antes)",
+    "de": "(vorzeitig beendet)",
+    "it": "(interrotto prima)"
+  },
   "results.row.wordsTime": {
     "en": "Words read",
     "es": "Palabras leídas",
@@ -4186,6 +4666,12 @@
     "es": "{0} en {1} s",
     "de": "{0} in {1} s",
     "it": "{0} in {1} s"
+  },
+  "results.row.worstSf": {
+    "en": "Worst spatial frequency",
+    "es": "Peor frecuencia espacial",
+    "de": "Schlimmste Ortsfrequenz",
+    "it": "Frequenza spaziale peggiore"
   },
   "results.row.wpm": {
     "en": "Reading speed (words/min)",
@@ -4361,6 +4847,18 @@
     "de": "Vorheriger Schritt",
     "it": "Passo precedente"
   },
+  "run.quitSave": {
+    "en": "Quit the test?\r\n\r\nDo you want to save the results of the parts that are complete?\r\n\r\nYes - save them and show the results.   No - quit without saving.   Cancel - carry on with the test.",
+    "es": "¿Salir de la prueba?\r\n\r\n¿Desea guardar los resultados de las partes completadas?\r\n\r\nSí - guardarlos y ver los resultados.   No - salir sin guardar.   Cancelar - seguir con la prueba.",
+    "de": "Test beenden?\r\n\r\nMöchten Sie die Ergebnisse der abgeschlossenen Teile speichern?\r\n\r\nJa - speichern und die Ergebnisse zeigen.   Nein - ohne Speichern beenden.   Abbrechen - mit dem Test weitermachen.",
+    "it": "Uscire dal test?\r\n\r\nVuoi salvare i risultati delle parti completate?\r\n\r\nSì - salvali e mostra i risultati.   No - esci senza salvare.   Annulla - continua il test."
+  },
+  "run.quitTest": {
+    "en": "Do you want to quit the test? It will not be saved.",
+    "es": "¿Desea salir de la prueba? No se guardará.",
+    "de": "Möchten Sie den Test beenden? Er wird nicht gespeichert.",
+    "it": "Vuoi uscire dal test? Non verrà salvato."
+  },
   "run.saveFinish": {
     "en": "Save and finish",
     "es": "Guardar y terminar",
@@ -4374,10 +4872,10 @@
     "it": "Test salvato"
   },
   "run.showControls": {
-    "en": "Controls (Esc)",
-    "es": "Controles (Esc)",
-    "de": "Steuerung (Esc)",
-    "it": "Comandi (Esc)"
+    "en": "Controls (F11)",
+    "es": "Controles (F11)",
+    "de": "Steuerung (F11)",
+    "it": "Comandi (F11)"
   },
   "run.skipStep": {
     "en": "Skip step",
@@ -4390,6 +4888,12 @@
     "es": "Este paso no está terminado. ¿Continuar de todos modos?",
     "de": "Dieser Schritt ist nicht abgeschlossen. Trotzdem fortfahren?",
     "it": "Questo passo non è finito. Continuare comunque?"
+  },
+  "run.textSettings": {
+    "en": "Text settings…",
+    "es": "Ajustes del texto…",
+    "de": "Texteinstellungen…",
+    "it": "Impostazioni testo…"
   },
   "run.view.copy": {
     "en": "Copy of the patient's screen",
@@ -4577,17 +5081,53 @@
     "de": "Ein Bildschirm: Der Patientenbildschirm liegt auf demselben Monitor wie das Steuerfenster.",
     "it": "Uno schermo: lo schermo del paziente è sullo stesso monitor della finestra di controllo."
   },
+  "settings.mode.oneChosen": {
+    "en": "One screen (chosen): the patient's view fills this monitor during tests. Move the mouse for the controls; F11 shows the test screen, Esc quits the test.",
+    "es": "Una pantalla (elegida): la vista del paciente ocupa este monitor durante las pruebas. Mueva el ratón para ver los controles; F11 muestra la pantalla de la prueba, Esc sale de la prueba.",
+    "de": "Ein Bildschirm (gewählt): die Ansicht des Patienten füllt während der Tests diesen Monitor. Maus bewegen für die Bedienleiste; F11 zeigt den Testbildschirm, Esc beendet den Test.",
+    "it": "Uno schermo (scelto): la vista del paziente riempie questo monitor durante i test. Muovi il mouse per i comandi; F11 mostra la schermata del test, Esc esce dal test."
+  },
+  "settings.mode.oneChosenOn": {
+    "en": "One screen (chosen): everything is on screen {0}. During tests the patient's view fills it; move the mouse for the controls, F11 shows the test screen, Esc quits the test.",
+    "es": "Una pantalla (elegida): todo está en la pantalla {0}. Durante las pruebas la vista del paciente la ocupa; mueva el ratón para ver los controles, F11 muestra la pantalla de la prueba, Esc sale de la prueba.",
+    "de": "Ein Bildschirm (gewählt): alles ist auf Bildschirm {0}. Während der Tests füllt ihn die Ansicht des Patienten; Maus bewegen für die Bedienleiste, F11 zeigt den Testbildschirm, Esc beendet den Test.",
+    "it": "Uno schermo (scelto): tutto è sullo schermo {0}. Durante i test la vista del paziente lo riempie; muovi il mouse per i comandi, F11 mostra la schermata del test, Esc esce dal test."
+  },
   "settings.mode.tablet": {
     "en": "Two screens: the patient's screen is the tablet.",
     "es": "Dos pantallas: la pantalla del paciente es la tableta.",
     "de": "Zwei Bildschirme: der Patientenbildschirm ist das Tablet.",
     "it": "Due schermi: lo schermo del paziente è il tablet."
   },
+  "settings.mode.tabletOn": {
+    "en": "Control screen and tablet: you use screen {0}; the patient's screen is the tablet. Until the tablet connects, tests use screen {0} as one screen.",
+    "es": "Pantalla de control y tableta: usted usa la pantalla {0}; la pantalla del paciente es la tableta. Hasta que la tableta se conecte, las pruebas usan la pantalla {0} como una sola pantalla.",
+    "de": "Steuerbildschirm und Tablet: Sie verwenden Bildschirm {0}; der Bildschirm des Patienten ist das Tablet. Bis das Tablet verbunden ist, laufen die Tests auf Bildschirm {0} als ein Bildschirm.",
+    "it": "Schermo di controllo e tablet: tu usi lo schermo {0}; lo schermo del paziente è il tablet. Finché il tablet non si collega, i test usano lo schermo {0} come schermo unico."
+  },
   "settings.mode.two": {
     "en": "Two screens: the patient's screen has a monitor of its own.",
     "es": "Dos pantallas: la pantalla del paciente tiene su propio monitor.",
     "de": "Zwei Bildschirme: Der Patientenbildschirm hat einen eigenen Monitor.",
     "it": "Due schermi: lo schermo del paziente ha un monitor proprio."
+  },
+  "settings.mode.twoOn": {
+    "en": "Two screens: you use screen {0}, the patient looks at screen {1} (an exact copy is shown on the test screen).",
+    "es": "Dos pantallas: usted usa la pantalla {0} y el paciente mira la pantalla {1} (en la pantalla de la prueba se ve una copia exacta).",
+    "de": "Zwei Bildschirme: Sie verwenden Bildschirm {0}, der Patient schaut auf Bildschirm {1} (eine genaue Kopie erscheint auf dem Testbildschirm).",
+    "it": "Due schermi: tu usi lo schermo {0}, il paziente guarda lo schermo {1} (una copia esatta appare nella schermata del test)."
+  },
+  "settings.mode.twoOnlyOne": {
+    "en": "Only one monitor is connected: tests run as one screen until a second monitor is connected.",
+    "es": "Solo hay un monitor conectado: las pruebas funcionan con una sola pantalla hasta que se conecte un segundo monitor.",
+    "de": "Nur ein Monitor ist angeschlossen: die Tests laufen mit einem Bildschirm, bis ein zweiter Monitor angeschlossen ist.",
+    "it": "È collegato un solo monitor: i test funzionano con uno schermo solo finché non si collega un secondo monitor."
+  },
+  "settings.mode.twoSame": {
+    "en": "Choose different screens for you and the patient - while both are on the same screen, tests run as one screen.",
+    "es": "Elija pantallas distintas para usted y para el paciente: mientras estén en la misma, las pruebas funcionan con una sola pantalla.",
+    "de": "Wählen Sie verschiedene Bildschirme für Sie und den Patienten - solange beide auf demselben sind, laufen die Tests mit einem Bildschirm.",
+    "it": "Scegli schermi diversi per te e per il paziente: finché sono sullo stesso schermo, i test funzionano con uno schermo solo."
   },
   "settings.patientWindow": {
     "en": "Patient",
@@ -4691,11 +5231,77 @@
     "de": "Breite (mm)",
     "it": "Larghezza (mm)"
   },
+  "settings.screens.controlMonitor": {
+    "en": "Control screen (you)",
+    "es": "Pantalla de control (usted)",
+    "de": "Steuerbildschirm (Sie)",
+    "it": "Schermo di controllo (tu)"
+  },
   "settings.screens.hint": {
     "en": "One screen: the control window and the patient's screen on the same monitor - the test screen then shows the patient's text itself (and F11 shows it full screen). Two screens: the patient's screen on its own monitor, with an exact copy on the test screen.",
     "es": "Una pantalla: la ventana de control y la pantalla del paciente en el mismo monitor; la pantalla de prueba muestra el texto del paciente (F11 a pantalla completa). Dos pantallas: la del paciente en su propio monitor, con una copia exacta en la pantalla de prueba.",
     "de": "Ein Bildschirm: Steuerfenster und Patientenbildschirm auf demselben Monitor – der Testbildschirm zeigt dann den Text selbst (F11: Vollbild). Zwei Bildschirme: der Patientenbildschirm auf eigenem Monitor, mit einer genauen Kopie im Testbildschirm.",
     "it": "Uno schermo: finestra di controllo e schermo del paziente sullo stesso monitor – la schermata del test mostra il testo (F11: schermo intero). Due schermi: lo schermo del paziente su un monitor a parte, con una copia esatta nella schermata del test."
+  },
+  "settings.screens.modeOne": {
+    "en": "One screen",
+    "es": "Una pantalla",
+    "de": "Ein Bildschirm",
+    "it": "Uno schermo"
+  },
+  "settings.screens.modeTablet": {
+    "en": "Control screen and tablet",
+    "es": "Pantalla de control y tableta",
+    "de": "Steuerbildschirm und Tablet",
+    "it": "Schermo di controllo e tablet"
+  },
+  "settings.screens.modeTwo": {
+    "en": "Two screens",
+    "es": "Dos pantallas",
+    "de": "Zwei Bildschirme",
+    "it": "Due schermi"
+  },
+  "settings.screens.monitor": {
+    "en": "Screen {0} ({1} × {2})",
+    "es": "Pantalla {0} ({1} × {2})",
+    "de": "Bildschirm {0} ({1} × {2})",
+    "it": "Schermo {0} ({1} × {2})"
+  },
+  "settings.screens.monitorMain": {
+    "en": "Screen {0} ({1} × {2}, main)",
+    "es": "Pantalla {0} ({1} × {2}, principal)",
+    "de": "Bildschirm {0} ({1} × {2}, Haupt)",
+    "it": "Schermo {0} ({1} × {2}, principale)"
+  },
+  "settings.screens.oneMonitor": {
+    "en": "Monitor to use",
+    "es": "Monitor que usar",
+    "de": "Zu verwendender Monitor",
+    "it": "Monitor da usare"
+  },
+  "settings.screens.patientMonitor": {
+    "en": "Patient's screen",
+    "es": "Pantalla del paciente",
+    "de": "Bildschirm des Patienten",
+    "it": "Schermo del paziente"
+  },
+  "settings.screens.use": {
+    "en": "Screens to use",
+    "es": "Pantallas que usar",
+    "de": "Zu verwendende Bildschirme",
+    "it": "Schermi da usare"
+  },
+  "settings.screens.useAuto": {
+    "en": "Two screens when available",
+    "es": "Dos pantallas si las hay",
+    "de": "Zwei Bildschirme, wenn vorhanden",
+    "it": "Due schermi se disponibili"
+  },
+  "settings.screens.useOne": {
+    "en": "Always one screen",
+    "es": "Siempre una pantalla",
+    "de": "Immer ein Bildschirm",
+    "it": "Sempre uno schermo"
   },
   "settings.section.admin": {
     "en": "Administrator",
@@ -4842,10 +5448,10 @@
     "it": "Impostazioni test"
   },
   "settings.tablet.about": {
-    "en": "Instead of a second monitor, the patient can look at (and tap) a tablet. It is linked as in Thomson Near Chart: Devices › scan the QR code on the tablet.",
-    "es": "En lugar de un segundo monitor, el paciente puede mirar (y tocar) una tableta. Se vincula como en Thomson Near Chart: Dispositivos › escanee el código QR en la tableta.",
-    "de": "Statt eines zweiten Monitors kann der Patient auf ein Tablet schauen (und tippen). Es wird wie in Thomson Near Chart verbunden: Geräte › QR-Code auf dem Tablet scannen.",
-    "it": "Invece di un secondo monitor, il paziente può guardare (e toccare) un tablet. Si collega come in Thomson Near Chart: Dispositivi › inquadra il codice QR sul tablet."
+    "en": "It is linked as in Thomson Near Chart: in Tablet devices, scan the QR code with the tablet.",
+    "es": "Se vincula como en Thomson Near Chart: en Tabletas, escanee el código QR con la tableta.",
+    "de": "Die Verbindung erfolgt wie bei Thomson Near Chart: unter Tablets den QR-Code mit dem Tablet scannen.",
+    "it": "Si collega come in Thomson Near Chart: in Tablet, scansiona il codice QR con il tablet."
   },
   "settings.tablet.active": {
     "en": "The tests are shown on {0} ({1} × {2} pixels).",
@@ -4853,17 +5459,29 @@
     "de": "Die Tests werden auf {0} angezeigt ({1} × {2} Pixel).",
     "it": "I test sono mostrati su {0} ({1} × {2} pixel)."
   },
+  "settings.tablet.becomes": {
+    "en": "The tablet chosen in Tablet devices becomes the patient's screen. The patient looks at it and taps it to answer; this computer shows only the control screen.",
+    "es": "La tableta elegida en Tabletas se convierte en la pantalla del paciente. El paciente la mira y la toca para responder; este ordenador muestra solo la pantalla de control.",
+    "de": "Das unter Tablets gewählte Tablet wird zum Bildschirm des Patienten. Der Patient schaut darauf und tippt zum Antworten; dieser Computer zeigt nur den Steuerbildschirm.",
+    "it": "Il tablet scelto in Tablet diventa lo schermo del paziente. Il paziente lo guarda e lo tocca per rispondere; questo computer mostra solo lo schermo di controllo."
+  },
   "settings.tablet.devices": {
-    "en": "Connect devices…",
-    "es": "Conectar dispositivos…",
-    "de": "Geräte verbinden…",
-    "it": "Collega dispositivi…"
+    "en": "Tablet devices…",
+    "es": "Tabletas…",
+    "de": "Tablets…",
+    "it": "Tablet…"
   },
   "settings.tablet.noPractice": {
-    "en": "No practice ID yet: open Connect devices to enter it.",
-    "es": "Aún no hay ID de consulta: abra Conectar dispositivos para introducirlo.",
-    "de": "Noch keine Praxis-ID: öffnen Sie Geräte verbinden, um sie einzugeben.",
-    "it": "Nessun ID dello studio: apri Collega dispositivi per inserirlo."
+    "en": "No practice ID yet: open Tablet devices to enter it and link the tablet.",
+    "es": "Aún no hay ID de consulta: abra Tabletas para introducirlo y vincular la tableta.",
+    "de": "Noch keine Praxis-ID: öffnen Sie Tablets, um sie einzugeben und das Tablet zu verbinden.",
+    "it": "Nessun ID studio: apri Tablet per inserirlo e collegare il tablet."
+  },
+  "settings.tablet.notSaved": {
+    "en": "Save to start using the tablet as the patient's screen.",
+    "es": "Guarde para empezar a usar la tableta como pantalla del paciente.",
+    "de": "Speichern, um das Tablet als Bildschirm des Patienten zu verwenden.",
+    "it": "Salva per iniziare a usare il tablet come schermo del paziente."
   },
   "settings.tablet.off": {
     "en": "Off: the patient's screen is the monitor set below.",
@@ -4878,10 +5496,10 @@
     "it": "Usa un tablet come schermo del paziente"
   },
   "settings.tablet.waiting": {
-    "en": "Waiting for the tablet: open its link on the tablet (Connect devices).",
-    "es": "Esperando la tableta: abra su enlace en la tableta (Conectar dispositivos).",
-    "de": "Warten auf das Tablet: öffnen Sie seinen Link auf dem Tablet (Geräte verbinden).",
-    "it": "In attesa del tablet: apri il suo link sul tablet (Collega dispositivi)."
+    "en": "Waiting for the tablet: open its link on the tablet (Tablet devices).",
+    "es": "Esperando la tableta: abra su enlace en la tableta (Tabletas).",
+    "de": "Warten auf das Tablet: öffnen Sie seinen Link auf dem Tablet (Tablets).",
+    "it": "In attesa del tablet: apri il suo collegamento sul tablet (Tablet)."
   },
   "settings.texts.builtIn": {
     "en": "This text comes with ReadEZ and can't be changed. Make a new text instead.",
@@ -4955,6 +5573,12 @@
     "de": "Farbtest (manuell)",
     "it": "Test del colore (manuale)"
   },
+  "step.patternGlare": {
+    "en": "Finding the most uncomfortable pattern",
+    "es": "Encontrar el patrón más molesto",
+    "de": "Das unangenehmste Muster finden",
+    "it": "Trovare il pattern più fastidioso"
+  },
   "step.reading": {
     "en": "Rate of reading",
     "es": "Velocidad de lectura",
@@ -4979,6 +5603,12 @@
     "de": "Symptome mit Farbe",
     "it": "Sintomi con colore"
   },
+  "step.symptomsPattern": {
+    "en": "Symptoms with the pattern",
+    "es": "Síntomas con el patrón",
+    "de": "Symptome mit dem Muster",
+    "it": "Sintomi con il pattern"
+  },
   "stimulus.title": {
     "en": "Patient's screen",
     "es": "Pantalla del paciente",
@@ -4996,6 +5626,60 @@
     "es": "Otros síntomas:",
     "de": "Weitere Symptome:",
     "it": "Altri sintomi:"
+  },
+  "symptoms.pintro": {
+    "en": "Let the patient look at the pattern for a few seconds, then ask each question and grade the answer from 0 (none) to 5 (severe). Keys 0 - 5 grade the highlighted question.",
+    "es": "Deje que el paciente mire el patrón unos segundos; luego haga cada pregunta y puntúe la respuesta de 0 (nada) a 5 (grave). Las teclas 0 - 5 puntúan la pregunta resaltada.",
+    "de": "Lassen Sie den Patienten das Muster einige Sekunden ansehen, stellen Sie dann jede Frage und bewerten Sie die Antwort von 0 (keine) bis 5 (stark). Die Tasten 0 - 5 bewerten die markierte Frage.",
+    "it": "Lascia che il paziente guardi il pattern per qualche secondo, poi fai ogni domanda e valuta la risposta da 0 (nessuno) a 5 (grave). I tasti 0 - 5 valutano la domanda evidenziata."
+  },
+  "symptoms.pq1": {
+    "en": "Is the pattern uncomfortable or unpleasant to look at?",
+    "es": "¿Es el patrón molesto o desagradable de mirar?",
+    "de": "Ist das Muster unangenehm anzusehen?",
+    "it": "Il pattern è fastidioso o sgradevole da guardare?"
+  },
+  "symptoms.pq2": {
+    "en": "Do the lines seem to move, shimmer or flicker?",
+    "es": "¿Parecen moverse, brillar o parpadear las líneas?",
+    "de": "Scheinen sich die Linien zu bewegen, zu schimmern oder zu flimmern?",
+    "it": "Le linee sembrano muoversi, luccicare o tremolare?"
+  },
+  "symptoms.pq3": {
+    "en": "Do the lines seem to bend, blur or fade?",
+    "es": "¿Parecen doblarse, desenfocarse o desvanecerse las líneas?",
+    "de": "Scheinen sich die Linien zu biegen, zu verschwimmen oder zu verblassen?",
+    "it": "Le linee sembrano piegarsi, sfocarsi o sbiadire?"
+  },
+  "symptoms.pq4": {
+    "en": "Can you see colours or shapes in the pattern?",
+    "es": "¿Ves colores o formas en el patrón?",
+    "de": "Siehst du Farben oder Formen im Muster?",
+    "it": "Vedi colori o forme nel pattern?"
+  },
+  "symptoms.pshort1": {
+    "en": "Uncomfortable to look at",
+    "es": "Molesto de mirar",
+    "de": "Unangenehm anzusehen",
+    "it": "Fastidioso da guardare"
+  },
+  "symptoms.pshort2": {
+    "en": "Lines move, shimmer or flicker",
+    "es": "Líneas se mueven, brillan o parpadean",
+    "de": "Linien bewegen sich, schimmern, flimmern",
+    "it": "Linee si muovono, luccicano o tremolano"
+  },
+  "symptoms.pshort3": {
+    "en": "Lines bend, blur or fade",
+    "es": "Líneas se doblan, desenfocan o desvanecen",
+    "de": "Linien biegen sich, verschwimmen, verblassen",
+    "it": "Linee si piegano, sfocano o sbiadiscono"
+  },
+  "symptoms.pshort4": {
+    "en": "Colours or shapes seen",
+    "es": "Se ven colores o formas",
+    "de": "Farben oder Formen gesehen",
+    "it": "Colori o forme visti"
   },
   "symptoms.q1": {
     "en": "Do the words appear to move, wobble or flicker?",
@@ -5051,6 +5735,12 @@
     "de": "Augen schmerzen",
     "it": "Dolore agli occhi"
   },
+  "symptoms.strip.question": {
+    "en": "{0}/{1}  {2}",
+    "es": "{0}/{1}  {2}",
+    "de": "{0}/{1}  {2}",
+    "it": "{0}/{1}  {2}"
+  },
   "test.reading": {
     "en": "Reading",
     "es": "Lectura",
@@ -5105,17 +5795,53 @@
     "de": "Die Farbe für einen Computerbildschirm: ganzer Bildschirm farbig, Raum beleuchtet",
     "it": "Il colore per uno schermo di computer: schermo intero colorato, stanza illuminata"
   },
+  "tests.desc.computerPattern": {
+    "en": "The computer screen colour (room lit), using the most uncomfortable pattern",
+    "es": "El color de pantalla (sala iluminada), con el patrón más molesto",
+    "de": "Die Bildschirmfarbe (Raum beleuchtet), mit dem unangenehmsten Muster",
+    "it": "Il colore dello schermo (stanza illuminata), con il pattern più fastidioso"
+  },
   "tests.desc.lenses": {
     "en": "The colour for tinted lenses: whole screen coloured, darkened room",
     "es": "El color para lentes tintadas: pantalla entera coloreada, sala oscura",
     "de": "Die Farbe für getönte Gläser: ganzer Bildschirm farbig, abgedunkelter Raum",
     "it": "Il colore per lenti colorate: schermo intero colorato, stanza oscurata"
   },
+  "tests.desc.lensesPattern": {
+    "en": "The lens colour (whole screen, darkened room), using the most uncomfortable pattern",
+    "es": "El color de lente (toda la pantalla, sala oscura), con el patrón más molesto",
+    "de": "Die Linsenfarbe (ganzer Bildschirm, abgedunkelter Raum), mit dem unangenehmsten Muster",
+    "it": "Il colore delle lenti (tutto lo schermo, stanza buia), con il pattern più fastidioso"
+  },
   "tests.desc.overlay": {
     "en": "The colour for an overlay or reading guide: coloured panels round the text",
     "es": "El color para una lámina o guía de lectura: paneles de color alrededor del texto",
     "de": "Die Farbe für eine Folie oder Lesehilfe: farbige Flächen um den Text",
     "it": "Il colore per una lamina o guida di lettura: riquadri colorati intorno al testo"
+  },
+  "tests.desc.overlayPattern": {
+    "en": "The overlay colour, using the patient's most uncomfortable pattern instead of text",
+    "es": "El color de superposición, con el patrón más molesto del paciente en lugar del texto",
+    "de": "Die Folienfarbe, mit dem unangenehmsten Muster des Patienten statt Text",
+    "it": "Il colore dell'overlay, con il pattern più fastidioso del paziente al posto del testo"
+  },
+  "tests.desc.patternGlare": {
+    "en": "Finds the most uncomfortable striped pattern, then symptoms with it on white",
+    "es": "Encuentra el patrón de rayas más molesto y luego los síntomas con él sobre blanco",
+    "de": "Ermittelt das unangenehmste Streifenmuster, dann Symptome damit auf Weiß",
+    "it": "Trova il pattern a strisce più fastidioso, poi i sintomi con esso su bianco"
+  },
+  "tests.group.pattern": {
+    "en": "Pattern (striped grating)",
+    "es": "Patrón (rejilla de rayas)",
+    "de": "Muster (Streifengitter)",
+    "it": "Pattern (reticolo a strisce)"
+  },
+  "tests.group.text": {
+    "en": "Text",
+    "es": "Texto",
+    "de": "Text",
+    "it": "Testo"
   },
   "tests.list.none": {
     "en": "No tests yet",
@@ -5140,6 +5866,12 @@
     "es": "Elija primero un paciente.",
     "de": "Bitte wählen Sie zuerst einen Patienten.",
     "it": "Scegli prima un paziente."
+  },
+  "tests.needPatternBaseline": {
+    "en": "This patient has no baseline pattern yet. It finds the most uncomfortable striped pattern, which the pattern colour tests use.\r\n\r\nRun the pattern glare test (baseline pattern) now?",
+    "es": "Este paciente aún no tiene línea base de patrón. Encuentra el patrón de rayas más molesto, que usan las pruebas de color con patrón.\r\n\r\n¿Hacer ahora la prueba de deslumbramiento por patrones (línea base patrón)?",
+    "de": "Dieser Patient hat noch keine Musterbasis. Sie ermittelt das unangenehmste Streifenmuster, das die Farb-Mustertests verwenden.\r\n\r\nMusterblendungstest (Musterbasis) jetzt durchführen?",
+    "it": "Questo paziente non ha ancora una base pattern. Trova il pattern a strisce più fastidioso, usato dai test colore con pattern.\r\n\r\nEseguire ora il test di abbagliamento da pattern (base pattern)?"
   },
   "tests.noScreener": {
     "en": "No screener chosen",

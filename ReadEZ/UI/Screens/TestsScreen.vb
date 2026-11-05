@@ -4,6 +4,12 @@ Option Strict On
 '   TestsScreen.vb - choose a test (replaces the ribbon's Baseline / Overlays / Lenses / Computer
 '   buttons and RZfrmStart)
 '
+'   Pattern (first)
+'     Pattern glare         the baseline pattern: which striped pattern is most uncomfortable (narrowed
+'                           down to the worst spatial frequency), then symptoms with it on white
+'     Overlays / Lenses / Computer screen - pattern
+'                           the colour tests with that pattern instead of the text, then symptoms
+'   Text
 '     Baseline              symptoms and rate of reading on white
 '     Overlays              the colour for an overlay or reading guide
 '     Lenses                the colour for tinted lenses (whole screen coloured, darkened room)
@@ -98,29 +104,74 @@ Public Class TestsScreen
         For Each c In _flow.Controls.Cast(Of Control)().ToList()
             c.Dispose()
         Next
-        Dim tiles As New List(Of (TitleKey As String, DescKey As String, Glyph As String, Mode As ReadEZTestMode))
-        tiles.Add(("mode.baseline", "tests.desc.baseline", Glyphs.Font, ReadEZTestMode.Baseline))
-        For Each m In {ReadEZTestMode.Overlay, ReadEZTestMode.Lenses, ReadEZTestMode.Computer}
-            If AppHost.Admin.IsTestEnabled(m) Then
-                Dim key = TestRun.ModeKey(m)
-                Dim desc = If(m = ReadEZTestMode.Overlay, "tests.desc.overlay", If(m = ReadEZTestMode.Lenses, "tests.desc.lenses", "tests.desc.computer"))
-                Dim glyph = If(m = ReadEZTestMode.Overlay, Glyphs.Color, If(m = ReadEZTestMode.Lenses, Glyphs.Eye, Glyphs.Picture))
-                tiles.Add((key, desc, glyph, m))
+        Dim colourModes = {ReadEZTestMode.Overlay, ReadEZTestMode.Lenses, ReadEZTestMode.Computer}.Where(Function(m) AppHost.Admin.IsTestEnabled(m)).ToList()
+        Dim lastTile As Control = Nothing
+        For Each pattern In {True, False}
+            ' A heading on its own line: Pattern / Text
+            Dim head = Ui.Section(If(pattern, "tests.group.pattern", "tests.group.text"))
+            head.Margin = New Padding(4, If(lastTile Is Nothing, 0, 14), 0, 6)
+            If lastTile IsNot Nothing Then _flow.SetFlowBreak(lastTile, True)
+            _flow.Controls.Add(head)
+            _flow.SetFlowBreak(head, True)
+            Dim tiles As New List(Of (TitleKey As String, DescKey As String, Glyph As String, Mode As ReadEZTestMode))
+            If pattern Then
+                tiles.Add(("mode.patternGlare", "tests.desc.patternGlare", PatternGlareStep.Glyph, ReadEZTestMode.Baseline))
+            Else
+                tiles.Add(("mode.baseline", "tests.desc.baseline", Glyphs.Font, ReadEZTestMode.Baseline))
             End If
-        Next
-        Dim n = 1
-        For Each t In tiles
-            Dim tile = TileButton.Create(t.TitleKey, t.DescKey, t.Glyph)
-            tile.Size = New Size(300, 150)
-            Dim mode = t.Mode
-            Dim number = n
-            AddHandler tile.Click, Sub() Launch(mode)
-            _flow.Controls.Add(tile)
-            n += 1
+            For Each m In colourModes
+                Dim name = If(m = ReadEZTestMode.Overlay, "overlay", If(m = ReadEZTestMode.Lenses, "lenses", "computer"))
+                Dim glyph = If(m = ReadEZTestMode.Overlay, Glyphs.Color, If(m = ReadEZTestMode.Lenses, Glyphs.Eye, Glyphs.Picture))
+                If pattern Then
+                    tiles.Add(("mode." & name & "Pattern", "tests.desc." & name & "Pattern", glyph, m))
+                Else
+                    tiles.Add((TestRun.ModeKey(m), "tests.desc." & name, glyph, m))
+                End If
+            Next
+            For Each t In tiles
+                Dim tile = TileButton.Create(t.TitleKey, t.DescKey, t.Glyph)
+                tile.Size = New Size(300, 150)
+                Dim mode = t.Mode
+                If pattern Then
+                    AddHandler tile.Click, Sub() LaunchPattern(mode)
+                Else
+                    AddHandler tile.Click, Sub() Launch(mode)
+                End If
+                _flow.Controls.Add(tile)
+                lastTile = tile
+            Next
         Next
         Dpi.ScaleNew(_flow, Me)
         ThemeManager.Apply(_flow)
         _flow.ResumeLayout(True)
+    End Sub
+
+    Private Function ReadyToTest() As Boolean
+        If Not AppHost.Session.HasPatient Then
+            Ask.Info(FindForm(), "tests.needPatient")
+            AppHost.MainWindow?.ShowScreen(MainForm.ScreenPatients)
+            Return False
+        End If
+        If AppHost.Session.ScreenerId <= 0 AndAlso AppHost.Db.GetScreeners().Count > 0 Then AppCommands.PickScreener()
+        Return True
+    End Function
+
+    ''' <summary>
+    ''' The pattern tests: the baseline pattern (pattern glare), or a colour test with the pattern found
+    ''' there - which needs a baseline pattern first (offered if there is none).
+    ''' </summary>
+    Private Sub LaunchPattern(mode As ReadEZTestMode)
+        If Not ReadyToTest() Then Return
+        If mode = ReadEZTestMode.Baseline Then
+            AppHost.MainWindow?.RunTest(TestRun.PatternGlareTest())
+            Return
+        End If
+        Dim b = TestRun.LatestPatternBaseline()
+        If b Is Nothing Then
+            If Ask.YesNo(FindForm(), "tests.needPatternBaseline") Then AppHost.MainWindow?.RunTest(TestRun.PatternGlareTest())
+            Return
+        End If
+        AppHost.MainWindow?.RunTest(TestRun.ColourPattern(mode, AppHost.Settings.ColourTestMethod, b))
     End Sub
 
     Private Sub Launch(mode As ReadEZTestMode)

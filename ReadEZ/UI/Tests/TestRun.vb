@@ -69,6 +69,45 @@ Public NotInheritable Class TestRun
         Return t
     End Function
 
+    ''' <summary>
+    ''' Baseline pattern: the pattern glare test finds the most uncomfortable striped pattern, then
+    ''' the pattern symptoms questions with it on white.
+    ''' </summary>
+    Public Shared Function PatternGlareTest() As TestRun
+        Dim t As New TestRun(NewResult(ReadEZTestMode.Baseline)) With {.HasColour = True}
+        t.Result.IsPattern = True
+        t.Result.PatternDistanceCm = AppHost.Settings.PatternGlareDistanceCm
+        t.Add("step.patternGlare", Function() New PatternGlareStep())
+        t.Add("step.symptomsPattern", Function() New SymptomsStep())
+        Return t
+    End Function
+
+    ''' <summary>
+    ''' A colour test with the patient's most uncomfortable pattern (from their baseline pattern)
+    ''' instead of the text: the colour, then the pattern symptoms questions with it.
+    ''' </summary>
+    Public Shared Function ColourPattern(mode As ReadEZTestMode, method As Integer, baseline As ReadEZResult) As TestRun
+        Dim t As New TestRun(NewResult(mode)) With {.Method = method}
+        t.Result.IsPattern = True
+        t.Result.PatternCpd = baseline.PatternCpd
+        t.Result.PatternDistanceCm = baseline.PatternDistanceCm
+        t.Add(If(method = 0, "step.colourAuto", "step.colourManual"), Function() New ColourStep())
+        t.Add("step.symptomsColour", Function() New SymptomsStep())
+        Return t
+    End Function
+
+    ''' <summary>The patient's latest baseline pattern with a frequency found (Nothing if none).</summary>
+    Public Shared Function LatestPatternBaseline() As ReadEZResult
+        If Not AppHost.Session.HasPatient Then Return Nothing
+        Try
+            Return AppHost.Db.GetResults(AppHost.Session.PatientId).Where(Function(x) x.IsBaseline AndAlso x.IsPattern AndAlso x.PatternCpd > 0).
+                   OrderByDescending(Function(x) x.Test_Date).ThenByDescending(Function(x) x.ID).FirstOrDefault()
+        Catch ex As Exception
+            Log.Error("Baseline pattern", ex)
+            Return Nothing
+        End Try
+    End Function
+
     ''' <summary>A colour test: the colour, then (optionally) rate of reading and symptoms with it.</summary>
     Public Shared Function Colour(mode As ReadEZTestMode, method As Integer, continueAfter As Boolean) As TestRun
         Dim t As New TestRun(NewResult(mode)) With {.Method = method}
@@ -101,6 +140,22 @@ Public NotInheritable Class TestRun
         r.RoR_LineSpacing = b.RoR_LineSpacing
         If b.RoR_NoRows > 0 Then r.RoR_NoRows = b.RoR_NoRows
     End Sub
+
+    ''' <summary>
+    ''' Translation key of a test's kind, as the results show it: Baseline text, Baseline pattern,
+    ''' Overlays, Overlay pattern test ...
+    ''' </summary>
+    Public Shared Function ResultKey(r As ReadEZResult) As String
+        If r.IsPattern Then
+            If r.IsBaseline Then Return "kind.baselinePattern"
+            Select Case r.Mode
+                Case ReadEZTestMode.Overlay : Return "kind.overlayPattern"
+                Case ReadEZTestMode.Lenses : Return "kind.lensesPattern"
+                Case Else : Return "kind.computerPattern"
+            End Select
+        End If
+        Return If(r.IsBaseline, "kind.baselineText", ModeKey(r.Mode))
+    End Function
 
     ''' <summary>Translation key of a test mode's name.</summary>
     Public Shared Function ModeKey(mode As ReadEZTestMode) As String

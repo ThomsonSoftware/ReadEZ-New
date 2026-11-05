@@ -125,6 +125,17 @@ Public NotInheritable Class ReadEZDatabase
                     ScreenWidth INTEGER NOT NULL DEFAULT 0, ScreenHeight INTEGER NOT NULL DEFAULT 0,
                     Notes TEXT NOT NULL DEFAULT '',
                     LegacySource TEXT, LegacyId INTEGER);")
+            ' Pattern tests (added in ReadEZ 3.x): the stimulus (0 text, 1 pattern) and the pattern used
+            Dim existingColumns As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
+            cmd.CommandText = "PRAGMA table_info(Tests);"
+            Using rd = cmd.ExecuteReader()
+                While rd.Read()
+                    existingColumns.Add(Str(rd("name")))
+                End While
+            End Using
+            If Not existingColumns.Contains("Stimulus") Then exec("ALTER TABLE Tests ADD COLUMN Stimulus INTEGER NOT NULL DEFAULT 0;")
+            If Not existingColumns.Contains("PatternCpd") Then exec("ALTER TABLE Tests ADD COLUMN PatternCpd REAL NOT NULL DEFAULT 0;")
+            If Not existingColumns.Contains("PatternDistanceCm") Then exec("ALTER TABLE Tests ADD COLUMN PatternDistanceCm INTEGER NOT NULL DEFAULT 0;")
             exec("CREATE INDEX IF NOT EXISTS ix_patients_name ON Patients(Surname COLLATE NOCASE, Firstname COLLATE NOCASE);")
             exec("CREATE INDEX IF NOT EXISTS ix_patients_org ON Patients(OrganisationId);")
             exec("CREATE INDEX IF NOT EXISTS ix_tests_patient ON Tests(PatientId, TestDate DESC);")
@@ -406,7 +417,8 @@ Public NotInheritable Class ReadEZDatabase
         "PatientId, ScreenerId, TestDate, Mode, ColourIndex, ColourSet, ColourRgb, GreyPreferred, Method, AutoScore, " &
         "Symptom1, Symptom2, Symptom3, Symptom4, Symptom5, Symptom6, Symptom7, Symptom8, SymptomsDone, SymptomNotes, " &
         "Wpm, ReadSeconds, WordsRead, Errors, RowsSkipped, Transcript, TextIndex, TextName, FontName, FontSize, LineSpacing, " &
-        "RowCount, OverlaySize, PresentationMs, ScreenWidth, ScreenHeight, Notes, LegacySource, LegacyId"
+        "RowCount, OverlaySize, PresentationMs, ScreenWidth, ScreenHeight, Notes, LegacySource, LegacyId, " &
+        "Stimulus, PatternCpd, PatternDistanceCm"
 
     ''' <summary>Parameter list for TestColumns (same order).</summary>
     Friend Shared Function TestArgs(r As ReadEZResult, legacySource As String, legacyId As Integer) As Object()
@@ -427,6 +439,7 @@ Public NotInheritable Class ReadEZDatabase
                     "@FontSize", r.RoR_FontSize, "@LineSpacing", r.RoR_LineSpacing, "@RowCount", r.RoR_NoRows, "@OverlaySize", r.RoR_OverlaySize,
                     "@PresentationMs", r.RoR_PresentationTime, "@ScreenWidth", r.Test_Width, "@ScreenHeight", r.Test_Height,
                     "@Notes", If(r.Notes, ""), "@LegacySource", legacySource, "@LegacyId", If(legacySource Is Nothing, Nothing, CObj(legacyId))})
+        a.AddRange({"@Stimulus", If(r.IsPattern, 1, 0), "@PatternCpd", r.PatternCpd, "@PatternDistanceCm", r.PatternDistanceCm})
         Return a.ToArray()
     End Function
 
@@ -477,6 +490,10 @@ Public NotInheritable Class ReadEZDatabase
         For i = 1 To 8
             r.Symptoms(i - 1) = Int(row("Symptom" & i))
         Next
+        r.IsPattern = Int(Col(row, "Stimulus")) = 1
+        Dim cpd = Col(row, "PatternCpd")
+        r.PatternCpd = If(cpd Is Nothing OrElse cpd Is DBNull.Value, 0.0, Convert.ToDouble(cpd, Inv))
+        r.PatternDistanceCm = Int(Col(row, "PatternDistanceCm"))
         If r.RoR_NoRows <= 0 Then r.RoR_NoRows = 20
         Return r
     End Function

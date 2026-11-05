@@ -64,11 +64,39 @@ Public NotInheritable Class ScreenLayout
         Dim s = AppHost.Settings
         If s Is Nothing Then Return False
         If TabletScreen.IsActive Then Return True     ' a tablet is the patient's screen
+        If s.ForceOneScreen Then Return False         ' one screen chosen, even with a second monitor
+        If s.UseTablet Then Return False              ' tablet chosen but not connected yet: one screen meanwhile
         Dim stim = s.StimulusBounds
         If Not IsOnScreen(stim) Then stim = PrimaryLeadingScreens().Last().Bounds
         Dim ctl = s.ControlBounds
         If Not IsOnScreen(ctl) Then ctl = Screen.PrimaryScreen.WorkingArea
         Return ScreenOf(ctl).DeviceName <> ScreenOf(stim).DeviceName
+    End Function
+
+    ''' <summary>
+    ''' Where the patient's screen goes: the area set in Settings > Screens - or, when one screen
+    ''' is chosen, the whole monitor the control window is on.
+    ''' </summary>
+    Public Shared Function PatientScreenRect() As Rectangle
+        Dim s = AppHost.Settings
+        If Not TabletScreen.IsActive Then
+            If s.ForceOneScreen Then Return OneScreenMonitor().Bounds
+            If s.UseTablet Then                        ' waiting for the tablet: the control screen meanwhile
+                Dim ctl = s.ControlBounds
+                If Not IsOnScreen(ctl) Then ctl = Screen.PrimaryScreen.WorkingArea
+                Return ScreenOf(ctl).Bounds
+            End If
+        End If
+        Dim r = s.StimulusBounds
+        If Not IsOnScreen(r) Then r = PrimaryLeadingScreens().Last().Bounds
+        Return r
+    End Function
+
+    ''' <summary>One screen chosen: the monitor chosen for it (screen 1 if that monitor is no longer attached).</summary>
+    Public Shared Function OneScreenMonitor() As Screen
+        Dim screens = PrimaryLeadingScreens()
+        Dim i = AppHost.Settings.OneScreenMonitor
+        Return If(i >= 0 AndAlso i < screens.Count, screens(i), screens(0))
     End Function
 
     ''' <summary>True if a second screen is available for the patient.</summary>

@@ -105,10 +105,16 @@ Public NotInheritable Class AppSettings
     Public ShowPatientInstructions As Boolean = True
     ''' <summary>Colour tests: the patient answers on their own screen (clicks the side, or First / Second / Show again).</summary>
     Public PatientChooses As Boolean = False
+    ''' <summary>Pattern glare test: the patient's viewing distance (cm), for the cycles per degree.</summary>
+    Public PatternGlareDistanceCm As Integer = 40
     ''' <summary>After choosing a colour, go straight on to rate of reading and symptoms with it.</summary>
     Public ContinueAfterColour As Boolean = True
     ''' <summary>One screen: show the patient's text in the whole window (F11) while testing.</summary>
     Public SingleScreenFullWindow As Boolean = False
+    ''' <summary>Always one screen, even when a second monitor is attached (Settings > Screens).</summary>
+    Public ForceOneScreen As Boolean = False
+    ''' <summary>One screen: the monitor used for everything (0 = screen 1, the primary; 1 = screen 2 ...).</summary>
+    Public OneScreenMonitor As Integer = 0
 #End Region
 
 #Region "Tablet (Remote Test server, as Thomson Near Chart)"

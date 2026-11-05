@@ -73,8 +73,7 @@ Public NotInheritable Class StimulusWindow
 
     ''' <summary>Moves the window to the patient's screen area from Settings > Screens.</summary>
     Public Sub PlaceOnStimulusScreen()
-        Dim r = AppHost.Settings.StimulusBounds
-        If Not ScreenLayout.IsOnScreen(r) Then r = ScreenLayout.PrimaryLeadingScreens().Last().Bounds
+        Dim r = ScreenLayout.PatientScreenRect()
         If WindowState <> FormWindowState.Normal Then WindowState = FormWindowState.Normal
         _ownMonitor = ScreenLayout.IsTwoScreenMode()
         UpdateTopMost()
@@ -84,6 +83,13 @@ Public NotInheritable Class StimulusWindow
         Finally
             _placing = False
         End Try
+        ' One screen: hidden until a test brings it forward (the test screen shows a copy meanwhile).
+        ' Two screens: always shown on its own monitor (not while a tablet is the patient's screen).
+        If Not _ownMonitor AndAlso Not _forcedFront Then
+            If Visible Then Hide()
+        ElseIf _ownMonitor AndAlso Not Visible AndAlso Not TabletScreen.IsActive AndAlso IsHandleCreated Then
+            Show()
+        End If
         Invalidate()
     End Sub
 
@@ -100,9 +106,13 @@ Public NotInheritable Class StimulusWindow
     Public Sub SetFront(front As Boolean)
         _forcedFront = front
         UpdateTopMost()
+        ShowPointer()
         If front Then
+            If Not Visible Then Show()
             BringToFront()
             Activate()
+        ElseIf Not _ownMonitor AndAlso Visible Then
+            Hide()                                     ' one screen: hidden again until the next test
         End If
     End Sub
 
@@ -201,6 +211,54 @@ Public NotInheritable Class StimulusWindow
         e.Graphics.Clear(BackColor)
         DrawLayers(e.Graphics, ClientRectangle, preview:=False)
     End Sub
+
+#Region "Pointer (one screen)"
+
+    ''' <summary>The mouse moved on the patient's screen (one screen: the control bar comes back).</summary>
+    Public Event MouseMovedOnScreen As EventHandler
+
+    Private _lastMouse As Point = New Point(-100, -100)
+    Private ReadOnly _pointerTimer As New Timer With {.Interval = 2000}
+    Private _pointerHooked As Boolean
+    Private Shared _blankCursor As Cursor
+
+    ''' <summary>A cursor that shows nothing (the pointer is hidden while it is still, over the patient's text).</summary>
+    Private Shared ReadOnly Property BlankCursor As Cursor
+        Get
+            If _blankCursor Is Nothing Then
+                Using bmp As New Bitmap(16, 16)
+                    _blankCursor = New Cursor(bmp.GetHicon())
+                End Using
+            End If
+            Return _blankCursor
+        End Get
+    End Property
+
+    Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
+        MyBase.OnMouseMove(e)
+        ' Windows sends "moves" without movement; only a real move counts
+        If Math.Abs(e.X - _lastMouse.X) < 3 AndAlso Math.Abs(e.Y - _lastMouse.Y) < 3 Then Return
+        _lastMouse = e.Location
+        ShowPointer()
+        RaiseEvent MouseMovedOnScreen(Me, EventArgs.Empty)
+    End Sub
+
+    ''' <summary>Shows the pointer; while the patient's view is in front (one screen) it hides again after 2 s.</summary>
+    Private Sub ShowPointer()
+        Cursor = Cursors.Default
+        _pointerTimer.Stop()
+        If Not _forcedFront Then Return
+        If Not _pointerHooked Then
+            _pointerHooked = True
+            AddHandler _pointerTimer.Tick, Sub()
+                                               _pointerTimer.Stop()
+                                               If _forcedFront Then Cursor = BlankCursor
+                                           End Sub
+        End If
+        _pointerTimer.Start()
+    End Sub
+
+#End Region
 
     ''' <summary>The patient clicked their screen (e.g. on the colour they prefer). Bounds = the whole screen.</summary>
     Public Event ClickedOnScreen(bounds As Rectangle, e As MouseEventArgs)
@@ -325,9 +383,9 @@ Public NotInheritable Class Stimulus
                 _window = New StimulusWindow()
                 ' Not owned by the main window: with a single screen the clinician's window must be
                 ' able to come in front of it.
-                _window.Show()
-                ' One screen: keep it behind the clinician's window until a test asks for it
-                If Not _window.HasOwnMonitor Then _window.SendToBack()
+                Dim unused = _window.Handle             ' (created now; shown only when needed)
+                ' Two screens: shown on its own monitor. One screen: hidden until a test asks for it.
+                If _window.HasOwnMonitor AndAlso Not TabletScreen.IsActive Then _window.Show()
             End If
             Return _window
         End Get

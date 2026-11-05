@@ -35,10 +35,22 @@ Public NotInheritable Class SymptomsStep
         End Get
     End Property
 
+    ''' <summary>A pattern test: the pattern questions (how the stripes look and feel) instead of the text ones.</summary>
+    Private ReadOnly Property IsPattern As Boolean
+        Get
+            Return Run IsNot Nothing AndAlso Run.Result.IsPattern
+        End Get
+    End Property
+
+    ''' <summary>Question n (1 - 4): "symptoms.q1" ... or, for a pattern, "symptoms.pq1" ...</summary>
+    Private Function QuestionKey(n As Integer) As String
+        Return If(IsPattern, "symptoms.pq", "symptoms.q") & n
+    End Function
+
     Public Overrides Function CreatePanel() As Control
         Dim col = Ui.Column()
         Ui.FillWidth(col)                                 ' everything below stretches to the panel's width
-        Dim intro = Ui.Label("symptoms.intro", muted:=True)
+        Dim intro = Ui.Label(If(IsPattern, "symptoms.pintro", "symptoms.intro"), muted:=True)
         intro.Font = Fonts.Body
         intro.Margin = New Padding(0, 0, 0, 10)
         col.Controls.Add(intro)
@@ -48,7 +60,7 @@ Public NotInheritable Class SymptomsStep
         col.Controls.Add(legend)
         For q = 0 To Questions - 1
             Dim index = q
-            Dim l = Ui.Label("symptoms.q" & (q + 1))
+            Dim l = Ui.Label(QuestionKey(q + 1))
             l.Font = Fonts.Strong
             l.Margin = New Padding(0, 8, 0, 4)
             col.Controls.Add(l)
@@ -72,12 +84,13 @@ Public NotInheritable Class SymptomsStep
                                                  Run.Result.Symptoms_Notes = txtNotes.Text
                                                  If txtNotes.Text <> "" Then Run.Result.SymptomsDone = True
                                              End Sub
-        col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay))
+        If Not IsPattern Then col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay))
         HighlightCurrent()
         Return col
     End Function
 
     Public Overrides Function InstructionKeys() As String()
+        If IsPattern Then Return {"instr.psymptoms.title", "instr.psymptoms.1", "instr.psymptoms.2", "instr.psymptoms.3"}
         Return {"instr.symptoms.title", "instr.symptoms.1", "instr.symptoms.2", "instr.symptoms.3"}
     End Function
 
@@ -90,8 +103,8 @@ Public NotInheritable Class SymptomsStep
             sample.Presentation = If(r.Mode = ReadEZTestMode.Overlay, ReadingPresentation.Overlay, ReadingPresentation.FullScreen)
         End If
         Dim sc As New InstructionScene(InstructionKeys()) With {.Sample = sample}
-        sc.Add("instr.symptoms.callout1", sample.CopyBounds(0), InstructionScene.Side.Left)
-        sc.Add("instr.symptoms.callout2", RectangleF.Empty, InstructionScene.Side.BottomCentre)
+        sc.Add(If(IsPattern, "instr.psymptoms.callout1", "instr.symptoms.callout1"), sample.CopyBounds(0), InstructionScene.Side.Left)
+        sc.Add(If(IsPattern, "instr.psymptoms.callout2", "instr.symptoms.callout2"), RectangleF.Empty, InstructionScene.Side.BottomCentre)
         Return sc
     End Function
 
@@ -107,6 +120,7 @@ Public NotInheritable Class SymptomsStep
         For i = 0 To _scales.Count - 1
             _scales(i).Highlighted = i = _current
         Next
+        ActionsChanged()                       ' one screen: the bar shows the question being asked
     End Sub
 
     Public Overrides Sub Begin()
@@ -136,9 +150,38 @@ Public NotInheritable Class SymptomsStep
         Return False
     End Function
 
+    ''' <summary>
+    ''' One screen, patient full screen: the bar asks the questions - ◀ / ▶ to move between them,
+    ''' the question (1/4 ...), its grade 0 - 5 (the grade given is highlighted), then Next step.
+    ''' Choosing a grade moves on to the next question, as on the test screen.
+    ''' </summary>
     Public Overrides Function QuickActions() As List(Of QuickAction)
-        Return New List(Of QuickAction) From {New QuickAction(If(IsLastStep(), "run.saveFinish", "run.nextStep"), Sub() Finish(), primary:=True)}
+        Dim list As New List(Of QuickAction)
+        If _scales.Count = Questions Then
+            Dim q = Math.Max(0, Math.Min(Questions - 1, _current))
+            list.Add(New QuickAction("", Sub() MoveQuestion(-1), enabled:=q > 0) With {.Text = "◀", .GroupStart = True})
+            list.Add(New QuickAction("", Nothing) With {.Text = Loc.F("symptoms.strip.question", q + 1, Questions, Loc.T(QuestionKey(q + 1)))})
+            list.Add(New QuickAction("", Sub() MoveQuestion(1), enabled:=q < Questions - 1) With {.Text = "▶"})
+            Dim given = If(Run.Result.SymptomsDone, Run.Result.Symptoms(q), -1)
+            For g = 0 To 5
+                Dim grade = g
+                list.Add(New QuickAction("", Sub() _scales(q).SetGrade(grade), primary:=grade = given) With {
+                         .Text = g.ToString(), .GroupStart = g = 0, .Colour = GradeScale.GradeColour(g)})
+            Next
+        End If
+        list.Add(New QuickAction(If(IsLastStep(), "run.saveFinish", "run.nextStep"), Sub() Finish(), primary:=True) With {.GroupStart = True})
+        Return list
     End Function
+
+    Public Overrides Function CreateTextOptions() As Control
+        If IsPattern Then Return Nothing                  ' (the pattern has no text settings)
+        Return TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=Run.Result.Mode = ReadEZTestMode.Overlay)
+    End Function
+
+    Private Sub MoveQuestion(delta As Integer)
+        _current = Math.Max(0, Math.Min(Questions - 1, _current + delta))
+        HighlightCurrent()
+    End Sub
 End Class
 
 ''' <summary>A 0 (none) to 5 (severe) scale: six boxes, green to red.</summary>

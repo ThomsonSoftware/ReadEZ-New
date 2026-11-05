@@ -100,10 +100,8 @@ Public NotInheritable Class TabletScreen
         Dim w = Stimulus.Window
         If active Then
             If w.Visible Then w.Hide()
-        ElseIf Not w.Visible Then
-            w.Show()
-            w.PlaceOnStimulusScreen()
-            If Not w.HasOwnMonitor Then w.SendToBack()
+        ElseIf Not w.Visible AndAlso (ScreenLayout.IsTwoScreenMode() OrElse w.IsInFront) Then
+            w.Show()                         ' (one screen: stays hidden until a test brings it forward)
         End If
         w.PlaceOnStimulusScreen()           ' (one or two screens may have changed)
         Link.DrawingMode = active AndAlso _listening

@@ -74,6 +74,14 @@ Public NotInheritable Class ReadEZResult
     ''' <summary>Row id (0 = not saved yet).</summary>
     Public ID As Integer
     Public IsBaseline As Boolean
+    ''' <summary>
+    ''' A pattern test: the patient's most uncomfortable striped pattern was shown instead of the
+    ''' reading text (the baseline pattern finds it; the colour pattern tests use it).
+    ''' </summary>
+    Public IsPattern As Boolean
+    ''' <summary>Pattern tests: the pattern's spatial frequency (cycles per degree) and the viewing distance (cm).</summary>
+    Public PatternCpd As Double
+    Public PatternDistanceCm As Integer
     Public Mode As ReadEZTestMode
     Public Client_ID As Integer
     Public Screener_ID As Integer

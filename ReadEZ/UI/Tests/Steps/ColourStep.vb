@@ -228,7 +228,7 @@ Public NotInheritable Class ColourStep
 
         lblResult.Margin = New Padding(0, 10, 0, 0)
         col.Controls.Add(lblResult)
-        col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=IsOverlay, enabledWhen:=Function() _successiveStage = 0))
+        If Not Run.Result.IsPattern Then col.Controls.Add(TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=IsOverlay, enabledWhen:=Function() _successiveStage = 0))
         Return col
     End Function
 
@@ -335,7 +335,7 @@ Public NotInheritable Class ColourStep
     Public Overrides Function InstructionKeys() As String()
         Select Case Mode
             Case ReadEZTestMode.Overlay
-                Return {"instr.colour.title", "instr.overlay.1", "instr.overlay.2", "instr.colour.3"}
+                Return {"instr.colour.title", If(Run.Result.IsPattern, "instr.overlay.1p", "instr.overlay.1"), "instr.overlay.2", "instr.colour.3"}
             Case ReadEZTestMode.Lenses
                 Return {"instr.colour.title", "instr.lenses.0", "instr.successive.1", "instr.successive.2", "instr.colour.3"}
             Case Else
@@ -441,7 +441,7 @@ Public NotInheritable Class ColourStep
 
     Private Sub PickBespoke()
         Using dlg As New ColorDialog With {.FullOpen = True, .Color = Scene.Colour1}
-            If dlg.ShowDialog(Host?.FindForm()) <> DialogResult.OK Then Return
+            If dlg.ShowDialog(Ask.DialogOwner(Host?.FindForm())) <> DialogResult.OK Then Return
             Dim r = Run.Result
             r.Colour1 = 0
             r.PaletteSet = If(IsOverlay, 1, 2)
@@ -664,6 +664,11 @@ Public NotInheritable Class ColourStep
                 If Run.HasColour Then Finish() : Return True
         End Select
         Return False
+    End Function
+
+    Public Overrides Function CreateTextOptions() As Control
+        If Run.Result.IsPattern Then Return Nothing       ' (the pattern has no text settings)
+        Return TextOptions.Create(Me, Sub() Redraw(), showOverlaySize:=IsOverlay, enabledWhen:=Function() _successiveStage = 0)
     End Function
 
     Public Overrides Function QuickActions() As List(Of QuickAction)
